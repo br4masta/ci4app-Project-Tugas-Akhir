@@ -8,33 +8,31 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Edit Seminar</h1>
-            </div><!-- /.col -->
+                <h1 class="m-0">Edit Skripsi</h1>
+            </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item active">Dashboard v1</li>
                 </ol>
-            </div><!-- /.col -->
-        </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
+            </div>
+        </div>
+    </div>
 </div>
-<!-- /.content-header -->
 
-<!-- Main content -->
 <!-- Main content -->
 <div class="container">
     <div class="row">
         <div class="col">
-            <div class="card ">
+            <div class="card">
                 <div class="form-group">
                     <!-- Start: Bootstrap Form Basic -->
                     <form class="bootstrap-form-with-validation mx-5">
                         <div class="form-group"><label for="password-input"><strong>Nama:&nbsp;</strong></label>
                             <!-- Start: Multi-Select Dropdown by Jigar Mistry --><select class="form-control" name="katberita">
                                 <option value="" selected>--Pilih Disini--</option>
-                                <option value='1'>Brian Aldy</option>
-                                <option value='2'>Aditya Hermanto</option>
+                                <option value='Brian Aldy'>Brian Aldy</option>
+                                <option value='GENAP'>Aditya Hermanto</option>
                                 <!-- -->
                             </select>
                             <!-- End: Multi-Select Dropdown by Jigar Mistry -->
@@ -44,10 +42,23 @@
                         <div class="form-group"><label for="textarea-input"><strong>HARI&nbsp;</strong></label><input class="form-control" type="date" name="tanggal ujian"><label for="textarea-input"></label></div>
                         <div class="form-group"><label for="textarea-input"></label><label for="search-input"><strong>Pukul:</strong></label><input class="form-control" type="time" name="jam ujian"></div>
                         <div class="form-group"><label for="textarea-input"></label><label for="search-input"><strong>Masukan Tempat:</strong></label><input class="form-control" type="text"></div>
-                        <div class="form-group"><label for="textarea-input"></label><label for="search-input"><strong>Pilih Dosen Penguji:</strong></label>
-                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Dosen 3</label></div>
-                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Dosen 2</label></div>
-                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Dosen 1</label></div>
+                        <div class="form-group"><label for="password-input"><strong>Pilih Dosen Penguji 1:&nbsp;</strong></label>
+                            <!-- Start: Multi-Select Dropdown by Jigar Mistry --><select class="form-control" name="katberita">
+                                <option value="" selected>--Pilih Disini--</option>
+                                <option value='1'>Brian Aldy</option>
+                                <option value='2'>Aditya Hermanto</option>
+                                <!-- -->
+                            </select>
+                            <!-- End: Multi-Select Dropdown by Jigar Mistry -->
+                        </div>
+                        <div class="form-group"><label for="password-input"><strong>Pilih Dosen Penguji 2:&nbsp;</strong></label>
+                            <!-- Start: Multi-Select Dropdown by Jigar Mistry --><select class="form-control" name="katberita">
+                                <option value="" selected>--Pilih Disini--</option>
+                                <option value='1'>Brian Aldy</option>
+                                <option value='2'>Aditya Hermanto</option>
+                                <!-- -->
+                            </select>
+                            <!-- End: Multi-Select Dropdown by Jigar Mistry -->
                         </div>
                         <div class="form-group"><label for="textarea-input"></label><label for="textarea-input"><strong>Status</strong></label>
                             <div class="custom-control custom-radio"><input type="radio" id="customRadio1" class="custom-control-input" name="customRadio" checked=""><label class="custom-control-label" for="customRadio1">Aktif</label></div>
@@ -110,7 +121,7 @@
 </script>
 <!-- /.content -->
 <?= $this->endSection(); ?>
-<!-- /.import js -->
+
 
 
 <?= $this->include('admin/menu'); ?>

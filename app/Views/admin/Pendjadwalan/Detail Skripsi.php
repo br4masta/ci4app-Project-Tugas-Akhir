@@ -9,7 +9,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Detail Seminar</h1>
+                <h1 class="m-0">Detail Skripsi</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -32,6 +32,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
+
             <div class="card">
                 <form class="bootstrap-form-with-validation mx-5">
                     <div class="form-group"><label for="password-input"><strong>Nama:&nbsp;</strong></label>
@@ -51,7 +52,14 @@
                     <div class="form-group"><label for="textarea-input"></label><label for="textarea-input"><strong>Dosen Pembimbing:</strong></label><label for="email-input">&nbsp; Sucipto</label></div>
                     <div class="form-group"><label for="textarea-input"></label><label for="search-input"><strong>Dosen Penguji:</strong></label><label for="email-input">&nbsp; Dosen 1</label><label for="email-input">&nbsp; Dosen 2</label></div>
                     <div class="form-group"><label for="textarea-input"></label><label for="textarea-input"><strong>Status:</strong></label><label for="email-input">&nbsp; Aktif</label></div>
-                    <div class="form-group"><label for="textarea-input"></label><label for="search-input"><strong>File:</strong></label><label for="email-input"></label></div>
+                    <div class="form-group"><label for="textarea-input"></label><label for="search-input"><strong>File:</strong></label></div>
+                    <div id="pdfDownloadLinkContainer">
+                        <a class="action pdf" id="pdfDownloadLink" target="_parent" href="<?= base_url() ?>/assets/admin/berkas/doc 1.pdf">Download this PDF file</a>
+                    </div>
+
+
+                    <iframe src="<?= base_url() ?>/assets/admin/berkas/doc 1.pdf" style="width:80%; height:800px;" frameborder="0"></iframe>
+
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-prepend"></div>
@@ -71,10 +79,13 @@
                         </div>
                         <!-- End: Bootstrap 4's Custom Radios & Checkboxes --><label for="textarea-input"></label>
                     </div>
-                    <div class="form-group"><button class="btn btn-warning" type="submit">Kembali</button></div>
+                    <div class="form-group"><a href='<?php echo site_url('admin/skripsi'); ?>'>
+                            <button class="btn btn-warning btn-flat btn-info">
+                                Kembali
+                            </button>
+                        </a></div>
                 </form>
             </div>
-
         </div>
     </div>
 </div>

@@ -6,71 +6,71 @@ class Admin extends BaseController
 {
 	public function index()
 	{
-		return view('admin/Pengajuan Judul');
+		return view('admin/Data Pengajuan Judul/Pengajuan Judul');
 	}
 
 	public function Profil()
 	{
-		return view('admin/profil');
+		return view('admin/profil/profil');
 	}
 
 	public function pengajuan()
 	{
-		return view('admin/Pengajuan Judul');
+		return view('admin/Data Pengajuan Judul/Pengajuan Judul');
 	}
 
 	public function seminar()
 	{
-		return view('admin/Seminar Proposal');
+		return view('admin/pendjadwalan/Seminar Proposal');
 	}
 	public function skripsi()
 	{
-		return view('admin/Skripsi');
+		return view('admin/pendjadwalan/Skripsi');
 	}
 	public function Berita()
 	{
-		return view('admin/Data Berita');
+		return view('admin/Data Berita/Data Berita');
 	}
 
 	public function detailberita()
 	{
-		return view('admin/Detail Data Berita');
+		return view('admin/Data Berita/Detail Data Berita');
 	}
 	public function editskripsi()
 	{
-		return view('admin/Edit Skripsi');
+		return view('admin/pendjadwalan/Edit Skripsi');
 	}
 	public function editseminar()
 	{
-		return view('admin/Edit Seminar Proposal');
+		return view('admin/pendjadwalan/Edit Seminar Proposal');
 	}
 
 	public function detailseminar()
 	{
-		return view('admin/Detail Seminar Proposal');
+		return view('admin/pendjadwalan/Detail Seminar Proposal');
 	}
 	public function detailskripsi()
 	{
-		return view('admin/Detail Skripsi');
+		return view('admin/pendjadwalan/Detail Skripsi');
 	}
 	public function datadosenta()
 	{
-		return view('admin/Data Dosen Tugas Akhir');
+		return view('admin/Data pembagian dosen/Data Dosen Tugas Akhir');
 	}
 	public function datadosenpenguji()
 	{
-		return view('admin/Data Dosen Penguji');
+		return view('admin/Data pembagian dosen/Data Dosen Penguji');
 	}
 
 
 	public function datadosenpembimbing()
 	{
-		return view('admin/Data Dosen Pembimbing');
+		return view('admin/Data pembagian dosen/Data Dosen Pembimbing');
 	}
 
 	public function detaildatadosenpembimbing()
 	{
-		return view('admin/Detail Data Dosen Pembimbing');
+		return view('admin/Data pembagian dosen/Detail Data Dosen Pembimbing');
 	}
 	//--------------------------------------------------------------------
 
