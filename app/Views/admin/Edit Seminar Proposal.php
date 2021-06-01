@@ -33,8 +33,8 @@
                         <div class="form-group"><label for="password-input"><strong>Nama:&nbsp;</strong></label>
                             <!-- Start: Multi-Select Dropdown by Jigar Mistry --><select class="form-control" name="katberita">
                                 <option value="" selected>--Pilih Disini--</option>
-                                <option value='Brian Aldy'>Brian Aldy</option>
-                                <option value='GENAP'>Aditya Hermanto</option>
+                                <option value='1'>Brian Aldy</option>
+                                <option value='2'>Aditya Hermanto</option>
                                 <!-- -->
                             </select>
                             <!-- End: Multi-Select Dropdown by Jigar Mistry -->

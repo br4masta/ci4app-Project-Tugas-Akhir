@@ -9,6 +9,11 @@ class Admin extends BaseController
 		return view('admin/Pengajuan Judul');
 	}
 
+	public function Profil()
+	{
+		return view('admin/profil');
+	}
+
 	public function pengajuan()
 	{
 		return view('admin/Pengajuan Judul');
@@ -47,6 +52,25 @@ class Admin extends BaseController
 	public function detailskripsi()
 	{
 		return view('admin/Detail Skripsi');
+	}
+	public function datadosenta()
+	{
+		return view('admin/Data Dosen Tugas Akhir');
+	}
+	public function datadosenpenguji()
+	{
+		return view('admin/Data Dosen Penguji');
+	}
+
+
+	public function datadosenpembimbing()
+	{
+		return view('admin/Data Dosen Pembimbing');
+	}
+
+	public function detaildatadosenpembimbing()
+	{
+		return view('admin/Detail Data Dosen Pembimbing');
 	}
 	//--------------------------------------------------------------------
 

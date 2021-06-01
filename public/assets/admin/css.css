@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*body {
+    padding: 50px;
+  }*/
+
+/*small {
+  font-size: 0.7rem;
+  text-decoration: none;
+}*/
+
+.tombol {
+  border-radius: 20px;
+}
+
+hr {
+  height: 1px solid grey;
+}
+
+.foto img {
+  width: 50%;
+  height: 70%;
+  margin: auto;
+  display: block;
+}
+
+.foto {
+  box-shadow: 0 0 10px rgba(182, 175, 175, 0.61);
+  padding: 10px;
+}
+
+.form {
+  box-shadow: 0 0 10px rgba(182, 175, 175, 0.61);
+  padding: 10px;
+}
+
+.form .proses {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-bottom: 25px;
+}
+
+@media screen and (max-width: 575.98px) {
+  body {
+    padding: 0;
+  }
+
+  .form {
+    margin-top: 20px;
+  }
+}
