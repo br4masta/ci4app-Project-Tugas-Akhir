@@ -58,7 +58,7 @@
                                     <td> Dosen Penguji I</td>
                                     <td> nama judul</td>
                                     <td style="text-align: center; vertical-align: middle;">
-                                        <img src="<?= base_url() ?>/assets/dist/img/pdf.png" width="50" height="50">
+                                        <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
                                     </td>
                                     <td>90</td>
                                     <td style="text-align: center; vertical-align: middle;">
@@ -67,7 +67,7 @@
                                     <td style="text-align: center; vertical-align: middle;">
                                         <span class="badge badge-primary d-inline-flex p-2" data-toggle="modal" data-target="#Detail">Detail</span>
                                     </td>
-                                    
+
                                 </tr>
                                 <tr>
                                     <td>1</td>
@@ -77,10 +77,10 @@
                                     <td> Dosen Penguji I</td>
                                     <td> nama judul</td>
                                     <td style="text-align: center; vertical-align: middle;">
-                                        <img src="<?= base_url() ?>/assets/dist/img/pdf.png" width="50" height="50">
+                                        <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
                                     </td>
                                     <td>90</td>
-                                       <td style="text-align: center; vertical-align: middle;">
+                                    <td style="text-align: center; vertical-align: middle;">
                                         <span class="badge badge-success d-inline-flex p-2">lulus</span>
                                     </td>
                                     <td style="text-align: center; vertical-align: middle;">

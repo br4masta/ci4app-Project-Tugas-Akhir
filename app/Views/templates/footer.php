@@ -2,7 +2,7 @@
     <div class="float-right d-none d-sm-block">
         <b>Version</b> 3.1.0
     </div>
-    <strong>Copyright &copy; 2021  All rights reserved.
+    <strong>Copyright &copy; 2021 All rights reserved.
 </footer>
 
 <!-- Control Sidebar -->
@@ -29,6 +29,6 @@
 <script src="<?= base_url() ?>/assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="<?= base_url() ?>/assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
-<script src="<?= base_url() ?>/assets/dist/js/adminlte.min.js"></script>
+<script src="<?= base_url() ?>/assets/style/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="<?= base_url() ?>/assets/dist/js/demo.js"></script>
+<script src="<?= base_url() ?>/assets/style/js/demo.js"></script>

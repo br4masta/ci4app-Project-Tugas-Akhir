@@ -57,7 +57,7 @@
                                     <td> Dosen Penguji I</td>
                                     <td> nama judul</td>
                                     <td style="text-align: center; vertical-align: middle;">
-                                        <img src="<?= base_url() ?>/assets/dist/img/pdf.png" width="50" height="50">
+                                        <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
                                     </td>
                                     <td>89</td>
                                     <td style="text-align: center; vertical-align: middle;">
@@ -72,7 +72,7 @@
                                     <td> Dosen Penguji I</td>
                                     <td> nama judul</td>
                                     <td style="text-align: center; vertical-align: middle;">
-                                        <img src="<?= base_url() ?>/assets/dist/img/pdf.png" width="50" height="50">
+                                        <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
                                     </td>
                                     <td>89</td>
                                     <td style="text-align: center; vertical-align: middle;">
@@ -105,7 +105,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            <div class="form-group row">
+                <div class="form-group row">
                     <label for="" class="col-sm-3 col-form-label">Waktu</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" id="waktu" name="waktu" value="Pukul 12.00" readonly>

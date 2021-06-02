@@ -58,7 +58,7 @@
                                     <td>Dosen pembimbing II</td>
                                     <td>Judul</td>
                                     <td style="text-align: center; vertical-align: middle;">
-                                        <img src="<?= base_url() ?>/assets/dist/img/pdf.png" width="50" height="50">
+                                        <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
                                     </td>
                                     <td style="text-align: center; vertical-align: middle;">
                                         <span class="badge badge-success d-inline-flex p-2">Di Setujui</span>
@@ -79,7 +79,7 @@
                                     <td>Dosen pembimbing II</td>
                                     <td>Judul</td>
                                     <td style="text-align: center; vertical-align: middle;">
-                                        <img src="<?= base_url() ?>/assets/dist/img/pdf.png" width="50" height="50">
+                                        <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
                                     </td>
                                     <td style="text-align: center; vertical-align: middle;">
                                         <span class="badge badge-warning d-inline-flex p-2">Menunggu Persetujuan</span>

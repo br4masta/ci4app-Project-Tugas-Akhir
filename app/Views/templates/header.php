@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sistem Informasi Tugas Akhir</title>
 
-<link rel="shortcut icon" href="<?= base_url() ?>/assets/dist/img/Logo.png">
+<link rel="shortcut icon" href="<?= base_url() ?>/assets/style/img/Logo.png">
 
 <!-- jQuery -->
 <script src="<?= base_url() ?>/assets/plugins/jquery/jquery.min.js"></script>
@@ -15,4 +15,4 @@
 <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 <!-- Theme style -->
-<link rel="stylesheet" href="<?= base_url() ?>/assets/dist/css/adminlte.min.css">
+<link rel="stylesheet" href="<?= base_url() ?>/assets/style/css/adminlte.min.css">

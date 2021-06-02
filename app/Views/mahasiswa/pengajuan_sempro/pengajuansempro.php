@@ -58,7 +58,7 @@
                                     <td> Dosen Pembimbing I</td>
                                     <td> Nama judul</td>
                                     <td style="text-align: center; vertical-align: middle;">
-                                        <img src="<?= base_url() ?>/assets/dist/img/pdf.png" width="50" height="50">
+                                        <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
                                     </td>
                                     <td style="text-align: center; vertical-align: middle;">
                                         <span class="badge badge-success d-inline-flex p-2">Di Setujui</span>
@@ -79,7 +79,7 @@
                                     <td> Dosen Pembimbing I</td>
                                     <td> Nama judul</td>
                                     <td style="text-align: center; vertical-align: middle;">
-                                        <img src="<?= base_url() ?>/assets/dist/img/pdf.png" width="50" height="50">
+                                        <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
                                     </td>
                                     <td style="text-align: center; vertical-align: middle;">
                                         <span class="badge badge-warning d-inline-flex p-2">Menunggu Persetujuan</span>
@@ -234,7 +234,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            <div class="form-group row">
+                <div class="form-group row">
                     <label for="" class="col-sm-2 col-form-label">NIM Mahasiswa</label>
                     <div class="col-sm-4">
                         <input type="text" class="form-control" id="nim" name="nim" value="2018420017" readonly>
