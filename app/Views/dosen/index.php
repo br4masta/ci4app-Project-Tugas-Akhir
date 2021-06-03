@@ -44,7 +44,7 @@
                             </tr>
                             <tr>
                                 <th scope="row">NIM</th>
-                                <td>1234567890</td>
+                                <td>1234567870</td>
                             </tr>
                             <tr>
                                 <th scope="row">NIK</th>
