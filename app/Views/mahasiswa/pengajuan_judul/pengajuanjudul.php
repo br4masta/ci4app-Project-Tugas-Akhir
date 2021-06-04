@@ -56,7 +56,7 @@
                                     <td> Muhammad Hafizh Azzasafah</td>
                                     <td>Dosen pembimbing I</td>
                                     <td>Dosen pembimbing II</td>
-                                    <td>Judul</td>
+                                    <td>Judul Nya apa</td>
                                     <td style="text-align: center; vertical-align: middle;">
                                         <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
                                     </td>
