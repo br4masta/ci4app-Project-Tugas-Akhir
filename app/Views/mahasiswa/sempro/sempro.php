@@ -234,9 +234,13 @@
 <script>
     $(function() {
         $("#datapengajuan").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false
+            "scrollY": "300px",
+            "scrollX": true,
+            "scrollCollapse": true,
+            "paging": false,
+            "fixedColumns": {
+                leftColumns: 2
+            }
         })
     });
 </script>
