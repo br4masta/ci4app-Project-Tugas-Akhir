@@ -58,7 +58,7 @@
                     </div>
 
 
-                    <iframe src="<?= base_url() ?>/assets/admin/berkas/doc 1.pdf" style="width:80%; height:800px;" frameborder="0"></iframe>
+
 
                     <div class="form-group">
                         <div class="input-group">
@@ -79,11 +79,10 @@
                         </div>
                         <!-- End: Bootstrap 4's Custom Radios & Checkboxes --><label for="textarea-input"></label>
                     </div>
-                    <div class="form-group"><a href='<?php echo site_url('admin/skripsi'); ?>'>
-                            <button class="btn btn-warning btn-flat btn-info">
-                                Kembali
-                            </button>
-                        </a></div>
+                    <div class="form-group">
+                        <a href="<?= site_url('admin/skripsi'); ?>" class="btn btn-warning btn-square">Kembali</a>
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

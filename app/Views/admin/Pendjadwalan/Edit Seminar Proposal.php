@@ -87,8 +87,8 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-8">
-                                <button class="btn btn-primary btn-square">Simpan</button>
-                                <a href="" class="btn btn-warning btn-square">Kembali</a>
+                                <button type="submit" class="btn btn-primary btn-square">Simpan</button>
+                                <a href="<?= site_url('admin/seminar'); ?>" class="btn btn-warning btn-square">Kembali</a>
                             </div>
                         </div>
                     </form>

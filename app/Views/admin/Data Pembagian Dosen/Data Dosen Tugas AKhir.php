@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Data Mahasiswa Seminar Proposal</h1>
+                <h1 class="m-0">Data Dosen Tugas Akhir </h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -29,8 +29,10 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                        <h3 class="card-title">Data Dosen Tugas Akhir</h3>
+
                     </div>
+
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table id="example2" class="table table-bordered table-hover">
@@ -41,7 +43,7 @@
                                     <th>Nama</th>
                                     <th>Role</th>
                                     <th>Ploting Semester</th>
-                                    <th>detail</th>
+
                                     <th>aksi</th>
                                 </tr>
                             </thead>
@@ -54,13 +56,7 @@
                                     <td> Pembimbing </td>
                                     <td>2018/2019</td>
 
-                                    <td>
-                                        <a href='<?php echo site_url('admin/detailseminar'); ?>'>
-                                            <button class="btn btn-xs btn-flat btn-info">
-                                                Detail
-                                            </button>
-                                        </a>
-                                    </td>
+
                                     <td class="center">
                                         <a href=" <?php echo site_url('admin/editseminar'); ?> " />
                                         <button class="btn btn-xs btn-flat btn-success btnbrg-edit">
@@ -82,13 +78,7 @@
                                     <td> Pembimbing </td>
                                     <td>2018/2019</td>
 
-                                    <td>
-                                        <a href='<?php echo site_url('admin/detailseminar'); ?>'>
-                                            <button class="btn btn-xs btn-flat btn-info">
-                                                Detail
-                                            </button>
-                                        </a>
-                                    </td>
+
                                     <td class="center">
                                         <a href=" <?php echo site_url('admin/editseminar'); ?> " />
                                         <button class="btn btn-xs btn-flat btn-success btnbrg-edit">
@@ -121,6 +111,9 @@
     <!-- /.container-fluid -->
 </section>
 <!-- /.content -->
+
+
+
 <!-- Page specific script -->
 <script>
     $(function() {

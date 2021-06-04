@@ -57,7 +57,7 @@
                     </div>
 
 
-                    <iframe src="<?= base_url() ?>/assets/admin/berkas/doc 1.pdf" style="width:80%; height:800px;" frameborder="0"></iframe>
+
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-prepend"></div>
@@ -71,13 +71,10 @@
                     <!-- End: Bootstrap 4's Custom Radios & Checkboxes -->
                     <div class="form-group">
                         <!-- Start: Bootstrap 4's Custom Radios & Checkboxes -->
-                        <div>
-                            <fieldset></fieldset>
-                            <fieldset></fieldset>
-                        </div>
+
                         <!-- End: Bootstrap 4's Custom Radios & Checkboxes --><label for="textarea-input"></label>
                     </div>
-                    <div class="form-group"><button class="btn btn-warning" type="submit">Kembali</button></div>
+                    <a href="<?= site_url('admin/seminar'); ?>" class="btn btn-warning btn-square mb-5">Kembali</a>
                 </form>
             </div>
 
