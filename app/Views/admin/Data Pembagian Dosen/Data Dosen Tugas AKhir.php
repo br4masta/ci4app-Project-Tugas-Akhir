@@ -41,7 +41,8 @@
                                     <th>No</th>
                                     <th>NIDN</th>
                                     <th>Nama</th>
-                                    <th>Role</th>
+                                    <th>Role I</th>
+                                    <th>Role II</th>
                                     <th>Ploting Semester</th>
 
                                     <th>aksi</th>
@@ -53,29 +54,32 @@
                                     <td>43100810002
                                     </td>
                                     <td>Sucipto</td>
-                                    <td> Pembimbing </td>
+                                    <td> Pembimbing I </td>
+                                    <td> Penguji I </td>
                                     <td>2018/2019</td>
 
 
                                     <td class="center">
-                                        <a href=" <?php echo site_url('admin/editseminar'); ?> " />
-                                        <button class="btn btn-xs btn-flat btn-success btnbrg-edit">
-                                            <i class="fa fa-edit"></i>
+
+                                        <button class="btn btn-xs btn-flat btn-success btnbrg-edit" data-toggle="modal" data-target="#modaledit">
+                                            <i class=" fa fa-edit"></i>
                                         </button>
-                                        </a>
+
                                         <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
                                         <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
                                             <i class="fa fa-times"></i>
                                         </button>
                                         </a>
                                     </td>
+
                                 </tr>
                                 <tr>
                                     <td>1</td>
                                     <td>43100810001
                                     </td>
                                     <td>Tory Ariyanto</td>
-                                    <td> Pembimbing </td>
+                                    <td> Pembimbing I</td>
+                                    <th>-</th>
                                     <td>2018/2019</td>
 
 
@@ -112,7 +116,74 @@
 </section>
 <!-- /.content -->
 
+<!-- Modal edit-->
+<div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label">NIM Mahasiswa</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="nim" name="nim" value="2018420017" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label">Nama Mahasiswa</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="nama" name="nama" value="Muhammad Hafizh Azzasafah" readonly>
+                        <div class="invalid-feedback errorNama">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label"> Pilih Dosen Pembimbing I</label>
+                    <div class="col-sm-6">
+                        <select name="jenkel" id="jenkel" class="form-control">
+                            <option value="">-Pilih-</option>
+                            <option value="Laki-laki">Dosen I</option>
+                            <option value="Perempuan">Dosen II</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label"> Pilih Dosen Pembimbing II</label>
+                    <div class="col-sm-6">
+                        <select name="jenkel" id="jenkel" class="form-control">
+                            <option value="">-Pilih-</option>
+                            <option value="Laki-laki">Dosen I</option>
+                            <option value="Perempuan">Dosen II</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label">Upload File Proposal</label>
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="exampleInputFile">
+                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text">Upload</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="modal-footer">
+                <button type="submit" id="btn-simpan" class="btn btn-primary btnsimpan">ubah pengajuan Judul</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Page specific script -->
 <script>

@@ -18,6 +18,40 @@
             </a>
         </li>
         <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class=" fa fa-copy"></i>
+                <p>
+                    Data Pembagian Dosen
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="<?php echo site_url('admin/datadosenpembimbing'); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Data Dosen Pembimbing</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="<?php echo site_url('admin/datadosenpenguji'); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Data Dosen Penguji</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo site_url('admin/datadosenta'); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Data Dosen Tugas Akhir</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
             <a href=" <?php echo site_url('admin/pengajuan'); ?>" class="nav-link">
 
                 <p>
@@ -51,45 +85,22 @@
             </ul>
         </li>
 
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class=" fa fa-copy"></i>
-                <p>
-                    Data Pembagian Dosen
-                    <i class="fas fa-angle-left right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="<?php echo site_url('admin/datadosenta'); ?>" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Data Dosen Tugas Akhir</p>
-                    </a>
-                </li>
-            </ul>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="<?php echo site_url('admin/datadosenpembimbing'); ?>" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Data Dosen Pembimbing</p>
-                    </a>
-                </li>
-            </ul>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="<?php echo site_url('admin/datadosenpenguji'); ?>" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Data Dosen Penguji</p>
-                    </a>
-                </li>
-            </ul>
-        </li>
+
 
         <li class="nav-item">
             <a href="<?php echo site_url('admin/Berita'); ?>" class="nav-link">
                 <p>
                     Data Berita
 
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="<?= site_url('mahasiswa/profil'); ?>" class="nav-link">
+                <i class="nav-icon fas fa-sign-out-alt"></i>
+                <p>
+                    Logout
+                    <!-- <span class="badge badge-info right">2</span> -->
                 </p>
             </a>
         </li>

@@ -63,11 +63,11 @@
                                         </a>
                                     </td>
                                     <td class="center">
-                                        <a href=" <?php echo site_url('admin/editseminar'); ?> " />
-                                        <button class="btn btn-xs btn-flat btn-success btnbrg-edit">
-                                            <i class="fa fa-edit"></i>
+
+                                        <button class="btn btn-xs btn-flat btn-success btnbrg-edit" data-toggle="modal" data-target="#modaledit">
+                                            <i class=" fa fa-edit"></i>
                                         </button>
-                                        </a>
+
                                         <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
                                         <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
                                             <i class="fa fa-times"></i>
@@ -83,24 +83,25 @@
                                     <td>2020/2021</td>
                                     <td><img src='http://localhost/CodeIgniter_SiMonTA-master/assets/mahasiswa/anonim.png' width='20%'></td>
                                     <td>
-                                        <a href='<?php echo site_url('admin/detailseminar'); ?>'>
+                                        <a href='<?= site_url('admin/detaildatadosenpembimbing'); ?>'>
                                             <button class="btn btn-xs btn-flat btn-info">
                                                 Detail
                                             </button>
                                         </a>
                                     </td>
                                     <td class="center">
-                                        <a href=" <?php echo site_url('admin/editseminar'); ?> " />
-                                        <button class="btn btn-xs btn-flat btn-success btnbrg-edit">
-                                            <i class="fa fa-edit"></i>
+
+                                        <button class="btn btn-xs btn-flat btn-success btnbrg-edit" data-toggle="modal" data-target="#modaledit">
+                                            <i class=" fa fa-edit"></i>
                                         </button>
-                                        </a>
+
                                         <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
                                         <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
                                             <i class="fa fa-times"></i>
                                         </button>
                                         </a>
                                     </td>
+
                                 </tr>
 
 
@@ -113,6 +114,31 @@
     </div>
 </div>
 <!-- /.content -->
+
+<!-- Modal Detail -->
+<div class="modal fade" id="Detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detail Keterangan Judul</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label for="#" class="col-lg-3 col-form-label">Deskripsi Keterangan</label>
+                    <div class="col-lg-9">
+                        <textarea id="inputDescription" class="form-control" rows="3" readonly>Judul menarik cukup dapat dipahami</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Modal tambah-->
 <div class="modal fade" id="modaltambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -146,21 +172,12 @@
                     <div class="col-sm-6">
                         <select name="jenkel" id="jenkel" class="form-control">
                             <option value="">-Pilih-</option>
-                            <option value="Laki-laki">Dosen I</option>
-                            <option value="Perempuan">Dosen II</option>
+                            <option value="Laki-laki">Dosen pembimbing I</option>
+                            <option value="Perempuan">Dosen pembimbing II</option>
                         </select>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label"> Pilih Dosen Pembimbing II</label>
-                    <div class="col-sm-6">
-                        <select name="jenkel" id="jenkel" class="form-control">
-                            <option value="">-Pilih-</option>
-                            <option value="Laki-laki">Dosen I</option>
-                            <option value="Perempuan">Dosen II</option>
-                        </select>
-                    </div>
-                </div>
+
                 <div class="form-group row">
                     <label for="" class="col-sm-2 col-form-label">plot semester </label>
                     <div class="col-sm-4">
@@ -177,6 +194,62 @@
         </div>
     </div>
 </div>
+
+<!-- Modal edit-->
+<div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label">Nama Dosen </label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="nim" name="nim" value="Tory Ariyanto" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label">NIDN </label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="nim" name="nim" value="2018420017" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label"> Pilih Role</label>
+                    <div class="col-sm-6">
+                        <select name="jenkel" id="jenkel" class="form-control">
+                            <option value="">-Pilih-</option>
+                            <option value="Laki-laki">Dosen pembimbing I</option>
+                            <option value="Perempuan">Dosen pembimbing II</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label">plot semester </label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="nim" name="nim" value="2018/2019">
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+            <button type="submit" id="btn-simpan" class="btn btn-primary btnsimpan">Edit data</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
+
 <!-- Page specific script -->
 <script>
     $(function() {
