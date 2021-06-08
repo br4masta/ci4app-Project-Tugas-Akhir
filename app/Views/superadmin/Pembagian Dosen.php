@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Data Dosen</h1>
+                <h1 class="m-0">Data Pembagian Dosen</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -27,7 +27,7 @@
                 <div class="table-responsive" style="margin:5px;padding:5px" id="stack-personal">
                     <div class="card">
                         <p><strong>LIST PEMBAGIAN DOSEN</strong></p>
-                        <p><a href="http://localhost/CodeIgniter_SiMonTA-master/admin/dosen/bagiadd"><button class="btn btn-primary btn-square">Tambah</button></a></p>
+                        <p><a href=""><button class="btn btn-primary btn-square">Tambah</button></a></p>
                         <table id="example1" class="table table-bordered table-hover">
                             <thead>
                                 <tr>

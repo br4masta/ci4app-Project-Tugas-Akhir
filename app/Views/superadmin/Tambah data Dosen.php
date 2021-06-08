@@ -24,10 +24,9 @@
             <form role="form" class="form-horizontal" enctype="multipart/form-data" action="" method="POST">
                 <input type="hidden" id="pgw_id" name="pgw_id" value="1" />
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">NPPY</label>
+                    <label class="col-sm-2 control-label">NIDN</label>
                     <div class="col-sm-8">
-                        <input name="n1" id="n1" type="text" maxlength=6 size=6 value="" /> - <input name="n2" id="n2" type="text" maxlength=6 size=6 value="" /> - <input name="n3" id="n3" type="text" maxlength=3 size=3 value="" />
-                        <span></span> <span></span> <span></span>
+                        <input name="username" class="form-control" id="username" type="text" value="" />
                         <span></span>
                     </div>
                 </div>

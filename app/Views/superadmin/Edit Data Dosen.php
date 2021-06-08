@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Data Dosen</h1>
+                <h1 class="m-0">Edit Data Dosen</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -24,11 +24,9 @@
             <form role="form" class="form-horizontal" enctype="multipart/form-data" action="" method="POST">
                 <input type="hidden" id="pgw_id" name="pgw_id" value="1" />
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">NPPY</label>
+                    <label class="col-sm-2 control-label">NIDN</label>
                     <div class="col-sm-8">
-                        <input name="n1" id="n1" type="text" maxlength=6 size=6 value="2000
-" /> - <input name="n2" id="n2" type="text" maxlength=6 size=6 value="011" /> - <input name="n3" id="n3" type="text" maxlength=3 size=3 value="133" />
-                        <span></span> <span></span> <span></span>
+                        <input name="username" class="form-control" id="username" type="text" value="2000011133" />
                         <span></span>
                     </div>
                 </div>

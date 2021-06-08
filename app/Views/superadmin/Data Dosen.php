@@ -44,7 +44,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>NIP</th>
+                                    <th>NIDN</th>
                                     <th>Nama</th>
                                     <th>Username</th>
                                     <th>foto</th>

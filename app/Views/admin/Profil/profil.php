@@ -46,7 +46,7 @@
                         <tbody>
                             <tr>
                                 <th scope="row">Nama Lengkap</th>
-                                <td>Upin dan Ipin</td>
+                                <td>Sucipto</td>
                             </tr>
                             <tr>
                                 <th scope="row">NIK</th>

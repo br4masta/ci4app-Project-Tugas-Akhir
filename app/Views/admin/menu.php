@@ -11,7 +11,7 @@
                with font-awesome or any other icon font library -->
         <li class="nav-item">
             <a href=" <?php echo site_url('admin/profil'); ?>" class="nav-link">
-
+                <i class=" fas fa-user"></i>
                 <p>
                     Profil
                 </p>
@@ -53,7 +53,7 @@
         </li>
         <li class="nav-item">
             <a href=" <?php echo site_url('admin/pengajuan'); ?>" class="nav-link">
-
+                <i class=" fa fa-copy"></i>
                 <p>
                     Data Pengajuan Judul
                 </p>
@@ -61,7 +61,7 @@
         </li>
         <li class="nav-item">
             <a href="#" class="nav-link">
-                <i class=" fa fa-copy"></i>
+                <i class=" fas fa-graduation-cap "></i>
                 <p>
                     Penjadwalan
                     <i class="fas fa-angle-left right"></i>
@@ -97,7 +97,7 @@
         </li>
         <li class="nav-item">
             <a href="<?= site_url('mahasiswa/profil'); ?>" class="nav-link">
-                <i class="nav-icon fas fa-sign-out-alt"></i>
+                <i class="fas fa-sign-out-alt"></i>
                 <p>
                     Logout
                     <!-- <span class="badge badge-info right">2</span> -->

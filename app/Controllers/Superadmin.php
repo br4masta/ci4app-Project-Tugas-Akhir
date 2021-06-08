@@ -33,7 +33,18 @@ class Superadmin extends BaseController
     {
         return view('superadmin/Edit Pembagian Dosen');
     }
-
+    public function Dataakademik()
+    {
+        return view('superadmin/Data Akademik/Data Akademik');
+    }
+    public function mahasiswa()
+    {
+        return view('superadmin/Data Mahasiswa/Data Mahasiswa');
+    }
+    public function profilmahasiswa()
+    {
+        return view('superadmin/Data Mahasiswa/Detail Mahasiswa');
+    }
     //--------------------------------------------------------------------
 
 }
