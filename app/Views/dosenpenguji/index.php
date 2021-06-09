@@ -169,4 +169,4 @@
 </section>
 <?= $this->endSection(); ?>
 
-<?= $this->include('dosen/menu'); ?>
+<?= $this->include('dosenpenguji/menu'); ?>

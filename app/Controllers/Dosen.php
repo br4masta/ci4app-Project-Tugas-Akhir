@@ -9,7 +9,7 @@ class Dosen extends BaseController
 		$data = [
 			'title' => 'Dosen | Data Diri'
 		];
-		echo view('dosen/index', $data);
+		return view('dosen/index', $data);
 	}
 
 	public function judul()
@@ -17,7 +17,7 @@ class Dosen extends BaseController
 		$data = [
 			'title' => 'Dosen | Data Judul'
 		];
-		echo view('dosen/judul', $data);
+		return view('dosen/judul', $data);
 	}
 
 	public function bimbingan()
@@ -34,6 +34,21 @@ class Dosen extends BaseController
 		];
 		return view('dosen/proposal', $data);
 	}
+	public function tugasakhir()
+	{
+		$data = [
+			'title' => 'Dosen | Tugas Akhir'
+		];
+		return view('dosen/tugasakhir', $data);
+	}
+
+	//Dosen Penguji
+	public function dospeng()
+	{
+		return view('dospeng/index');
+	}
+
+
 
 	//--------------------------------------------------------------------
 
