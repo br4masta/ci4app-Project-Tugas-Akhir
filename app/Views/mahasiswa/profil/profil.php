@@ -63,69 +63,6 @@
                     <div class="card-body">
                         <div class="tab-content">
                             <div class="active tab-pane" id="settings">
-                                <!-- Table 1 -->
-                                <table class="table table-borderless">
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">KTP</th>
-                                            <td>
-                                                <div class="mb-3">
-                                                    <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                                    </div>
-                                                </div>
-                                                <small>
-                                                    *file dibawah 500KB <br>
-                                                    *file Format JPG/JPEG/PNG
-                                                </small>
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-success tombol" href="">View</a>
-                                                <a class="btn btn-danger tombol" href="">Hapus</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">KK</th>
-                                            <td>
-                                                <div class="mb-3">
-                                                    <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                                    </div>
-                                                </div>
-                                                <small>
-                                                    *file dibawah 500KB <br>
-                                                    *file Format JPG/JPEG/PNG
-                                                </small>
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-success tombol" href="">View</a>
-                                                <a class="btn btn-danger tombol" href="">Hapus</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">AKTA</th>
-                                            <td>
-                                                <div class="mb-3">
-                                                    <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                                    </div>
-                                                </div>
-                                                <small>
-                                                    *file dibawah 500KB <br>
-                                                    *file Format JPG/JPEG/PNG
-                                                </small>
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-success tombol" href="">View</a>
-                                                <a class="btn btn-danger tombol" href="">Hapus</a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
                                 <!-- Table 2 -->
                                 <table class="table table-striped table-borderless">
                                     <tbody>
@@ -136,12 +73,6 @@
                                         <tr>
                                             <th scope="row">NIM</th>
                                             <td>1234567890</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">NIK</th>
-                                            <td>
-                                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="isi NIK anda">
-                                            </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Jurusan/Fakultas</th>

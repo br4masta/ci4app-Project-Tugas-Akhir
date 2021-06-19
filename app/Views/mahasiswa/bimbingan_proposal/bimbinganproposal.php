@@ -45,7 +45,7 @@
                                     <th>Deskripsi Proposal</th>
                                     <th>Acc Dosen Pembimbing</th>
                                     <th>keterangan</th>
-                                    <th>Aksi</th>
+                                    <th>History Bimbingan</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -64,29 +64,8 @@
                                     <td style="text-align: center; vertical-align: middle;">
                                         <span class="badge badge-primary d-inline-flex p-2" data-toggle="modal" data-target="#Detail">Detail</span>
                                     </td>
-                                    <td>
-                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modaledit"><i class='fas fa-pencil-alt'></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td> 2018420080</td>
-                                    <td> Aditya Hernanda</td>
-                                    <td> Dosen Pembimbing I</td>
-                                    <td> Dosen Pembimbing II</td>
                                     <td style="text-align: center; vertical-align: middle;">
-                                        <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
-                                    </td>
-                                    <td style="text-align: center; vertical-align: middle;">
-                                        <span class="badge badge-warning d-inline-flex p-2">Menunggu Persetujuan</span>
-                                    </td>
-                                    <td style="text-align: center; vertical-align: middle;">
-                                        <span class="badge badge-primary d-inline-flex p-2" data-toggle="modal" data-target="#Detail">Detail</span>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modaledit"><i class='fas fa-pencil-alt'></i>
-                                        </button>
+                                        <span class="badge badge-primary d-inline-flex p-2"><a href="<?= site_url('mahasiswa/history_bimbingan'); ?>" style="color: white;">Detail</a></span>
                                     </td>
                                 </tr>
                             </tbody>
@@ -212,70 +191,6 @@
     </div>
 </div>
 
-<!-- Modal edit-->
-<div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">NIM Mahasiswa</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="nim" name="nim" value="2018420017" readonly>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Nama Mahasiswa</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="nama" name="nama" value="Muhammad Hafizh Azzasafah" readonly>
-                        <div class="invalid-feedback errorNama">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Nama Dosen Pembimbing I</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="nama" name="nama" value="Dosen pembimbing I" readonly>
-                        <div class="invalid-feedback errorNama">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Nama Dosen Pembimbing II</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="nama" name="nama" value="Dosen pembimbing I" readonly>
-                        <div class="invalid-feedback errorNama">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Upload File Proposal</label>
-                    <div class="col-sm-6">
-                        <div class="input-group">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="exampleInputFile">
-                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                            </div>
-                            <div class="input-group-append">
-                                <span class="input-group-text">Upload</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <button type="submit" id="btn-simpan" class="btn btn-primary btnsimpan">ubah pengajuan proposal</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- Page specific script -->
 <script>
     $(function() {

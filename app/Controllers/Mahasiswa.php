@@ -30,6 +30,11 @@ class Mahasiswa extends BaseController
 	{
 		return view('mahasiswa/profil/profil');
 	}
+	public function history_bimbingan()
+	{
+		return view('mahasiswa/bimbingan_proposal/history_bimbingan');
+	}
+	
 	
 	
 	//--------------------------------------------------------------------
