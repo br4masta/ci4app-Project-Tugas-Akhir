@@ -19,6 +19,22 @@
             </a>
         </li>
         <li class="nav-item">
+            <a href="<?php echo site_url('admin/Dataakademik'); ?>" class="nav-link">
+                <p>
+                    Data Akademik
+
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href=" <?php echo site_url('admin/Datadosen'); ?>" class="nav-link">
+
+                <p>
+                    Data Dosen
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class=" fa fa-copy"></i>
                 <p>

@@ -72,6 +72,25 @@ class Admin extends BaseController
 	{
 		return view('admin/Data pembagian dosen/Detail Data Dosen Pembimbing');
 	}
+
+	public function Dataakademik()
+	{
+		return view('admin/Data Akademik/Data Akademik');
+	}
+
+	public function Datadosen()
+	{
+		return view('admin/Data dosen/Data dosen');
+	}
+	public function tambahdatadosen()
+	{
+		return view('admin/Data Dosen/Tambah Data Dosen');
+	}
+
+	public function editdatadosen()
+	{
+		return view('admin/Data Dosen/Edit Data Dosen');
+	}
 	//--------------------------------------------------------------------
 
 }

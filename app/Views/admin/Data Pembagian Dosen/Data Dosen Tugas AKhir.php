@@ -24,7 +24,7 @@
 <section class="content">
 
     <div class="container-fluid">
-        <div class="d-sm-flex justify-content-between align-items-center mb-4"><a class="btn btn-primary btn-sm d-none d-sm-inline-block d-lg-flex ml-auto" role="button" href="login.html" style="padding: 4px;"><strong>log out</strong></a></div>
+
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -197,7 +197,7 @@
         $('#example2').DataTable({
             "paging": true,
             "lengthChange": false,
-            "searching": false,
+            "searching": true,
             "ordering": true,
             "info": true,
             "autoWidth": false,
