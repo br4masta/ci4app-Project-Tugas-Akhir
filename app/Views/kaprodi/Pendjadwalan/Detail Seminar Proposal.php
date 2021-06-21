@@ -107,7 +107,7 @@
                     <div id="pdfDownloadLinkContainer" class="mb-5">
                         <a class="action pdf" id="pdfDownloadLink" target="_parent" href="<?= base_url() ?>/assets/admin/berkas/doc 1.pdf">Download this PDF file</a>
                     </div>
-                    <a href="<?= site_url('admin/seminar'); ?>" class="btn btn-warning btn-square mb-5">Kembali</a>
+                    <a href="<?= site_url('kaprodi/seminar'); ?>" class="btn btn-warning btn-square mb-5">Kembali</a>
                 </form>
             </div>
 

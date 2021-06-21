@@ -5,6 +5,7 @@
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+        <li class="nav-header">Menu Kaprodi</li>
         <li class="nav-item">
             <a href=" <?php echo site_url('kaprodi/pengajuan'); ?>" class="nav-link">
                 <i class=" fa fa-copy"></i>
@@ -37,6 +38,23 @@
                     </a>
                 </li>
             </ul>
+        </li>
+        <li class="nav-item">
+            <a href="<?php echo site_url('kaprodi/Berita'); ?>" class="nav-link">
+                <p>
+                    Data Berita
+
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="<?= site_url('mahasiswa/profil'); ?>" class="nav-link">
+                <i class=" fas fa-sign-out-alt"></i>
+                <p>
+                    Logout
+                    <!-- <span class="badge badge-info right">2</span> -->
+                </p>
+            </a>
         </li>
 
 

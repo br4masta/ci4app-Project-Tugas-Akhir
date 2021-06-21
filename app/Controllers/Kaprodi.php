@@ -37,6 +37,15 @@ class Kaprodi extends BaseController
     {
         return view('kaprodi/pendjadwalan/Detail Skripsi');
     }
+    public function Berita()
+    {
+        return view('kaprodi/Data Berita/Data Berita');
+    }
+
+    public function detailberita()
+    {
+        return view('kaprodi/Data Berita/Detail Data Berita');
+    }
     //--------------------------------------------------------------------
 
 }

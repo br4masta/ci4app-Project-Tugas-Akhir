@@ -60,14 +60,14 @@
                                     <td>-</td>
                                     <td>-</td>
                                     <td>
-                                        <a href='<?php echo site_url('admin/detailseminar'); ?>'>
+                                        <a href='<?php echo site_url('kaprodi/detailseminar'); ?>'>
                                             <button class="btn btn-xs btn-flat btn-info">
                                                 Detail
                                             </button>
                                         </a>
                                     </td>
                                     <td class="center">
-                                        <a href=" <?php echo site_url('admin/editseminar'); ?> " />
+                                        <a href=" <?php echo site_url('kaprodi/editseminar'); ?> " />
                                         <button class="btn btn-xs btn-flat btn-success btnbrg-edit">
                                             <i class="fa fa-edit"></i>
                                         </button>
@@ -90,7 +90,7 @@
                                     <td>-</td>
                                     <td>-</td>
                                     <td>
-                                        <a href='<?php echo site_url('admin/detailseminar'); ?>'>
+                                        <a href='<?php echo site_url('kaprodi/detailseminar'); ?>'>
                                             <button class="btn btn-xs btn-flat btn-info">
                                                 Detail
                                             </button>
