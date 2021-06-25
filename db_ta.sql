@@ -3,9 +3,15 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Generation Time: Jun 25, 2021 at 04:24 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
+=======
+-- Generation Time: Jun 25, 2021 at 08:41 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 7.3.28
+>>>>>>> 7700991d262dda0ca02d98229bef812e404c9816
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -129,7 +135,11 @@ CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
   `username` varchar(40) DEFAULT NULL,
   `password` varchar(40) DEFAULT NULL,
+<<<<<<< HEAD
   `level` enum('1','2','3','4','5','6') DEFAULT NULL COMMENT '1:admin,2:dosen,3:mahasiswa,4:dosen_penguji,5: Kaprodi,6:Terblokir'
+=======
+  `level` int(1) DEFAULT NULL COMMENT '1:admin,2:dosen,3:mahasiswa,4:dosen_penguji,5: Kaprodi,6:Terblokir'
+>>>>>>> 7700991d262dda0ca02d98229bef812e404c9816
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -137,6 +147,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `level`) VALUES
+<<<<<<< HEAD
 (1, 'as', 'as', '3'),
 (2, 'dosen', 'dosen', '2'),
 (3, 'dosenpenguji', 'penguji', '4'),
@@ -145,6 +156,16 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `level`) VALUES
 (6, 'aku', 'aku', '6'),
 (9, 'mahasiswa', 'mahasiswa', '3'),
 (10, 'sucipto@gmail.com', 'sucipto', '5');
+=======
+(1, 'as', 'as', 3),
+(2, 'dosen', 'dosen', 2),
+(3, 'dosenpenguji', 'penguji', 4),
+(4, 'kaprodi', 'kaprodi', 5),
+(5, 'admin', 'admin', 1),
+(6, 'aku', 'aku', 6),
+(7, 'asd', 'ads', 3),
+(8, 'qwe', 'qwe', 3);
+>>>>>>> 7700991d262dda0ca02d98229bef812e404c9816
 
 --
 -- Indexes for dumped tables
@@ -215,7 +236,11 @@ ALTER TABLE `pengajuan_judul`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
+<<<<<<< HEAD
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+=======
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+>>>>>>> 7700991d262dda0ca02d98229bef812e404c9816
 
 --
 -- Constraints for dumped tables
