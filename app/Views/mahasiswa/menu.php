@@ -77,7 +77,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="<?= site_url('mahasiswa/profil'); ?>" class="nav-link">
+            <a href="<?= site_url('Auth/logout'); ?>" class="nav-link">
                 <i class="nav-icon fas fa-sign-out-alt"></i>
                 <p>
                     Logout

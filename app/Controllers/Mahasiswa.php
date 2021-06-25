@@ -4,7 +4,7 @@ class Mahasiswa extends BaseController
 {
 	public function index()
 	{
-		return view('mahasiswa/pengajuan_judul/pengajuanjudul');
+		return view('mahasiswa/profil/profil');
 	}
 	public function pengajuan_judul()
 	{
