@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2021 at 01:32 PM
+-- Generation Time: Jun 25, 2021 at 08:41 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -81,7 +81,7 @@ CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
   `username` varchar(40) DEFAULT NULL,
   `password` varchar(40) DEFAULT NULL,
-  `level` int(1) DEFAULT NULL COMMENT '1:admin,2:dosen,3:mahasiswa'
+  `level` int(1) DEFAULT NULL COMMENT '1:admin,2:dosen,3:mahasiswa,4:dosen_penguji,5: Kaprodi,6:Terblokir'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -89,8 +89,14 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `level`) VALUES
-(1, 'aku', 'aku', 3),
-(2, 'dosen', 'dosen', 2);
+(1, 'as', 'as', 3),
+(2, 'dosen', 'dosen', 2),
+(3, 'dosenpenguji', 'penguji', 4),
+(4, 'kaprodi', 'kaprodi', 5),
+(5, 'admin', 'admin', 1),
+(6, 'aku', 'aku', 6),
+(7, 'asd', 'ads', 3),
+(8, 'qwe', 'qwe', 3);
 
 --
 -- Indexes for dumped tables
@@ -136,7 +142,7 @@ ALTER TABLE `mahasiswa`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
