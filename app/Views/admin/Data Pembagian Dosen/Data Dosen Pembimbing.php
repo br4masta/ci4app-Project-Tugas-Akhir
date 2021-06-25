@@ -55,7 +55,7 @@
                                     <td><?= $i++; ?></td>
                                     <td><?= $c['nidn_dosen']; ?></td>
                                     <td><?= $c['nama_dosen']; ?></td>
-                                    <td><?= $c['role']; ?></td>
+                                    <td><?= $c['role_pembimbing']; ?></td>
                                     <td><?= $c['tahun_akademik']; ?></td>
                                     <td><img src='http://localhost/CodeIgniter_SiMonTA-master/assets/mahasiswa/anonim.png' width='20%'></td>
                                     <td>

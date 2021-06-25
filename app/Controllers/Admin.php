@@ -27,10 +27,11 @@ class Admin extends BaseController
 	{
 		$pengajuanModel = new \App\Models\pengajuanModel();
 		$pengajuan_judul = $pengajuanModel->get_pengajuan();
-
+		$pengajuan_judul2 = $pengajuanModel->get_pengajuan2();
 		$data = [
 
 			'datajudul' => $pengajuan_judul,
+			'datajudul2' => $pengajuan_judul2,
 
 
 		];
@@ -38,11 +39,22 @@ class Admin extends BaseController
 		return view('admin/Data Pengajuan Judul/Pengajuan Judul', $data);
 	}
 
-	public function seminar()
+	public function jadwalseminar()
 	{
-		return view('admin/pendjadwalan/Seminar Proposal');
+		$penjadwalanModel = new \App\Models\penjadwalanModel();
+		$penjadwalan = $penjadwalanModel->get_penjadwalan();
+		$penjadwalan2 = $penjadwalanModel->get_penjadwalan2();
+
+		$data = [
+
+			'jadwal' => $penjadwalan,
+			'jadwal2' => $penjadwalan2,
+
+
+		];
+		return view('admin/pendjadwalan/Seminar Proposal', $data);
 	}
-	public function skripsi()
+	public function jadwalskripsi()
 	{
 		return view('admin/pendjadwalan/Skripsi');
 	}
@@ -74,11 +86,29 @@ class Admin extends BaseController
 	}
 	public function datadosenta()
 	{
-		return view('admin/Data pembagian dosen/Data Dosen Tugas Akhir');
+		$dosenModel = new \App\Models\dosenModel();
+		$datadosenta = $dosenModel->get_dosen_tugasakhir();
+
+		$data = [
+
+			'datadosenta' => $datadosenta,
+
+
+		];
+		return view('admin/Data pembagian dosen/Data Dosen Tugas Akhir', $data);
 	}
 	public function datadosenpenguji()
 	{
-		return view('admin/Data pembagian dosen/Data Dosen Penguji');
+		$dosenModel = new \App\Models\dosenModel();
+		$datapenguji = $dosenModel->get_penguji();
+
+		$data = [
+
+			'datapenguji' => $datapenguji,
+
+
+		];
+		return view('admin/Data pembagian dosen/Data Dosen Penguji', $data);
 	}
 
 
@@ -117,7 +147,7 @@ class Admin extends BaseController
 	public function Datadosen()
 	{
 		$dosenModel = new \App\Models\dosenModel();
-		$datadosen = $dosenModel->findAll();
+		$datadosen = $dosenModel->get_dosen();
 
 		$data = [
 

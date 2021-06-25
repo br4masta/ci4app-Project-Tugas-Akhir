@@ -62,7 +62,7 @@
 
                                         </td>
                                         <td><?= $d['nama_dosen']; ?></td>
-                                        <td>Sucipto</td>
+                                        <td><?= $d['username']; ?></td>
                                         <td><img src="<?= base_url('assets/img/dosen 1.jpg');  ?>" alt="" width="70"></td>
                                         <td class="center">
                                             <a href="<?= site_url('admin/editdatadosen'); ?>" />

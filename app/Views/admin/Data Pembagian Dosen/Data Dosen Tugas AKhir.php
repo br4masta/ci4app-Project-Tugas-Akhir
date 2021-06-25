@@ -49,53 +49,34 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>43100810002
-                                    </td>
-                                    <td>Sucipto</td>
-                                    <td> Pembimbing I </td>
-                                    <td> Penguji I </td>
-                                    <td>2018/2019</td>
+
+                                <?php $i = 1; ?>
+                                <?php foreach ($datadosenta as $d) : ?>
+                                    <tr>
+                                        <td><?= $i++; ?></td>
+                                        <td><?= $d['nidn_dosen']; ?>
+                                        </td>
+                                        <td><?= $d['nama_dosen']; ?></td>
+                                        <td><?= $d['role_pembimbing']; ?></td>
+                                        <td> <?= $d['role_penguji']; ?> </td>
+                                        <td><?= $d['tahun_akademik']; ?></td>
 
 
-                                    <td class="center">
+                                        <td class="center">
 
-                                        <button class="btn btn-xs btn-flat btn-success btnbrg-edit" data-toggle="modal" data-target="#modaledit">
-                                            <i class=" fa fa-edit"></i>
-                                        </button>
+                                            <button class="btn btn-xs btn-flat btn-success btnbrg-edit" data-toggle="modal" data-target="#modaledit">
+                                                <i class=" fa fa-edit"></i>
+                                            </button>
 
-                                        <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
-                                        <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                        </a>
-                                    </td>
+                                            <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
+                                            <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                            </a>
+                                        </td>
 
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>43100810001
-                                    </td>
-                                    <td>Tory Ariyanto</td>
-                                    <td> Pembimbing I</td>
-                                    <th>-</th>
-                                    <td>2018/2019</td>
+                                    </tr><?php endforeach; ?>
 
-
-                                    <td class="center">
-                                        <a href=" <?php echo site_url('admin/editseminar'); ?> " />
-                                        <button class="btn btn-xs btn-flat btn-success btnbrg-edit">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        </a>
-                                        <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
-                                        <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                        </a>
-                                    </td>
-                                </tr>
 
                             </tbody>
 

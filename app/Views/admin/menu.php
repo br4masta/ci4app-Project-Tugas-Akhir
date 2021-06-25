@@ -87,7 +87,7 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="<?php echo site_url('admin/seminar'); ?>" class="nav-link">
+                    <a href="<?php echo site_url('admin/jadwalseminar'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Seminar Proposal</p>
                     </a>
@@ -95,7 +95,7 @@
             </ul>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="<?php echo site_url('admin/skripsi'); ?>" class="nav-link">
+                    <a href="<?php echo site_url('admin/jadwalskripsi'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Tugas Akhir</p>
                     </a>

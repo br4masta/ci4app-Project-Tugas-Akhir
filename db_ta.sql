@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2021 at 08:06 PM
+-- Generation Time: Jun 26, 2021 at 01:40 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -101,14 +101,14 @@ INSERT INTO `dosen` (`id_dosen`, `id_user`, `nidn_dosen`, `nama_dosen`, `foto_do
 CREATE TABLE `dosen_pembimbing` (
   `id_dosenpembimbing` int(3) NOT NULL,
   `id_dosenta` int(3) NOT NULL,
-  `role` enum('dosen pembimbing I','dosen pembimbing II') DEFAULT NULL
+  `role_pembimbing` enum('dosen pembimbing I','dosen pembimbing II') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `dosen_pembimbing`
 --
 
-INSERT INTO `dosen_pembimbing` (`id_dosenpembimbing`, `id_dosenta`, `role`) VALUES
+INSERT INTO `dosen_pembimbing` (`id_dosenpembimbing`, `id_dosenta`, `role_pembimbing`) VALUES
 (3, 1, 'dosen pembimbing I'),
 (4, 2, 'dosen pembimbing II'),
 (5, 3, 'dosen pembimbing I');
@@ -122,17 +122,17 @@ INSERT INTO `dosen_pembimbing` (`id_dosenpembimbing`, `id_dosenta`, `role`) VALU
 CREATE TABLE `dosen_penguji` (
   `id_dosenpenguji` int(3) NOT NULL,
   `id_dosenta` int(3) NOT NULL,
-  `id_dosen` int(3) NOT NULL,
-  `status` enum('dosen penguji 1','dosen penguji 2') NOT NULL
+  `role_penguji` enum('dosen penguji 1','dosen penguji 2') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `dosen_penguji`
 --
 
-INSERT INTO `dosen_penguji` (`id_dosenpenguji`, `id_dosenta`, `id_dosen`, `status`) VALUES
-(1, 1, 1, 'dosen penguji 1'),
-(2, 1, 2, 'dosen penguji 2');
+INSERT INTO `dosen_penguji` (`id_dosenpenguji`, `id_dosenta`, `role_penguji`) VALUES
+(2, 1, 'dosen penguji 2'),
+(3, 2, 'dosen penguji 1'),
+(4, 3, 'dosen penguji 2');
 
 -- --------------------------------------------------------
 
@@ -188,29 +188,6 @@ INSERT INTO `mahasiswa` (`id_mhs`, `id_user`, `nim_mhs`, `nama_mhs`, `tgllhr_mhs
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pendjadwalan_sidang`
---
-
-CREATE TABLE `pendjadwalan_sidang` (
-  `id_jadwal` int(3) NOT NULL,
-  `id_bimbingan` int(3) NOT NULL,
-  `penguji_1` int(3) NOT NULL,
-  `penguji_2` int(3) NOT NULL,
-  `acara_sidang` enum('seminar proposal','sidang tugas akhir') NOT NULL,
-  `tanggal_sidang` datetime NOT NULL,
-  `tempat_sidang` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `pendjadwalan_sidang`
---
-
-INSERT INTO `pendjadwalan_sidang` (`id_jadwal`, `id_bimbingan`, `penguji_1`, `penguji_2`, `acara_sidang`, `tanggal_sidang`, `tempat_sidang`) VALUES
-(1, 3, 1, 2, 'seminar proposal', '2021-07-29 10:35:25', 'ruang 107');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `pengajuan_judul`
 --
 
@@ -230,8 +207,33 @@ CREATE TABLE `pengajuan_judul` (
 --
 
 INSERT INTO `pengajuan_judul` (`id_pengajuan`, `id_mhs`, `judul`, `deskripsi`, `dosenpembimbing1`, `dosenpembimbing2`, `status_pengajuan`, `catatan`) VALUES
-(5, 1, 'sistem ke;ayakan terbang', 'pembuatan sistem informasi perihal pengelolaan data secara di gitalisasi untuk proses pemeriksaan rutin pesawat sebelum lepas landas.', 3, 4, 'belum di setujui', ''),
+(5, 1, 'sistem kelayakan terbang', 'pembuatan sistem informasi perihal pengelolaan data secara di gitalisasi untuk proses pemeriksaan rutin pesawat sebelum lepas landas.', 3, 4, 'belum di setujui', ''),
 (6, 2, 'sitem infomasi rumah sakit', 'pengembangan sistem secara digitalisasi terhadap rumah sakit di sebuah desa', 5, 4, 'belum di setujui', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `penjadwalan_sidang`
+--
+
+CREATE TABLE `penjadwalan_sidang` (
+  `id_jadwal` int(3) NOT NULL,
+  `id_bimbingan` int(3) NOT NULL,
+  `penguji_1` int(3) NOT NULL,
+  `penguji_2` int(3) NOT NULL,
+  `acara_sidang` enum('seminar proposal','sidang tugas akhir') NOT NULL,
+  `tanggal_sidang` datetime NOT NULL,
+  `tempat_sidang` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `penjadwalan_sidang`
+--
+
+INSERT INTO `penjadwalan_sidang` (`id_jadwal`, `id_bimbingan`, `penguji_1`, `penguji_2`, `acara_sidang`, `tanggal_sidang`, `tempat_sidang`) VALUES
+(2, 3, 3, 2, 'seminar proposal', '2021-06-26 00:49:37', '107'),
+(3, 3, 3, 4, 'seminar proposal', '2021-07-31 11:50:10', '109'),
+(4, 1, 3, 4, 'seminar proposal', '2021-08-14 09:18:47', '208');
 
 -- --------------------------------------------------------
 
@@ -247,13 +249,6 @@ CREATE TABLE `seminar_proposal` (
   `status` enum('lanjut','disetujui dengan revisi','mengulang') NOT NULL,
   `judul_final` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `seminar_proposal`
---
-
-INSERT INTO `seminar_proposal` (`id_seminar`, `id_jadwal`, `nilai`, `catatan`, `status`, `judul_final`) VALUES
-(1, 1, '89', 'perbaikan pada bab 2- bagian latar belakang masalah', 'disetujui dengan revisi', '');
 
 -- --------------------------------------------------------
 
@@ -318,8 +313,7 @@ ALTER TABLE `dosen_pembimbing`
 --
 ALTER TABLE `dosen_penguji`
   ADD PRIMARY KEY (`id_dosenpenguji`),
-  ADD KEY `id_dosenta` (`id_dosenta`),
-  ADD KEY `id_dosen` (`id_dosen`);
+  ADD KEY `id_dosenta` (`id_dosenta`);
 
 --
 -- Indexes for table `dosen_tugasakhir`
@@ -337,15 +331,6 @@ ALTER TABLE `mahasiswa`
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `pendjadwalan_sidang`
---
-ALTER TABLE `pendjadwalan_sidang`
-  ADD PRIMARY KEY (`id_jadwal`),
-  ADD KEY `id_bimbingan` (`id_bimbingan`),
-  ADD KEY `id_penguji` (`penguji_1`),
-  ADD KEY `penguji_2` (`penguji_2`);
-
---
 -- Indexes for table `pengajuan_judul`
 --
 ALTER TABLE `pengajuan_judul`
@@ -354,6 +339,15 @@ ALTER TABLE `pengajuan_judul`
   ADD KEY `dosenpembimbing1` (`dosenpembimbing1`),
   ADD KEY `dosenpembimbing2` (`dosenpembimbing2`),
   ADD KEY `dosenpembimbing1_2` (`dosenpembimbing1`);
+
+--
+-- Indexes for table `penjadwalan_sidang`
+--
+ALTER TABLE `penjadwalan_sidang`
+  ADD PRIMARY KEY (`id_jadwal`),
+  ADD KEY `id_bimbingan` (`id_bimbingan`),
+  ADD KEY `id_penguji` (`penguji_1`),
+  ADD KEY `penguji_2` (`penguji_2`);
 
 --
 -- Indexes for table `seminar_proposal`
@@ -400,7 +394,7 @@ ALTER TABLE `dosen_pembimbing`
 -- AUTO_INCREMENT for table `dosen_penguji`
 --
 ALTER TABLE `dosen_penguji`
-  MODIFY `id_dosenpenguji` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_dosenpenguji` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `dosen_tugasakhir`
@@ -415,16 +409,16 @@ ALTER TABLE `mahasiswa`
   MODIFY `id_mhs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `pendjadwalan_sidang`
---
-ALTER TABLE `pendjadwalan_sidang`
-  MODIFY `id_jadwal` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `pengajuan_judul`
 --
 ALTER TABLE `pengajuan_judul`
   MODIFY `id_pengajuan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `penjadwalan_sidang`
+--
+ALTER TABLE `penjadwalan_sidang`
+  MODIFY `id_jadwal` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `seminar_proposal`
@@ -464,8 +458,7 @@ ALTER TABLE `dosen_pembimbing`
 -- Constraints for table `dosen_penguji`
 --
 ALTER TABLE `dosen_penguji`
-  ADD CONSTRAINT `dosen_penguji_ibfk_1` FOREIGN KEY (`id_dosenta`) REFERENCES `dosen_tugasakhir` (`id_dosenta`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `dosen_penguji_ibfk_2` FOREIGN KEY (`id_dosen`) REFERENCES `dosen` (`id_dosen`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `dosen_penguji_ibfk_1` FOREIGN KEY (`id_dosenta`) REFERENCES `dosen_tugasakhir` (`id_dosenta`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `dosen_tugasakhir`
@@ -481,14 +474,6 @@ ALTER TABLE `mahasiswa`
   ADD CONSTRAINT `mahasiswa_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 
 --
--- Constraints for table `pendjadwalan_sidang`
---
-ALTER TABLE `pendjadwalan_sidang`
-  ADD CONSTRAINT `pendjadwalan_sidang_ibfk_1` FOREIGN KEY (`id_bimbingan`) REFERENCES `bimbingan` (`id_bimbingan`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `pendjadwalan_sidang_ibfk_2` FOREIGN KEY (`penguji_1`) REFERENCES `dosen_penguji` (`id_dosenpenguji`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `pendjadwalan_sidang_ibfk_3` FOREIGN KEY (`penguji_2`) REFERENCES `dosen_penguji` (`id_dosenpenguji`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `pengajuan_judul`
 --
 ALTER TABLE `pengajuan_judul`
@@ -497,10 +482,18 @@ ALTER TABLE `pengajuan_judul`
   ADD CONSTRAINT `pengajuan_judul_ibfk_3` FOREIGN KEY (`dosenpembimbing2`) REFERENCES `dosen_pembimbing` (`id_dosenpembimbing`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `penjadwalan_sidang`
+--
+ALTER TABLE `penjadwalan_sidang`
+  ADD CONSTRAINT `penjadwalan_sidang_ibfk_1` FOREIGN KEY (`id_bimbingan`) REFERENCES `bimbingan` (`id_bimbingan`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `penjadwalan_sidang_ibfk_2` FOREIGN KEY (`penguji_1`) REFERENCES `dosen_penguji` (`id_dosenpenguji`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `penjadwalan_sidang_ibfk_3` FOREIGN KEY (`penguji_2`) REFERENCES `dosen_penguji` (`id_dosenpenguji`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `seminar_proposal`
 --
 ALTER TABLE `seminar_proposal`
-  ADD CONSTRAINT `seminar_proposal_ibfk_1` FOREIGN KEY (`id_jadwal`) REFERENCES `pendjadwalan_sidang` (`id_jadwal`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `seminar_proposal_ibfk_1` FOREIGN KEY (`id_jadwal`) REFERENCES `penjadwalan_sidang` (`id_jadwal`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

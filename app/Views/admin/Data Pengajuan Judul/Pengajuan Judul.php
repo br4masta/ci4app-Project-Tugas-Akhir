@@ -50,15 +50,16 @@
                             </thead>
                             <tbody>
                                 <?php $i = 1; ?>
-                                <?php foreach ($datajudul as $c) : ?>
+                                <?php foreach ($datajudul as $c);
+                                foreach ($datajudul2 as $d) : ?>
                                     <tr>
                                         <td><?= $i++; ?></td>
-                                        <td><?= $c['nim_mhs']; ?></td>
-                                        <td><?= $c['nama_mhs']; ?></td>
-                                        <td> <?= $c['judul']; ?></td>
-                                        <td> <?= $c['deskripsi']; ?></td>
-                                        <td><?= $c['dosenpembimbing1']; ?></td>
-                                        <td><?= $c['dosenpembimbing2']; ?></td>
+                                        <td><?= $d['nim_mhs']; ?></td>
+                                        <td><?= $d['nama_mhs']; ?></td>
+                                        <td> <?= $d['judul']; ?></td>
+                                        <td> <?= $d['deskripsi']; ?></td>
+                                        <td><?= $c['nama_dosen']; ?></td>
+                                        <td><?= $d['nama_dosen']; ?></td>
                                         <td style="text-align: center; ">
                                             <span class="badge badge-danger d-inline-flex p-2"> <?= $c['status_pengajuan']; ?></span>
                                         </td>

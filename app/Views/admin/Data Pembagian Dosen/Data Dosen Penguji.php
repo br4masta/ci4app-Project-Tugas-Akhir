@@ -42,64 +42,42 @@
                                     <th width='15%'>NPPY</th>
                                     <th width='15%'>NAMA</th>
                                     <th width='15%'>Role</th>
+                                    <th width='15%'>Plot</th>
                                     <th width='15%'>FOTO</th>
                                     <th width='5%'>Detail</th>
                                     <th width='5%'>Aksi</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>43100810001</td>
-                                    <td>Tory Ariyanto</td>
-                                    <td>Penguji 1</td>
-                                    <td><img src='http://localhost/CodeIgniter_SiMonTA-master/assets/mahasiswa/anonim.png' width='20%'></td>
-                                    <td>
-                                        <a href='<?= site_url('admin/detaildatadosenpenguji'); ?>'>
-                                            <button class="btn btn-xs btn-flat btn-info">
-                                                Detail
+                            <tbody> <?php $i = 1; ?>
+                                <?php foreach ($datapenguji as $d) : ?>
+                                    <tr>
+                                        <td><?= $i++; ?></td>
+                                        <td><?= $d['nidn_dosen']; ?></td>
+                                        <td><?= $d['nama_dosen']; ?></td>
+                                        <td><?= $d['role_penguji']; ?></td>
+                                        <td><?= $d['tahun_akademik']; ?></td>
+                                        <td><img src='http://localhost/CodeIgniter_SiMonTA-master/assets/mahasiswa/anonim.png' width='20%'></td>
+                                        <td>
+                                            <a href='<?= site_url('admin/detaildatadosenpenguji'); ?>'>
+                                                <button class="btn btn-xs btn-flat btn-info">
+                                                    Detail
+                                                </button>
+                                            </a>
+                                        </td>
+                                        <td class="center">
+
+                                            <button class="btn btn-xs btn-flat btn-success btnbrg-edit" data-toggle="modal" data-target="#modaledit">
+                                                <i class=" fa fa-edit"></i>
                                             </button>
-                                        </a>
-                                    </td>
-                                    <td class="center">
 
-                                        <button class="btn btn-xs btn-flat btn-success btnbrg-edit" data-toggle="modal" data-target="#modaledit">
-                                            <i class=" fa fa-edit"></i>
-                                        </button>
-
-                                        <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
-                                        <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>43100810002</td>
-                                    <td>Rifqi Maulana</td>
-                                    <td>Penguji 2</td>
-                                    <td><img src='http://localhost/CodeIgniter_SiMonTA-master/assets/mahasiswa/anonim.png' width='20%'></td>
-                                    <td>
-                                        <a href='<?= site_url('admin/detaildatadosenpenguji'); ?>'>
-                                            <button class="btn btn-xs btn-flat btn-info">
-                                                Detail
+                                            <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
+                                            <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
+                                                <i class="fa fa-times"></i>
                                             </button>
-                                        </a>
-                                    </td>
-                                    <td class="center">
+                                            </a>
+                                        </td>
+                                    </tr><?php endforeach; ?>
 
-                                        <button class="btn btn-xs btn-flat btn-success btnbrg-edit" data-toggle="modal" data-target="#modaledit">
-                                            <i class=" fa fa-edit"></i>
-                                        </button>
-
-                                        <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
-                                        <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                        </a>
-                                    </td>
-                                </tr>
 
 
                             </tbody>
