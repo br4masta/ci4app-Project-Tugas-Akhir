@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2021 at 08:41 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 7.3.28
+-- Generation Time: Jun 25, 2021 at 04:24 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_ta`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_akademik`
+--
+
+CREATE TABLE `data_akademik` (
+  `id_dataakademik` int(3) NOT NULL,
+  `tahun_akademik` varchar(10) NOT NULL,
+  `tanggal_mulai` date NOT NULL,
+  `tanggal_akhir` date NOT NULL,
+  `semester` enum('ganjil','genap') NOT NULL,
+  `status` enum('aktif','nonaktif') NOT NULL DEFAULT 'nonaktif'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `data_akademik`
+--
+
+INSERT INTO `data_akademik` (`id_dataakademik`, `tahun_akademik`, `tanggal_mulai`, `tanggal_akhir`, `semester`, `status`) VALUES
+(1, '2020/2021', '2021-01-01', '2021-08-31', 'ganjil', 'aktif'),
+(2, '2019/2020', '2020-08-01', '2020-12-31', 'genap', 'nonaktif');
 
 -- --------------------------------------------------------
 
@@ -39,7 +62,8 @@ CREATE TABLE `dosen` (
 --
 
 INSERT INTO `dosen` (`id_dosen`, `id_user`, `nidn_dosen`, `nama_dosen`) VALUES
-(1, 2, 'dosen', 'dosen');
+(1, 2, 'dosen', 'dosen'),
+(2, 10, '520007689', 'ir.sucipto s.it');
 
 -- --------------------------------------------------------
 
@@ -74,6 +98,30 @@ INSERT INTO `mahasiswa` (`id_mhs`, `id_user`, `nim_mhs`, `nama_mhs`, `tgllhr_mhs
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pengajuan_judul`
+--
+
+CREATE TABLE `pengajuan_judul` (
+  `id_pengajuan` int(3) NOT NULL,
+  `id_mhs` int(3) NOT NULL,
+  `judul` varchar(100) NOT NULL,
+  `deskripsi` text NOT NULL,
+  `dosenpembimbing1` varchar(50) NOT NULL,
+  `dosenpembimbing2` varchar(50) NOT NULL,
+  `status` enum('disetujui','belum di setujui','ditolak') NOT NULL DEFAULT 'belum di setujui',
+  `catatan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pengajuan_judul`
+--
+
+INSERT INTO `pengajuan_judul` (`id_pengajuan`, `id_mhs`, `judul`, `deskripsi`, `dosenpembimbing1`, `dosenpembimbing2`, `status`, `catatan`) VALUES
+(1, 1, 'sistem informasi kelayakan terbang', 'pembuatan sistem ini di latar belakangi oleh kurangnya proses komputerisasi terhadap pengecekan sebelum pesawat lepas landas.', 'dosen 1', 'dosen 2', 'belum di setujui', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -81,7 +129,7 @@ CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
   `username` varchar(40) DEFAULT NULL,
   `password` varchar(40) DEFAULT NULL,
-  `level` int(1) DEFAULT NULL COMMENT '1:admin,2:dosen,3:mahasiswa,4:dosen_penguji,5: Kaprodi,6:Terblokir'
+  `level` enum('1','2','3','4','5','6') DEFAULT NULL COMMENT '1:admin,2:dosen,3:mahasiswa,4:dosen_penguji,5: Kaprodi,6:Terblokir'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -89,18 +137,24 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `level`) VALUES
-(1, 'as', 'as', 3),
-(2, 'dosen', 'dosen', 2),
-(3, 'dosenpenguji', 'penguji', 4),
-(4, 'kaprodi', 'kaprodi', 5),
-(5, 'admin', 'admin', 1),
-(6, 'aku', 'aku', 6),
-(7, 'asd', 'ads', 3),
-(8, 'qwe', 'qwe', 3);
+(1, 'as', 'as', '3'),
+(2, 'dosen', 'dosen', '2'),
+(3, 'dosenpenguji', 'penguji', '4'),
+(4, 'kaprodi', 'kaprodi', '5'),
+(5, 'admin', 'admin', '1'),
+(6, 'aku', 'aku', '6'),
+(9, 'mahasiswa', 'mahasiswa', '3'),
+(10, 'sucipto@gmail.com', 'sucipto', '5');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `data_akademik`
+--
+ALTER TABLE `data_akademik`
+  ADD PRIMARY KEY (`id_dataakademik`);
 
 --
 -- Indexes for table `dosen`
@@ -117,6 +171,13 @@ ALTER TABLE `mahasiswa`
   ADD KEY `id_user` (`id_user`);
 
 --
+-- Indexes for table `pengajuan_judul`
+--
+ALTER TABLE `pengajuan_judul`
+  ADD PRIMARY KEY (`id_pengajuan`),
+  ADD KEY `id_mhs` (`id_mhs`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -127,10 +188,16 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `data_akademik`
+--
+ALTER TABLE `data_akademik`
+  MODIFY `id_dataakademik` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `dosen`
 --
 ALTER TABLE `dosen`
-  MODIFY `id_dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `mahasiswa`
@@ -139,10 +206,16 @@ ALTER TABLE `mahasiswa`
   MODIFY `id_mhs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `pengajuan_judul`
+--
+ALTER TABLE `pengajuan_judul`
+  MODIFY `id_pengajuan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
@@ -159,6 +232,12 @@ ALTER TABLE `dosen`
 --
 ALTER TABLE `mahasiswa`
   ADD CONSTRAINT `mahasiswa_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+
+--
+-- Constraints for table `pengajuan_judul`
+--
+ALTER TABLE `pengajuan_judul`
+  ADD CONSTRAINT `pengajuan_judul_ibfk_1` FOREIGN KEY (`id_mhs`) REFERENCES `mahasiswa` (`id_mhs`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

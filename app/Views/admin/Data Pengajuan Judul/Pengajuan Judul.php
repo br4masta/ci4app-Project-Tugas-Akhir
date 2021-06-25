@@ -33,56 +33,58 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="example2" class="table table-bordered table-hover">
+                        <table id="datapengajuan" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>NIM</th>
                                     <th>Nama(s)</th>
                                     <th>Judul</th>
-                                    <th>Dosen Pembimbing</th>
+                                    <th>Deskripsi</th>
+                                    <th>Dosen Pembimbing I</th>
+                                    <th>Dosen Pembimbing II</th>
                                     <th>Status</th>
                                     <th>Detail</th>
                                     <th>aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>2018420076
+                                <?php $i = 1; ?>
+                                <?php foreach ($datajudul as $c) : ?>
+                                    <tr>
+                                        <td><?= $i++; ?></td>
+                                        <td><?= $c['nim_mhs']; ?></td>
+                                        <td><?= $c['nama_mhs']; ?></td>
+                                        <td> <?= $c['judul']; ?></td>
+                                        <td> <?= $c['deskripsi']; ?></td>
+                                        <td><?= $c['dosenpembimbing1']; ?></td>
+                                        <td><?= $c['dosenpembimbing2']; ?></td>
+                                        <td style="text-align: center; ">
+                                            <span class="badge badge-danger d-inline-flex p-2"> <?= $c['status']; ?></span>
+                                        </td>
 
-                                    </td>
-                                    <td>Brian Aldy Bramasta</td>
-                                    <td> Sistem Informasi</td>
-                                    <td>Sucipto</td>
-                                    <td>
-                                        <select class="form-control combo-status" name="status" id="combo-">
-                                            <option value='DISETUJUI'>DISETUJUI</option>
-                                            <option value='DITOLAK'>DITOLAK</option>
-                                            <option value='PENDING'>PENDING</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <a>
-                                            <button class="btn btn-xs btn-flat btn-info " data-toggle="modal" data-target="#Detail">
-                                                Detail
-                                            </button>
-                                        </a>
-                                    </td>
-                                    <td class=" center">
-                                        <a>
-                                            <button class="btn btn-xs btn-flat btn-success btnbrg-edit" data-toggle="modal" data-target="#modaltambah">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                        </a>
-                                        <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
-                                        <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                        </a>
-                                    </td>
 
-                                </tr>
+                                        <td>
+                                            <a>
+                                                <button class="btn btn-xs btn-flat btn-info " data-toggle="modal" data-target="#Detail">
+                                                    Detail
+                                                </button>
+                                            </a>
+                                        </td>
+                                        <td class=" center">
+                                            <a>
+                                                <button class="btn btn-xs btn-flat btn-success btnbrg-edit" data-toggle="modal" data-target="#modaltambah">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                            </a>
+                                            <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
+                                            <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                            </a>
+                                        </td>
+
+                                    </tr><?php endforeach; ?>
 
                         </table>
                     </div>
@@ -236,21 +238,15 @@
 <!-- Page specific script -->
 <script>
     $(function() {
-        $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": true,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
+        $("#datapengajuan").DataTable({
+            "scrollY": "300px",
+            "scrollX": true,
+            "scrollCollapse": true,
+            "paging": false,
+            "fixedColumns": {
+                leftColumns: 2
+            }
+        })
     });
 </script>
 <!-- /.content -->

@@ -20,7 +20,17 @@ class Admin extends BaseController
 
 	public function pengajuan()
 	{
-		return view('admin/Data Pengajuan Judul/Pengajuan Judul');
+		$pengajuanModel = new \App\Models\pengajuanModel();
+		$pengajuan_judul = $pengajuanModel->get_pengajuan();
+
+		$data = [
+
+			'datajudul' => $pengajuan_judul,
+
+
+		];
+
+		return view('admin/Data Pengajuan Judul/Pengajuan Judul', $data);
 	}
 
 	public function seminar()
