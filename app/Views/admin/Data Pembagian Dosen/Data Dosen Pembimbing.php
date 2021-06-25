@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Data Dosen Pemimbing</h1>
+                <h1 class="m-0">Data Dosen Pembimbing</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -26,92 +26,93 @@
         <div class="col">
             <div class="card">
                 <div class="card-title  d-flex">
-                    <button type="button" class="btn btn-primary btn-sm ml-3" data-toggle="modal" data-target="#modaltambah">
-                        <i class=" fa fa-plus-circle"></i> Tambah Data
-                    </button>
+
                 </div>
                 <div class="the-box full">
-                    <div class="table-responsive" style="margin:5px;padding:5px" id="stack-personal">
-                        <p>Datatable DOSEN</p>
-
-                        <table id="example2" class="table table-bordered table-hover">
-                            <thead>
-                                <tr>
-                                    <th width='5%'>NO</th>
-                                    <th width='15%'>NPPY</th>
-                                    <th width='15%'>NAMA</th>
-                                    <th width='15%'>Role</th>
-                                    <th width='15%'>Plot</th>
-                                    <th width='15%'>FOTO</th>
-                                    <th width='5%'>Detail</th>
-                                    <th width='5%'>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>43100810001</td>
-                                    <td>Tory Ariyanto</td>
-                                    <td>Pembimbing 1</td>
-                                    <td>2020/2021</td>
-                                    <td><img src='http://localhost/CodeIgniter_SiMonTA-master/assets/mahasiswa/anonim.png' width='20%'></td>
-                                    <td>
-                                        <a href='<?= site_url('admin/detaildatadosenpembimbing'); ?>'>
-                                            <button class="btn btn-xs btn-flat btn-info">
-                                                Detail
-                                            </button>
-                                        </a>
-                                    </td>
-                                    <td class="center">
-
-                                        <button class="btn btn-xs btn-flat btn-success btnbrg-edit" data-toggle="modal" data-target="#modaledit">
-                                            <i class=" fa fa-edit"></i>
-                                        </button>
-
-                                        <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
-                                        <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>43100810002</td>
-                                    <td>Sucipto</td>
-                                    <td>Pembimbing 2</td>
-                                    <td>2020/2021</td>
-                                    <td><img src='http://localhost/CodeIgniter_SiMonTA-master/assets/mahasiswa/anonim.png' width='20%'></td>
-                                    <td>
-                                        <a href='<?= site_url('admin/detaildatadosenpembimbing'); ?>'>
-                                            <button class="btn btn-xs btn-flat btn-info">
-                                                Detail
-                                            </button>
-                                        </a>
-                                    </td>
-                                    <td class="center">
-
-                                        <button class="btn btn-xs btn-flat btn-success btnbrg-edit" data-toggle="modal" data-target="#modaledit">
-                                            <i class=" fa fa-edit"></i>
-                                        </button>
-
-                                        <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
-                                        <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                        </a>
-                                    </td>
-
-                                </tr>
-
-
-                            </tbody>
-                        </table>
+                    <p><strong>Data Dosen Pembimbing</strong></p>
+                    <div class="card-title  d-flex ">
+                        <button type="button" class="btn btn-primary btn-sm ml-3" data-toggle="modal" data-target="#modaltambah">
+                            <i class=" fa fa-plus-circle"></i> Tambah Data
+                        </button>
                     </div>
-                </div><!-- /.the-box full -->
-            </div>
+                    <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th width='5%'>NO</th>
+                                <th width='15%'>NPPY</th>
+                                <th width='15%'>NAMA</th>
+                                <th width='15%'>Role</th>
+                                <th width='15%'>Plot</th>
+                                <th width='15%'>FOTO</th>
+                                <th width='5%'>Detail</th>
+                                <th width='5%'>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>43100810001</td>
+                                <td>Tory Ariyanto</td>
+                                <td>Pembimbing 1</td>
+                                <td>2020/2021</td>
+                                <td><img src='http://localhost/CodeIgniter_SiMonTA-master/assets/mahasiswa/anonim.png' width='20%'></td>
+                                <td>
+                                    <a href='<?= site_url('admin/detaildatadosenpembimbing'); ?>'>
+                                        <button class="btn btn-xs btn-flat btn-info">
+                                            Detail
+                                        </button>
+                                    </a>
+                                </td>
+                                <td class="center">
+
+                                    <button class="btn btn-xs btn-flat btn-success btnbrg-edit" data-toggle="modal" data-target="#modaledit">
+                                        <i class=" fa fa-edit"></i>
+                                    </button>
+
+                                    <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
+                                    <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>43100810002</td>
+                                <td>Sucipto</td>
+                                <td>Pembimbing 2</td>
+                                <td>2020/2021</td>
+                                <td><img src='http://localhost/CodeIgniter_SiMonTA-master/assets/mahasiswa/anonim.png' width='20%'></td>
+                                <td>
+                                    <a href='<?= site_url('admin/detaildatadosenpembimbing'); ?>'>
+                                        <button class="btn btn-xs btn-flat btn-info">
+                                            Detail
+                                        </button>
+                                    </a>
+                                </td>
+                                <td class="center">
+
+                                    <button class="btn btn-xs btn-flat btn-success btnbrg-edit" data-toggle="modal" data-target="#modaledit">
+                                        <i class=" fa fa-edit"></i>
+                                    </button>
+
+                                    <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
+                                    <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                    </a>
+                                </td>
+
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div><!-- /.the-box full -->
         </div>
     </div>
+</div>
 </div>
 <!-- /.content -->
 

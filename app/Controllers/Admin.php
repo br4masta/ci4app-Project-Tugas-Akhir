@@ -6,7 +6,11 @@ class Admin extends BaseController
 {
 	public function index()
 	{
-		return view('admin/Data Pengajuan Judul/Pengajuan Judul');
+		$data = [
+
+			'title' => 'admin'
+		];
+		return view('admin/Data Pengajuan Judul/Pengajuan Judul', $data);
 	}
 
 	public function Profil()
@@ -75,13 +79,33 @@ class Admin extends BaseController
 
 	public function Dataakademik()
 	{
-		return view('admin/Data Akademik/Data Akademik');
+		$dataakademikModel = new \App\Models\dataakademikModel();
+		$dataakademik = $dataakademikModel->findAll();
+
+		$data = [
+
+			'dataakademik' => $dataakademik
+
+		];
+		return view('admin/Data Akademik/Data Akademik', $data);
 	}
 
 	public function Datadosen()
 	{
-		return view('admin/Data dosen/Data dosen');
+		$dosenModel = new \App\Models\dosenModel();
+		$datadosen = $dosenModel->findAll();
+
+		$data = [
+
+			'datadosen' => $datadosen
+
+		];
+
+
+
+		return view('admin/Data dosen/Data dosen', $data);
 	}
+
 	public function tambahdatadosen()
 	{
 		return view('admin/Data Dosen/Tambah Data Dosen');

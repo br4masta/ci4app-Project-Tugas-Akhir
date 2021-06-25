@@ -20,6 +20,7 @@
         </li>
         <li class="nav-item">
             <a href="<?php echo site_url('admin/Dataakademik'); ?>" class="nav-link">
+                <i class=" fa fa-copy"></i>
                 <p>
                     Data Akademik
 
@@ -28,7 +29,7 @@
         </li>
         <li class="nav-item">
             <a href=" <?php echo site_url('admin/Datadosen'); ?>" class="nav-link">
-
+                <i class=" fa fa-copy"></i>
                 <p>
                     Data Dosen
                 </p>
@@ -106,6 +107,7 @@
 
         <li class="nav-item">
             <a href="<?php echo site_url('admin/Berita'); ?>" class="nav-link">
+                <i class=" fa fa-copy"></i>
                 <p>
                     Data Berita
 

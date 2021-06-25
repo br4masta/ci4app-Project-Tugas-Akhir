@@ -44,33 +44,34 @@
                                     <th>AKSI</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>2015/2016</td>
-                                    <td>01-03-2015</td>
-                                    <td>31-08-2015</td>
-                                    <td>GASAL</td>
-                                    <td>
-                                        <a href='' onClick="return confirm('Anda yakin akan menonaktifkan data ini ?')">
-                                            <button class="btn btn-xs btn-flat btn-danger btnbrg-edit">
-                                                Matikan
-                                            </button>
-                                        </a>
-                                    </td>
-                                    <td>
+                            <tbody><?php $i = 1; ?>
+                                <?php foreach ($dataakademik as $a) : ?>
+                                    <tr>
+                                        <td><?= $i++; ?></td>
+                                        <td><?= $a['tahun_akademik']; ?></td>
+                                        <td><?= $a['tanggal_mulai']; ?></td>
+                                        <td><?= $a['tanggal_akhir']; ?></td>
+                                        <td><?= $a['semester']; ?></td>
+                                        <td>
+                                            <a href='' onClick="return confirm('Anda yakin akan menonaktifkan data ini ?')">
+                                                <button class="btn btn-xs btn-flat btn-danger btnbrg-edit">
+                                                    Matikan
+                                                </button>
+                                            </a>
+                                        </td>
+                                        <td>
 
-                                        <button class="btn btn-xs btn-flat btn-success btnbrg-edit" data-toggle="modal" data-target="#modaledit">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-
-                                        <a href='' onClick="return confirm('Anda yakin akan menghapus data ini ?')">
-                                            <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
-                                                <i class="fa fa-times"></i>
+                                            <button class="btn btn-xs btn-flat btn-success btnbrg-edit" data-toggle="modal" data-target="#modaledit">
+                                                <i class="fa fa-edit"></i>
                                             </button>
-                                        </a>
-                                    </td>
-                                </tr>
+
+                                            <a href='' onClick="return confirm('Anda yakin akan menghapus data ini ?')">
+                                                <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
+                                                    <i class="fa fa-times"></i>
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr> <?php endforeach; ?>
                                 <tr>
                                     <td>2</td>
                                     <td>2014/2015</td>

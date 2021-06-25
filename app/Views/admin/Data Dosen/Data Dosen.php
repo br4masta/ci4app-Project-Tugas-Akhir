@@ -31,13 +31,17 @@
 
                     <div class="card-header">
 
-                        <a href="<?= site_url('admin/tambahdatadosen'); ?>"><button type="button" class="btn btn-primary btn-sm">
-                                <i class=" fa fa-plus-circle"></i> Tambah Data
-                            </button></a>
+
 
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
+                        <p><strong>Data Dosen</strong></p>
+                        <div class="card-title  d-flex ">
+                            <a href="<?= site_url('admin/tambahdatadosen'); ?>"><button type="button" class="btn btn-primary btn-sm">
+                                    <i class=" fa fa-plus-circle"></i> Tambah Data
+                                </button></a>
+                        </div>
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
@@ -50,27 +54,30 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>2000011133
+                                <?php $i = 1; ?>
+                                <?php foreach ($datadosen as $d) : ?>
+                                    <tr>
+                                        <td><?= $i++; ?></td>
+                                        <td><?= $d['nidn_dosen']; ?>
 
-                                    </td>
-                                    <td>Sucipto</td>
-                                    <td>Sucipto</td>
-                                    <td><img src="<?= base_url('assets/img/dosen 1.jpg');  ?>" alt="" width="70"></td>
-                                    <td class="center">
-                                        <a href="<?= site_url('admin/editdatadosen'); ?>" />
-                                        <button class="btn btn-xs btn-flat btn-success btnbrg-edit">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        </a>
-                                        <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
-                                        <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                        </a>
-                                    </td>
-                                </tr>
+                                        </td>
+                                        <td><?= $d['nama_dosen']; ?></td>
+                                        <td>Sucipto</td>
+                                        <td><img src="<?= base_url('assets/img/dosen 1.jpg');  ?>" alt="" width="70"></td>
+                                        <td class="center">
+                                            <a href="<?= site_url('admin/editdatadosen'); ?>" />
+                                            <button class="btn btn-xs btn-flat btn-success btnbrg-edit">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                            </a>
+                                            <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
+                                            <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
 
                         </table>
                     </div>

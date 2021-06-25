@@ -25,14 +25,15 @@
     <div class="row">
         <div class="col">
             <div class="card">
-                <div class="card-title  d-flex">
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modaltambah">
-                        <i class=" fa fa-plus-circle"></i> Tambah Data
-                    </button>
-                </div>
+
                 <div class="the-box full">
                     <div class="table-responsive" style="margin:5px;padding:5px" id="stack-personal">
-                        <p><strong>LIST DOSEN PENGUJI</strong></p>
+                        <p><strong>Data Dosen Penguji</strong></p>
+                        <div class="card-title  d-flex ">
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modaltambah">
+                                <i class=" fa fa-plus-circle"></i> Tambah Data
+                            </button>
+                        </div>
 
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
