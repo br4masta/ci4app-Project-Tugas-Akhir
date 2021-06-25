@@ -6,9 +6,14 @@ class Admin extends BaseController
 {
 	public function index()
 	{
+		$pengajuanModel = new \App\Models\pengajuanModel();
+		$pengajuan_judul = $pengajuanModel->get_pengajuan();
+
 		$data = [
 
-			'title' => 'admin'
+			'datajudul' => $pengajuan_judul,
+
+
 		];
 		return view('admin/Data Pengajuan Judul/Pengajuan Judul', $data);
 	}
