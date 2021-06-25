@@ -84,7 +84,16 @@ class Admin extends BaseController
 
 	public function datadosenpembimbing()
 	{
-		return view('admin/Data pembagian dosen/Data Dosen Pembimbing');
+		$dosenModel = new \App\Models\dosenModel();
+		$datapembimbing = $dosenModel->get_pembimbing();
+
+		$data = [
+
+			'datapembimbing' => $datapembimbing,
+
+
+		];
+		return view('admin/Data pembagian dosen/Data Dosen Pembimbing', $data);
 	}
 
 	public function detaildatadosenpembimbing()

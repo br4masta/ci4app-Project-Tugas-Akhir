@@ -60,7 +60,7 @@
                                         <td><?= $c['dosenpembimbing1']; ?></td>
                                         <td><?= $c['dosenpembimbing2']; ?></td>
                                         <td style="text-align: center; ">
-                                            <span class="badge badge-danger d-inline-flex p-2"> <?= $c['status']; ?></span>
+                                            <span class="badge badge-danger d-inline-flex p-2"> <?= $c['status_pengajuan']; ?></span>
                                         </td>
 
 
