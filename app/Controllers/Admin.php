@@ -8,11 +8,11 @@ class Admin extends BaseController
 	{
 		$pengajuanModel = new \App\Models\pengajuanModel();
 		$pengajuan_judul = $pengajuanModel->get_pengajuan();
-
+		$pengajuan_judul2 = $pengajuanModel->get_pengajuan2();
 		$data = [
 
 			'datajudul' => $pengajuan_judul,
-
+			'datajudul2' => $pengajuan_judul2,
 
 		];
 		return view('admin/Data Pengajuan Judul/Pengajuan Judul', $data);
@@ -60,7 +60,17 @@ class Admin extends BaseController
 	}
 	public function Berita()
 	{
-		return view('admin/Data Berita/Data Berita');
+		$beritaModel = new \App\Models\beritaModel();
+		$beritaseminar = $beritaModel->get_beritaseminar();
+		$beritasidangta = $beritaModel->get_beritasidangta();
+
+		$data = [
+
+			'seminar' => $beritaseminar,
+			'sidang_ta' => $beritasidangta,
+
+		];
+		return view('admin/Data Berita/Data Berita', $data);
 	}
 
 	public function detailberita()

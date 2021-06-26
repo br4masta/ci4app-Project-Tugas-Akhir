@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 26, 2021 at 01:40 AM
+-- Generation Time: Jun 26, 2021 at 09:57 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -233,7 +233,8 @@ CREATE TABLE `penjadwalan_sidang` (
 INSERT INTO `penjadwalan_sidang` (`id_jadwal`, `id_bimbingan`, `penguji_1`, `penguji_2`, `acara_sidang`, `tanggal_sidang`, `tempat_sidang`) VALUES
 (2, 3, 3, 2, 'seminar proposal', '2021-06-26 00:49:37', '107'),
 (3, 3, 3, 4, 'seminar proposal', '2021-07-31 11:50:10', '109'),
-(4, 1, 3, 4, 'seminar proposal', '2021-08-14 09:18:47', '208');
+(4, 1, 3, 4, 'seminar proposal', '2021-08-14 09:18:47', '208'),
+(5, 3, 3, 2, 'sidang tugas akhir', '2021-08-31 13:09:29', '302');
 
 -- --------------------------------------------------------
 
@@ -249,6 +250,35 @@ CREATE TABLE `seminar_proposal` (
   `status` enum('lanjut','disetujui dengan revisi','mengulang') NOT NULL,
   `judul_final` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `seminar_proposal`
+--
+
+INSERT INTO `seminar_proposal` (`id_seminar`, `id_jadwal`, `nilai`, `catatan`, `status`, `judul_final`) VALUES
+(2, 2, 'b++', 'sudah cukup sesuai bisa lanjut ke bab berikutnya', 'lanjut', ''),
+(3, 4, 'b-', 'perbaikan bagian deskripsi dan metode yang di gunakan.', 'disetujui dengan revisi', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sidang_tugasakhir`
+--
+
+CREATE TABLE `sidang_tugasakhir` (
+  `id_sidangta` int(3) NOT NULL,
+  `id_jadwal` int(3) NOT NULL,
+  `nilai_ta` varchar(3) NOT NULL,
+  `catatan_ta` text NOT NULL,
+  `status_ta` enum('lulus','lulus dengan revisi','tidak lulus') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sidang_tugasakhir`
+--
+
+INSERT INTO `sidang_tugasakhir` (`id_sidangta`, `id_jadwal`, `nilai_ta`, `catatan_ta`, `status_ta`) VALUES
+(1, 5, 'A', 'sudah cukup baik hanya perlu perbaikan di bagian penjelasan metode. harus lebih jelas dan spesifik ya!', 'lulus dengan revisi');
 
 -- --------------------------------------------------------
 
@@ -357,6 +387,13 @@ ALTER TABLE `seminar_proposal`
   ADD KEY `id_jadwal` (`id_jadwal`);
 
 --
+-- Indexes for table `sidang_tugasakhir`
+--
+ALTER TABLE `sidang_tugasakhir`
+  ADD PRIMARY KEY (`id_sidangta`),
+  ADD KEY `id_jadwal` (`id_jadwal`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -418,13 +455,19 @@ ALTER TABLE `pengajuan_judul`
 -- AUTO_INCREMENT for table `penjadwalan_sidang`
 --
 ALTER TABLE `penjadwalan_sidang`
-  MODIFY `id_jadwal` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_jadwal` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `seminar_proposal`
 --
 ALTER TABLE `seminar_proposal`
-  MODIFY `id_seminar` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_seminar` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `sidang_tugasakhir`
+--
+ALTER TABLE `sidang_tugasakhir`
+  MODIFY `id_sidangta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -494,6 +537,12 @@ ALTER TABLE `penjadwalan_sidang`
 --
 ALTER TABLE `seminar_proposal`
   ADD CONSTRAINT `seminar_proposal_ibfk_1` FOREIGN KEY (`id_jadwal`) REFERENCES `penjadwalan_sidang` (`id_jadwal`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `sidang_tugasakhir`
+--
+ALTER TABLE `sidang_tugasakhir`
+  ADD CONSTRAINT `sidang_tugasakhir_ibfk_1` FOREIGN KEY (`id_jadwal`) REFERENCES `penjadwalan_sidang` (`id_jadwal`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

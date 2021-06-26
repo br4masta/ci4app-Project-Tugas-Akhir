@@ -49,42 +49,49 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>2018420076
-                                    </td>
-                                    <td>Brian Aldy</td>
-                                    <td> Sistem Informasi Tugas Akhir</td>
-                                    <td>sucipto</td>
-                                    <td>Seminar Proposal</td>
+                                <?php $i = 1; ?>
+                                <?php foreach ($seminar as $c) :
+                                ?><tr>
 
-                                    <td>
-                                        <a href='<?php echo site_url('admin/detailberita'); ?>'>
-                                            <button class="btn btn-xs btn-flat btn-info">
-                                                Detail
-                                            </button>
-                                        </a>
-                                    </td>
+                                        <td><?= $i++; ?></td>
+                                        <td><?= $c['nim_mhs']; ?>
+                                        </td>
+                                        <td><?= $c['nama_mhs']; ?></td>
+                                        <td> <?= $c['judul']; ?></td>
+                                        <td><?= $c['nama_dosen']; ?></td>
+                                        <td><?= $c['acara_sidang']; ?></td>
 
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>2018420003
-                                    </td>
-                                    <td>Aditya Hermanto</td>
-                                    <td> Sistem Informasi Pendukung keputusan kelayakan terbang</td>
-                                    <td>sucipto</td>
-                                    <td>Skripsi</td>
+                                        <td>
+                                            <a href='<?php echo site_url('admin/detailberita'); ?>'>
+                                                <button class="btn btn-xs btn-flat btn-info">
+                                                    Detail
+                                                </button>
+                                            </a>
+                                        </td>
 
-                                    <td>
-                                        <a href='<?php echo site_url('admin/detailberita'); ?>'>
-                                            <button class="btn btn-xs btn-flat btn-info">
-                                                Detail
-                                            </button>
-                                        </a>
-                                    </td>
+                                    </tr><?php endforeach; ?>
+                                <?php foreach ($sidang_ta as $d) : ?>
+                                    <tr>
 
-                                </tr>
+                                        <td><?= $i++; ?></td>
+                                        <td><?= $d['nim_mhs']; ?>
+                                        </td>
+                                        <td><?= $d['nama_mhs']; ?></td>
+                                        <td> <?= $d['judul']; ?></td>
+                                        <td><?= $d['nama_dosen']; ?></td>
+                                        <td><?= $d['acara_sidang']; ?></td>
+
+                                        <td>
+                                            <a href='<?php echo site_url('admin/detailberita'); ?>'>
+                                                <button class="btn btn-xs btn-flat btn-info">
+                                                    Detail
+                                                </button>
+                                            </a>
+                                        </td>
+
+                                    </tr>
+                                <?php endforeach; ?>
+
 
                             </tbody>
 
