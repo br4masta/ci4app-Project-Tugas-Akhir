@@ -31,7 +31,7 @@
                     <div class="card-body">
                         <div class="card-title  d-flex">
                         </div>
-                        <table id="datapengajuan" class="table table-bordered table-striped">
+                        <table id="datapengajuan" class="table table-bordered table-striped" style="text-align: center; vertical-align: middle; ">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -41,8 +41,7 @@
                                     <th>Nama Dosen Pembimbing II</th>
                                     <th>Judul</th>
                                     <th>Deskripsi Proposal</th>
-                                    <th>Acc Dosen Pembimbing</th>
-                                    <th>keterangan</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -54,19 +53,15 @@
                                     <td> Dosen Pembimbing I</td>
                                     <td> Dosen Pembimbing II</td>
                                     <td> Aerodinamik Di Mesin robot</td>
-                                    <td style="text-align: center; vertical-align: middle;">
+                                    <td >
                                         <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
                                     </td>
-                                    <td style=" text-align : center; vertical-align: middle;">
-                                        <button type="button" class="btn btn-success btn-sm"><i class="fa fa-check-circle" aria-hidden="true"></i></button>
-                                         <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
+                                    <td >
+                                      PENGAJUAN
                                     </td>
-                                    <td style="text-align: center; vertical-align: middle;">
-                                        <span class="badge badge-primary d-inline-flex p-2" data-toggle="modal" data-target="#Detail">Detail</span>
-                                    </td>
-                                    <td style=" text-align : center; vertical-align: middle;">
-                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modaledit"><i class='fas fa-pencil-alt'></i>
-                                        </button>
+                                    <td >
+                                        <a href="/dosen/tabelbimbingan"><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target=""><i class='fas fa-pencil-alt'></i>
+                                        </button></a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -76,19 +71,15 @@
                                     <td> Dosen Pembimbing I</td>
                                     <td> Dosen Pembimbing II</td>
                                     <td> Sistem pendukung keputusan</td>
-                                    <td style="text-align: center; vertical-align: middle;">
+                                    <td >
                                         <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
                                     </td>
-                                    <td style=" text-align : center; vertical-align: middle;">
-                                        <button type="button" class="btn btn-success btn-sm"><i class="fa fa-check-circle" aria-hidden="true"></i></button>
-                                         <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
+                                    <td >
+                                       PENGAJUAN
                                     </td>
-                                    <td style="text-align: center; vertical-align: middle;">
-                                        <span class="badge badge-primary d-inline-flex p-2" data-toggle="modal" data-target="#Detail">Detail</span>
-                                    </td>
-                                    <td style=" text-align : center; vertical-align: middle;">
-                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modaledit"><i class='fas fa-pencil-alt'></i>
-                                        </button>
+                                    <td >
+                                        <a href="/dosen/tabelbimbingan"><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target=""><i class='fas fa-pencil-alt'></i>
+                                        </button></a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -106,159 +97,6 @@
 </section>
 <!-- /.content -->
 
-<!-- Modal Detail -->
-<div class="modal fade" id="Detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Detail Keterangan Judul</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group row">
-                    <label for="" class="col-sm-3 col-form-label">Waktu</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="waktu" name="waktu" value="Pukul 12.00" readonly>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-3 col-form-label">tempat</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="waktu" name="waktu" value="Di lab praktikum 1" readonly>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-3 col-form-label">Tgl Bimbingan</label>
-                    <div class="col-sm-6">
-                        <input type="date" class="form-control" id="tgl" name="tgl" value="2021-08-12" readonly>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="#" class="col-lg-3 col-form-label">Deskripsi Keterangan</label>
-                    <div class="col-lg-9">
-                        <textarea id="inputDescription" class="form-control" rows="3" readonly>Judul menarik cukup dapat dipahami</textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal tambah-->
-<div class="modal fade" id="modaltambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Masukkan</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">NIM Mahasiswa</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="nim" name="nim" value="2018420017" readonly>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Nama Mahasiswa</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="nama" name="nama" value="Muhammad Hafizh Azzasafah" readonly>
-                        <div class="invalid-feedback errorNama">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Nama Dosen Pembimbing I</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="nama" name="nama" value="Dosen pembimbing I" readonly>
-                        <div class="invalid-feedback errorNama">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Nama Dosen Pembimbing II</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="nama" name="nama" value="Dosen pembimbing I" readonly>
-                        <div class="invalid-feedback errorNama">
-                        </div>
-                    </div>
-                </div>
-           <div class="form-group row">
-                    <label for="#" class="col-lg-3 col-form-label">Deskripsi Keterangan</label>
-                    <div class="col-lg-9">
-                        <textarea id="inputDescription" class="form-control" rows="3" readonly>Judul menarik cukup dapat dipahami</textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal edit-->
-<div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">NIM Mahasiswa</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="nim" name="nim" value="2018420017" readonly>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Nama Mahasiswa</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="nama" name="nama" value="Muhammad Hafizh Azzasafah" readonly>
-                        <div class="invalid-feedback errorNama">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Nama Dosen Pembimbing I</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="nama" name="nama" value="Dosen pembimbing I" readonly>
-                        <div class="invalid-feedback errorNama">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Nama Dosen Pembimbing II</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="nama" name="nama" value="Dosen pembimbing I" readonly>
-                        <div class="invalid-feedback errorNama">
-                        </div>
-                    </div>
-                </div>
-      </div>
-           <div class="form-group row">
-                    <label for="#" class="col-lg-3 col-form-label">Deskripsi Keterangan</label>
-                    <div class="col-lg-9">
-                        <textarea id="inputDescription" class="form-control" rows="3" readonly>Judul menarik cukup dapat dipahami</textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- Page specific script -->
 <script>
     $(function() {

@@ -2,12 +2,18 @@
 
 namespace App\Controllers;
 
+
 class Dosen extends BaseController
 {
 	public function index()
 	{
+		$dosenModel = new \App\Models\dosenModel();
+		$datadosenta = $dosenModel->get_dosen_tugasakhir();
+
 		$data = [
-			'title' => 'Dosen | Data Diri'
+
+			'datadosenta' => $datadosenta,
+
 		];
 		return view('dosen/index', $data);
 	}
@@ -42,12 +48,13 @@ class Dosen extends BaseController
 		return view('dosen/tugasakhir', $data);
 	}
 
-	//Dosen Penguji
-	public function dospeng()
+	public function tabelbimbingan()
 	{
-		return view('dospeng/index');
+		$data = [
+			'title' => 'Dosen | Bimbingan'
+		];
+		return view('dosen/tabelbimbingan', $data);
 	}
-
 
 
 	//--------------------------------------------------------------------

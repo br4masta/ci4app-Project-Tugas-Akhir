@@ -8,6 +8,8 @@ class dosenModel extends Model
 {
     protected $table = 'dosen';
     protected $primaryKey = 'id_dosen';
+    protected $allowedFields = ['nidn_dosen','nama_dosen','jeniskelamin','alamat','email','notelpon','status','semester'];
+
 
     public function get_dosen()
     {

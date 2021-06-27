@@ -54,67 +54,27 @@
                                 <!-- Table 1 -->
                                 <table class="table table-striped table-borderless">
                                     <tbody>
+                                        <?php foreach ($datadosenta as $d) : ?>
                                         <tr>
+                                              <?php endforeach ?>
                                             <th scope="row">Nama Lengkap</th>
-                                            <td>Cokro Winoto S,pd</td>
+                                            <td><?= $d['nama_dosen']; ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">NIP</th>
-                                            <td>1234567890</td>
+                                            <td><?= $d['nidn_dosen']; ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Status</th>
                                             <td>
-                                                Dosen Pembimbing
+                                               <?= $d['role_pembimbing']; ?>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Jenis Kelamin</th>
                                             <td>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                                    <label class="form-check-label" for="inlineRadio1">Laki-Laki</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                                    <label class="form-check-label" for="inlineRadio2">Perempuan</label>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Agama</th>
-                                            <td>
-                                                <select class="form-control" id="exampleFormControlSelect1">
-                                                    <option selected>--- Pilih Agama ---</option>
-                                                    <option value="1">Islam</option>
-                                                    <option value="2">Kristen</option>
-                                                    <option value="3">Hindu</option>
-                                                    <option value="3">Budha</option>
-                                                    <option value="3">KonghuCu</option>
-                                                </select>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Tempat Lahir</th>
-                                            <td>
-                                                <select class="form-control" id="exampleFormControlSelect1">
-                                                    <option selected>--- Tempat Lahir ---</option>
-                                                    <option value="1">Gresik</option>
-                                                    <option value="1">Surabaya</option>
-                                                    <option value="2">Sidoarjo</option>
-                                                    <option value="3">TulungAgung</option>
-                                                </select>
-                                                <small>
-                                                    *Pilih Lain-Lain jika tidak ditemukan Tempat Lahir Yang Sesuai
-                                                </small>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Tanggal Lahir</th>
-                                            <td>
-                                                <div class="input-group mb-3">
-                                                    <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
-                                                    <span class="input-group-text" id="basic-addon2"><i class="bi bi-calendar-date"></i></span>
+                                                <div class="mb-3">
+                                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Pria/Wanita">
                                                 </div>
                                             </td>
                                         </tr>
@@ -143,13 +103,12 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">Pin</th>
+                                            <th scope="row">Tahun Akademik</th>
                                             <td>
-                                                <div class="mb-3">
-                                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="3213">
-                                                </div>
+                                                <?= $d['tahun_akademik']; ?>
                                             </td>
                                         </tr>
+                                      
                                     </tbody>
                                 </table>
                                 <!-- Akhir Table 2 -->
