@@ -68,7 +68,7 @@
             </ul>
         </li>
         <li class="nav-item">
-            <a href="<?= site_url('mahasiswa/profil/profil'); ?>" class="nav-link">
+            <a href="<?= site_url('mahasiswa/showprofil'); ?>" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>
                 <p>
                     Data Profil

@@ -30,44 +30,13 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="card-title  d-flex">
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modaltambah">
+                            <button type="button" class="btn btn-primary btn-sm tomboltambah">
                                 <i class=" fa fa-plus-circle"></i> Tambah Data
                             </button>
                         </div>
-                        <table id="datapengajuan" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>NIM</th>
-                                    <th>Nama</th>
-                                    <th>Calon Dosen Pembimbing I</th>
-                                    <th>Calon Dosen Pembimbing II</th>
-                                    <th>Judul</th>
-                                    <th>Deskripsi Rencana Proposal</th>
-                                    <th>Acc Kaprodi</th>
-                                    <th>Catatan</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td> 2018420017</td>
-                                    <td> Muhammad Hafizh Azzasafah</td>
-                                    <td>Dosen pembimbing I</td>
-                                    <td>Dosen pembimbing II</td>
-                                    <td>Judul Nya apa</td>
-                                    <td style="text-align: center; vertical-align: middle;">
-                                        <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
-                                    </td>
-                                    <td style="text-align: center; vertical-align: middle;">
-                                        <span class="badge badge-success d-inline-flex p-2">Di Setujui</span>
-                                    </td>
-                                    <td style="text-align: center; vertical-align: middle;">
-                                        <span class="badge badge-primary d-inline-flex p-2" data-toggle="modal" data-target="#Detail">Detail</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="viewdata">
+
+                        </div>
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -80,9 +49,11 @@
     <!-- /.container-fluid -->
 </section>
 <!-- /.content -->
+<div class="viewmodal" style="display: none;"></div>
+<!-- viewModal - Section -->
 
 <!-- Modal Detail -->
-<div class="modal fade" id="Detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="Detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -104,10 +75,10 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- Modal tambah-->
-<div class="modal fade" id="modaltambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="modaltambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -172,20 +143,41 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- Page specific script -->
 <script>
-    $(function() {
-        $("#datapengajuan").DataTable({
-            "scrollY": "300px",
-            "scrollX": true,
-            "scrollCollapse": true,
-            "paging": false,
-            "fixedColumns": {
-                leftColumns: 2
+    function datamahasiswa() {
+        $.ajax({
+            url: "<?= site_url('mahasiswa/ambildata/id') ?>",
+            dataType: "json",
+            success: function(response) {
+                $('.viewdata').html(response.data);
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
             }
-        })
+        });
+    }
+
+    $(document).ready(function() {
+        datamahasiswa();
+
+        $('.tomboltambah').click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: "<?= site_url('mahasiswa/formtambah') ?>",
+                dataType: "json",
+                success: function(response) {
+                    $('.viewmodal').html(response.data).show();
+
+                    $('#modaltambah').modal('show');
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                }
+            });
+        });
     });
 </script>
 <?= $this->endSection(); ?>
