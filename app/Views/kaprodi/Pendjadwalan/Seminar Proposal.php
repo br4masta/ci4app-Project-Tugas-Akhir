@@ -49,66 +49,42 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>2018420076
-                                    </td>
-                                    <td>Brian Aldy</td>
-                                    <td> Sistem Informasi Tugas Akhir</td>
-                                    <td>sucipto</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>
-                                        <a href='<?php echo site_url('kaprodi/detailseminar'); ?>'>
-                                            <button class="btn btn-xs btn-flat btn-info">
-                                                Detail
+                                <?php $i = 1; ?>
+                                <?php foreach ($jadwal as $c);
+                                foreach ($jadwal2 as $d) : ?>
+                                    <tr>
+                                        <td><?= $i++; ?></td>
+                                        <td><?= $d['nim_mhs']; ?>
+                                        </td>
+                                        <td><?= $d['nama_mhs']; ?></td>
+                                        <td> <?= $d['judul']; ?></td>
+                                        <td><?= $c['nama_dosen']; ?></td>
+                                        <td><?= $d['nama_dosen']; ?></td>
+                                        <td><?= $d['tanggal_sidang']; ?></td>
+                                        <td><?= $d['tempat_sidang']; ?></td>
+
+
+                                        <td>
+                                            <a href='<?php echo site_url('admin/detailseminar'); ?>'>
+                                                <button class="btn btn-xs btn-flat btn-info">
+                                                    Detail
+                                                </button>
+                                            </a>
+                                        </td>
+                                        <td class="center">
+                                            <a href=" <?php echo site_url('admin/editseminar'); ?> " />
+                                            <button class="btn btn-xs btn-flat btn-success btnbrg-edit">
+                                                <i class="fa fa-edit"></i>
                                             </button>
-                                        </a>
-                                    </td>
-                                    <td class="center">
-                                        <a href=" <?php echo site_url('kaprodi/editseminar'); ?> " />
-                                        <button class="btn btn-xs btn-flat btn-success btnbrg-edit">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        </a>
-                                        <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
-                                        <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>2018420003
-                                    </td>
-                                    <td>Aditya Hermanto</td>
-                                    <td> Sistem Informasi Pendukung keputusan kelayakan terbang</td>
-                                    <td>sucipto</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>
-                                        <a href='<?php echo site_url('kaprodi/detailseminar'); ?>'>
-                                            <button class="btn btn-xs btn-flat btn-info">
-                                                Detail
+                                            </a>
+                                            <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
+                                            <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
+                                                <i class="fa fa-times"></i>
                                             </button>
-                                        </a>
-                                    </td>
-                                    <td class="center">
-                                        <a href="" />
-                                        <button class="btn btn-xs btn-flat btn-success btnbrg-edit">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        </a>
-                                        <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
-                                        <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                        </a>
-                                    </td>
-                                </tr>
+                                            </a>
+                                        </td>
+                                    </tr><?php endforeach; ?>
+
 
                             </tbody>
 
