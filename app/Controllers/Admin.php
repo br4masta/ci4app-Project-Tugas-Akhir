@@ -41,14 +41,22 @@ class Admin extends BaseController
 
 	public function jadwalseminar()
 	{
+		// $db      = \Config\Database::connect();
+		// $builder = $db->table('penjadwalan_sidang');
+
 		$penjadwalanModel = new \App\Models\penjadwalanModel();
-		$penjadwalan = $penjadwalanModel->get_penjadwalan();
-		$penjadwalan2 = $penjadwalanModel->get_penjadwalan2();
+		$penjadwalan = $penjadwalanModel->get_jadwalseminar();
+		$penjadwalan2 = $penjadwalanModel->get_jadwalseminar2();
+
+		// $where = "acara_sidang='seminar proposal'";
+
+		// $seminar = $builder->where($where);
 
 		$data = [
 
 			'jadwal' => $penjadwalan,
 			'jadwal2' => $penjadwalan2,
+			// 'seminar' => $seminar
 
 
 		];
@@ -56,7 +64,21 @@ class Admin extends BaseController
 	}
 	public function jadwalskripsi()
 	{
-		return view('admin/pendjadwalan/Skripsi');
+		$penjadwalanModel = new \App\Models\penjadwalanModel();
+		$penjadwalan = $penjadwalanModel->get_jadwalsidangta();
+		$penjadwalan2 = $penjadwalanModel->get_jadwalsidangta2();
+
+
+
+		$data = [
+
+			'jadwal' => $penjadwalan,
+			'jadwal2' => $penjadwalan2,
+
+
+
+		];
+		return view('admin/pendjadwalan/Skripsi', $data);
 	}
 	public function Berita()
 	{
