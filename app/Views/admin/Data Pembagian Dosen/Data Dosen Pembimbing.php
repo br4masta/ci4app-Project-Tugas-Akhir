@@ -59,7 +59,7 @@
                                     <td><?= $c['tahun_akademik']; ?></td>
                                     <td><img src='http://localhost/CodeIgniter_SiMonTA-master/assets/mahasiswa/anonim.png' width='20%'></td>
                                     <td>
-                                        <a href='<?= site_url('admin/detaildatadosenpembimbing'); ?>'>
+                                        <a href='/admin/detaildatadosenpembimbing/<?= $c['id_dosenpembimbing']; ?>'>
                                             <button class="btn btn-xs btn-flat btn-info">
                                                 Detail
                                             </button>
