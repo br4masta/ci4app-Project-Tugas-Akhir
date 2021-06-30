@@ -2,8 +2,16 @@
 
 namespace App\Controllers;
 
+// use App\Models\pembimbingModel;
+
 class Admin extends BaseController
 {
+	// protected $pembimbingModel;
+	// public function __construct()
+	// {
+	// 	$this->pembimbingmodel = new pembimbingModel();
+	// }
+
 	public function index()
 	{
 		$pengajuanModel = new \App\Models\pengajuanModel();
@@ -41,22 +49,18 @@ class Admin extends BaseController
 
 	public function jadwalseminar()
 	{
-		// $db      = \Config\Database::connect();
-		// $builder = $db->table('penjadwalan_sidang');
+
 
 		$penjadwalanModel = new \App\Models\penjadwalanModel();
 		$penjadwalan = $penjadwalanModel->get_jadwalseminar();
 		$penjadwalan2 = $penjadwalanModel->get_jadwalseminar2();
 
-		// $where = "acara_sidang='seminar proposal'";
-
-		// $seminar = $builder->where($where);
 
 		$data = [
 
 			'jadwal' => $penjadwalan,
 			'jadwal2' => $penjadwalan2,
-			// 'seminar' => $seminar
+
 
 
 		];
@@ -158,9 +162,22 @@ class Admin extends BaseController
 		return view('admin/Data pembagian dosen/Data Dosen Pembimbing', $data);
 	}
 
-	public function detaildatadosenpembimbing()
+	public function detaildatadosenpembimbing($data)
 	{
-		return view('admin/Data pembagian dosen/Detail Data Dosen Pembimbing');
+		$dosen = new \App\Models\admin_bimbinganmodel();
+		// $dosenpembimbing = $dosen->get_bimbingan_pembimbing1($data);
+		// $dosenpembimbing2 = $dosen->get_bimbingan_pembimbing2($data);
+		// $pembimbing = $dosenpembimbing->where(['id_dosenpembimbing' => $data])->first();
+		// dd($dosenpembimbing, $dosenpembimbing2);
+
+		$data = [
+
+			'data1' => $dosen->get_bimbingan_pembimbing1($data),
+			'data2' => $dosen->get_bimbingan_pembimbing2($data),
+
+
+		];
+		return view('admin/Data pembagian dosen/detail Data dosen pembimbing', $data);
 	}
 
 	public function Dataakademik()

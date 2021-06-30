@@ -8,7 +8,7 @@ class dosenModel extends Model
 {
     protected $table = 'dosen';
     protected $primaryKey = 'id_dosen';
-    protected $allowedFields = ['nidn_dosen','nama_dosen','jeniskelamin','alamat','email','notelpon','status','semester'];
+    protected $allowedFields = ['nidn_dosen', 'nama_dosen', 'jeniskelamin', 'alamat', 'email', 'notelpon', 'status', 'semester'];
 
 
     public function get_dosen()
@@ -19,12 +19,21 @@ class dosenModel extends Model
             ->get()->getResultArray();
     }
 
-    public function get_pembimbing()
+    public function get_pembimbing($data = false)
     {
+        if ($data == false) {
+            return $this->db->table('dosen_pembimbing')
+                ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_pembimbing.id_dosenta')
+                ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
+                ->join('data_akademik', 'data_akademik.id_dataakademik = dosen_tugasakhir.id_dataakademik')
+                ->get()->getResultArray();
+        }
+
         return $this->db->table('dosen_pembimbing')
             ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_pembimbing.id_dosenta')
             ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
             ->join('data_akademik', 'data_akademik.id_dataakademik = dosen_tugasakhir.id_dataakademik')
+            ->where(['id_dosenpembimbing' => $data])
             ->get()->getResultArray();
     }
 

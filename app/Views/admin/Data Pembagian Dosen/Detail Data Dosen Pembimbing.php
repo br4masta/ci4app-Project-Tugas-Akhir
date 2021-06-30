@@ -27,18 +27,15 @@
 
         <div class="d-sm-flex justify-content-between align-items-center mb-4"><a class="btn btn-primary btn-sm d-none d-sm-inline-block d-lg-flex ml-auto" role="button" href="login.html" style="padding: 4px;"><strong>log out</strong></a></div>
 
-        <select class="form-control" name="katberita">
-            <option value="0" selected>Tory Ariyanto</option>
-            <option value='1'>Sucipto</option>
 
-            <!-- -->
+        <!-- -->
         </select>
 
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Daftar Mahasiswa</h3>
+                        <h3 class="card-title">Daftar Mahasiswa yang di bimbing</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -49,21 +46,35 @@
                                     <th>Nim</th>
                                     <th>Nama</th>
                                     <th>Judul</th>
-                                    <th>Ploting Semester</th>
+
 
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>2018420076
-                                    </td>
-                                    <td>Brian Aldy Bramasta</td>
-                                    <td> Sistem Informasi Tugas Akhir </td>
-                                    <td>2018/2019</td>
+                            <tbody><?php $i = 1; ?>
+                                <?php foreach ($data1 as $c) : ?>
+                                    <tr>
+                                        <td><?= $i++; ?></td>
+                                        <td><?= $c['nim_mhs']; ?>
+                                        </td>
+                                        <td><?= $c['nama_mhs']; ?></td>
+                                        <td> <?= $c['judul']; ?> </td>
 
 
-                                </tr>
+
+                                    </tr>
+                                <?php endforeach; ?>
+                                <?php foreach ($data2 as $d) : ?>
+                                    <tr>
+                                        <td><?= $i++; ?></td>
+                                        <td><?= $d['nim_mhs']; ?>
+                                        </td>
+                                        <td><?= $d['nama_mhs']; ?></td>
+                                        <td> <?= $d['judul']; ?> </td>
+
+
+
+                                    </tr>
+                                <?php endforeach; ?>
 
                             </tbody>
 
