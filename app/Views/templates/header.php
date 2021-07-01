@@ -16,3 +16,6 @@
 <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 <!-- Theme style -->
 <link rel="stylesheet" href="<?= base_url() ?>/assets/style/css/adminlte.min.css">
+<!-- sweet alert -->
+<link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/node_modules/dist/sweetalert2.min.css">
+<script src="<?= base_url() ?>/assets/plugins/node_modules/dist/sweetalert2.all.min.js"></script>

@@ -7,8 +7,8 @@
             <th>Judul</th>
             <th>Dosen Pembimbing I</th>
             <th>Dosen Pembimbing II</th>
-            <th>Status</th>
-            <th>Detail</th>
+            <th>File PDF Judul</th>
+            <th>ACC Kaprodi</th>
             <th>aksi</th>
         </tr>
     </thead>
@@ -21,8 +21,8 @@
                 <td><?= $row['nim_mhs']; ?></td>
                 <td><?= $row['nama_mhs']; ?></td>
                 <td><?= $row['judul']; ?></td>
-                <td><?= $row['nama_dosen']; ?></td>
-                <td><?= $row['nama_dosen']; ?></td>
+                <td><?= $row['dos1_nama']; ?></td>
+                <td><?= $row['dos2_nama']; ?></td>
                 <td style="text-align: center; vertical-align: middle;">
                     <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
                 </td>
@@ -36,7 +36,7 @@
                     endif ?>
                 </td>
                 <td style="text-align: center; vertical-align: middle;">
-                    <span class="badge badge-primary d-inline-flex p-2" data-toggle="modal" data-target="#Detail">Detail</span>
+                <button class="badge badge-primary d-inline-flex p-2" data-toggle="modal" data-target="#produknew<?php echo $row['id_pengajuan']; ?>"><span>quick view</span></button>
                 </td>
             </tr>
         <?php endforeach ?>
@@ -44,7 +44,8 @@
 </table>
 
 <!-- Modal Detail -->
-<div class="modal fade" id="Detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<?php foreach ($tampildata as $row) : ?>
+    <div class="modal fade" id="produknew<?php echo $row['id_pengajuan']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -55,13 +56,12 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">                
-                    <?php
-                    foreach ($tampildata as $row) : ?>
+
                     <div class="form-group">
                     <label for="#" class="col-form-label">Deskripsi Keterangan</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="7"><?= $row['deskripsi']; ?></textarea>
                     </div>
-                    <?php endforeach ?>
+                   
                 </div>
             </div>
             <div class="modal-footer">
@@ -70,7 +70,7 @@
         </div>
     </div>
 </div>
-
+<?php endforeach ?>
 
 <script>
     $(document).ready(function() {

@@ -14,6 +14,9 @@ class Mahasiswa extends BaseController
 
 	public function __construct()
 	{
+		$session = session();
+		$this->id = $session->get('user_id');
+		$this->validasi = \Config\Services::validation();
 		$this->pengajuan_mhs = new Model_pengajuanjudulmhs();
 		$this->data_mhs = new Model_mahasiswa();
 	}
@@ -23,20 +26,13 @@ class Mahasiswa extends BaseController
 	{
 		return view('mahasiswa/profil/profil');
 	}
-	public function showprofil()
-	{
-		// $session = session();
-		// echo "Welcome back, ".$session->get('user_id');
-		return view('mahasiswa/profil/profil');
-	}
-	// ---------------------------------------
+	//------------------BAGIAN PENGAJUAN JUDUL----------------------- 
 	public function pengajuan_judul()
 	{
-		// $session = session();
-		// echo "Welcome back, ".$session->get('username');
 		return view('mahasiswa/pengajuan_judul/pengajuanjudul');
 	}
-	public function ambildata()
+
+	public function ambildatapengajuan()
 	{
 		$session = session();
 		$id = $session->get('user_id');
@@ -53,7 +49,72 @@ class Mahasiswa extends BaseController
 			exit('Maaf tidak dapat diproses');
 		}
 	}
-	// ---------------------------------------
+	
+	public function formtambahpengajuan()
+	{
+		if ($this->request->isAJAX()) {
+			$msg = [
+				'data' => view('mahasiswa/pengajuan_judul/v_data/modaltambah')
+			];
+
+			echo json_encode($msg);
+		} else {
+			exit('Maaf tidak dapat diproses');
+		}
+	}
+
+	public function simpandatapengajuan()
+	{
+		if ($this->request->isAJAX()) {
+
+			$validation = \Config\Services::validation();
+
+			$valid = $this->validate([
+				'judul' => [
+					'label' => 'Judul Mahasiswa',
+					'rules' => 'required|is_unique[pengajuan_judul.judul]',
+					'error' => [
+						'required' =>  '{field} tidak boleh kosong',
+					]
+				],
+				'deskripsi' => [
+					'label' => 'Deskripsi Mahasiswa',
+					'rules' => 'required|is_unique[pengajuan_judul.deskripsi]',
+					'error' => [
+						'required' =>  '{field} tidak boleh kosong',
+					]
+				]
+			]);
+
+			if (!$valid) {
+				$msg = [
+					'error' => [
+						'judul' => $validation->getError('judul'),
+						'deskripsi' => $validation->getError('deskripsi')
+					]
+				];
+			} else {
+				$data = [
+					'id_mhs' => $this->request->getVar('id_mhs'),
+					'judul' => $this->request->getVar('judul'),
+					'deskripsi' => $this->request->getVar('deskripsi'),
+					'dosenpembimbing1' => $this->request->getVar('dospem1'),
+					'dosenpembimbing2' => $this->request->getVar('dospem2'),
+				];
+
+				$this->pengajuan_mhs->insert_pengajuan($data);
+
+				$msg = [
+					'sukses' => 'Data mahasiswa berhasil disimpan'
+				];
+			}
+			echo json_encode($msg);
+		} else {
+			exit('Maaf tidak dapat diproses');
+		}
+	}
+	// --------------------END BAGIAN PENGAJUAN JUDUL---------------------
+
 	public function bimbingan_proposal()
 	{
 		return view('mahasiswa/bimbingan_proposal/bimbinganproposal');
@@ -70,13 +131,20 @@ class Mahasiswa extends BaseController
 	{
 		return view('mahasiswa/sempro/sempro');
 	}
+
+	//------------------BAGIAN DATA PROFIL----------------------- 
+	public function showprofil()
+	{
+		return view('mahasiswa/profil/profil');
+	}
 	public function profil()
 	{
-		$session = session();
-		$id = $session->get('user_id');
+
 		if ($this->request->isAJAX()) {
 			$data = [
-				'tampildata' => $this->data_mhs->get_mahasiswa($id)
+				'tampildatadosenmhs' => $this->data_mhs->get_profil_datadosenMhs($this->id),
+				'tampildatamhs' => $this->data_mhs->get_profil_dataMhs($this->id)
+
 			];
 			$msg = [
 				'data' => view('mahasiswa/profil/v_data/data_profil', $data)
@@ -87,6 +155,7 @@ class Mahasiswa extends BaseController
 			exit('Maaf tidak dapat diproses');
 		}
 	}
+	//-----------------END BAGIAN DATA PROFIL------------------------ 
 	public function history_bimbingan()
 	{
 		return view('mahasiswa/bimbingan_proposal/history_bimbingan');
