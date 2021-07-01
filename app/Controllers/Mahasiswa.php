@@ -26,7 +26,7 @@ class Mahasiswa extends BaseController
 	{
 		return view('mahasiswa/profil/profil');
 	}
-	//------------------BAGIAN PENGAJUAN JUDUL----------------------- 
+	//------------------BAGIAN PENGAJUAN JUDUL OKE----------------------- 
 	public function pengajuan_judul()
 	{
 		return view('mahasiswa/pengajuan_judul/pengajuanjudul');
