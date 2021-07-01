@@ -33,7 +33,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="example2" class="table table-bordered table-hover">
+                        <table id="datapengajuan" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -43,8 +43,8 @@
                                     <th>Dosen Penguji I</th>
                                     <th>Dosen Penguji II</th>
                                     <th>Tanggal</th>
-
                                     <th>Tempat</th>
+                                    <th>acara</th>
                                     <th>detail</th>
                                     <th>aksi</th>
                                 </tr>
@@ -63,6 +63,7 @@
                                         <td><?= $d['nama_dosen']; ?></td>
                                         <td><?= $d['tanggal_sidang']; ?></td>
                                         <td><?= $d['tempat_sidang']; ?></td>
+                                        <td><?= $d['acara_sidang']; ?></td>
 
 
                                         <td>
@@ -108,21 +109,15 @@
 <!-- Page specific script -->
 <script>
     $(function() {
-        $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": true,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
+        $("#datapengajuan").DataTable({
+            "scrollY": "300px",
+            "scrollX": true,
+            "scrollCollapse": true,
+            "paging": false,
+            "fixedColumns": {
+                leftColumns: 2
+            }
+        })
     });
 </script>
 <!-- /.content -->
