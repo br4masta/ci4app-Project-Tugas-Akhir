@@ -49,7 +49,7 @@ class Mahasiswa extends BaseController
 			exit('Maaf tidak dapat diproses');
 		}
 	}
-	
+
 	public function formtambahpengajuan()
 	{
 		if ($this->request->isAJAX()) {
@@ -67,21 +67,30 @@ class Mahasiswa extends BaseController
 	{
 		if ($this->request->isAJAX()) {
 
+			$nama_judul = $this->request->getVar('judul');
 			$validation = \Config\Services::validation();
 
 			$valid = $this->validate([
 				'judul' => [
 					'label' => 'Judul Mahasiswa',
 					'rules' => 'required|is_unique[pengajuan_judul.judul]',
-					'error' => [
+					'errors' => [
 						'required' =>  '{field} tidak boleh kosong',
 					]
 				],
 				'deskripsi' => [
 					'label' => 'Deskripsi Mahasiswa',
 					'rules' => 'required|is_unique[pengajuan_judul.deskripsi]',
-					'error' => [
+					'errors' => [
 						'required' =>  '{field} tidak boleh kosong',
+					]
+				],
+				'berkas' => [
+					'label' => 'Berkas Judul Mahasiswa',
+					'rules' => 'uploaded[berkas]|ext_in[berkas,pdf]|max_size[berkas,2048]',
+					'errors' => [
+						'uploaded' => 'Harus Ada File yang diupload',
+						'max_size' => 'Ukuran File Maksimal 2 MB'
 					]
 				]
 			]);
@@ -89,19 +98,24 @@ class Mahasiswa extends BaseController
 			if (!$valid) {
 				$msg = [
 					'error' => [
-						'judul' => $validation->getError('judul'),
-						'deskripsi' => $validation->getError('deskripsi')
+						'judul'     => $validation->getError('judul'),
+						'deskripsi' => $validation->getError('deskripsi'),
+						'berkas'    => $validation->getError('berkas')
 					]
 				];
-			} else {
+			} else {	
+				$dataBerkas = $this->request->getFile('berkas');
+				$fileName = $dataBerkas->getRandomName();			
 				$data = [
 					'id_mhs' => $this->request->getVar('id_mhs'),
 					'judul' => $this->request->getVar('judul'),
 					'deskripsi' => $this->request->getVar('deskripsi'),
 					'dosenpembimbing1' => $this->request->getVar('dospem1'),
 					'dosenpembimbing2' => $this->request->getVar('dospem2'),
+					'deskripsi_judul' => $fileName,
 				];
-
+				
+				$dataBerkas->move('assets/img/File',$nama_judul.'.'.$dataBerkas->getExtension());
 				$this->pengajuan_mhs->insert_pengajuan($data);
 
 				$msg = [

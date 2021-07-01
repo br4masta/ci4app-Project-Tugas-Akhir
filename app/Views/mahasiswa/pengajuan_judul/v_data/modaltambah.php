@@ -97,11 +97,8 @@
                     <div class="col-sm-6">
                         <div class="input-group">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="exampleInputFile">
-                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                            </div>
-                            <div class="input-group-append">
-                                <span class="input-group-text">Upload</span>
+                                <input type="file" class="form-control" id="berkas" name="berkas">
+                                <div class="invalid-feedback errorBerkas">
                             </div>
                         </div>
                     </div>
@@ -118,12 +115,20 @@
 </div>
 <script>
     $(document).ready(function() {
-        $(".formmahasiswa").submit(function(e) {
+        $(".btnsimpan").click(function(e) {
             e.preventDefault();
+
+            let form = $('.formmahasiswa')[0];
+
+            let data = new FormData(form);
             $.ajax({
                 type: "post",
-                url: $(this).attr('action'),
-                data: $(this).serialize(),
+                enctype: 'multipart/form-data',
+                processData: false,
+                contentType: false,
+                cache: false,
+                url: "<?= site_url('mahasiswa/simpandatapengajuan'); ?>",
+                data: data,
                 dataType: "json",
                 beforeSend: function() {
                     $('.btnsimpan').attr('disable', 'disabled');
@@ -149,6 +154,14 @@
                         } else {
                             $('#deskripsi').removeClass('is-invalid');
                             $('.errorDeskripsi').html('');
+                        }
+
+                        if (response.error.berkas) {
+                            $('#berkas').addClass('is-invalid');
+                            $('.errorBerkas').html(response.error.berkas);
+                        } else {
+                            $('#berkas').removeClass('is-invalid');
+                            $('.errorBerkas').html('');
                         }
                     } else {
                         Swal.fire({
