@@ -79,7 +79,7 @@
                                         <td><?= $d['nama_mhs']; ?></td>
                                         <td> <?= $d['judul']; ?></td>
                                         <td><?= $d['nama_dosen']; ?></td>
-                                        <td><?= $d['acara_sidang']; ?></td>
+                                        <td><?= $d['acara_sidang_ta']; ?></td>
 
                                         <td>
                                             <a href='<?php echo site_url('admin/detailberita'); ?>'>

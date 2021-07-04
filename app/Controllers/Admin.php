@@ -28,7 +28,17 @@ class Admin extends BaseController
 
 	public function Profil()
 	{
-		return view('admin/profil/profil');
+		$profil = new \App\Models\admin_profilmodel();
+		$adminprofil = $profil->get_profil();
+		// dd($adminprofil);
+		$data = [
+
+			'data_profil' => $adminprofil
+
+
+
+		];
+		return view('admin/profil/profil', $data);
 	}
 
 	public function pengajuan()
