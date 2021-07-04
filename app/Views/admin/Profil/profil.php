@@ -44,13 +44,17 @@
                     <!-- Table 2 -->
                     <table class="table table-striped table-borderless">
                         <tbody>
+
                             <tr>
-                                <th scope="row">Nama Lengkap</th>
-                                <td>Sucipto</td>
+                                <?php foreach ($data_profil as $c) : ?><th scope="row">Nama Lengkap</th>
+                                    <td><?= $c['nama_dosen']; ?></td><?php endforeach; ?>
                             </tr>
                             <tr>
-                                <th scope="row">NIK</th>
-                                <td>1234567890</td>
+
+                                <?php foreach ($data_profil as $c) : ?>
+                                    <th scope="row">nidn</th>
+                                    <td><?= $c['nidn_dosen']; ?></td>
+                                <?php endforeach; ?>
                             </tr>
 
                             <tr>

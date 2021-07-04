@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2021 at 03:35 AM
+-- Generation Time: Jul 04, 2021 at 02:35 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -101,7 +101,6 @@ INSERT INTO `data_akademik` (`id_dataakademik`, `tahun_akademik`, `tanggal_mulai
 
 CREATE TABLE `dosen` (
   `id_dosen` int(11) NOT NULL,
-  `id_user` int(11) DEFAULT NULL,
   `nidn_dosen` varchar(40) DEFAULT NULL,
   `nama_dosen` varchar(40) DEFAULT NULL,
   `foto_dosen` varchar(50) NOT NULL
@@ -111,10 +110,10 @@ CREATE TABLE `dosen` (
 -- Dumping data for table `dosen`
 --
 
-INSERT INTO `dosen` (`id_dosen`, `id_user`, `nidn_dosen`, `nama_dosen`, `foto_dosen`) VALUES
-(1, 2, 'dosen', 'dosen', 'dosen.jpg'),
-(2, 10, '520007689', 'ir.sucipto s.it', 'sucipto.jpg'),
-(3, 4, '212', 'pak edy', 'pak edy.jpg');
+INSERT INTO `dosen` (`id_dosen`, `nidn_dosen`, `nama_dosen`, `foto_dosen`) VALUES
+(1, 'dosen', 'dosen', 'dosen.jpg'),
+(2, '520007689', 'ir.sucipto s.it', 'sucipto.jpg'),
+(3, '212', 'pak edy', 'pak edy.jpg');
 
 -- --------------------------------------------------------
 
@@ -177,7 +176,30 @@ CREATE TABLE `dosen_tugasakhir` (
 INSERT INTO `dosen_tugasakhir` (`id_dosenta`, `id_dosen`, `id_dataakademik`) VALUES
 (1, 2, 1),
 (2, 1, 1),
-(3, 3, 1);
+(3, 3, 1),
+(4, 2, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `leveling_dosen`
+--
+
+CREATE TABLE `leveling_dosen` (
+  `id_level` int(4) NOT NULL,
+  `id_dosenta` int(4) DEFAULT NULL,
+  `id_user` int(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `leveling_dosen`
+--
+
+INSERT INTO `leveling_dosen` (`id_level`, `id_dosenta`, `id_user`) VALUES
+(1, 3, 5),
+(2, 2, 4),
+(3, 1, 3),
+(4, 1, 11);
 
 -- --------------------------------------------------------
 
@@ -194,20 +216,21 @@ CREATE TABLE `mahasiswa` (
   `tplhr_mhs` varchar(255) DEFAULT NULL,
   `jk_mhs` varchar(255) DEFAULT NULL,
   `email_mhs` varchar(255) DEFAULT NULL,
-  `handphone` varchar(255) DEFAULT NULL
+  `handphone` varchar(255) DEFAULT NULL,
+  `id_dataakademik` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `mahasiswa`
 --
 
-INSERT INTO `mahasiswa` (`id_mhs`, `id_user`, `nim_mhs`, `nama_mhs`, `tgllhr_mhs`, `tplhr_mhs`, `jk_mhs`, `email_mhs`, `handphone`) VALUES
-(1, 1, 2018420017, ' Azzasafah', '2001-08-31', 'Jombang', 'Laki-laki', 'azza1@gmail.com', '0823342034324'),
-(2, 9, 2018420018, 'Hana', '2000-04-04', 'Jombang', 'Perempuan', 'Hana@gmail.com', '0823347868'),
-(3, NULL, 2018420019, 'olivia', '2021-05-04', 'Surabaya', 'Perempuan', 'olivia@gmail.com', '0823342081414'),
-(4, NULL, 2018420020, 'mori', '2001-08-31', 'Jombang', 'Perempuan', 'mori@gmail.com', '0823342081414'),
-(6, NULL, 2018420089, 'Ouka Otori', '2021-05-22', 'osaka', 'Perempuan', 'Ouka@gmail.com', '084204824'),
-(8, NULL, 2018918918, 'asd', '2021-05-26', 'asd', 'Laki-laki', 'asd@gmail.com', 'as');
+INSERT INTO `mahasiswa` (`id_mhs`, `id_user`, `nim_mhs`, `nama_mhs`, `tgllhr_mhs`, `tplhr_mhs`, `jk_mhs`, `email_mhs`, `handphone`, `id_dataakademik`) VALUES
+(1, 1, 2018420017, ' Azzasafah', '2001-08-31', 'Jombang', 'Laki-laki', 'azza1@gmail.com', '0823342034324', 1),
+(2, 9, 2018420018, 'Hana', '2000-04-04', 'Jombang', 'Perempuan', 'Hana@gmail.com', '0823347868', 1),
+(3, NULL, 2018420019, 'olivia', '2021-05-04', 'Surabaya', 'Perempuan', 'olivia@gmail.com', '0823342081414', 1),
+(4, NULL, 2018420020, 'mori', '2001-08-31', 'Jombang', 'Perempuan', 'mori@gmail.com', '0823342081414', 1),
+(6, NULL, 2018420089, 'Ouka Otori', '2021-05-22', 'osaka', 'Perempuan', 'Ouka@gmail.com', '084204824', 1),
+(8, NULL, 2018918918, 'asd', '2021-05-26', 'asd', 'Laki-laki', 'asd@gmail.com', 'as', 1);
 
 -- --------------------------------------------------------
 
@@ -351,7 +374,8 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `level`) VALUES
 (5, 'admin', 'admin', '1'),
 (6, 'aku', 'aku', '6'),
 (9, 'mahasiswa', 'mahasiswa', '3'),
-(10, 'sucipto@gmail.com', 'sucipto', '5');
+(10, 'sucipto@gmail.com', 'sucipto', '5'),
+(11, 'admin2', 'admin2', '1');
 
 --
 -- Indexes for dumped tables
@@ -381,8 +405,7 @@ ALTER TABLE `data_akademik`
 -- Indexes for table `dosen`
 --
 ALTER TABLE `dosen`
-  ADD PRIMARY KEY (`id_dosen`),
-  ADD KEY `id_user` (`id_user`);
+  ADD PRIMARY KEY (`id_dosen`);
 
 --
 -- Indexes for table `dosen_pembimbing`
@@ -407,11 +430,21 @@ ALTER TABLE `dosen_tugasakhir`
   ADD KEY `id_dataakademik` (`id_dataakademik`);
 
 --
+-- Indexes for table `leveling_dosen`
+--
+ALTER TABLE `leveling_dosen`
+  ADD PRIMARY KEY (`id_level`),
+  ADD KEY `id_dosenta` (`id_dosenta`),
+  ADD KEY `is_user` (`id_user`),
+  ADD KEY `id_user` (`id_user`);
+
+--
 -- Indexes for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
   ADD PRIMARY KEY (`id_mhs`),
-  ADD KEY `id_user` (`id_user`);
+  ADD KEY `id_user` (`id_user`),
+  ADD KEY `id_dataakademik` (`id_dataakademik`);
 
 --
 -- Indexes for table `pengajuan_judul`
@@ -508,7 +541,13 @@ ALTER TABLE `dosen_penguji`
 -- AUTO_INCREMENT for table `dosen_tugasakhir`
 --
 ALTER TABLE `dosen_tugasakhir`
-  MODIFY `id_dosenta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_dosenta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `leveling_dosen`
+--
+ALTER TABLE `leveling_dosen`
+  MODIFY `id_level` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `mahasiswa`
@@ -550,7 +589,7 @@ ALTER TABLE `sidang_tugasakhir`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
@@ -567,12 +606,6 @@ ALTER TABLE `bimbingan`
 --
 ALTER TABLE `bimbingan_ta`
   ADD CONSTRAINT `bimbingan_ta_ibfk_1` FOREIGN KEY (`id_seminar`) REFERENCES `seminar_proposal` (`id_seminar`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `dosen`
---
-ALTER TABLE `dosen`
-  ADD CONSTRAINT `dosen_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 
 --
 -- Constraints for table `dosen_pembimbing`
@@ -594,10 +627,18 @@ ALTER TABLE `dosen_tugasakhir`
   ADD CONSTRAINT `dosen_tugasakhir_ibfk_2` FOREIGN KEY (`id_dataakademik`) REFERENCES `data_akademik` (`id_dataakademik`);
 
 --
+-- Constraints for table `leveling_dosen`
+--
+ALTER TABLE `leveling_dosen`
+  ADD CONSTRAINT `leveling_dosen_ibfk_1` FOREIGN KEY (`id_dosenta`) REFERENCES `dosen_tugasakhir` (`id_dosenta`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `leveling_dosen_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  ADD CONSTRAINT `mahasiswa_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+  ADD CONSTRAINT `mahasiswa_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`),
+  ADD CONSTRAINT `mahasiswa_ibfk_2` FOREIGN KEY (`id_dataakademik`) REFERENCES `data_akademik` (`id_dataakademik`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `pengajuan_judul`

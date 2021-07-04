@@ -13,9 +13,10 @@ class dosenModel extends Model
 
     public function get_dosen()
     {
-        return $this->db->table('dosen')
-            ->join('user', 'user.id_user = dosen.id_user')
-
+        return $this->db->table('leveling_dosen')
+            ->join('user', 'user.id_user = leveling_dosen.id_user')
+            ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = leveling_dosen.id_dosenta')
+            ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
             ->get()->getResultArray();
     }
 
