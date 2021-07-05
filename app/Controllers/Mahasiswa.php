@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Model_bimbinganmhs;
 use App\Models\Model_mahasiswa;
 use App\Models\Model_pengajuanjudulmhs;
 
@@ -19,6 +20,7 @@ class Mahasiswa extends BaseController
 		$this->validasi = \Config\Services::validation();
 		$this->pengajuan_mhs = new Model_pengajuanjudulmhs();
 		$this->data_mhs = new Model_mahasiswa();
+		$this->bimbingan_mhs = new Model_bimbinganmhs();
 	}
 
 
@@ -129,6 +131,107 @@ class Mahasiswa extends BaseController
 	}
 	// --------------------END BAGIAN PENGAJUAN JUDUL---------------------
 
+	// --------------------BAGIAN DATA BIMBINGAN-------------------------
+	public function ambildatabimbingan()
+	{
+		if ($this->request->isAJAX()) {
+			$data = [
+				'tampildata' => $this->bimbingan_mhs->get_bimbinganmhs($this->id)
+			];
+			$msg = [
+				'data' => view('mahasiswa/bimbingan_proposal/v_data/data_bimbinganmhs', $data)
+			];
+			echo json_encode($msg);
+		} else {
+			exit('Maaf tidak dapat diproses');
+		}
+	}
+
+	public function detaildatabimbingan($id)
+	{
+		$data1 = [
+			'tampildatabimbingan' => $this->bimbingan_mhs->get_idbimbingan($id),
+			'id_ok' => $id
+		];
+
+		return view('mahasiswa/bimbingan_proposal/v_data/history_bimbingan', $data1);
+	}
+
+	public function formtambahbimbingan($id)
+	{
+		if ($this->request->isAJAX()) {
+			$msg = [
+				'data' => view('mahasiswa/bimbingan_proposal/v_data/modaltambah',['id'=>$id])
+			];
+
+			echo json_encode($msg);
+		} else {
+			exit('Maaf tidak dapat diproses');
+		}
+	}
+	public function simpandatabimbingan()
+	{
+		if ($this->request->isAJAX()) {
+
+			$nama_bimbingan = $this->request->getVar('judul');
+			$validation = \Config\Services::validation();
+
+			$valid = $this->validate([
+				'judul' => [
+					'label' => 'Judul Mahasiswa',
+					'rules' => 'required|is_unique[bimbingan.judul_bimbingan]',
+					'errors' => [
+						'required' =>  '{field} tidak boleh kosong',
+					]
+				],
+				'deskripsi' => [
+					'label' => 'Deskripsi Mahasiswa',
+					'rules' => 'required|is_unique[bimbingan.deskripsi_bimbingan]',
+					'errors' => [
+						'required' =>  '{field} tidak boleh kosong',
+					]
+				],
+				'berkas' => [
+					'label' => 'Berkas Judul Mahasiswa',
+					'rules' => 'uploaded[berkas]|ext_in[berkas,pdf]|max_size[berkas,2048]',
+					'errors' => [
+						'uploaded' => 'Harus Ada File yang diupload',
+						'max_size' => 'Ukuran File Maksimal 2 MB'
+					]
+				]
+			]);
+
+			if (!$valid) {
+				$msg = [
+					'error' => [
+						'judul'     => $validation->getError('judul'),
+						'deskripsi' => $validation->getError('deskripsi'),
+						'berkas'    => $validation->getError('berkas')
+					]
+				];
+			} else {	
+				$dataBerkas = $this->request->getFile('berkas');
+				$fileName = $dataBerkas->getRandomName();			
+				$data = [
+					'id_pengajuan' => $this->request->getVar('id_pengajuan'),
+					'deskripsi_bimbingan' => $this->request->getVar('deskripsi'),
+					'judul_bimbingan' => $this->request->getVar('judul'),
+					'berkas_bimbingan' => $fileName,
+				];
+				
+				$dataBerkas->move('assets/img/File',$nama_bimbingan.'.'.$dataBerkas->getExtension());
+				$this->bimbingan_mhs->insert_bimbingan($data);
+
+				$msg = [
+					'sukses' => 'Data mahasiswa berhasil disimpan'
+				];
+			}
+			echo json_encode($msg);
+		} else {
+			exit('Maaf tidak dapat diproses');
+		}
+	}
+//--------------------------------------------------------------------------------------------
 	public function bimbingan_proposal()
 	{
 		return view('mahasiswa/bimbingan_proposal/bimbinganproposal');
