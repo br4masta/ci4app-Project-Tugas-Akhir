@@ -4,19 +4,33 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class dosenModel extends Model
+class admin_dosenmodel extends Model
 {
-    protected $table = 'dosen';
-    protected $primaryKey = 'id_dosen';
-    protected $allowedFields = ['nidn_dosen', 'nama_dosen', 'jeniskelamin', 'alamat', 'email', 'notelpon', 'status', 'semester'];
+    // protected $table = 'dosen';
+    // protected $primaryKey = 'id_dosen';
+    // protected $allowedFields = ['nidn_dosen', 'nama_dosen', 'foto_dosen', 'status', 'semester'];
 
-
-    public function get_dosen()
+    public function __construct()
+    {
+        parent::__construct();
+        $db = \Config\Database::connect();
+        $this->dosen = $this->db->table('dosen');
+        $this->user = $this->db->table('user');
+        $this->leveling_dosen = $this->db->table('leveling_dosen');
+        $this->dosen_tugasakhir = $this->db->table('dosen_tugasakhir');
+    }
+    public function get_detaildosen()
     {
         return $this->db->table('leveling_dosen')
             ->join('user', 'user.id_user = leveling_dosen.id_user')
             ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = leveling_dosen.id_dosenta')
             ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
+            ->get()->getResultArray();
+    }
+    public function get_dosen()
+    {
+        return $this->db->table('dosen')
+
             ->get()->getResultArray();
     }
 
@@ -55,5 +69,10 @@ class dosenModel extends Model
             ->join('dosen_pembimbing', 'dosen_pembimbing.id_dosenta = dosen_tugasakhir.id_dosenta')
             ->join('dosen_penguji', 'dosen_penguji.id_dosenta = dosen_tugasakhir.id_dosenta')
             ->get()->getResultArray();
+    }
+
+    public function insert_pengajuan()
+    {
+        return $this->table_pengajuan->insert();
     }
 }

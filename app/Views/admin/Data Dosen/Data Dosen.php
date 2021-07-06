@@ -48,8 +48,9 @@
                                     <th>No</th>
                                     <th>NIDN</th>
                                     <th>Nama</th>
-                                    <th>Username</th>
+
                                     <th>foto</th>
+                                    <th>detail</th>
                                     <th>aksi</th>
                                 </tr>
                             </thead>
@@ -62,8 +63,15 @@
 
                                         </td>
                                         <td><?= $d['nama_dosen']; ?></td>
-                                        <td><?= $d['username']; ?></td>
+
                                         <td><img src="<?= base_url('assets/img/dosen 1.jpg');  ?>" alt="" width="70"></td>
+                                        <td>
+                                            <a>
+                                                <button class="btn btn-xs btn-flat btn-info " data-toggle="modal" data-target="#Detail">
+                                                    Detail
+                                                </button>
+                                            </a>
+                                        </td>
                                         <td class="center">
                                             <a href="<?= site_url('admin/editdatadosen'); ?>" />
                                             <button class="btn btn-xs btn-flat btn-success btnbrg-edit">

@@ -44,7 +44,6 @@
                     <!-- Table 2 -->
                     <table class="table table-striped table-borderless">
                         <tbody>
-<<<<<<< HEAD
 
                             <tr>
                                 <?php foreach ($data_profil as $c) : ?><th scope="row">Nama Lengkap</th>
@@ -54,14 +53,6 @@
 
                                 <?php foreach ($data_profil as $c) : ?>
                                     <th scope="row">nidn</th>
-=======
-                            <tr><?php foreach ($data_profil as $c) : ?>
-                                    <th scope="row">Nama Lengkap</th>
-                                    <td><?= $c['nama_dosen']; ?></td><?php endforeach; ?>
-                            </tr>
-                            <tr><?php foreach ($data_profil as $c) : ?>
-                                    <th scope="row">NIDN</th>
->>>>>>> 3adf5c0a6001d2b452dcd80227518304077ca312
                                     <td><?= $c['nidn_dosen']; ?></td>
                                 <?php endforeach; ?>
                             </tr>

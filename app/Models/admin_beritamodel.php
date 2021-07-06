@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class beritaModel extends Model
+class admin_beritamodel extends Model
 {
     public function get_beritaseminar()
     {

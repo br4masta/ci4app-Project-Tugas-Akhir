@@ -21,12 +21,13 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <form role="form" class="form-horizontal" enctype="multipart/form-data" action="" method="POST">
+            <form action="/admin/savedatadosen" method="POST">
                 <input type="hidden" id="pgw_id" name="pgw_id" value="1" />
+                <?= csrf_field(); ?>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">NIDN</label>
                     <div class="col-sm-8">
-                        <input name="username" class="form-control" id="username" type="text" value="" />
+                        <input name="nidn" class="form-control" id="nidn" type="text" value="" autofocus />
                         <span></span>
                     </div>
                 </div>
@@ -57,13 +58,11 @@
                     <div class="col-sm-8">
                         <select class="form-control" name="jabatan">
                             <option value="">- Pilih Disini -</option>
-                            <option value='2' selected>Administrator</option>
-                            <option value='5'>Dosen Tetap</option>
-                            <option value='7'>Dosen Tidak Tetap</option>
-                            <option value='10'>Ka Progdi SI</option>
-                            <option value='11'>Ka Progdi TI</option>
-                            <option value='12'>Ka Progdi MI</option>
-                            <option value='13'>Ka Progdi KA</option>
+                            <option value='1' selected>Administrator</option>
+                            <option value='2'>Dosen Tetap</option>
+                            <option value='3'>Dosen Tidak Tetap</option>
+                            <option value='4'>Kaprodi</option>
+
                         </select>
                     </div>
                     <span></span>
@@ -72,7 +71,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Foto</label>
                     <div class="col-sm-8">
-                        <input name="userfile" id="userfile" type="file" class="form-control" />
+                        <input name="foto" id="foto" type="file" class="form-control" />
                     </div>
                 </div>
                 <div class="form-group">

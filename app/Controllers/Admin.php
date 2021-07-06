@@ -2,21 +2,45 @@
 
 namespace App\Controllers;
 
-// use App\Models\pembimbingModel;
+use App\Models\admin_profilmodel;
+use App\Models\admin_beritamodel;
+use App\Models\admin_bimbinganmodel;
+use App\Models\admin_dataakademikmodel;
+use App\Models\admin_dosenmodel;
+use App\Models\admin_pengajuanmodel;
+use App\Models\admin_penjadwalanmodel;
+
+
+
+
 
 class Admin extends BaseController
 {
-	// protected $pembimbingModel;
-	// public function __construct()
-	// {
-	// 	$this->pembimbingmodel = new pembimbingModel();
-	// }
+	protected $profilmodel;
+	protected $beritamodel;
+	protected $bimbinganmodel;
+	protected $dataakademikmodel;
+	protected $dosenmodel;
+	protected $pengajuanmodel;
+	protected $penjadwalanmodel;
+
+	public function __construct()
+	{
+		$this->profilmodel = new admin_profilmodel();
+		$this->beritamodel = new admin_beritamodel();
+		$this->bimbinganmodel = new admin_bimbinganmodel();
+		$this->dataakademikmodel = new admin_dataakademikmodel();
+		$this->dosenmodel = new admin_dosenmodel();
+		$this->pengajuanmodel = new admin_pengajuanmodel();
+		$this->penjadwalanmodel = new admin_penjadwalanmodel();
+	}
+
 
 	public function index()
 	{
-		$pengajuanModel = new \App\Models\pengajuanModel();
-		$pengajuan_judul = $pengajuanModel->get_pengajuan();
-		$pengajuan_judul2 = $pengajuanModel->get_pengajuan2();
+
+		$pengajuan_judul = $this->pengajuanmodel->get_pengajuan();
+		$pengajuan_judul2 = $this->pengajuanmodel->get_pengajuan2();
 		$data = [
 
 			'datajudul' => $pengajuan_judul,
@@ -28,9 +52,8 @@ class Admin extends BaseController
 
 	public function Profil()
 	{
-<<<<<<< HEAD
-		$profilModel = new \App\Models\admin_profilmodel();
-		$profiladmin = $profilModel->get_profil();
+
+		$profiladmin = $this->profilmodel->get_profil();
 
 
 		$data = [
@@ -41,26 +64,14 @@ class Admin extends BaseController
 
 		];
 
-=======
-		$profil = new \App\Models\admin_profilmodel();
-		$adminprofil = $profil->get_profil();
-		// dd($adminprofil);
-		$data = [
-
-			'data_profil' => $adminprofil
-
-
-
-		];
->>>>>>> 3adf5c0a6001d2b452dcd80227518304077ca312
 		return view('admin/profil/profil', $data);
 	}
-
+	//------------------BAGIAN PENGAJUAN JUDUL -----------------------
 	public function pengajuan()
 	{
-		$pengajuanModel = new \App\Models\pengajuanModel();
-		$pengajuan_judul = $pengajuanModel->get_pengajuan();
-		$pengajuan_judul2 = $pengajuanModel->get_pengajuan2();
+
+		$pengajuan_judul = $this->pengajuanmodel->get_pengajuan();
+		$pengajuan_judul2 = $this->pengajuanmodel->get_pengajuan2();
 		$data = [
 
 			'datajudul' => $pengajuan_judul,
@@ -71,14 +82,14 @@ class Admin extends BaseController
 
 		return view('admin/Data Pengajuan Judul/Pengajuan Judul', $data);
 	}
-
+	//------------------BAGIAN PENjadwalan -----------------------
 	public function jadwalseminar()
 	{
 
 
-		$penjadwalanModel = new \App\Models\penjadwalanModel();
-		$penjadwalan = $penjadwalanModel->get_jadwalseminar();
-		$penjadwalan2 = $penjadwalanModel->get_jadwalseminar2();
+
+		$penjadwalan = $this->penjadwalanmodel->get_jadwalseminar();
+		$penjadwalan2 = $this->penjadwalanmodel->get_jadwalseminar2();
 
 
 		$data = [
@@ -93,9 +104,9 @@ class Admin extends BaseController
 	}
 	public function jadwalskripsi()
 	{
-		$penjadwalanModel = new \App\Models\penjadwalanModel();
-		$penjadwalan = $penjadwalanModel->get_jadwalsidangta();
-		$penjadwalan2 = $penjadwalanModel->get_jadwalsidangta2();
+
+		$penjadwalan = $this->penjadwalanmodel->get_jadwalsidangta();
+		$penjadwalan2 = $this->penjadwalanmodel->get_jadwalsidangta2();
 
 
 
@@ -109,11 +120,12 @@ class Admin extends BaseController
 		];
 		return view('admin/pendjadwalan/Skripsi', $data);
 	}
+	//------------------BAGIAN berita -----------------------
 	public function Berita()
 	{
-		$beritaModel = new \App\Models\beritaModel();
-		$beritaseminar = $beritaModel->get_beritaseminar();
-		$beritasidangta = $beritaModel->get_beritasidangta();
+
+		$beritaseminar = $this->beritamodel->get_beritaseminar();
+		$beritasidangta = $this->beritamodel->get_beritasidangta();
 
 		$data = [
 
@@ -128,6 +140,7 @@ class Admin extends BaseController
 	{
 		return view('admin/Data Berita/Detail Data Berita');
 	}
+	//------------------BAGIAN PENjadwalan -----------------------
 	public function editskripsi()
 	{
 		return view('admin/pendjadwalan/Edit Skripsi');
@@ -145,10 +158,11 @@ class Admin extends BaseController
 	{
 		return view('admin/pendjadwalan/Detail Skripsi');
 	}
+	//------------------BAGIAN dosen tugas akhir -----------------------
 	public function datadosenta()
 	{
-		$dosenModel = new \App\Models\dosenModel();
-		$datadosenta = $dosenModel->get_dosen_tugasakhir();
+
+		$datadosenta = $this->dosenmodel->get_dosen_tugasakhir();
 
 		$data = [
 
@@ -160,8 +174,8 @@ class Admin extends BaseController
 	}
 	public function datadosenpenguji()
 	{
-		$dosenModel = new \App\Models\dosenModel();
-		$datapenguji = $dosenModel->get_penguji();
+
+		$datapenguji = $this->dosenmodel->get_penguji();
 
 		$data = [
 
@@ -175,8 +189,8 @@ class Admin extends BaseController
 
 	public function datadosenpembimbing()
 	{
-		$dosenModel = new \App\Models\dosenModel();
-		$datapembimbing = $dosenModel->get_pembimbing();
+
+		$datapembimbing = $this->dosenmodel->get_pembimbing();
 
 		$data = [
 
@@ -204,7 +218,7 @@ class Admin extends BaseController
 		];
 		return view('admin/Data pembagian dosen/detail Data dosen pembimbing', $data);
 	}
-
+	//------------------BAGIAN data akademik -----------------------
 	public function Dataakademik()
 	{
 		$dataakademikModel = new \App\Models\dataakademikModel();
@@ -217,10 +231,10 @@ class Admin extends BaseController
 		];
 		return view('admin/Data Akademik/Data Akademik', $data);
 	}
-
+	//------------------BAGIAN data dosen -----------------------
 	public function Datadosen()
 	{
-		$dosenModel = new \App\Models\dosenModel();
+		$dosenModel = new \App\Models\admin_dosenModel();
 		$datadosen = $dosenModel->get_dosen();
 
 		$data = [
@@ -242,6 +256,31 @@ class Admin extends BaseController
 	public function editdatadosen()
 	{
 		return view('admin/Data Dosen/Edit Data Dosen');
+	}
+
+	public function detaildatadosen()
+	{ //------------------BAGIAN detail data dosen berisi detail data dosen beserta hak aksesnya -----------------------
+		$dosenModel = new \App\Models\admin_dosenModel();
+		$datadosen = $dosenModel->get_dosen();
+
+		$data = [
+
+			'datadosen' => $datadosen
+
+		];
+		return view('admin/Data Dosen/detail Data Dosen');
+	}
+	public function savedatadosen()
+	{
+		// 	$dosenModel = new \App\Models\admin_dosenModel();
+		// 	$this->$dosenModel->save([
+		// 		'nidn' => $this->request->getVar('nidn_dosen'),
+		// 		'nama' => $this->request->getVar('nama_dosen'),
+		// 		'username' => $this->request->getVar('username'),
+		// 		'password' => $this->request->getVar('password'),
+		// 		'jabatan' => $this->request->getVar('level')
+		// 	]);
+		// 	return redirect()->to('/admin/Datadosen');
 	}
 	//--------------------------------------------------------------------
 
