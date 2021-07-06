@@ -3,9 +3,15 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Generation Time: Jul 04, 2021 at 02:35 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
+=======
+-- -- Generation Time: Jul 04, 2021 at 02:46 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 7.3.28
+>>>>>>> 3adf5c0a6001d2b452dcd80227518304077ca312
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +37,7 @@ CREATE TABLE `bimbingan` (
   `id_bimbingan` int(3) NOT NULL,
   `id_pengajuan` int(3) NOT NULL,
   `tanggal_bimbingan` date NOT NULL,
-  `judul_bimbingan` varchar(50) NOT NULL,
+  `judul_bimbingan` varchar(50) NOT NULL, `deskripsi_bimbingan` varchar(100) DEFAULT NULL,
   `berkas_bimbingan` varchar(100) NOT NULL,
   `catatan_bimbingan` text NOT NULL,
   `status_bimbingan` enum('disetujui','belum di setujui','ditolak') NOT NULL DEFAULT 'belum di setujui'
@@ -41,11 +47,12 @@ CREATE TABLE `bimbingan` (
 -- Dumping data for table `bimbingan`
 --
 
-INSERT INTO `bimbingan` (`id_bimbingan`, `id_pengajuan`, `tanggal_bimbingan`, `judul_bimbingan`, `berkas_bimbingan`, `catatan_bimbingan`, `status_bimbingan`) VALUES
-(1, 5, '2021-06-01', 'bab 1', 'bab1.pdf', 'perbaikan untuk latarblekang masalah', 'belum di setujui'),
-(2, 5, '2021-06-30', 'bab 2', 'update bab2.pdf', '-', 'belum di setujui'),
-(3, 6, '2021-06-30', 'bab 1-3', 'sistem infomasi rumah sakit.pdf', 'sudah sempurna', 'disetujui');
-
+INSERT INTO `bimbingan` (`id_bimbingan`, `id_pengajuan`, `tanggal_bimbingan`, `judul_bimbingan`, `deskripsi_bimbingan`, `berkas_bimbingan`, `catatan_bimbingan`, `status_bimbingan`) VALUES
+(1, 5, '2021-06-01', 'bab 1', 'Deskripsi Bimbingan', 'bab1.pdf', 'perbaikan untuk latarblekang masalah', 'belum di setujui'),
+(2, 5, '2021-06-30', 'bab 2', 'Deskripsi Bimbingan', 'update bab2.pdf', '-', 'belum di setujui'),
+(3, 6, '2021-06-30', 'bab 1-3', 'Deskripsi Bimbingan', 'sistem infomasi rumah sakit.pdf', 'sudah sempurna', 'disetujui'),
+(6, 5, '0000-00-00', '132', '123213', '1625401945_6cc179d3df4fe5676ce1.pdf', '', 'belum di setujui'),
+(7, 5, '0000-00-00', 'wqeqw', 'qweqwe', '1625401972_885d2dda302740e9474e.pdf', '', 'belum di setujui');
 -- --------------------------------------------------------
 
 --
@@ -246,6 +253,7 @@ CREATE TABLE `pengajuan_judul` (
   `dosenpembimbing1` int(3) NOT NULL,
   `dosenpembimbing2` int(3) NOT NULL,
   `status_pengajuan` enum('belum di setujui','di setujui','di tolak') NOT NULL DEFAULT 'belum di setujui',
+  `deskripsi_judul` varchar(100) DEFAULT NULL,
   `catatan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

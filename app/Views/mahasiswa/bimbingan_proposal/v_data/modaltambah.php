@@ -7,19 +7,13 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <?= form_open_multipart('mahasiswa/simpandatapengajuan', ['class' => 'formmahasiswa']) ?>
+            <?= form_open_multipart('mahasiswa/simpandatabimbingan', ['class' => 'formmahasiswa']) ?>
             <?= csrf_field(); ?>
             <div class="modal-body">
                 <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">ID mhs</label>
+                    <label for="" class="col-sm-2 col-form-label">ID Pengajuan</label>
                     <div class="col-sm-4">
-                        <?php
-                        $session = session();
-                        $id = $session->get('user_id');
-                        foreach ((new \App\Models\Model_pengajuanjudulmhs)->pilih_datamhs($id) as  $data) { ?>
-                            <input type="text" class="form-control" name="id_mhs" id="id_mhs" value="<?php echo $data['id_mhs'] ?>" readonly>
-                        <?php break;
-                        } ?>
+                        <input type="text" class="form-control" name="id_pengajuan" id="id_pengajuan" value="<?php echo $id ?>" readonly>
                         <div>
                         </div>
                     </div>
@@ -29,8 +23,9 @@
                     <div class="col-sm-4">
                         <?php
                         $session = session();
-                        $id = $session->get('user_id');
-                        foreach ((new \App\Models\Model_pengajuanjudulmhs)->pilih_datamhs($id) as  $data) { ?>
+                        //  print_r( $_SESSION["ok"] );
+                        $id2 = $session->get('user_id');
+                        foreach ((new \App\Models\Model_pengajuanjudulmhs)->pilih_datamhs($id2) as  $data) { ?>
                             <input type="text" class="form-control" value="<?php echo $data['nim_mhs'] ?>" readonly>
                         <?php break;
                         } ?>
@@ -43,8 +38,8 @@
                     <div class="col-sm-4">
                         <?php
                         $session = session();
-                        $id = $session->get('user_id');
-                        foreach ((new \App\Models\Model_pengajuanjudulmhs)->pilih_datamhs($id) as  $data) { ?>
+                        $id3 = $session->get('user_id');
+                        foreach ((new \App\Models\Model_pengajuanjudulmhs)->pilih_datamhs($id3) as  $data) { ?>
                             <input type="text" class="form-control" value="<?php echo $data['nama_mhs'] ?>" readonly>
                         <?php break;
                         } ?>
@@ -53,7 +48,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Judul</label>
+                    <label for="" class="col-sm-2 col-form-label">Judul Bimbingan</label>
                     <div class="col-sm-4">
                         <input type="text" class="form-control" id="judul" name="judul">
                         <div class="invalid-feedback errorJudul">
@@ -61,7 +56,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Deskripsi</label>
+                    <label for="" class="col-sm-2 col-form-label">Deskripsi Bimbingan</label>
                     <div class="col-sm-6">
                         <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3"></textarea>
                         <div class="invalid-feedback errorDeskripsi">
@@ -69,34 +64,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Pilih Dosen Pembimbing I</label>
-                    <div class="col-sm-6">
-                        <select name="dospem1" id="dospem1" class="form-control">
-                            <?php foreach ((new \App\Models\Model_pengajuanjudulmhs)->pilih_dosen() as  $data) {
-                                if ($data['role_pembimbing'] == 'dosen pembimbing I') { ?>
-                                    <option value="<?php echo $data['id_dosenpembimbing'] ?>" <?php
-                                     ?>><?php echo $data['nama_dosen'] ?></option>
-                            <?php }
-                            }
-                            ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Pilih Dosen Pembimbing II</label>
-                    <div class="col-sm-6">
-                        <select name="dospem2" id="dospem2" class="form-control">
-                            <?php foreach ((new \App\Models\Model_pengajuanjudulmhs)->pilih_dosen() as  $data) {
-                                if ($data['role_pembimbing'] == 'dosen pembimbing II') { ?>?>
-                            <option value="<?php echo $data['id_dosenpembimbing'] ?>" <?php
-                                ?>><?php echo $data['nama_dosen'] ?></option>
-                    <?php }
-                            } ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Upload File Proposal</label>
+                    <label for="" class="col-sm-2 col-form-label">Upload File Bimbingan</label>
                     <div class="col-sm-6">
                         <div class="input-group">
                             <div class="custom-file">
@@ -131,7 +99,7 @@
                     processData: false,
                     contentType: false,
                     cache: false,
-                    url: "<?= site_url('mahasiswa/simpandatapengajuan'); ?>",
+                    url: "<?= site_url('mahasiswa/simpandatabimbingan'); ?>",
                     data: data,
                     dataType: "json",
                     beforeSend: function() {
@@ -174,7 +142,6 @@
                                 text: response.sukses
                             });
                             $('modaltambah').modal('hide');
-                            datamahasiswa();
                         }
 
                     },
