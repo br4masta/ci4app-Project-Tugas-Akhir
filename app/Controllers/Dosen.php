@@ -2,21 +2,43 @@
 
 namespace App\Controllers;
 
+use App\Models\dosenModel;
 
 class Dosen extends BaseController
 {
+	protected $data_dsn;
+
+	// jika model ingin dipakai banyak method, buat construct
+
+	public function __construct()
+	{
+		$session = session();
+		$this->id = $session->get('user_id');
+		$this->validasi = \Config\Services::validation();
+		$this->data_dsn = new dosenModel();
+	}
+
 	public function index()
 	{
-		$dosenModel = new \App\Models\dosenModel();
-		$datadosenta = $dosenModel->get_dosen_tugasakhir();
+		// $dosenModel = new \App\Models\dosenModel();
+		// $datadosenta = $dosenModel->get_dosen_tugasakhir();
+		if ($this->request->isAJAX()) {
 
 		$data = [
 
-			'datadosenta' => $datadosenta,
+			//'datadosenta' => $datadosenta
+			'tampildatadosen' => $this->data_dsn->get_profil_datadosenta($this->id)
 
 		];
-		return view('dosen/index', $data);
-	}
+		$msg = [
+			'data' => view ('dosen/profil/v_data/data_dosen', $data)
+		];
+
+		echo json_encode($msg);
+	}else {
+			exit('Maaf tidak dapat diproses');
+		}
+}
 
 	public function judul()
 	{

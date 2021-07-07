@@ -1,45 +1,23 @@
-<?= $this->extend('templates/index'); ?>
-
-<?= $this->section('isi'); ?>
-<!-- Content Header (Page header) -->
-<section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h3>Profil Dosen</h3>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">User Profile</li>
-                </ol>
-            </div>
-        </div>
-    </div><!-- /.container-fluid -->
-</section>
-
-<!-- Main content -->
-<section class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3">
-
-                <!-- Profile Image -->
+<!-- Profile Image -->
                 <div class="card card-primary card-outline">
                     <div class="card-body box-profile">
                         <div class="text-center">
+                            <?php 
+                            foreach ($tampildatadosen as $dd)
+
+                             ?>
                             <img class="profile-user-img img-fluid img-circle" src="<?= base_url(); ?>/assets/style/img/user4-128x128.jpg" alt="User profile picture">
                         </div>
 
-                        <h3 class="profile-username text-center">Cokro Winoto S,pd</h3>
+                        <h3 class="profile-username text-center"><?= $dd['nama_dosen']; ?></h3>
 
-                        <p class="text-muted text-center">1234567890</p>
+                        <p class="text-muted text-center"><?= $dd['nidn_dosen'] ?></p>
 
                     </div>
                     <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
-
+            <?php endforeach ?>
             </div>
             <!-- /.col -->
             <div class="col-md-9">
@@ -54,20 +32,18 @@
                                 <!-- Table 1 -->
                                 <table class="table table-striped table-borderless">
                                     <tbody>
-                                        <?php foreach ($datadosenta as $d) : ?>
-                                        <tr>
-                                              <?php endforeach ?>
+                                       
                                             <th scope="row">Nama Lengkap</th>
-                                            <td><?= $d['nama_dosen']; ?></td>
+                                            <td></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">NIP</th>
-                                            <td><?= $d['nidn_dosen']; ?></td>
+                                            <td></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Status</th>
                                             <td>
-                                               <?= $d['role_pembimbing']; ?>
+                                            
                                             </td>
                                         </tr>
                                         <tr>
@@ -105,7 +81,7 @@
                                         <tr>
                                             <th scope="row">Tahun Akademik</th>
                                             <td>
-                                                <?= $d['tahun_akademik']; ?>
+                                                
                                             </td>
                                         </tr>
                                       
@@ -125,7 +101,3 @@
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->
-</section>
-<?= $this->endSection(); ?>
-
-<?= $this->include('dosen/menu'); ?>
