@@ -22,8 +22,9 @@
     <div class="row">
         <div class="col">
             <form action="/admin/savedatadosen" method="POST">
-                <input type="hidden" id="pgw_id" name="pgw_id" value="1" />
+
                 <?= csrf_field(); ?>
+                <!-- <input type="hidden" id="id_" name="id_" value="1"> -->
                 <div class="form-group">
                     <label class="col-sm-2 control-label">NIDN</label>
                     <div class="col-sm-8">
@@ -77,7 +78,7 @@
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-8">
                         <button class="btn btn-primary btn-square">Simpan</button>
-                        <a href="<?= site_url('Superadmin/index'); ?>" class="btn btn-warning btn-square">Kembali</a>
+                        <a href="<?= site_url('admin/datadosen'); ?>" class="btn btn-warning btn-square">Kembali</a>
                     </div>
                 </div>
             </form>

@@ -50,13 +50,14 @@
                                     <th>Nama</th>
 
                                     <th>foto</th>
-                                    <th>detail</th>
+                                    <th>Hak akses</th>
                                     <th>aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $i = 1; ?>
-                                <?php foreach ($datadosen as $d) : ?>
+                                <?php foreach ($datadosen as $d) :
+                                ?>
                                     <tr>
                                         <td><?= $i++; ?></td>
                                         <td><?= $d['nidn_dosen']; ?>
@@ -66,7 +67,7 @@
 
                                         <td><img src="<?= base_url('assets/img/dosen 1.jpg');  ?>" alt="" width="70"></td>
                                         <td>
-                                            <a>
+                                            <a href="/admin/detaildatadosen/<?= $d['id_dosenta']; ?>">
                                                 <button class="btn btn-xs btn-flat btn-info " data-toggle="modal" data-target="#Detail">
                                                     Detail
                                                 </button>

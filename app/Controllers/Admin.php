@@ -239,7 +239,7 @@ class Admin extends BaseController
 
 		$data = [
 
-			'datadosen' => $datadosen
+			'datadosen' => $datadosen,
 
 		];
 
@@ -258,29 +258,72 @@ class Admin extends BaseController
 		return view('admin/Data Dosen/Edit Data Dosen');
 	}
 
-	public function detaildatadosen()
+	public function detaildatadosen($id)
 	{ //------------------BAGIAN detail data dosen berisi detail data dosen beserta hak aksesnya -----------------------
 		$dosenModel = new \App\Models\admin_dosenModel();
-		$datadosen = $dosenModel->get_dosen();
+		$datadosen = $dosenModel->get_dosen($id);
+
 
 		$data = [
 
 			'datadosen' => $datadosen
 
 		];
-		return view('admin/Data Dosen/detail Data Dosen');
+		return view('admin/Data Dosen/detail Data Dosen', $data);
 	}
 	public function savedatadosen()
 	{
-		// 	$dosenModel = new \App\Models\admin_dosenModel();
-		// 	$this->$dosenModel->save([
-		// 		'nidn' => $this->request->getVar('nidn_dosen'),
-		// 		'nama' => $this->request->getVar('nama_dosen'),
-		// 		'username' => $this->request->getVar('username'),
-		// 		'password' => $this->request->getVar('password'),
-		// 		'jabatan' => $this->request->getVar('level')
-		// 	]);
-		// 	return redirect()->to('/admin/Datadosen');
+		// $data = $this->request->getVar();
+
+		// $this->dosenmodel->insert_dosen($data);
+
+
+		// $dosenModel = new \App\Models\admin_dosenModel();
+
+		$datadosen = [
+			'nidn_dosen' => $this->request->getVar('nidn'),
+			'nama_dosen' => $this->request->getVar('nama'),
+			// 'foto' => $this->request->getVar('foto')
+
+		];
+
+		$id = $this->dosenmodel->insert_dosen($datadosen);
+
+
+
+
+		// $datauser = [
+		// 	'username' => $this->request->getVar('username'),
+		// 	'password' => $this->request->getVar('password'),
+		// 	'level' => $this->request->getVar('jabatan')
+		// ];
+
+
+		// $last_id_user = $this->user->insert_id();
+
+		// $dosenta = [
+		// 	'id_dosen' => $last_id_dosen,
+		// 	'id_akademik' => $this->data_akademik->where(['status' => 'aktif'])
+
+		// ];
+
+
+
+		// $last_id_dosenta = $this->dosen_tugasakhir->insert_id();
+
+		// $akses = [
+		// 	'id_dosenta' => $last_id_dosenta,
+		// 	'id_user' => $last_id_user
+
+		// ];
+
+		// 
+		// $this->dosenmodel->insert_user($datauser);
+
+
+		// dd($datauser);
+
+		// return redirect()->to('/admin/Datadosen');
 	}
 	//--------------------------------------------------------------------
 

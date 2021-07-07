@@ -67,7 +67,7 @@
 
                                         <td>
                                             <a>
-                                                <button class="btn btn-xs btn-flat btn-info " data-toggle="modal" data-target="#Detail">
+                                                <button class="btn btn-xs btn-flat btn-info " data-toggle="modal" data-id="" data-target="#Detail<?= $d['id_pengajuan']; ?>">
                                                     Detail
                                                 </button>
                                             </a>
@@ -102,6 +102,7 @@
 <!-- /.content -->
 
 <!-- Modal tambah-->
+
 <div class="modal fade" id="modaltambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -172,70 +173,70 @@
     </div>
 </div>
 
-<!-- Modal detail-->
-<div class="modal fade" id="Detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Detail Pengajuan</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Nim</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="nim" name="nim" value="2018420076" readonly>
-                    </div>
+<!-- Modal detail--><?php foreach ($datajudul2 as $d) : ?>
+    <div class="modal fade" id="Detail<?= $d['id_pengajuan']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detail Pengajuan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Nama</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="nim" name="nim" value="Brian Aldy Brmasta" readonly>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Nim</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="nim" name="nim" value="<?= $d['nim_mhs']; ?>" readonly>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Calon dosen pembimbing I</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="nim" name="nim" value="Calon dosen pembimbing I" readonly>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Nama</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="nim" name="nim" value="<?= $d['nama_mhs']; ?>" readonly>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Calon dosen pembimbing II</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="nim" name="nim" value="Calon dosen pembimbing II" readonly>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Calon dosen pembimbing I</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="nim" name="nim" value="<?= $d['nama_dosen']; ?>" readonly>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">judul</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="nim" name="nim" value="Nama judul" readonly>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Calon dosen pembimbing II</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="nim" name="nim" value="<?= $d['nama_dosen']; ?>" readonly>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">deskripsi rencana proposal</label>
-                    <div class="col-sm-6">
-                        <a href="<?= base_url() ?>/assets/admin/berkas/doc 1.pdf"> <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50"></a>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">judul</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="nim" name="nim" value="<?= $d['judul']; ?>" readonly>
+                        </div>
                     </div>
-                </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">deskripsi rencana proposal</label>
+                        <div class="col-sm-6">
+                            <a href="<?= base_url() ?>/assets/admin/berkas/<?= $d['deskripsi_judul']; ?>.pdf"> <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50"></a>
+                        </div>
+                    </div>
 
 
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Status</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="nim" name="nim" value=" Pending" readonly>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Status</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="nim" name="nim" value=" <?= $d['status_pengajuan']; ?>" readonly>
+                        </div>
                     </div>
-                </div>
 
-            </div>
-            <div class="modal-footer">
-                <button type="submit" id="btn-simpan" class="btn btn-primary btnsimpan">Tambah</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="btn-simpan" class="btn btn-primary btnsimpan">Tambah</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </div><?php endforeach; ?>
 <!-- Page specific script -->
 <script>
     $(function() {
