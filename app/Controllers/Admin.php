@@ -9,7 +9,9 @@ use App\Models\admin_dataakademikmodel;
 use App\Models\admin_dosenmodel;
 use App\Models\admin_pengajuanmodel;
 use App\Models\admin_penjadwalanmodel;
-
+use App\Models\admin_dosentamodel;
+use App\Models\admin_levelingmodel;
+use App\Models\UserModel;
 
 
 
@@ -23,9 +25,14 @@ class Admin extends BaseController
 	protected $dosenmodel;
 	protected $pengajuanmodel;
 	protected $penjadwalanmodel;
+	protected $dosen_tugasakhirmodel;
+	protected $levelingmodel;
+	protected $user;
+	protected $db;
 
 	public function __construct()
 	{
+		$this->db = \Config\Database::connect();
 		$this->profilmodel = new admin_profilmodel();
 		$this->beritamodel = new admin_beritamodel();
 		$this->bimbinganmodel = new admin_bimbinganmodel();
@@ -33,6 +40,9 @@ class Admin extends BaseController
 		$this->dosenmodel = new admin_dosenmodel();
 		$this->pengajuanmodel = new admin_pengajuanmodel();
 		$this->penjadwalanmodel = new admin_penjadwalanmodel();
+		$this->dosen_tugasakhirmodel = new admin_dosentamodel();
+		$this->levelingmodel = new admin_levelingmodel();
+		$this->user = new UserModel();
 	}
 
 
@@ -81,6 +91,23 @@ class Admin extends BaseController
 		];
 
 		return view('admin/Data Pengajuan Judul/Pengajuan Judul', $data);
+	}
+
+	public function updatepengajuan($id)
+	{
+		$this->pengajuanmodel->save([
+			'id_pengajuan' => $id,
+			'catatan' => $this->request->getVar('catatan'),
+			'status_pengajuan' => $this->request->getVar('status'),
+
+
+		]);
+		session()->setFlashdata('pesan', 'data berhasil di ubah');
+
+		// dd($this->request->getVar());
+		return redirect()->to('/admin/pengajuan');
+
+		// return view('admin/Data Pengajuan Judul/Pengajuan Judul', $data);
 	}
 	//------------------BAGIAN PENjadwalan -----------------------
 	public function jadwalseminar()
@@ -273,25 +300,51 @@ class Admin extends BaseController
 	}
 	public function savedatadosen()
 	{
-		// $data = $this->request->getVar();
+		// dd($this->request->getVar());
 
 		// $this->dosenmodel->insert_dosen($data);
 
-
+		$this->db->transStart();
 		// $dosenModel = new \App\Models\admin_dosenModel();
-
-		$datadosen = [
+		$this->dosenmodel->save([
 			'nidn_dosen' => $this->request->getVar('nidn'),
 			'nama_dosen' => $this->request->getVar('nama'),
-			// 'foto' => $this->request->getVar('foto')
-
-		];
-
-		$id = $this->dosenmodel->insert_dosen($datadosen);
 
 
+		]);
 
 
+		// dd($this->request->getVar());
+
+		$iddosen = $this->dosenmodel->getInsertID();
+
+		$this->user->save([
+			'username' => $this->request->getVar('username'),
+			'password' => $this->request->getVar('password'),
+			'level' => $this->request->getVar('jabatan')
+
+		]);
+		$iduser = $this->user->getInsertID();
+
+		$this->dosen_tugasakhirmodel->save([
+			'id_dosen' => $iddosen,
+			'id_dataakademik' => '1'
+
+
+		]);
+
+		$id_dosenta = $this->dosen_tugasakhirmodel->getInsertID();
+
+		$this->levelingmodel->save([
+			'id_dosenta' => $id_dosenta,
+			'id_user' => $iduser
+
+
+		]);
+		$this->db->transComplete();
+		session()->setFlashdata('pesan', 'data berhasil di tambah');
+
+		return redirect()->to('/admin/datadosen');
 		// $datauser = [
 		// 	'username' => $this->request->getVar('username'),
 		// 	'password' => $this->request->getVar('password'),

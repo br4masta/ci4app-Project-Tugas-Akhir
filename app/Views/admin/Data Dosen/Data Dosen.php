@@ -32,7 +32,11 @@
                     <div class="card-header">
 
 
-
+                        <?php if (session()->getFlashdata('pesan')) : ?>
+                            <div class="alert alert-success" role="alert">
+                                <?= session()->getFlashdata('pesan'); ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">

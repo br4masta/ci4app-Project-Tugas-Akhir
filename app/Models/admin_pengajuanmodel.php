@@ -6,6 +6,10 @@ use CodeIgniter\Model;
 
 class admin_pengajuanmodel extends Model
 {
+    protected $table = 'pengajuan_judul';
+    protected $primaryKey = 'id_pengajuan';
+    protected $allowedFields = ['status_pengajuan', 'catatan'];
+
     public function get_pengajuan()
     {
         return $this->db->table('pengajuan_judul')

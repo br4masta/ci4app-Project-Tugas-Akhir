@@ -6,9 +6,9 @@ use CodeIgniter\Model;
 
 class admin_dosenmodel extends Model
 {
-    // protected $table = 'dosen';
-    // protected $primaryKey = 'id_dosen';
-    // protected $allowedFields = ['nidn_dosen', 'nama_dosen', 'foto_dosen', 'status', 'semester'];
+    protected $table = 'dosen';
+    protected $primaryKey = 'id_dosen';
+    protected $allowedFields = ['nidn_dosen', 'nama_dosen', 'foto_dosen'];
 
     public function __construct()
     {
