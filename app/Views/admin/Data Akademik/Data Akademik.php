@@ -26,8 +26,14 @@
             <div class="card">
                 <div class="the-box full">
                     <div class="table-responsive" style="margin:5px;padding:5px" id="stack-personal">
+                        <?php if (session()->getFlashdata('pesan')) : ?>
+                            <div class="alert alert-success" role="alert">
+                                <p> <?= session()->getFlashdata('pesan'); ?> </p>
+                            </div>
+                        <?php endif; ?>
                         <p><strong>LIST TAHUN AKADEMIK</strong></p>
                         <div class="card-title  d-flex ">
+
                             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modaltambah">
                                 <i class=" fa fa-plus-circle"></i> Tambah Data
                             </button>
@@ -53,51 +59,22 @@
                                         <td><?= $a['tanggal_akhir']; ?></td>
                                         <td><?= $a['semester']; ?></td>
                                         <td>
-                                            <a href='' onClick="return confirm('Anda yakin akan menonaktifkan data ini ?')">
-                                                <button class="btn btn-xs btn-flat btn-danger btnbrg-edit">
-                                                    Matikan
-                                                </button>
-                                            </a>
+                                            <?= $a['status']; ?>
                                         </td>
                                         <td>
 
-                                            <button class="btn btn-xs btn-flat btn-success btnbrg-edit" data-toggle="modal" data-target="#modaledit">
+                                            <button class="btn btn-xs btn-flat btn-success btnbrg-edit" data-toggle="modal" data-target="#modaledit<?= $a['id_dataakademik']; ?> ">
                                                 <i class="fa fa-edit"></i>
                                             </button>
 
-                                            <a href='' onClick="return confirm('Anda yakin akan menghapus data ini ?')">
+                                            <a href='/admin/deletedataakademik/<?= $a['id_dataakademik']; ?>' onClick="return confirm('Anda yakin akan menghapus data ini ?')">
                                                 <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
                                                     <i class="fa fa-times"></i>
                                                 </button>
                                             </a>
                                         </td>
                                     </tr> <?php endforeach; ?>
-                                <tr>
-                                    <td>2</td>
-                                    <td>2014/2015</td>
-                                    <td>01-02-2015</td>
-                                    <td>28-02-2015</td>
-                                    <td>GENAP</td>
-                                    <td>
-                                        <a href='' onClick="return confirm('Anda yakin akan mengaktifkan data ini ?')" s>
-                                            <button class="btn btn-xs btn-flat btn-success btnbrg-edit">
-                                                Aktifkan
-                                            </button>
-                                        </a>
-                                    </td>
-                                    <td>
 
-                                        <button class="btn btn-xs btn-flat btn-success btnbrg-edit">
-                                            <i class="fa fa-edit" data-toggle="modal" data-target="#modaledit"></i>
-                                        </button>
-
-                                        <a href='' onClick="return confirm('Anda yakin akan menghapus data ini ?')">
-                                            <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
-                                                <i class="fa fa-times"></i>
-                                            </button>
-                                        </a>
-                                    </td>
-                                </tr>
 
                             </tbody>
                         </table>
@@ -119,115 +96,117 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Tahun Akademik</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="nim" name="nim" value="">
+            <form action="/admin/tambahdataakademik/" method="POST">
+                <?= csrf_field(); ?>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Tahun Akademik</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="tahun_akademik" name="tahun_akademik" value="">
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label"> Semester</label>
-                    <div class="col-sm-6">
-                        <select name="jenkel" id="jenkel" class="form-control">
-                            <option value="">-Pilih-</option>
-                            <option value="Laki-laki">Genap</option>
-                            <option value="Perempuan">Ganjil</option>
-                        </select>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label"> Semester</label>
+                        <div class="col-sm-6">
+                            <select name="semester" id="semester" class="form-control">
+                                <option value="">-Pilih-</option>
+                                <option value="ganjil">Genap</option>
+                                <option value="genap">Ganjil</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label"> Mulai</label>
-                    <div class="col-sm-6">
-                        <input class="form-control" type="date" name="tanggal ujian">
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label"> Mulai</label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="date" name="tanggal_mulai" id="tanggal_mulai">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label"> Akhir</label>
-                    <div class="col-sm-6">
-                        <input class="form-control" type="date" name="tanggal ujian">
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label"> Akhir</label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="date" name="tanggal_akhir" id="tanggal_akhir">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 control-label">Status</label>
-                    <div class="col-sm-8">
-                        <input name="status" type="radio" id="status" value=1>AKTIF
-                        &nbsp;&nbsp;&nbsp;
-                        <input name="status" type="radio" id="status" value=0 checked>NON AKTIF
-                        <span></span>
-                        <span></span>
+                    <div class="form-group row">
+                        <label class="col-sm-2 control-label">Status</label>
+                        <div class="col-sm-8">
+                            <input name="status" type="radio" id="status" value="aktif">AKTIF
+                            &nbsp;&nbsp;&nbsp;
+                            <input name="status" type="radio" id="status" value="nonaktif" checked>NON AKTIF
+                            <span></span>
+                            <span></span>
+                        </div>
                     </div>
-                </div>
 
-            </div>
-            <div class="modal-footer">
-                <button type="submit" id="btn-simpan" class="btn btn-primary btnsimpan">Tambah</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="btn-simpan" class="btn btn-primary btnsimpan">Tambah</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </form>
         </div>
     </div>
 </div>
+</div>
 
-<!-- Modal Edit-->
-<div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit data</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Tahun Akademik</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="nim" name="nim" value="2015/2016">
-                    </div>
+<!-- Modal Edit--><?php foreach ($dataakademik as $a) : ?>
+    <div class="modal fade" id="modaledit<?= $a['id_dataakademik']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+                <form action="/admin/updatedataakademik/<?= $a['id_dataakademik']; ?>" method="POST">
+                    <?= csrf_field(); ?>
+                    <div class="modal-body">
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">Tahun Akademik</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="tahun_akademik" name="tahun_akademik" value="<?= $a['tahun_akademik']; ?>" readonly>
+                            </div>
+                        </div>
 
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label"> Semester</label>
-                    <div class="col-sm-6">
-                        <select name="jenkel" id="jenkel" class="form-control">
-                            <option value="">-Pilih-</option>
-                            <option value="1">Genap</option>
-                            <option value="2">Ganjil</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label"> Mulai</label>
-                    <div class="col-sm-6">
-                        <input class="form-control" type="date" name="tanggal ujian" value="6/9/2021">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label"> Akhir</label>
-                    <div class="col-sm-6">
-                        <input class="form-control" type="date" name="tanggal ujian">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 control-label">Status</label>
-                    <div class="col-sm-8">
-                        <input name="status" type="radio" id="status" value=1>AKTIF
-                        &nbsp;&nbsp;&nbsp;
-                        <input name="status" type="radio" id="status" value=0 checked>NON AKTIF
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label"> Semester</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="semester" name="semester" value="<?= $a['semester']; ?>" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label"> Mulai</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="tanggal_mulai" name="tanggal_mulai" value="<?= $a['tanggal_mulai']; ?>" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label"> Akhir</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="tanggal_akhir" name="tanggal_akhir" value="<?= $a['tanggal_akhir']; ?>" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 control-label">Status</label>
+                            <div class="col-sm-8">
+                                <input name="status" type="radio" id="status" value="aktif">AKTIF
+                                &nbsp;&nbsp;&nbsp;
+                                <input name="status" type="radio" id="status" value="nonaktif" checked>NON AKTIF
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
 
-            </div>
-            <div class="modal-footer">
-                <button type="submit" id="btn-simpan" class="btn btn-primary btnsimpan">simpan</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" id="btn-simpan" class="btn btn-primary btnsimpan">simpan</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </form>
             </div>
         </div>
     </div>
-</div>
+    </div><?php endforeach; ?>
 <!-- Page specific script -->
 <script>
     $(function() {

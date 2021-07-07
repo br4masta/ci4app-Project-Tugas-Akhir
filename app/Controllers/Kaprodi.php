@@ -2,8 +2,50 @@
 
 namespace App\Controllers;
 
+use App\Models\admin_profilmodel;
+use App\Models\admin_beritamodel;
+use App\Models\admin_bimbinganmodel;
+use App\Models\admin_dataakademikmodel;
+use App\Models\admin_dosenmodel;
+use App\Models\admin_pengajuanmodel;
+use App\Models\admin_penjadwalanmodel;
+use App\Models\admin_dosentamodel;
+use App\Models\admin_levelingmodel;
+use App\Models\UserModel;
+use App\Models\admin_penjadwalansidang_ta_model;
+
 class Kaprodi extends BaseController
 {
+
+    protected $profilmodel;
+    protected $beritamodel;
+    protected $bimbinganmodel;
+    protected $dataakademikmodel;
+    protected $dosenmodel;
+    protected $pengajuanmodel;
+    protected $penjadwalanmodel;
+    protected $dosen_tugasakhirmodel;
+    protected $levelingmodel;
+    protected $user;
+    protected $db;
+    protected $penjadwalansidangtamodel;
+
+    public function __construct()
+    {
+        $this->db = \Config\Database::connect();
+        $this->profilmodel = new admin_profilmodel();
+        $this->beritamodel = new admin_beritamodel();
+        $this->bimbinganmodel = new admin_bimbinganmodel();
+        $this->dataakademikmodel = new admin_dataakademikmodel();
+        $this->dosenmodel = new admin_dosenmodel();
+        $this->pengajuanmodel = new admin_pengajuanmodel();
+        $this->penjadwalanmodel = new admin_penjadwalanmodel();
+        $this->dosen_tugasakhirmodel = new admin_dosentamodel();
+        $this->levelingmodel = new admin_levelingmodel();
+        $this->user = new UserModel();
+        $this->penjadwalansidangtamodel = new admin_penjadwalansidang_ta_model();
+    }
+
     public function index()
     {
         $pengajuanModel = new \App\Models\pengajuanModel();
@@ -17,6 +59,7 @@ class Kaprodi extends BaseController
         ];
         return view('kaprodi/Pengajuan/Pengajuan judul', $data);
     }
+
     public function pengajuan()
     {
         $pengajuanModel = new \App\Models\pengajuanModel();
@@ -30,6 +73,25 @@ class Kaprodi extends BaseController
         ];
         return view('kaprodi/Pengajuan/Pengajuan judul', $data);
     }
+
+    public function updatepengajuan($id)
+    {
+        $this->pengajuanmodel->save([
+            'id_pengajuan' => $id,
+            'catatan' => $this->request->getVar('catatan'),
+            'status_pengajuan' => $this->request->getVar('status'),
+
+
+        ]);
+        session()->setFlashdata('pesan', 'data berhasil di ubah');
+
+        // dd($this->request->getVar());
+        return redirect()->to('/kaprodi/pengajuan');
+
+        // return view('admin/Data Pengajuan Judul/Pengajuan Judul', $data);
+    }
+
+    // ---------------------PENJADWALAN ----------------------
     public function seminar()
     {
         $penjadwalanModel = new \App\Models\penjadwalanModel();

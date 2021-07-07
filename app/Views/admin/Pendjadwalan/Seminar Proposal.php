@@ -65,22 +65,13 @@
                                         <td><?= $d['nama_mhs']; ?></td>
                                         <td> <?= $d['judul']; ?></td>
                                         <td>
-                                            <?php if ($c['penguji_1'] = 'null') : ?>
+                                            <?= $c['nama_dosen']; ?>
 
-                                                <a>-</a>
-
-                                            <?php elseif ($c['penguji_1'] = $c['id_dosenpenguji']) : ?>
-                                                <?= $c['nama_dosen']; ?>
-                                            <?php endif; ?>
 
                                         </td>
-                                        <td><?php if ($d['penguji_2'] = 'null') : ?>
+                                        <td>
+                                            <?= $d['nama_dosen']; ?>
 
-                                                <a>-</a>
-
-                                            <?php else : ?>
-                                                <?= $d['nama_dosen']; ?>
-                                            <?php endif; ?>
                                         </td>
                                         <td><?= $d['tanggal_sidang']; ?></td>
                                         <td><?= $d['tempat_sidang']; ?></td>
