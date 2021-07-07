@@ -1,4 +1,4 @@
-<table id="data_detailbimbingan" class="table table-bordered table-striped">
+<!-- <table id="data_detailbimbingan" class="table table-bordered table-striped">
     <thead>
         <tr>
             <th>No</th>
@@ -48,4 +48,4 @@
             }
         })
     });
-</script>
+</script> -->

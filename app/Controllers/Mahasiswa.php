@@ -5,6 +5,9 @@ namespace App\Controllers;
 use App\Models\Model_bimbinganmhs;
 use App\Models\Model_mahasiswa;
 use App\Models\Model_pengajuanjudulmhs;
+use App\Models\Model_pengajuansempro;
+use App\Models\Model_sempro;
+use App\Models\Model_sidang_TA;
 
 class Mahasiswa extends BaseController
 {
@@ -21,6 +24,9 @@ class Mahasiswa extends BaseController
 		$this->pengajuan_mhs = new Model_pengajuanjudulmhs();
 		$this->data_mhs = new Model_mahasiswa();
 		$this->bimbingan_mhs = new Model_bimbinganmhs();
+		$this->sempro = new Model_pengajuansempro();
+		$this->sempro2 = new Model_sempro();
+		$this->sidang_tugasakhir1 = new Model_sidang_TA();
 	}
 
 
@@ -58,7 +64,6 @@ class Mahasiswa extends BaseController
 			$msg = [
 				'data' => view('mahasiswa/pengajuan_judul/v_data/modaltambah')
 			];
-
 			echo json_encode($msg);
 		} else {
 			exit('Maaf tidak dapat diproses');
@@ -105,9 +110,9 @@ class Mahasiswa extends BaseController
 						'berkas'    => $validation->getError('berkas')
 					]
 				];
-			} else {	
+			} else {
 				$dataBerkas = $this->request->getFile('berkas');
-				$fileName = $dataBerkas->getRandomName();			
+				$fileName = $dataBerkas->getRandomName();
 				$data = [
 					'id_mhs' => $this->request->getVar('id_mhs'),
 					'judul' => $this->request->getVar('judul'),
@@ -116,8 +121,8 @@ class Mahasiswa extends BaseController
 					'dosenpembimbing2' => $this->request->getVar('dospem2'),
 					'deskripsi_judul' => $fileName,
 				];
-				
-				$dataBerkas->move('assets/img/File',$nama_judul.'.'.$dataBerkas->getExtension());
+
+				$dataBerkas->move('assets/img/File', $nama_judul . '.' . $dataBerkas->getExtension());
 				$this->pengajuan_mhs->insert_pengajuan($data);
 
 				$msg = [
@@ -161,7 +166,7 @@ class Mahasiswa extends BaseController
 	{
 		if ($this->request->isAJAX()) {
 			$msg = [
-				'data' => view('mahasiswa/bimbingan_proposal/v_data/modaltambah',['id'=>$id])
+				'data' => view('mahasiswa/bimbingan_proposal/v_data/modaltambah', ['id' => $id])
 			];
 
 			echo json_encode($msg);
@@ -209,17 +214,17 @@ class Mahasiswa extends BaseController
 						'berkas'    => $validation->getError('berkas')
 					]
 				];
-			} else {	
+			} else {
 				$dataBerkas = $this->request->getFile('berkas');
-				$fileName = $dataBerkas->getRandomName();			
+				$fileName = $dataBerkas->getRandomName();
 				$data = [
 					'id_pengajuan' => $this->request->getVar('id_pengajuan'),
 					'deskripsi_bimbingan' => $this->request->getVar('deskripsi'),
 					'judul_bimbingan' => $this->request->getVar('judul'),
 					'berkas_bimbingan' => $fileName,
 				];
-				
-				$dataBerkas->move('assets/img/File',$nama_bimbingan.'.'.$dataBerkas->getExtension());
+
+				$dataBerkas->move('assets/img/File', $nama_bimbingan . '.' . $dataBerkas->getExtension());
 				$this->bimbingan_mhs->insert_bimbingan($data);
 
 				$msg = [
@@ -231,23 +236,214 @@ class Mahasiswa extends BaseController
 			exit('Maaf tidak dapat diproses');
 		}
 	}
-//--------------------------------------------------------------------------------------------
+
 	public function bimbingan_proposal()
 	{
 		return view('mahasiswa/bimbingan_proposal/bimbinganproposal');
 	}
+
+	//------------------------------END BIMBINGAN---------------------------------------------
+
+	//------------------------------BAGIAN PENGAJUAN SEMPRO---------------------------------------------
+	public function ambildatasempro()
+	{
+		if ($this->request->isAJAX()) {
+			$data = [
+				'tampildata' => $this->sempro->get_pengajuan_sempro($this->id)
+			];
+			$msg = [
+				'data' => view('mahasiswa/pengajuan_sempro/v_data/data_pengajuansempro', $data)
+			];
+			echo json_encode($msg);
+		} else {
+			exit('Maaf tidak dapat diproses');
+		}
+	}
+
+	public function formtambahsempro()
+	{
+		if ($this->request->isAJAX()) {
+			$msg = [
+				'data' => view('mahasiswa/pengajuan_sempro/v_data/modal_tambah')
+			];
+
+			echo json_encode($msg);
+		} else {
+			exit('Maaf tidak dapat diproses');
+		}
+	}
+	public function simpandatapengajuansempro()
+	{
+		if ($this->request->isAJAX()) {
+
+			$nama_judul = $this->request->getVar('judul');
+			$validation = \Config\Services::validation();
+
+			$valid = $this->validate([
+				'berkas' => [
+					'label' => 'Berkas Judul Mahasiswa',
+					'rules' => 'uploaded[berkas]|ext_in[berkas,pdf]|max_size[berkas,2048]',
+					'errors' => [
+						'uploaded' => 'Harus Ada File yang diupload',
+						'max_size' => 'Ukuran File Maksimal 2 MB'
+					]
+				]
+			]);
+
+			if (!$valid) {
+				$msg = [
+					'error' => [
+						'berkas'    => $validation->getError('berkas')
+					]
+				];
+			} else {
+				$dataBerkas = $this->request->getFile('berkas');
+				$fileName = $dataBerkas->getRandomName();
+				$data = [
+					'id_bimbingan' => $this->request->getVar('id_bimbingan'),
+					'berkas_proposal' => $fileName,
+				];
+
+				$dataBerkas->move('assets/img/File', $nama_judul . '.' . $dataBerkas->getExtension());
+				$this->sempro->insert_pengajuan_sempro($data);
+
+				$msg = [
+					'sukses' => 'Data mahasiswa berhasil disimpan'
+				];
+			}
+			echo json_encode($msg);
+		} else {
+			exit('Maaf tidak dapat diproses');
+		}
+	}
+
 	public function pengajuan_sempro()
 	{
 		return view('mahasiswa/pengajuan_sempro/pengajuansempro');
+	}
+
+    //------------------END BAGIAN PENGAJUAN SEMPRO-----------------------
+
+	//------------------BAGIAN SIDANG TA-----------------------
+	public function ambildatasidang()
+	{
+		if ($this->request->isAJAX()) {
+			$data = [
+				'tampildata' => $this->sidang_tugasakhir1->get_sidang_ta($this->id)
+			];
+			$msg = [
+				'data' => view('mahasiswa/sidang/v_data/data_sidang_ta', $data)
+			];
+			echo json_encode($msg);
+		} else {
+			exit('Maaf tidak dapat diproses');
+		}
 	}
 	public function Sidang_ta()
 	{
 		return view('mahasiswa/sidang/sidang');
 	}
+	//------------------END BAGIAN SIDANG TA-----------------------
+    
+	//------------------BAGIAN SEMPRO-----------------------
 	public function Seminar()
 	{
 		return view('mahasiswa/sempro/sempro');
 	}
+
+	public function detaildatabimbinganta($id)
+	{
+		$data1 = [
+			'tampildatabimbingan' => $this->sempro2->get_idbimbinganta($id),
+			'id_ok1' => $id
+		];
+
+		return view('mahasiswa/sempro/v_data/data_bimbingan', $data1);
+	}
+
+	public function formtambahbimbinganta($id)
+	{
+		if ($this->request->isAJAX()) {
+			$msg = [
+				'data' => view('mahasiswa/sempro/v_data/modaltambah', ['id' => $id])
+			];
+
+			echo json_encode($msg);
+		} else {
+			exit('Maaf tidak dapat diproses');
+		}
+	}
+
+	public function simpandatabimbinganta()
+	{
+		if ($this->request->isAJAX()) {
+
+			$nama_bimbingan = $this->request->getVar('judul');
+			$validation = \Config\Services::validation();
+
+			$valid = $this->validate([
+				'judul' => [
+					'label' => 'Judul Bimbingan TA',
+					'rules' => 'required|is_unique[bimbingan_ta.judul_bimbingan_ta]',
+					'errors' => [
+						'required' =>  '{field} tidak boleh kosong',
+					]
+				],
+				'berkas' => [
+					'label' => 'Berkas Bimbingan TA Mahasiswa',
+					'rules' => 'uploaded[berkas]|ext_in[berkas,pdf]|max_size[berkas,2048]',
+					'errors' => [
+						'uploaded' => 'Harus Ada File yang diupload',
+						'max_size' => 'Ukuran File Maksimal 2 MB'
+					]
+				]
+			]);
+
+			if (!$valid) {
+				$msg = [
+					'error' => [
+						'judul'     => $validation->getError('judul'),
+						'berkas'    => $validation->getError('berkas')
+					]
+				];
+			} else {
+				$dataBerkas = $this->request->getFile('berkas');
+				$fileName = $dataBerkas->getRandomName();
+				$data = [
+					'id_seminar' => $this->request->getVar('id_seminar'),
+					'judul_bimbingan_ta' => $this->request->getVar('judul'),
+					'berkas_bimbingan_ta' => $fileName,
+				];
+
+				$dataBerkas->move('assets/img/File', $nama_bimbingan . '.' . $dataBerkas->getExtension());
+				$this->sempro2->insert_bimbingan_ta($data);
+
+				$msg = [
+					'sukses' => 'Data mahasiswa berhasil disimpan'
+				];
+			}
+			echo json_encode($msg);
+		} else {
+			exit('Maaf tidak dapat diproses');
+		}
+	}
+
+	public function ambildataseminar()
+	{
+		if ($this->request->isAJAX()) {
+			$data = [
+				'tampildata' => $this->sempro2->get_ambil_sempro($this->id)
+			];
+			$msg = [
+				'data' => view('mahasiswa/sempro/v_data/data_sempro', $data)
+			];
+			echo json_encode($msg);
+		} else {
+			exit('Maaf tidak dapat diproses');
+		}
+	}
+	//------------------END BAGIAN SEMPRO-----------------------
+
 
 	//------------------BAGIAN DATA PROFIL----------------------- 
 	public function showprofil()
