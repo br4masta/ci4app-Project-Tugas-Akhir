@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- -- Generation Time: Jul 04, 2021 at 02:46 PM
+-- Generation Time: Jul 07, 2021 at 07:32 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -31,7 +31,8 @@ CREATE TABLE `bimbingan` (
   `id_bimbingan` int(3) NOT NULL,
   `id_pengajuan` int(3) NOT NULL,
   `tanggal_bimbingan` date NOT NULL,
-  `judul_bimbingan` varchar(50) NOT NULL, `deskripsi_bimbingan` varchar(100) DEFAULT NULL,
+  `judul_bimbingan` varchar(50) NOT NULL,
+  `deskripsi_bimbingan` varchar(100) DEFAULT NULL,
   `berkas_bimbingan` varchar(100) NOT NULL,
   `catatan_bimbingan` text NOT NULL,
   `status_bimbingan` enum('disetujui','belum di setujui','ditolak') NOT NULL DEFAULT 'belum di setujui'
@@ -46,7 +47,21 @@ INSERT INTO `bimbingan` (`id_bimbingan`, `id_pengajuan`, `tanggal_bimbingan`, `j
 (2, 5, '2021-06-30', 'bab 2', 'Deskripsi Bimbingan', 'update bab2.pdf', '-', 'belum di setujui'),
 (3, 6, '2021-06-30', 'bab 1-3', 'Deskripsi Bimbingan', 'sistem infomasi rumah sakit.pdf', 'sudah sempurna', 'disetujui'),
 (6, 5, '0000-00-00', '132', '123213', '1625401945_6cc179d3df4fe5676ce1.pdf', '', 'belum di setujui'),
-(7, 5, '0000-00-00', 'wqeqw', 'qweqwe', '1625401972_885d2dda302740e9474e.pdf', '', 'belum di setujui');
+(7, 5, '0000-00-00', 'wqeqw', 'qweqwe', '1625401972_885d2dda302740e9474e.pdf', '', 'belum di setujui'),
+(8, 5, '0000-00-00', 'asd', 'asd', '1625463574_a6a163628ae6aaa6e73b.pdf', '', 'belum di setujui'),
+(9, 5, '0000-00-00', '213', '123', '1625463588_5d96f80f62c5db231de9.pdf', '', 'belum di setujui'),
+(10, 5, '2021-07-13', 'asd', 'asd', 'asd', 'asd', 'belum di setujui'),
+(11, 5, '2021-07-21', 'asd', 'asd', 'sad', 'asd', 'belum di setujui'),
+(12, 7, '0000-00-00', '12', '12', '1625463735_7eebe223a1783046f048.pdf', '', 'belum di setujui'),
+(13, 7, '0000-00-00', 'asd222', 'asd22', '1625465137_7b3e6dbc6040512df2ba.pdf', '', 'belum di setujui'),
+(14, 7, '0000-00-00', '222', '3131313', '1625465194_2cd4f88317d1f6e1afff.pdf', '', 'belum di setujui'),
+(15, 7, '0000-00-00', 'qweqrq', 'qwrqr', '1625466763_0b73cb88d6413f1a2e49.pdf', '', 'belum di setujui'),
+(16, 7, '0000-00-00', '23www', '123www', '1625467327_d6fffe11465a8778f0fe.pdf', '', 'belum di setujui'),
+(17, 7, '0000-00-00', '22', '222', '1625467394_fa6db7308ede1e9aa456.pdf', '', 'belum di setujui'),
+(18, 7, '0000-00-00', 'ww', 'www', '1625468665_1d5ecfcd11b705a8c7fa.pdf', '', 'belum di setujui'),
+(19, 6, '2021-07-06', 'asd', 'asd', 'asd', 'asd', 'belum di setujui'),
+(20, 7, '0000-00-00', '45', '45', '1625567063_4c5d2a01de478addcf04.pdf', '', 'belum di setujui');
+
 -- --------------------------------------------------------
 
 --
@@ -69,7 +84,9 @@ CREATE TABLE `bimbingan_ta` (
 
 INSERT INTO `bimbingan_ta` (`id_bimbingan_ta`, `id_seminar`, `tanggal_bimbingan_ta`, `judul_bimbingan_ta`, `berkas_bimbingan_ta`, `catatan_bimbingan_ta`, `status_bimbingan_ta`) VALUES
 (1, 2, '2021-09-01', 'bab 5', 'bab.pdf', '-', 'belum di setujui'),
-(2, 2, '2021-09-07', 'bab 7', 'bab 7.pdf', 'lanjut sidang', 'disetujui');
+(2, 2, '2021-09-07', 'bab 7', 'bab 7.pdf', 'lanjut sidang', 'disetujui'),
+(3, 5, '2021-07-15', 'asd', 'asd', 'asd', 'belum di setujui'),
+(4, 5, '2021-07-20', 'asdasd', '1625579766_4422f922d4e0bca713dd.pdf', '', 'belum di setujui');
 
 -- --------------------------------------------------------
 
@@ -255,9 +272,10 @@ CREATE TABLE `pengajuan_judul` (
 -- Dumping data for table `pengajuan_judul`
 --
 
-INSERT INTO `pengajuan_judul` (`id_pengajuan`, `id_mhs`, `judul`, `deskripsi`, `dosenpembimbing1`, `dosenpembimbing2`, `status_pengajuan`, `catatan`) VALUES
-(5, 1, 'sistem kelayakan terbang', 'pembuatan sistem informasi perihal pengelolaan data secara di gitalisasi untuk proses pemeriksaan rutin pesawat sebelum lepas landas.', 3, 4, 'belum di setujui', ''),
-(6, 2, 'sitem infomasi rumah sakit', 'pengembangan sistem secara digitalisasi terhadap rumah sakit di sebuah desa', 5, 4, 'belum di setujui', '');
+INSERT INTO `pengajuan_judul` (`id_pengajuan`, `id_mhs`, `judul`, `deskripsi`, `dosenpembimbing1`, `dosenpembimbing2`, `status_pengajuan`, `deskripsi_judul`, `catatan`) VALUES
+(5, 1, 'sistem kelayakan terbang', 'pembuatan sistem informasi perihal pengelolaan data secara di gitalisasi untuk proses pemeriksaan rutin pesawat sebelum lepas landas.', 3, 4, 'belum di setujui', NULL, ''),
+(6, 2, 'sitem infomasi rumah sakit', 'pengembangan sistem secara digitalisasi terhadap rumah sakit di sebuah desa', 5, 4, 'belum di setujui', NULL, ''),
+(7, 1, 'judul', 'pengembangan sistem secara digitalisasi terhadap rumah sakit di sebuah desa', 5, 4, 'belum di setujui', '1625457466_bdb67a3301621438a87d.pdf', '');
 
 -- --------------------------------------------------------
 
@@ -267,9 +285,10 @@ INSERT INTO `pengajuan_judul` (`id_pengajuan`, `id_mhs`, `judul`, `deskripsi`, `
 
 CREATE TABLE `penjadwalan_sidang` (
   `id_jadwal` int(3) NOT NULL,
-  `id_bimbingan` int(3) NOT NULL,
-  `penguji_1` int(3) NOT NULL,
-  `penguji_2` int(3) NOT NULL,
+  `id_bimbingan` int(3) DEFAULT NULL,
+  `penguji_1` int(3) DEFAULT NULL,
+  `penguji_2` int(3) DEFAULT NULL,
+  `berkas_proposal` varchar(100) DEFAULT NULL,
   `acara_sidang` enum('seminar proposal') NOT NULL DEFAULT 'seminar proposal',
   `tanggal_sidang` datetime NOT NULL,
   `tempat_sidang` text NOT NULL
@@ -279,10 +298,12 @@ CREATE TABLE `penjadwalan_sidang` (
 -- Dumping data for table `penjadwalan_sidang`
 --
 
-INSERT INTO `penjadwalan_sidang` (`id_jadwal`, `id_bimbingan`, `penguji_1`, `penguji_2`, `acara_sidang`, `tanggal_sidang`, `tempat_sidang`) VALUES
-(2, 3, 3, 2, 'seminar proposal', '2021-06-26 00:49:37', '107'),
-(3, 3, 3, 4, 'seminar proposal', '2021-07-31 11:50:10', '109'),
-(4, 1, 3, 4, 'seminar proposal', '2021-08-14 09:18:47', '208');
+INSERT INTO `penjadwalan_sidang` (`id_jadwal`, `id_bimbingan`, `penguji_1`, `penguji_2`, `berkas_proposal`, `acara_sidang`, `tanggal_sidang`, `tempat_sidang`) VALUES
+(2, 3, 3, 2, NULL, 'seminar proposal', '2021-06-26 00:49:37', '107'),
+(3, 3, 3, 4, NULL, 'seminar proposal', '2021-07-31 11:50:10', '109'),
+(18, 18, 4, 3, '1625566464_6640333a31172727c404.pdf', 'seminar proposal', '2021-07-14 17:21:56', '208'),
+(19, 20, NULL, NULL, '1625578843_4f74b9f6002463eace93.pdf', 'seminar proposal', '0000-00-00 00:00:00', ''),
+(20, 20, NULL, NULL, '1625635936_1d1b43ce2e9feffe8f5e.pdf', 'seminar proposal', '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -305,7 +326,8 @@ CREATE TABLE `penjadwalan_sidang_ta` (
 --
 
 INSERT INTO `penjadwalan_sidang_ta` (`id_jadwal_ta`, `id_bimbingan_ta`, `penguji_1`, `penguji_2`, `acara_sidang_ta`, `tanggal_sidang_ta`, `tempat_sidang_ta`) VALUES
-(1, 2, 3, 4, 'sidang tugas akhir', '2021-10-01', 'ruang 301');
+(1, 2, 3, 4, 'sidang tugas akhir', '2021-10-01', 'ruang 301'),
+(2, 4, 2, 2, 'sidang tugas akhir', '2021-07-13', '201');
 
 -- --------------------------------------------------------
 
@@ -328,7 +350,8 @@ CREATE TABLE `seminar_proposal` (
 
 INSERT INTO `seminar_proposal` (`id_seminar`, `id_jadwal`, `nilai`, `catatan`, `status`, `judul_final`) VALUES
 (2, 2, 'b++', 'sudah cukup sesuai bisa lanjut ke bab berikutnya', 'lanjut', ''),
-(3, 4, 'b-', 'perbaikan bagian deskripsi dan metode yang di gunakan.', 'disetujui dengan revisi', '');
+(4, 2, '', '', 'lanjut', ''),
+(5, 18, 'A', 'asd', 'disetujui dengan revisi', 'weqeq');
 
 -- --------------------------------------------------------
 
@@ -349,7 +372,8 @@ CREATE TABLE `sidang_tugasakhir` (
 --
 
 INSERT INTO `sidang_tugasakhir` (`id_sidangta`, `id_jadwal_ta`, `nilai_ta`, `catatan_ta`, `status_ta`) VALUES
-(2, 1, 'A', 'great job!', 'lulus');
+(2, 1, 'A', 'great job!', 'lulus'),
+(3, 2, '90', 'asd', 'lulus');
 
 -- --------------------------------------------------------
 
@@ -507,13 +531,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `bimbingan`
 --
 ALTER TABLE `bimbingan`
-  MODIFY `id_bimbingan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_bimbingan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `bimbingan_ta`
 --
 ALTER TABLE `bimbingan_ta`
-  MODIFY `id_bimbingan_ta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_bimbingan_ta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `data_akademik`
@@ -561,31 +585,31 @@ ALTER TABLE `mahasiswa`
 -- AUTO_INCREMENT for table `pengajuan_judul`
 --
 ALTER TABLE `pengajuan_judul`
-  MODIFY `id_pengajuan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_pengajuan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `penjadwalan_sidang`
 --
 ALTER TABLE `penjadwalan_sidang`
-  MODIFY `id_jadwal` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_jadwal` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `penjadwalan_sidang_ta`
 --
 ALTER TABLE `penjadwalan_sidang_ta`
-  MODIFY `id_jadwal_ta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_jadwal_ta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `seminar_proposal`
 --
 ALTER TABLE `seminar_proposal`
-  MODIFY `id_seminar` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_seminar` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `sidang_tugasakhir`
 --
 ALTER TABLE `sidang_tugasakhir`
-  MODIFY `id_sidangta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_sidangta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`

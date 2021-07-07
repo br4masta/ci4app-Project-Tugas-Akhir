@@ -101,11 +101,6 @@ foreach ($tampildatamhs as $row2) : ?>
                                 </tr>
                             </tbody>
                         </table>
-
-                        <!-- Akhir Table 2 -->
-                        <div>
-                            <button type="submit" class="btn btn-danger">Proses</button>
-                        </div>
                     </div>
                     <!-- /.tab-content -->
                 </div><!-- /.card-body -->
