@@ -8,6 +8,7 @@ class dosenModel extends Model
 {
     protected $table;
 
+<<<<<<< HEAD
     //  public function __construct()
     // {
     //     parent::__construct();
@@ -105,6 +106,9 @@ class dosenModel extends Model
     //         ->get()->getResultArray();
     // }
       public function __construct()
+=======
+    public function __construct()
+>>>>>>> 36474caff4960b63590cf53ece56a6b4ca03d1d4
     {
         parent::__construct();
         $db = \Config\Database::connect();
@@ -112,22 +116,16 @@ class dosenModel extends Model
             ->join('mahasiswa', 'user.id_user = mahasiswa.id_user');
         $this->table_mhs = $this->db->table('mahasiswa')
             ->join('user', 'mahasiswa.id_user = user.id_user');
-        $this->table_datadosenta = $this->db->table('dosen_tugasakhir');
+        $this->table_datadosenta = $this->db->table('user');
+    }
 
-     }      
     public function get_profil_datadosenta($id)
     {
         return  $this->table_datadosenta
-         ->join('dosen','dosen.id_dosen = dosen_tugasakhir.id_dosen')
-         ->join('user','user.id_user = dosen.id_user')
+           ->join('leveling_dosen','leveling_dosen.id_user = user.id_user')
+           ->join('dosen_tugasakhir','dosen_tugasakhir.id_dosenta = leveling_dosen.id_dosenta')
+           ->join('dosen','dosen.id_dosen = dosen_tugasakhir.id_dosen')
             ->where('user.id_user', $id)
             ->get()->getResultArray();
     }
-    // public function get_datadsn($id)
-    // {
-    //     return $this->table_datadosenta
-    //     ->where('user.id_user', $id)
-
-    //     ->get()->getResultArray();
-    // }
 }

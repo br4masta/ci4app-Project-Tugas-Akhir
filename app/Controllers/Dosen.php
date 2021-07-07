@@ -17,28 +17,28 @@ class Dosen extends BaseController
 		$this->validasi = \Config\Services::validation();
 		$this->data_dsn = new dosenModel();
 	}
-
+	// ----------------------BAGIAN PROFIL--------------------------
 	public function index()
 	{
-		// $dosenModel = new \App\Models\dosenModel();
-		// $datadosenta = $dosenModel->get_dosen_tugasakhir();
+		return view('dosen/profil/index');
+	}
+	public function showprofil()
+	{
 		if ($this->request->isAJAX()) {
 
-		$data = [
+			$data = [
+				'tampildatadosen' => $this->data_dsn->get_profil_datadosenta($this->id)
+			];
+			$msg = [
+				'data' => view('dosen/profil/v_data/data_dosen', $data)
+			];
 
-			//'datadosenta' => $datadosenta
-			'tampildatadosen' => $this->data_dsn->get_profil_datadosenta($this->id)
-
-		];
-		$msg = [
-			'data' => view ('dosen/profil/v_data/data_dosen', $data)
-		];
-
-		echo json_encode($msg);
-	}else {
+			echo json_encode($msg);
+		} else {
 			exit('Maaf tidak dapat diproses');
 		}
-}
+	}
+	// ----------------------END BAGIAN PROFIL--------------------------
 
 	public function judul()
 	{
