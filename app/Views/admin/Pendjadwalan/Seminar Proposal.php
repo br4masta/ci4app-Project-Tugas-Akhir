@@ -29,6 +29,11 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
+                        <?php if (session()->getFlashdata('pesan')) : ?>
+                            <div class="alert alert-success" role="alert">
+                                <?= session()->getFlashdata('pesan'); ?>
+                            </div>
+                        <?php endif; ?>
                         <h3 class="card-title">Data Seminar Proposal</h3>
                     </div>
                     <!-- /.card-header -->
@@ -59,8 +64,15 @@
                                         </td>
                                         <td><?= $d['nama_mhs']; ?></td>
                                         <td> <?= $d['judul']; ?></td>
-                                        <td><?= $c['nama_dosen']; ?></td>
-                                        <td><?= $d['nama_dosen']; ?></td>
+                                        <td>
+                                            <?= $c['nama_dosen']; ?>
+
+
+                                        </td>
+                                        <td>
+                                            <?= $d['nama_dosen']; ?>
+
+                                        </td>
                                         <td><?= $d['tanggal_sidang']; ?></td>
                                         <td><?= $d['tempat_sidang']; ?></td>
                                         <td><?= $d['acara_sidang']; ?></td>
@@ -74,15 +86,10 @@
                                             </a>
                                         </td>
                                         <td class="center">
-                                            <a href=" <?php echo site_url('admin/editseminar'); ?> " />
-                                            <button class="btn btn-xs btn-flat btn-success btnbrg-edit">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                            </a>
-                                            <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
-                                            <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
-                                                <i class="fa fa-times"></i>
-                                            </button>
+                                            <a href='/admin/editseminar/<?= $d['id_jadwal']; ?>'>
+                                                <button class="btn btn-xs btn-flat btn-success">
+                                                    jadwalkan sidang
+                                                </button>
                                             </a>
                                         </td>
                                     </tr><?php endforeach; ?>

@@ -27,7 +27,10 @@ class Dosen extends BaseController
 		if ($this->request->isAJAX()) {
 
 			$data = [
+
+				//'datadosenta' => $datadosenta
 				'tampildatadosen' => $this->data_dsn->get_profil_datadosenta($this->id)
+
 			];
 			$msg = [
 				'data' => view('dosen/profil/v_data/data_dosen', $data)
@@ -38,7 +41,6 @@ class Dosen extends BaseController
 			exit('Maaf tidak dapat diproses');
 		}
 	}
-	// ----------------------END BAGIAN PROFIL--------------------------
 
 	public function judul()
 	{

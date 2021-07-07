@@ -75,6 +75,25 @@ class admin_dosenmodel extends Model
             ->join('data_akademik', 'data_akademik.id_dataakademik = dosen_tugasakhir.id_dataakademik')
             ->get()->getResultArray();
     }
+    public function get_penguji1()
+    {
+        return $this->db->table('dosen_penguji')
+            ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_penguji.id_dosenta')
+            ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
+            ->join('data_akademik', 'data_akademik.id_dataakademik = dosen_tugasakhir.id_dataakademik')
+            ->where(['role_penguji' => 'dosen penguji 1'])
+            ->get()->getResultArray();
+    }
+    public function get_penguji2()
+    {
+        return $this->db->table('dosen_penguji')
+            ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_penguji.id_dosenta')
+            ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
+            ->join('data_akademik', 'data_akademik.id_dataakademik = dosen_tugasakhir.id_dataakademik')
+            ->where(['role_penguji' => 'dosen penguji 2'])
+            ->get()->getResultArray();
+    }
+
 
     public function get_dosen_tugasakhir()
     {

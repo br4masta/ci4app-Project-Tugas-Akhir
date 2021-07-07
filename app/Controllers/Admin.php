@@ -12,6 +12,8 @@ use App\Models\admin_penjadwalanmodel;
 use App\Models\admin_dosentamodel;
 use App\Models\admin_levelingmodel;
 use App\Models\UserModel;
+use App\Models\admin_penjadwalansidang_ta_model;
+
 
 
 
@@ -29,6 +31,7 @@ class Admin extends BaseController
 	protected $levelingmodel;
 	protected $user;
 	protected $db;
+	protected $penjadwalansidangtamodel;
 
 	public function __construct()
 	{
@@ -43,6 +46,7 @@ class Admin extends BaseController
 		$this->dosen_tugasakhirmodel = new admin_dosentamodel();
 		$this->levelingmodel = new admin_levelingmodel();
 		$this->user = new UserModel();
+		$this->penjadwalansidangtamodel = new admin_penjadwalansidang_ta_model();
 	}
 
 
@@ -115,7 +119,7 @@ class Admin extends BaseController
 
 
 
-		$penjadwalan = $this->penjadwalanmodel->get_jadwalseminar();
+		$penjadwalan = $this->penjadwalanmodel->get_jadwalseminar1();
 		$penjadwalan2 = $this->penjadwalanmodel->get_jadwalseminar2();
 
 
@@ -147,6 +151,75 @@ class Admin extends BaseController
 		];
 		return view('admin/pendjadwalan/Skripsi', $data);
 	}
+	public function updatejadwalskripsi($id)
+	{
+		// dd($this->request->getVar());
+
+		$this->penjadwalansidangtamodel->save([
+			'id_jadwal_ta' => $id,
+			'tanggal_sidang_ta' => $this->request->getVar('tanggal_ujian'),
+			'tempat_sidang_ta' => $this->request->getVar('ruang'),
+			'penguji_1' => $this->request->getVar('penguji1'),
+			'penguji_2' => $this->request->getVar('penguji2'),
+
+
+		]);
+		session()->setFlashdata('pesan', 'data berhasil di tambah');
+
+		return redirect()->to('/admin/jadwalskripsi');
+	}
+	public function updatejadwalseminar($id)
+	{
+		// dd($this->request->getVar());
+
+		$this->penjadwalanmodel->save([
+			'id_jadwal' => $id,
+			'tanggal_sidang' => $this->request->getVar('tanggal_ujian'),
+			'tempat_sidang' => $this->request->getVar('ruang'),
+			'penguji_1' => $this->request->getVar('penguji1'),
+			'penguji_2' => $this->request->getVar('penguji2'),
+
+
+		]);
+		session()->setFlashdata('pesan', 'data berhasil di tambah');
+
+		return redirect()->to('/admin/jadwalseminar');
+	}
+	public function editskripsi($data)
+	{
+		$data = [
+
+			'data1' => $this->penjadwalansidangtamodel->get_jadwalsidangta1($data),
+			'data2' => $this->penjadwalansidangtamodel->get_jadwalsidangta2($data),
+			'data3' => $this->dosenmodel->get_penguji1(),
+			'data4' => $this->dosenmodel->get_penguji2(),
+
+		];
+		return view('admin/pendjadwalan/Edit Skripsi', $data);
+	}
+
+	public function editseminar($data)
+	{
+		$data = [
+
+			'data1' => $this->penjadwalanmodel->get_jadwalseminar1($data),
+			'data2' => $this->penjadwalanmodel->get_jadwalseminar2($data),
+			'data3' => $this->dosenmodel->get_penguji1(),
+			'data4' => $this->dosenmodel->get_penguji2(),
+
+		];
+
+		return view('admin/pendjadwalan/Edit Seminar Proposal', $data);
+	}
+
+	public function detailseminar()
+	{
+		return view('admin/pendjadwalan/Detail Seminar Proposal');
+	}
+	public function detailskripsi()
+	{
+		return view('admin/pendjadwalan/Detail Skripsi');
+	}
 	//------------------BAGIAN berita -----------------------
 	public function Berita()
 	{
@@ -168,23 +241,7 @@ class Admin extends BaseController
 		return view('admin/Data Berita/Detail Data Berita');
 	}
 	//------------------BAGIAN PENjadwalan -----------------------
-	public function editskripsi()
-	{
-		return view('admin/pendjadwalan/Edit Skripsi');
-	}
-	public function editseminar()
-	{
-		return view('admin/pendjadwalan/Edit Seminar Proposal');
-	}
 
-	public function detailseminar()
-	{
-		return view('admin/pendjadwalan/Detail Seminar Proposal');
-	}
-	public function detailskripsi()
-	{
-		return view('admin/pendjadwalan/Detail Skripsi');
-	}
 	//------------------BAGIAN dosen tugas akhir -----------------------
 	public function datadosenta()
 	{
@@ -258,6 +315,60 @@ class Admin extends BaseController
 		];
 		return view('admin/Data Akademik/Data Akademik', $data);
 	}
+
+	public function updatedataakademik($id)
+	{
+		// dd($this->request->getVar());
+
+		$this->dataakademikmodel->save([
+			'id_dataakademik' => $id,
+			'status' => $this->request->getVar('status'),
+
+
+
+		]);
+		session()->setFlashdata('pesan', 'data berhasil di update');
+
+		return redirect()->to('/admin/dataakademik');
+	}
+	public function tambahdataakademik()
+	{
+		// dd($this->request->getVar());
+
+		$this->dataakademikmodel->save([
+
+			'tahun_akademik' => $this->request->getVar('tahun_akademik'),
+			'tanggal_mulai' => $this->request->getVar('tanggal_mulai'),
+			'tanggal_akhir' => $this->request->getVar('tanggal_akhir'),
+			'semester' => $this->request->getVar('semester'),
+			'status' => $this->request->getVar('status')
+
+
+
+
+		]);
+		session()->setFlashdata('pesan', 'data berhasil di tambah');
+
+		return redirect()->to('/admin/dataakademik');
+	}
+
+	public function deletedataakademik($id)
+	{
+		// dd($this->request->getVar());
+
+		$this->dataakademikmodel->delete([
+
+			'id_dataakademik' => $id
+
+
+
+
+		]);
+		session()->setFlashdata('pesan', 'data berhasil di hapus');
+
+		return redirect()->to('/admin/dataakademik');
+	}
+
 	//------------------BAGIAN data dosen -----------------------
 	public function Datadosen()
 	{

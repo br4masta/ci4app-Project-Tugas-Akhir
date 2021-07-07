@@ -21,9 +21,13 @@
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
-        <div class="row viewdatamhs">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="viewdatadsn">
 
-        </div><!-- /.container-fluid -->
+                </div>
+            </div><!-- /.container-fluid -->
+        </div>
     </div>
 
 </section>

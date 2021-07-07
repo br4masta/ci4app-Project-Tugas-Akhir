@@ -29,6 +29,11 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
+                        <?php if (session()->getFlashdata('pesan')) : ?>
+                            <div class="alert alert-success" role="alert">
+                                <?= session()->getFlashdata('pesan'); ?>
+                            </div>
+                        <?php endif; ?>
                         <h3 class="card-title">Data Sidang Tugas Akhir</h3>
                     </div>
                     <!-- /.card-header -->
@@ -73,16 +78,12 @@
                                             </a>
                                         </td>
                                         <td class="center">
-                                            <a href="<?php echo site_url('admin/editskripsi'); ?>" />
-                                            <button class="btn btn-xs btn-flat btn-success btnbrg-edit">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
+                                            <a href='/admin/editskripsi/<?= $d['id_jadwal_ta']; ?>'>
+                                                <button class="btn btn-xs btn-flat btn-success">
+                                                    jadwalkan sidang
+                                                </button>
                                             </a>
-                                            <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
-                                            <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
-                                                <i class="fa fa-times"></i>
-                                            </button>
-                                            </a>
+
                                         </td>
                                     </tr><?php endforeach; ?>
 
