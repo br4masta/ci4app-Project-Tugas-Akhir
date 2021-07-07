@@ -53,15 +53,15 @@
                                     <td> Dosen Pembimbing I</td>
                                     <td> Dosen Pembimbing II</td>
                                     <td> Aerodinamik Di Mesin robot</td>
-                                    <td >
+                                    <td>
                                         <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
                                     </td>
-                                    <td >
-                                      PENGAJUAN
+                                    <td>
+                                        PENGAJUAN
                                     </td>
-                                    <td >
+                                    <td>
                                         <a href="/dosen/tabelbimbingan"><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target=""><i class='fas fa-pencil-alt'></i>
-                                        </button></a>
+                                            </button></a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -71,15 +71,15 @@
                                     <td> Dosen Pembimbing I</td>
                                     <td> Dosen Pembimbing II</td>
                                     <td> Sistem pendukung keputusan</td>
-                                    <td >
+                                    <td>
                                         <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
                                     </td>
-                                    <td >
-                                       PENGAJUAN
+                                    <td>
+                                        PENGAJUAN
                                     </td>
-                                    <td >
+                                    <td>
                                         <a href="/dosen/tabelbimbingan"><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target=""><i class='fas fa-pencil-alt'></i>
-                                        </button></a>
+                                            </button></a>
                                     </td>
                                 </tr>
                             </tbody>

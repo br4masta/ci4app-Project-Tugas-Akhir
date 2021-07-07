@@ -115,7 +115,7 @@ class Admin extends BaseController
 
 
 
-		$penjadwalan = $this->penjadwalanmodel->get_jadwalseminar();
+		$penjadwalan = $this->penjadwalanmodel->get_jadwalseminar1();
 		$penjadwalan2 = $this->penjadwalanmodel->get_jadwalseminar2();
 
 
@@ -147,6 +147,49 @@ class Admin extends BaseController
 		];
 		return view('admin/pendjadwalan/Skripsi', $data);
 	}
+	public function updatejadwalseminar($id)
+	{
+		// dd($this->request->getVar());
+
+		$this->penjadwalanmodel->save([
+			'id_jadwal' => $id,
+			'tanggal_sidang' => $this->request->getVar('tanggal_ujian'),
+			'tempat_sidang' => $this->request->getVar('ruang'),
+			'penguji_1' => $this->request->getVar('penguji1'),
+			'penguji_2' => $this->request->getVar('penguji2'),
+
+
+		]);
+		session()->setFlashdata('pesan', 'data berhasil di tambah');
+
+		return redirect()->to('/admin/jadwalseminar');
+	}
+	public function editskripsi()
+	{
+		return view('admin/pendjadwalan/Edit Skripsi');
+	}
+	public function editseminar($data)
+	{
+		$data = [
+
+			'data1' => $this->penjadwalanmodel->get_jadwalseminar1($data),
+			'data2' => $this->penjadwalanmodel->get_jadwalseminar2($data),
+			'data3' => $this->dosenmodel->get_penguji1(),
+			'data4' => $this->dosenmodel->get_penguji2(),
+
+		];
+
+		return view('admin/pendjadwalan/Edit Seminar Proposal', $data);
+	}
+
+	public function detailseminar()
+	{
+		return view('admin/pendjadwalan/Detail Seminar Proposal');
+	}
+	public function detailskripsi()
+	{
+		return view('admin/pendjadwalan/Detail Skripsi');
+	}
 	//------------------BAGIAN berita -----------------------
 	public function Berita()
 	{
@@ -168,23 +211,7 @@ class Admin extends BaseController
 		return view('admin/Data Berita/Detail Data Berita');
 	}
 	//------------------BAGIAN PENjadwalan -----------------------
-	public function editskripsi()
-	{
-		return view('admin/pendjadwalan/Edit Skripsi');
-	}
-	public function editseminar()
-	{
-		return view('admin/pendjadwalan/Edit Seminar Proposal');
-	}
 
-	public function detailseminar()
-	{
-		return view('admin/pendjadwalan/Detail Seminar Proposal');
-	}
-	public function detailskripsi()
-	{
-		return view('admin/pendjadwalan/Detail Skripsi');
-	}
 	//------------------BAGIAN dosen tugas akhir -----------------------
 	public function datadosenta()
 	{

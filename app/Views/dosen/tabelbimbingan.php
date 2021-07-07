@@ -63,7 +63,7 @@
 										<tr>
 											<form class="row g-3">
 												<div class="col-md-10">
-													<label  class="form-label col-form-label-sm mb-0">Nama Mahasiswa</label>
+													<label class="form-label col-form-label-sm mb-0">Nama Mahasiswa</label>
 													<input type="text" class="form-control" id="inputNamaMahasiswa" placeholder="Aditya Hernanda" readonly>
 
 												</div>
@@ -97,8 +97,8 @@
 											<form class="row g-3">
 												<div class="col-md-10">
 													<label class="form-label col-form-label-sm mb-0">Tanggal Bimbingan</label>
-													 <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
-                                                   <i class="bi bi-calendar-date"></i>
+													<input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+													<i class="bi bi-calendar-date"></i>
 												</div>
 											</form>
 										</tr>
@@ -106,40 +106,40 @@
 											<form class="row g-3">
 												<div class="col-md-10">
 													<label class="form-label col-form-label-sm mb-0">Status</label>
-														<select class="form-control">
-															<option value="1">BARU</option>
-															<option value="1">SETUJU</option>
-															<option value="2">REVISI</option>
-															<option value="3">TOLAK</option>
-														</select>
-													</form>
-												</tr>
-												<tr>
-                                           <form class="row g-3">
+													<select class="form-control">
+														<option value="1">BARU</option>
+														<option value="1">SETUJU</option>
+														<option value="2">REVISI</option>
+														<option value="3">TOLAK</option>
+													</select>
+											</form>
+										</tr>
+										<tr>
+											<form class="row g-3">
 												<div class="col-md-10">
 													<label class="form-label col-form-label-sm mb-0">Saran</label>
-                                                <div class="mb-3">
-                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                            </td>
-                                        </tr>
-											</tbody>
-										</table>
-										<!-- Akhir Table 2 -->
-									</div>
-									<!-- /.tab-content -->
-								</div><!-- /.card-body -->
+													<div class="mb-3">
+														<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+														</td>
+										</tr>
+									</tbody>
+								</table>
+								<!-- Akhir Table 2 -->
 							</div>
-							<!-- /.card -->
-						</div>
-						<!-- /.col -->
+							<!-- /.tab-content -->
+						</div><!-- /.card-body -->
 					</div>
-					<!-- /.row -->
-				</div><!-- /.container-fluid -->
-			</section>
+					<!-- /.card -->
+				</div>
+				<!-- /.col -->
+			</div>
+			<!-- /.row -->
+		</div><!-- /.container-fluid -->
+</section>
 
-			<!-- /.content -->
+<!-- /.content -->
 
 
-			<?= $this->endSection(); ?>
+<?= $this->endSection(); ?>
 
-			<?= $this->include('dosen/menu'); ?>
+<?= $this->include('dosen/menu'); ?>

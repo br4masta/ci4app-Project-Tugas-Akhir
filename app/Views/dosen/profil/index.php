@@ -24,11 +24,11 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="viewdatadsn">
-                    
+
                 </div>
-        </div><!-- /.container-fluid -->
+            </div><!-- /.container-fluid -->
+        </div>
     </div>
-</div>
 
 </section>
 <!-- viewModal - Section -->

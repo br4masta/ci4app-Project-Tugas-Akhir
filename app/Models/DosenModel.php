@@ -17,16 +17,6 @@ class dosenModel extends Model
     //     // $this->table_dosen = $this->db->table('dosen')
     //     //     ->join('user' 'dosen.id_user = user.id_user');;
 
-<<<<<<< HEAD
-    public function get_dosen()
-    {
-        return $this->db->table('leveling_dosen')
-            ->join('user', 'user.id_user = leveling_dosen.id_user')
-            ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = leveling_dosen.id_dosenta')
-            ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
-            ->get()->getResultArray();
-    }
-=======
     // }
     // public function get_datadosen($id)
     // {
@@ -47,7 +37,6 @@ class dosenModel extends Model
     //         ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = leveling_dosen.id_dosenta')
     //         ->join('user', 'user.id_user = leveling_dosen.id_user')
     //         ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
->>>>>>> 8a5725d693ff5a8557e53c1fd89a58a557083726
 
     //         ->get()->getResultArray();
     // }
@@ -104,7 +93,7 @@ class dosenModel extends Model
     //         ->join('dosen_penguji', 'dosen_penguji.id_dosenta = dosen_tugasakhir.id_dosenta')
     //         ->get()->getResultArray();
     // }
-      public function __construct()
+    public function __construct()
     {
         parent::__construct();
         $db = \Config\Database::connect();
@@ -113,13 +102,12 @@ class dosenModel extends Model
         $this->table_mhs = $this->db->table('mahasiswa')
             ->join('user', 'mahasiswa.id_user = user.id_user');
         $this->table_datadosenta = $this->db->table('dosen_tugasakhir');
-
-     }      
+    }
     public function get_profil_datadosenta($id)
     {
         return  $this->table_datadosenta
-         ->join('dosen','dosen.id_dosen = dosen_tugasakhir.id_dosen')
-         ->join('user','user.id_user = dosen.id_user')
+            ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
+            ->join('user', 'user.id_user = dosen.id_user')
             ->where('user.id_user', $id)
             ->get()->getResultArray();
     }

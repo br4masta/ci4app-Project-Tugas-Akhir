@@ -24,21 +24,21 @@ class Dosen extends BaseController
 		// $datadosenta = $dosenModel->get_dosen_tugasakhir();
 		if ($this->request->isAJAX()) {
 
-		$data = [
+			$data = [
 
-			//'datadosenta' => $datadosenta
-			'tampildatadosen' => $this->data_dsn->get_profil_datadosenta($this->id)
+				//'datadosenta' => $datadosenta
+				'tampildatadosen' => $this->data_dsn->get_profil_datadosenta($this->id)
 
-		];
-		$msg = [
-			'data' => view ('dosen/profil/v_data/data_dosen', $data)
-		];
+			];
+			$msg = [
+				'data' => view('dosen/profil/v_data/data_dosen', $data)
+			];
 
-		echo json_encode($msg);
-	}else {
+			echo json_encode($msg);
+		} else {
 			exit('Maaf tidak dapat diproses');
 		}
-}
+	}
 
 	public function judul()
 	{
