@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 04, 2021 at 02:35 AM
+-- Generation Time: Jul 08, 2021 at 06:11 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -131,7 +131,16 @@ CREATE TABLE `dosen` (
 INSERT INTO `dosen` (`id_dosen`, `nidn_dosen`, `nama_dosen`, `foto_dosen`) VALUES
 (1, 'dosen', 'dosen', 'dosen.jpg'),
 (2, '520007689', 'ir.sucipto s.it', 'sucipto.jpg'),
-(3, '212', 'pak edy', 'pak edy.jpg');
+(3, '212', 'pak edy', 'pak edy.jpg'),
+(4, 'wahyu', ' wahyu', ''),
+(5, 'wahyudi', ' wahyudi', ''),
+(7, 'sasassa', ' saaassas', ''),
+(8, 'hariono', ' hariono', ''),
+(9, '200000001', ' dosen azza satu', ''),
+(10, '2000001', ' dosen azza dua', ''),
+(11, '20000003', ' dosen azza tiga', ''),
+(12, '2000004', ' dosen azza empat', ''),
+(13, '2000005', ' dosen azza lima', '');
 
 -- --------------------------------------------------------
 
@@ -195,7 +204,18 @@ INSERT INTO `dosen_tugasakhir` (`id_dosenta`, `id_dosen`, `id_dataakademik`) VAL
 (1, 2, 1),
 (2, 1, 1),
 (3, 3, 1),
-(4, 2, 2);
+(4, 2, 2),
+(5, 4, 1),
+(6, 5, 1),
+(8, 7, 1),
+(9, 8, 1),
+(12, 4, 1),
+(13, 5, 1),
+(14, 9, 1),
+(15, 10, 1),
+(16, 11, 1),
+(17, 12, 1),
+(18, 13, 1);
 
 -- --------------------------------------------------------
 
@@ -217,7 +237,15 @@ INSERT INTO `leveling_dosen` (`id_level`, `id_dosenta`, `id_user`) VALUES
 (1, 3, 5),
 (2, 2, 4),
 (3, 1, 3),
-(4, 1, 11);
+(4, 1, 11),
+(5, 6, 13),
+(6, 8, 15),
+(7, 9, 16),
+(8, 14, 17),
+(9, 15, 18),
+(10, 16, 19),
+(11, 17, 20),
+(12, 18, 21);
 
 -- --------------------------------------------------------
 
@@ -273,9 +301,10 @@ CREATE TABLE `pengajuan_judul` (
 --
 
 INSERT INTO `pengajuan_judul` (`id_pengajuan`, `id_mhs`, `judul`, `deskripsi`, `dosenpembimbing1`, `dosenpembimbing2`, `status_pengajuan`, `deskripsi_judul`, `catatan`) VALUES
-(5, 1, 'sistem kelayakan terbang', 'pembuatan sistem informasi perihal pengelolaan data secara di gitalisasi untuk proses pemeriksaan rutin pesawat sebelum lepas landas.', 3, 4, 'belum di setujui', NULL, ''),
-(6, 2, 'sitem infomasi rumah sakit', 'pengembangan sistem secara digitalisasi terhadap rumah sakit di sebuah desa', 5, 4, 'belum di setujui', NULL, ''),
-(7, 1, 'judul', 'pengembangan sistem secara digitalisasi terhadap rumah sakit di sebuah desa', 5, 4, 'belum di setujui', '1625457466_bdb67a3301621438a87d.pdf', '');
+(5, 1, 'sistem kelayakan terbang', 'pembuatan sistem informasi perihal pengelolaan data secara di gitalisasi untuk proses pemeriksaan rutin pesawat sebelum lepas landas.', 3, 4, 'belum di setujui', NULL, 'kurang rapi'),
+(6, 2, 'sitem infomasi rumah sakit', 'pengembangan sistem secara digitalisasi terhadap rumah sakit di sebuah desa', 5, 4, 'di setujui', NULL, 'sudah bagus'),
+(7, 1, 'judul', 'pengembangan sistem secara digitalisasi terhadap rumah sakit di sebuah desa', 5, 4, 'belum di setujui', '1625457466_bdb67a3301621438a87d.pdf', ''),
+(8, 2, 'sistem pakar pendeteksi gangguan pencernaan', 'sistem pakar yang membantu mendeteksi gangguan pencernaan', 3, 4, 'belum di setujui', '1625713485_0c1889c9b090474a52f5.pdf', '');
 
 -- --------------------------------------------------------
 
@@ -299,11 +328,11 @@ CREATE TABLE `penjadwalan_sidang` (
 --
 
 INSERT INTO `penjadwalan_sidang` (`id_jadwal`, `id_bimbingan`, `penguji_1`, `penguji_2`, `berkas_proposal`, `acara_sidang`, `tanggal_sidang`, `tempat_sidang`) VALUES
-(2, 3, 3, 2, NULL, 'seminar proposal', '2021-06-26 00:49:37', '107'),
-(3, 3, 3, 4, NULL, 'seminar proposal', '2021-07-31 11:50:10', '109'),
-(18, 18, 4, 3, '1625566464_6640333a31172727c404.pdf', 'seminar proposal', '2021-07-14 17:21:56', '208'),
-(19, 20, NULL, NULL, '1625578843_4f74b9f6002463eace93.pdf', 'seminar proposal', '0000-00-00 00:00:00', ''),
-(20, 20, NULL, NULL, '1625635936_1d1b43ce2e9feffe8f5e.pdf', 'seminar proposal', '0000-00-00 00:00:00', '');
+(2, 3, 3, 2, '', 'seminar proposal', '2021-07-17 00:00:00', '   505'),
+(3, 3, 3, 2, NULL, 'seminar proposal', '2021-07-31 11:50:10', '109'),
+(18, 18, 3, 4, '1625566464_6640333a31172727c404.pdf', 'seminar proposal', '2021-07-14 17:21:56', '208'),
+(19, 20, 3, 4, '1625578843_4f74b9f6002463eace93.pdf', 'seminar proposal', '0000-00-00 00:00:00', ''),
+(20, 20, 3, 2, '1625635936_1d1b43ce2e9feffe8f5e.pdf', 'seminar proposal', '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -327,7 +356,7 @@ CREATE TABLE `penjadwalan_sidang_ta` (
 
 INSERT INTO `penjadwalan_sidang_ta` (`id_jadwal_ta`, `id_bimbingan_ta`, `penguji_1`, `penguji_2`, `acara_sidang_ta`, `tanggal_sidang_ta`, `tempat_sidang_ta`) VALUES
 (1, 2, 3, 4, 'sidang tugas akhir', '2021-10-01', 'ruang 301'),
-(2, 4, 2, 2, 'sidang tugas akhir', '2021-07-13', '201');
+(2, 4, 3, 4, 'sidang tugas akhir', '2021-07-16', '  509');
 
 -- --------------------------------------------------------
 
@@ -400,8 +429,17 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `level`) VALUES
 (5, 'admin', 'admin', '1'),
 (6, 'aku', 'aku', '6'),
 (9, 'mahasiswa', 'mahasiswa', '3'),
-(10, 'sucipto@gmail.com', 'sucipto', '5'),
-(11, 'admin2', 'admin2', '1');
+(10, 'sucipto', 'sucipto', '2'),
+(11, 'admin2', 'admin2', '1'),
+(12, 'wahyu', 'wahyu', '1'),
+(13, 'wahyudi', 'wahyudi', '1'),
+(15, 'sasasaas', 'sasassas', '1'),
+(16, 'hariono', 'hariono', '4'),
+(17, 'dosenazzasatu', 'dosenazzasatu', '2'),
+(18, 'dosenazzadua', 'dosenazzadua', '2'),
+(19, 'dosenazzatiga', 'dosenazzatiga', '2'),
+(20, 'dosen azza empat', 'dosenazzaempat', '2'),
+(21, 'dosen azza lima', 'dosenazzalima', '2');
 
 --
 -- Indexes for dumped tables
@@ -543,13 +581,13 @@ ALTER TABLE `bimbingan_ta`
 -- AUTO_INCREMENT for table `data_akademik`
 --
 ALTER TABLE `data_akademik`
-  MODIFY `id_dataakademik` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_dataakademik` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `dosen`
 --
 ALTER TABLE `dosen`
-  MODIFY `id_dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `dosen_pembimbing`
@@ -567,13 +605,13 @@ ALTER TABLE `dosen_penguji`
 -- AUTO_INCREMENT for table `dosen_tugasakhir`
 --
 ALTER TABLE `dosen_tugasakhir`
-  MODIFY `id_dosenta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_dosenta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `leveling_dosen`
 --
 ALTER TABLE `leveling_dosen`
-  MODIFY `id_level` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_level` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `mahasiswa`
@@ -585,7 +623,7 @@ ALTER TABLE `mahasiswa`
 -- AUTO_INCREMENT for table `pengajuan_judul`
 --
 ALTER TABLE `pengajuan_judul`
-  MODIFY `id_pengajuan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_pengajuan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `penjadwalan_sidang`
@@ -615,7 +653,7 @@ ALTER TABLE `sidang_tugasakhir`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables
