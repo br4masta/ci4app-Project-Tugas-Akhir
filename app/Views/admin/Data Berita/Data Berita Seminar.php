@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Berita Acara
+                <h1 class="m-0">Berita Acara Sidang Seminar
                 </h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
@@ -41,9 +41,8 @@
                                     <th>NIM</th>
                                     <th>Nama</th>
                                     <th>Judul</th>
-                                    <th>Dosen Pembimbing</th>
+                                    <!-- <th>Dosen Pembimbing</th> -->
                                     <th>Acara</th>
-
                                     <th>detail</th>
 
                                 </tr>
@@ -58,11 +57,11 @@
                                         </td>
                                         <td><?= $c['nama_mhs']; ?></td>
                                         <td> <?= $c['judul']; ?></td>
-                                        <td><?= $c['nama_dosen']; ?></td>
+                                        <!-- < -->
                                         <td><?= $c['acara_sidang']; ?></td>
 
                                         <td>
-                                            <a href='/admin/detailberita/<?= $c['id_seminar']; ?>'>
+                                            <a href='/admin/detailberitaseminar/<?= $c['id_seminar']; ?>'>
                                                 <button class="btn btn-xs btn-flat btn-info">
                                                     Detail
                                                 </button>
@@ -70,27 +69,7 @@
                                         </td>
 
                                     </tr><?php endforeach; ?>
-                                <?php foreach ($sidang_ta as $d) : ?>
-                                    <tr>
 
-                                        <td><?= $i++; ?></td>
-                                        <td><?= $d['nim_mhs']; ?>
-                                        </td>
-                                        <td><?= $d['nama_mhs']; ?></td>
-                                        <td> <?= $d['judul']; ?></td>
-                                        <td><?= $d['nama_dosen']; ?></td>
-                                        <td><?= $d['acara_sidang_ta']; ?></td>
-
-                                        <td>
-                                            <a href='<?php echo site_url('admin/detailberita'); ?>'>
-                                                <button class="btn btn-xs btn-flat btn-info">
-                                                    Detail
-                                                </button>
-                                            </a>
-                                        </td>
-
-                                    </tr>
-                                <?php endforeach; ?>
 
 
                             </tbody>

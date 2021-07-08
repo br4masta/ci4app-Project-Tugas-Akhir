@@ -106,14 +106,35 @@
 
 
         <li class="nav-item">
-            <a href="<?php echo site_url('admin/Berita'); ?>" class="nav-link">
+            <a href="#" class="nav-link">
                 <i class=" fa fa-copy"></i>
                 <p>
                     Data Berita
-
+                    <i class="fas fa-angle-left right"></i>
                 </p>
             </a>
+            <ul class="nav nav-treeview">
+
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="<?php echo site_url('admin/beritaseminar'); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Berita Seminar</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="<?php echo site_url('admin/beritaskripsi'); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Berita Sidang TA</p>
+                    </a>
+                </li>
+
+            </ul>
         </li>
+
         <li class="nav-item">
             <a href="<?= site_url('Auth/logout'); ?>" class="nav-link">
                 <i class="fas fa-sign-out-alt"></i>

@@ -221,24 +221,58 @@ class Admin extends BaseController
 		return view('admin/pendjadwalan/Detail Skripsi');
 	}
 	//------------------BAGIAN berita -----------------------
-	public function Berita()
+	public function Beritaseminar()
 	{
 
 		$beritaseminar = $this->beritamodel->get_beritaseminar();
-		$beritasidangta = $this->beritamodel->get_beritasidangta();
+
 
 		$data = [
 
 			'seminar' => $beritaseminar,
+
+
+		];
+		return view('admin/Data Berita/Data Berita seminar', $data);
+	}
+	public function Beritaskripsi()
+	{
+
+
+		$beritasidangta = $this->beritamodel->get_beritasidangta();
+
+		$data = [
+
+
 			'sidang_ta' => $beritasidangta,
 
 		];
-		return view('admin/Data Berita/Data Berita', $data);
+		return view('admin/Data Berita/Data Berita skripsi', $data);
 	}
 
-	public function detailberita()
+	public function detailberitaseminar($data)
 	{
-		return view('admin/Data Berita/Detail Data Berita');
+
+
+
+		$data = [
+
+			'berita' => $this->beritamodel->get_beritaseminar($data)
+
+		];
+
+		return view('admin/Data Berita/Detail Berita seminar', $data);
+	}
+	public function detailberitaskripsi($data)
+	{
+
+
+		$data = [
+
+			'berita' => $this->beritamodel->get_beritasidangta($data)
+
+		];
+		return view('admin/Data Berita/Detail Berita skripsi', $data);
 	}
 	//------------------BAGIAN PENjadwalan -----------------------
 

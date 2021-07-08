@@ -223,10 +223,59 @@ class Kaprodi extends BaseController
         ];
         return view('kaprodi/Data Berita/Data Berita', $data);
     }
-
-    public function detailberita()
+    // -------------BERITA ACARA-------------------------------------------
+    public function Beritaseminar()
     {
-        return view('kaprodi/Data Berita/Detail Data Berita');
+
+        $beritaseminar = $this->beritamodel->get_beritaseminar();
+
+
+        $data = [
+
+            'seminar' => $beritaseminar,
+
+
+        ];
+        return view('kaprodi/Data Berita/Data Berita seminar', $data);
+    }
+    public function Beritaskripsi()
+    {
+
+
+        $beritasidangta = $this->beritamodel->get_beritasidangta();
+
+        $data = [
+
+
+            'sidang_ta' => $beritasidangta,
+
+        ];
+        return view('kaprodi/Data Berita/Data Berita skripsi', $data);
+    }
+
+    public function detailberitaseminar($data)
+    {
+
+
+
+        $data = [
+
+            'berita' => $this->beritamodel->get_beritaseminar($data)
+
+        ];
+
+        return view('kaprodi/Data Berita/Detail Berita seminar', $data);
+    }
+    public function detailberitaskripsi($data)
+    {
+
+
+        $data = [
+
+            'berita' => $this->beritamodel->get_beritasidangta($data)
+
+        ];
+        return view('kaprodi/Data Berita/Detail Berita skripsi', $data);
     }
     //--------------------------------------------------------------------
 

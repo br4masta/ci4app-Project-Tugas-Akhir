@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2021 at 06:11 AM
+-- Generation Time: Jul 09, 2021 at 12:11 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -370,17 +370,25 @@ CREATE TABLE `seminar_proposal` (
   `nilai` varchar(3) NOT NULL,
   `catatan` text NOT NULL,
   `status` enum('lanjut','disetujui dengan revisi','mengulang') NOT NULL,
-  `judul_final` varchar(50) NOT NULL
+  `judul_final` varchar(50) NOT NULL,
+  `nilai_penguji_1` int(11) DEFAULT NULL,
+  `nilai_penguji_2` int(11) DEFAULT NULL,
+  `nilai_pembimbing_1` int(11) DEFAULT NULL,
+  `nilai_pembimbing_2` int(11) DEFAULT NULL,
+  `catatan_penguji_1` text DEFAULT NULL,
+  `catatan_penguji_2` text DEFAULT NULL,
+  `catatan_pembimbing_1` text DEFAULT NULL,
+  `catatan_pembimbing_2` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `seminar_proposal`
 --
 
-INSERT INTO `seminar_proposal` (`id_seminar`, `id_jadwal`, `nilai`, `catatan`, `status`, `judul_final`) VALUES
-(2, 2, 'b++', 'sudah cukup sesuai bisa lanjut ke bab berikutnya', 'lanjut', ''),
-(4, 2, '', '', 'lanjut', ''),
-(5, 18, 'A', 'asd', 'disetujui dengan revisi', 'weqeq');
+INSERT INTO `seminar_proposal` (`id_seminar`, `id_jadwal`, `nilai`, `catatan`, `status`, `judul_final`, `nilai_penguji_1`, `nilai_penguji_2`, `nilai_pembimbing_1`, `nilai_pembimbing_2`, `catatan_penguji_1`, `catatan_penguji_2`, `catatan_pembimbing_1`, `catatan_pembimbing_2`) VALUES
+(2, 2, '89', 'sudah cukup sesuai bisa lanjut ke bab berikutnya', 'lanjut', '', 90, 80, 90, 88, 'sudah bagus', 'perlu pembenahan seikit pada metode', 'sudah mantap', 'sudah cukup'),
+(4, 2, '89', '', 'lanjut', '', 89, 90, 90, 88, 'bagus', 'lanjut!', 'semangat', 'bagian referensi di tambahi lagi'),
+(5, 18, '79', 'asd', 'disetujui dengan revisi', 'weqeq', 78, 80, 80, 80, 'perlu perbaikan', 'perbaiki lagi', 'bagian latar belakang masih sangat kurang', 'asa revisi di bagian daftar isinya');
 
 -- --------------------------------------------------------
 
@@ -393,16 +401,24 @@ CREATE TABLE `sidang_tugasakhir` (
   `id_jadwal_ta` int(3) DEFAULT NULL,
   `nilai_ta` varchar(3) NOT NULL,
   `catatan_ta` text NOT NULL,
-  `status_ta` enum('lulus','lulus dengan revisi','tidak lulus') NOT NULL
+  `status_ta` enum('lulus','lulus dengan revisi','tidak lulus') NOT NULL,
+  `nilai_penguji_1_ta` int(3) DEFAULT NULL,
+  `nilai_penguji_2_ta` int(3) DEFAULT NULL,
+  `nilai_pembimbing_1_ta` int(3) DEFAULT NULL,
+  `nilai_pembimbing_2_ta` int(3) DEFAULT NULL,
+  `catatan_penguji_1_ta` text DEFAULT NULL,
+  `catatan_penguji_2_ta` text DEFAULT NULL,
+  `catatan_pembimbing_1_ta` text DEFAULT NULL,
+  `catatan_pembimbing_2_ta` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `sidang_tugasakhir`
 --
 
-INSERT INTO `sidang_tugasakhir` (`id_sidangta`, `id_jadwal_ta`, `nilai_ta`, `catatan_ta`, `status_ta`) VALUES
-(2, 1, 'A', 'great job!', 'lulus'),
-(3, 2, '90', 'asd', 'lulus');
+INSERT INTO `sidang_tugasakhir` (`id_sidangta`, `id_jadwal_ta`, `nilai_ta`, `catatan_ta`, `status_ta`, `nilai_penguji_1_ta`, `nilai_penguji_2_ta`, `nilai_pembimbing_1_ta`, `nilai_pembimbing_2_ta`, `catatan_penguji_1_ta`, `catatan_penguji_2_ta`, `catatan_pembimbing_1_ta`, `catatan_pembimbing_2_ta`) VALUES
+(2, 1, '90', 'great job!', 'lulus', 90, 90, 90, 90, 'udah sangat bagus', 'selamat kamu lulus', 'tidak ada catatan', 'sudah bagus'),
+(3, 2, '90', 'asd', 'lulus', 89, 90, 90, 90, 'bagus', 'sudah sangat baik', 'tidak ada revisi', 'sudah bagus');
 
 -- --------------------------------------------------------
 
