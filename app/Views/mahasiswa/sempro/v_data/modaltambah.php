@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Judul Bimbingan</label>
+                    <label for="" class="col-sm-2 col-form-label">Judul Final</label>
                     <div class="col-sm-4">
                         <input type="text" class="form-control" id="judul" name="judul">
                         <div class="invalid-feedback errorJudul">

@@ -21,13 +21,9 @@
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="viewdatadsn">
+    <div class="row viewdatadsn">
 
-                </div>
-            </div><!-- /.container-fluid -->
-        </div>
+</div>
     </div>
 
 </section>
@@ -40,7 +36,7 @@
             url: "<?= site_url('dosen/showprofil/id') ?>",
             dataType: "json",
             success: function(response) {
-                $('.viewdatamhs').html(response.data);
+                $('.viewdatadsn').html(response.data);
             },
             error: function(xhr, ajaxOptions, thrownError) {
                 alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
