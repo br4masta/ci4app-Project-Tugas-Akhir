@@ -47,7 +47,6 @@
                                     <th>NIM</th>
                                     <th>Nama(s)</th>
                                     <th>Judul</th>
-                                    <th>Deskripsi</th>
                                     <th>Dosen Pembimbing I</th>
                                     <th>Dosen Pembimbing II</th>
                                     <th>Status</th>
@@ -64,7 +63,6 @@
                                         <td><?= $d['nim_mhs']; ?></td>
                                         <td><?= $d['nama_mhs']; ?></td>
                                         <td> <?= $d['judul']; ?></td>
-                                        <td> <?= $d['deskripsi']; ?></td>
                                         <td><?= $c['nama_dosen']; ?></td>
                                         <td><?= $d['nama_dosen']; ?></td>
                                         <td style="text-align: center; ">

@@ -29,21 +29,27 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                        <?php if (session()->getFlashdata('pesan')) : ?>
+                            <div class="alert alert-success" role="alert">
+                                <?= session()->getFlashdata('pesan'); ?>
+                            </div>
+                        <?php endif; ?>
+                        <h3 class="card-title">Data Seminar Proposal</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="example2" class="table table-bordered table-hover">
+                        <table id="datapengajuan" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>NIM</th>
                                     <th>Nama</th>
                                     <th>Judul</th>
-                                    <th>Dosen Pembimbing</th>
+                                    <th>Dosen Penguji I</th>
+                                    <th>Dosen Penguji II</th>
                                     <th>Tanggal</th>
-                                    <th>Jam</th>
                                     <th>Tempat</th>
+                                    <th>acara</th>
                                     <th>detail</th>
                                     <th>aksi</th>
                                 </tr>
@@ -58,29 +64,32 @@
                                         </td>
                                         <td><?= $d['nama_mhs']; ?></td>
                                         <td> <?= $d['judul']; ?></td>
-                                        <td><?= $c['nama_dosen']; ?></td>
-                                        <td><?= $d['nama_dosen']; ?></td>
+                                        <td>
+                                            <?= $c['nama_dosen']; ?>
+
+
+                                        </td>
+                                        <td>
+                                            <?= $d['nama_dosen']; ?>
+
+                                        </td>
                                         <td><?= $d['tanggal_sidang']; ?></td>
                                         <td><?= $d['tempat_sidang']; ?></td>
+                                        <td><?= $d['acara_sidang']; ?></td>
 
 
                                         <td>
-                                            <a href='<?php echo site_url('admin/detailseminar'); ?>'>
+                                            <a href='/kaprodi/detailseminar/<?= $d['id_jadwal']; ?>'>
                                                 <button class="btn btn-xs btn-flat btn-info">
                                                     Detail
                                                 </button>
                                             </a>
                                         </td>
                                         <td class="center">
-                                            <a href=" <?php echo site_url('admin/editseminar'); ?> " />
-                                            <button class="btn btn-xs btn-flat btn-success btnbrg-edit">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                            </a>
-                                            <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
-                                            <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
-                                                <i class="fa fa-times"></i>
-                                            </button>
+                                            <a href='/kaprodi/editseminar/<?= $d['id_jadwal']; ?>'>
+                                                <button class="btn btn-xs btn-flat btn-success">
+                                                    jadwalkan sidang
+                                                </button>
                                             </a>
                                         </td>
                                     </tr><?php endforeach; ?>

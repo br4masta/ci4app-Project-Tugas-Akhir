@@ -164,7 +164,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit" id="btn-simpan" class="btn btn-primary btnsimpan">Ajukan Judul</button>
+                <button type="submit" id="btn-simpan" class="btn btn-primary btnsimpan">tambah</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>

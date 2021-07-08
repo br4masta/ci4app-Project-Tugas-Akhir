@@ -45,8 +45,8 @@
                                     <th>NIM</th>
                                     <th>Nama</th>
                                     <th>Judul</th>
-                                    <th>Dosen Pembimbing I</th>
-                                    <th>Dosen Pembimbing II</th>
+                                    <th>Dosen penguji I</th>
+                                    <th>Dosen penguji II</th>
                                     <th>Tanggal</th>
                                     <th>Tempat</th>
                                     <th>acara</th>

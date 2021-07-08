@@ -92,7 +92,7 @@ class Kaprodi extends BaseController
     }
 
     // ---------------------PENJADWALAN ----------------------
-    public function seminar()
+    public function jadwalseminar()
     {
         $penjadwalanModel = new \App\Models\penjadwalanModel();
         $penjadwalan = $penjadwalanModel->get_jadwalseminar();
@@ -109,7 +109,7 @@ class Kaprodi extends BaseController
         ];
         return view('kaprodi/pendjadwalan/Seminar Proposal', $data);
     }
-    public function skripsi()
+    public function jadwalskripsi()
     {
         $penjadwalanModel = new \App\Models\penjadwalanModel();
         $penjadwalan = $penjadwalanModel->get_jadwalsidangta();
@@ -123,22 +123,91 @@ class Kaprodi extends BaseController
         ];
         return view('kaprodi/pendjadwalan/Skripsi', $data);
     }
-    public function editskripsi()
+    public function editskripsi($data)
     {
-        return view('kaprodi/pendjadwalan/Edit Skripsi');
+        $data = [
+
+            'data1' => $this->penjadwalansidangtamodel->get_jadwalsidangta1($data),
+            'data2' => $this->penjadwalansidangtamodel->get_jadwalsidangta2($data),
+            'data3' => $this->dosenmodel->get_penguji1(),
+            'data4' => $this->dosenmodel->get_penguji2(),
+
+        ];
+        return view('kaprodi/pendjadwalan/Edit Skripsi', $data);
     }
-    public function editseminar()
+    public function updatejadwalskripsi($id)
     {
-        return view('kaprodi/pendjadwalan/Edit Seminar Proposal');
+        // dd($this->request->getVar());
+
+        $this->penjadwalansidangtamodel->save([
+            'id_jadwal_ta' => $id,
+            'tanggal_sidang_ta' => $this->request->getVar('tanggal_ujian'),
+            'tempat_sidang_ta' => $this->request->getVar('ruang'),
+            'penguji_1' => $this->request->getVar('penguji1'),
+            'penguji_2' => $this->request->getVar('penguji2'),
+
+
+        ]);
+        session()->setFlashdata('pesan', 'data berhasil di tambah');
+
+        return redirect()->to('/kaprodi/jadwalskripsi');
+    }
+    public function editseminar($data)
+    {
+        $data = [
+
+            'data1' => $this->penjadwalanmodel->get_jadwalseminar1($data),
+            'data2' => $this->penjadwalanmodel->get_jadwalseminar2($data),
+            'data3' => $this->dosenmodel->get_penguji1(),
+            'data4' => $this->dosenmodel->get_penguji2(),
+
+        ];
+
+        return view('kaprodi/pendjadwalan/Edit Seminar Proposal', $data);
     }
 
-    public function detailseminar()
+    public function updatejadwalseminar($id)
     {
-        return view('kaprodi/pendjadwalan/Detail Seminar Proposal');
+        // dd($this->request->getVar());
+
+        $this->penjadwalanmodel->save([
+            'id_jadwal' => $id,
+            'tanggal_sidang' => $this->request->getVar('tanggal_ujian'),
+            'tempat_sidang' => $this->request->getVar('ruang'),
+            'penguji_1' => $this->request->getVar('penguji1'),
+            'penguji_2' => $this->request->getVar('penguji2'),
+
+
+        ]);
+        session()->setFlashdata('pesan', 'data berhasil di tambah');
+
+        return redirect()->to('/kaprodi/jadwalseminar');
     }
-    public function detailskripsi()
+
+    public function detailseminar($data)
     {
-        return view('kaprodi/pendjadwalan/Detail Skripsi');
+        $data = [
+
+            'data1' => $this->penjadwalanmodel->get_jadwalseminar1($data),
+            'data2' => $this->penjadwalanmodel->get_jadwalseminar2($data),
+            'data3' => $this->dosenmodel->get_penguji1(),
+            'data4' => $this->dosenmodel->get_penguji2(),
+
+        ];
+        return view('kaprodi/pendjadwalan/Detail Seminar Proposal', $data);
+    }
+    public function detailskripsi($data)
+    {
+        $data = [
+
+            'data1' => $this->penjadwalansidangtamodel->get_jadwalsidangta1($data),
+            'data2' => $this->penjadwalansidangtamodel->get_jadwalsidangta2($data),
+            'data3' => $this->dosenmodel->get_penguji1(),
+            'data4' => $this->dosenmodel->get_penguji2(),
+
+        ];
+
+        return view('kaprodi/pendjadwalan/Detail Skripsi', $data);
     }
     public function Berita()
     {

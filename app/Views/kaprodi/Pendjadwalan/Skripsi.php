@@ -29,26 +29,33 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                        <?php if (session()->getFlashdata('pesan')) : ?>
+                            <div class="alert alert-success" role="alert">
+                                <?= session()->getFlashdata('pesan'); ?>
+                            </div>
+                        <?php endif; ?>
+                        <h3 class="card-title">Data Sidang Tugas Akhir</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="example2" class="table table-bordered table-hover">
+                        <table id="datapengajuan" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>NIM</th>
                                     <th>Nama</th>
                                     <th>Judul</th>
-                                    <th>Dosen Pembimbing</th>
+                                    <th>Dosen penguji I</th>
+                                    <th>Dosen penguji II</th>
                                     <th>Tanggal</th>
-                                    <th>Jam</th>
                                     <th>Tempat</th>
+                                    <th>acara</th>
                                     <th>detail</th>
                                     <th>aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
+
                                 <?php $i = 1; ?>
                                 <?php foreach ($jadwal as $c);
                                 foreach ($jadwal2 as $d) : ?>
@@ -60,27 +67,23 @@
                                         <td> <?= $d['judul']; ?></td>
                                         <td><?= $c['nama_dosen']; ?></td>
                                         <td><?= $d['nama_dosen']; ?></td>
-                                        <td><?= $d['tanggal_sidang']; ?></td>
-                                        <td><?= $d['tempat_sidang']; ?></td>
-
+                                        <td><?= $d['tanggal_sidang_ta']; ?></td>
+                                        <td><?= $d['tempat_sidang_ta']; ?></td>
+                                        <td><?= $d['acara_sidang_ta']; ?></td>
                                         <td>
-                                            <a href='<?php echo site_url('admin/detailskripsi'); ?>'>
+                                            <a href='/kaprodi/detailskripsi/<?= $d['id_jadwal_ta']; ?>'>
                                                 <button class="btn btn-xs btn-flat btn-info">
                                                     Detail
                                                 </button>
                                             </a>
                                         </td>
                                         <td class="center">
-                                            <a href="<?php echo site_url('admin/editskripsi'); ?>" />
-                                            <button class="btn btn-xs btn-flat btn-success btnbrg-edit">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
+                                            <a href='/kaprodi/editskripsi/<?= $d['id_jadwal_ta']; ?>'>
+                                                <button class="btn btn-xs btn-flat btn-success">
+                                                    jadwalkan sidang
+                                                </button>
                                             </a>
-                                            <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
-                                            <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
-                                                <i class="fa fa-times"></i>
-                                            </button>
-                                            </a>
+
                                         </td>
                                     </tr><?php endforeach; ?>
 

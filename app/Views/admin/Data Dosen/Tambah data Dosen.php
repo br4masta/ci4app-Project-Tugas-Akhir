@@ -60,9 +60,10 @@
                         <select class="form-control" name="jabatan">
                             <option value="">- Pilih Disini -</option>
                             <option value='1' selected>Administrator</option>
-                            <option value='2'>Dosen Tetap</option>
-                            <option value='3'>Dosen Tidak Tetap</option>
-                            <option value='4'>Kaprodi</option>
+                            <option value='2'>Dosen </option>
+                            <option value='3'>mahasiswa</option>
+                            <option value='4'>Dosen penguji</option>
+                            <option value='5'>Kaprodi</option>
 
                         </select>
                     </div>
