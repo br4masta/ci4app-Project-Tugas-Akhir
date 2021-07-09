@@ -13,6 +13,7 @@ use App\Models\admin_dosentamodel;
 use App\Models\admin_levelingmodel;
 use App\Models\UserModel;
 use App\Models\admin_penjadwalansidang_ta_model;
+use App\Models\admin_dosenpembimbingmodel;
 
 
 
@@ -32,6 +33,7 @@ class Admin extends BaseController
 	protected $user;
 	protected $db;
 	protected $penjadwalansidangtamodel;
+	protected $pembimbingmodel;
 
 	public function __construct()
 	{
@@ -47,6 +49,7 @@ class Admin extends BaseController
 		$this->levelingmodel = new admin_levelingmodel();
 		$this->user = new UserModel();
 		$this->penjadwalansidangtamodel = new admin_penjadwalansidang_ta_model();
+		$this->pembimbingmodel = new admin_dosenpembimbingmodel();
 	}
 
 
@@ -313,11 +316,46 @@ class Admin extends BaseController
 		$data = [
 
 			'datapembimbing' => $datapembimbing,
-
+			'data_dosenta' => $this->dosen_tugasakhirmodel->get_dosenta()
 
 		];
 		return view('admin/Data pembagian dosen/Data Dosen Pembimbing', $data);
 	}
+
+	public function tambahdatadosenpembimbing()
+	{
+		// dd($this->request->getVar());
+
+		$this->pembimbingmodel->save([
+			'id_dosenta' => $this->request->getVar('id_dosenta'),
+			'role_pembimbing' => $this->request->getVar('role_pembimbing'),
+
+
+
+		]);
+
+		session()->setFlashdata('pesan', 'data berhasil di tambah');
+
+		return redirect()->to('/admin/datadosenpembimbing');
+	}
+	public function editdatadosenpembimbing($id)
+	{
+		// dd($this->request->getVar());
+
+		$this->pembimbingmodel->save([
+			'id_dosenpembimbing' => $id,
+			'id_dosenta' => $this->request->getVar('id_dosenta'),
+			'role_pembimbing' => $this->request->getVar('role_pembimbing'),
+
+
+
+		]);
+
+		session()->setFlashdata('pesan', 'data berhasil di ubah');
+
+		return redirect()->to('/admin/datadosenpembimbing');
+	}
+
 
 	public function detaildatadosenpembimbing($data)
 	{
