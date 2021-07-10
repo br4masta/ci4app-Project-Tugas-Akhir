@@ -105,9 +105,12 @@
                                     </select>
                                 </div>
                             </div>
+                            <!-- <input type="hidden" name="status penjadwalan" id="status penjadwalan" value="sudah terjadwal"> -->
+
+
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-8">
-                                    <button class="btn btn-primary btn-square">Simpan</button>
+                                    <button class="btn btn-primary btn-square">Jadwalkan</button>
                                     <a href="<?= site_url('admin/jadwalseminar'); ?>" class="btn btn-warning btn-square ">Kembali</a>
                                 </div>
                             </div>

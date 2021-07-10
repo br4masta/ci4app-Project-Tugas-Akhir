@@ -45,11 +45,7 @@
                                     <th>NIM</th>
                                     <th>Nama</th>
                                     <th>Judul</th>
-                                    <th>Dosen penguji I</th>
-                                    <th>Dosen penguji II</th>
-                                    <th>Tanggal</th>
-                                    <th>Tempat</th>
-                                    <th>acara</th>
+                                    <th>Status Pendjadwalan</th>
                                     <th>detail</th>
                                     <th>aksi</th>
                                 </tr>
@@ -65,13 +61,10 @@
                                         </td>
                                         <td><?= $d['nama_mhs']; ?></td>
                                         <td> <?= $d['judul']; ?></td>
-                                        <td><?= $c['nama_dosen']; ?></td>
-                                        <td><?= $d['nama_dosen']; ?></td>
-                                        <td><?= $d['tanggal_sidang_ta']; ?></td>
-                                        <td><?= $d['tempat_sidang_ta']; ?></td>
-                                        <td><?= $d['acara_sidang_ta']; ?></td>
+
+                                        <td><?= $d['status_penjadwalan_kaprodi_ta']; ?></td>
                                         <td>
-                                            <a href='<?php echo site_url('admin/detailskripsi'); ?>'>
+                                            <a href='/admin/detailskripsi/<?= $d['id_jadwal_ta']; ?>'>
                                                 <button class="btn btn-xs btn-flat btn-info">
                                                     Detail
                                                 </button>
@@ -114,6 +107,10 @@
             "scrollX": true,
             "scrollCollapse": true,
             "paging": false,
+            "responsive": true,
+            "searching": true,
+            "lengthChange": false,
+            "autoWidth": false,
             "fixedColumns": {
                 leftColumns: 2
             }

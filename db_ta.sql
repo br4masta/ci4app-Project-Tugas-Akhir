@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2021 at 12:11 AM
+-- Generation Time: Jul 10, 2021 at 02:37 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -161,7 +161,9 @@ CREATE TABLE `dosen_pembimbing` (
 INSERT INTO `dosen_pembimbing` (`id_dosenpembimbing`, `id_dosenta`, `role_pembimbing`) VALUES
 (3, 1, 'dosen pembimbing I'),
 (4, 2, 'dosen pembimbing II'),
-(5, 3, 'dosen pembimbing I');
+(5, 3, 'dosen pembimbing I'),
+(6, 14, 'dosen pembimbing I'),
+(8, 15, 'dosen pembimbing II');
 
 -- --------------------------------------------------------
 
@@ -320,19 +322,20 @@ CREATE TABLE `penjadwalan_sidang` (
   `berkas_proposal` varchar(100) DEFAULT NULL,
   `acara_sidang` enum('seminar proposal') NOT NULL DEFAULT 'seminar proposal',
   `tanggal_sidang` datetime NOT NULL,
-  `tempat_sidang` text NOT NULL
+  `tempat_sidang` text NOT NULL,
+  `status_penjadwalan_kaprodi` enum('sudah terjadwal','belum terjadwal') NOT NULL DEFAULT 'belum terjadwal'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `penjadwalan_sidang`
 --
 
-INSERT INTO `penjadwalan_sidang` (`id_jadwal`, `id_bimbingan`, `penguji_1`, `penguji_2`, `berkas_proposal`, `acara_sidang`, `tanggal_sidang`, `tempat_sidang`) VALUES
-(2, 3, 3, 2, '', 'seminar proposal', '2021-07-17 00:00:00', '   505'),
-(3, 3, 3, 2, NULL, 'seminar proposal', '2021-07-31 11:50:10', '109'),
-(18, 18, 3, 4, '1625566464_6640333a31172727c404.pdf', 'seminar proposal', '2021-07-14 17:21:56', '208'),
-(19, 20, 3, 4, '1625578843_4f74b9f6002463eace93.pdf', 'seminar proposal', '0000-00-00 00:00:00', ''),
-(20, 20, 3, 2, '1625635936_1d1b43ce2e9feffe8f5e.pdf', 'seminar proposal', '0000-00-00 00:00:00', '');
+INSERT INTO `penjadwalan_sidang` (`id_jadwal`, `id_bimbingan`, `penguji_1`, `penguji_2`, `berkas_proposal`, `acara_sidang`, `tanggal_sidang`, `tempat_sidang`, `status_penjadwalan_kaprodi`) VALUES
+(2, 3, 3, 2, '', 'seminar proposal', '2021-07-17 00:00:00', '      506', 'sudah terjadwal'),
+(3, 3, 3, 2, NULL, 'seminar proposal', '2021-07-21 00:00:00', ' 109', 'sudah terjadwal'),
+(18, 18, 3, 4, '1625566464_6640333a31172727c404.pdf', 'seminar proposal', '2021-07-14 17:21:56', '208', 'sudah terjadwal'),
+(19, 20, 3, 4, '1625578843_4f74b9f6002463eace93.pdf', 'seminar proposal', '0000-00-00 00:00:00', '', 'belum terjadwal'),
+(20, 20, 3, 2, '1625635936_1d1b43ce2e9feffe8f5e.pdf', 'seminar proposal', '0000-00-00 00:00:00', '', 'belum terjadwal');
 
 -- --------------------------------------------------------
 
@@ -347,16 +350,17 @@ CREATE TABLE `penjadwalan_sidang_ta` (
   `penguji_2` int(3) DEFAULT NULL,
   `acara_sidang_ta` varchar(20) NOT NULL DEFAULT 'sidang tugas akhir',
   `tanggal_sidang_ta` date NOT NULL,
-  `tempat_sidang_ta` varchar(50) NOT NULL
+  `tempat_sidang_ta` varchar(50) NOT NULL,
+  `status_penjadwalan_kaprodi_ta` enum('sudah terjadwal','belum terjadwal') NOT NULL DEFAULT 'belum terjadwal'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `penjadwalan_sidang_ta`
 --
 
-INSERT INTO `penjadwalan_sidang_ta` (`id_jadwal_ta`, `id_bimbingan_ta`, `penguji_1`, `penguji_2`, `acara_sidang_ta`, `tanggal_sidang_ta`, `tempat_sidang_ta`) VALUES
-(1, 2, 3, 4, 'sidang tugas akhir', '2021-10-01', 'ruang 301'),
-(2, 4, 3, 4, 'sidang tugas akhir', '2021-07-16', '  509');
+INSERT INTO `penjadwalan_sidang_ta` (`id_jadwal_ta`, `id_bimbingan_ta`, `penguji_1`, `penguji_2`, `acara_sidang_ta`, `tanggal_sidang_ta`, `tempat_sidang_ta`, `status_penjadwalan_kaprodi_ta`) VALUES
+(1, 2, 3, 2, 'sidang tugas akhir', '2021-07-17', '  301', 'sudah terjadwal'),
+(2, 4, 3, 4, 'sidang tugas akhir', '2021-07-24', ' 509', 'belum terjadwal');
 
 -- --------------------------------------------------------
 
@@ -430,7 +434,7 @@ CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
   `username` varchar(40) DEFAULT NULL,
   `password` varchar(40) DEFAULT NULL,
-  `level` enum('1','2','3','4','5','6') DEFAULT NULL COMMENT '1:admin,2:dosen,3:mahasiswa,4:dosen_penguji,5: Kaprodi,6:Terblokir'
+  `level` enum('1','2','3','4','5','6') DEFAULT NULL COMMENT '1:admin,2:dosen pembimbing,3:mahasiswa,4:dosen_penguji,5: Kaprodi,6:Terblokir'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -455,7 +459,8 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `level`) VALUES
 (18, 'dosenazzadua', 'dosenazzadua', '2'),
 (19, 'dosenazzatiga', 'dosenazzatiga', '2'),
 (20, 'dosen azza empat', 'dosenazzaempat', '2'),
-(21, 'dosen azza lima', 'dosenazzalima', '2');
+(21, 'dosen azza lima', 'dosenazzalima', '2'),
+(22, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -603,13 +608,13 @@ ALTER TABLE `data_akademik`
 -- AUTO_INCREMENT for table `dosen`
 --
 ALTER TABLE `dosen`
-  MODIFY `id_dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `dosen_pembimbing`
 --
 ALTER TABLE `dosen_pembimbing`
-  MODIFY `id_dosenpembimbing` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_dosenpembimbing` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `dosen_penguji`
@@ -621,13 +626,13 @@ ALTER TABLE `dosen_penguji`
 -- AUTO_INCREMENT for table `dosen_tugasakhir`
 --
 ALTER TABLE `dosen_tugasakhir`
-  MODIFY `id_dosenta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_dosenta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `leveling_dosen`
 --
 ALTER TABLE `leveling_dosen`
-  MODIFY `id_level` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_level` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `mahasiswa`
@@ -669,7 +674,7 @@ ALTER TABLE `sidang_tugasakhir`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Constraints for dumped tables

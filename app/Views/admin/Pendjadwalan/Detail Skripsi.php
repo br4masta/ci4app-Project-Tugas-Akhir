@@ -33,82 +33,75 @@
     <div class="row">
         <div class="col">
             <div class="card">
-                <form class="bootstrap-form-with-validation mx-5">
-                    <div class="row mb-3 mt-3">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Nama</label>
-                        <div class="col-sm-10">
-                            <select class="form-control" name="katberita">
-                                <option value="" selected>--Pilih Disini--</option>
-                                <option value='1'>Brian Aldy</option>
-                                <option value='2'>Aditya Hermanto</option>
-                                <!-- -->
-                            </select>
-                        </div>
-                    </div>
+                <?php foreach ($data1 as $c);
+                foreach ($data2 as $d) : ?>
+                    <form class="bootstrap-form-with-validation mx-5">
 
-                    <!-- End: Multi-Select Dropdown by Jigar Mistry -->
 
-                    <div class="row mb-3 mt-3">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Nim</label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" value="2018420017" readonly>
-                        </div>
-                    </div>
-                    <div class="row mb-3 mt-3">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Acara</label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" value="Skripsi" readonly>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Dosen Pembimbing</label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" value="Sucipto" readonly>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Judul</label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" value="Pemanfaatan Sistem Pendukung Keputusan terhadap Sistem Informasi kelayakan terbang" readonly>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Tanggal</label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" value="27 Juli 2021" readonly>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Pukul</label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" value="09.30" readonly>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Ruang</label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" value="Ruang 205" readonly>
-                        </div>
-                    </div>
+                        <!-- End: Multi-Select Dropdown by Jigar Mistry -->
 
-                    <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Dosen Penguji 1</label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" value="Dosen 1" readonly>
+                        <div class="row mb-3 mt-3">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Nim</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputEmail3" value="<?= $c['nim_mhs']; ?>" readonly>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Dosen Penguji 2</label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" value="Dosen 2" readonly>
+                        <div class="row mb-3 mt-3">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Nama</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputEmail3" value="<?= $c['nama_mhs']; ?>" readonly>
+                            </div>
                         </div>
-                    </div>
-                    <div class=""><label for="textarea-input" class=""></label><label for=" search-input"><strong>Berkas:</strong></label></div>
-                    <div id="pdfDownloadLinkContainer" class="mb-5">
-                        <a class="action pdf" id="pdfDownloadLink" target="_parent" href="<?= base_url() ?>/assets/admin/berkas/doc 1.pdf">Download this PDF file</a>
-                    </div>
-                    <a href="<?= site_url('admin/skripsi'); ?>" class="btn btn-warning btn-square mb-5">Kembali</a>
-                </form>
+                        <div class="row mb-3 mt-3">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Acara</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputEmail3" value="<?= $c['acara_sidang_ta']; ?>" readonly>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Judul</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputEmail3" value="<?= $c['judul']; ?>" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Tanggal</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputEmail3" value="-" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Pukul</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputEmail3" value="-" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Ruang</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputEmail3" value="-" readonly>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Dosen Penguji 1</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputEmail3" value="-" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Dosen Penguji 2</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputEmail3" value="-" readonly>
+                            </div>
+                        </div>
+                        <div class=""><label for="textarea-input" class=""></label><label for=" search-input"><strong>Berkas:</strong></label></div>
+                        <div id="pdfDownloadLinkContainer" class="mb-5">
+                            <a class="action pdf" id="pdfDownloadLink" target="_parent" href="<?= base_url() ?>/assets/admin/berkas/<?= $c['berkas_proposal']; ?>">Download this PDF file</a>
+                        </div>
+                        <a href="<?= site_url('admin/jadwalskripsi'); ?>" class="btn btn-warning btn-square mb-5">Kembali</a>
+                    </form><?php endforeach; ?>
             </div>
 
         </div>

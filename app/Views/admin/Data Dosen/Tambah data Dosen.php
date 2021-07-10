@@ -55,12 +55,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Jabatan</label>
+                    <label class="col-sm-2 control-label">Hak akses</label>
                     <div class="col-sm-8">
                         <select class="form-control" name="jabatan">
                             <option value="">- Pilih Disini -</option>
                             <option value='1' selected>Administrator</option>
-                            <option value='2'>Dosen </option>
+                            <option value='2'>Dosen Pembimbing</option>
                             <option value='3'>mahasiswa</option>
                             <option value='4'>Dosen penguji</option>
                             <option value='5'>Kaprodi</option>

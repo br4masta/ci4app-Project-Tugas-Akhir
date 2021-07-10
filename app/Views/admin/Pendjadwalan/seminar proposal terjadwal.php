@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Data Mahasiswa Seminar Proposal</h1>
+                <h1 class="m-0">Data Jadwal Mahasiswa Seminar Proposal</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -45,7 +45,15 @@
                                     <th>NIM</th>
                                     <th>Nama</th>
                                     <th>Judul</th>
-                                    <th>Status Penjadwalan</th>
+                                    <th>Dosen Penguji I</th>
+                                    <th>Dosen Penguji II</th>
+                                    <th>Tanggal</th>
+                                    <th>Tempat</th>
+                                    <th>Acara</th>
+
+                                    <th>Status Pendjadwalan</th>
+                                    <th>Detail</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,19 +66,37 @@
                                         </td>
                                         <td><?= $d['nama_mhs']; ?></td>
                                         <td> <?= $d['judul']; ?></td>
-                                        <td> <?= $d['status_penjadwalan_kaprodi']; ?></td>
+                                        <td>
+                                            <?= $c['nama_dosen']; ?>
+
+
+                                        </td>
+                                        <td>
+                                            <?= $d['nama_dosen']; ?>
+
+                                        </td>
+                                        <td><?= $d['tanggal_sidang']; ?></td>
+                                        <td><?= $d['tempat_sidang']; ?></td>
+                                        <td><?= $d['acara_sidang']; ?></td>
+                                        <td><?= $d['status_penjadwalan_kaprodi']; ?></td>
+
 
                                         <td>
-                                            <a href='/admin/detailseminar/<?= $d['id_jadwal']; ?>'>
+                                            <a href='/admin/detailseminarterjadwal/<?= $d['id_jadwal']; ?>'>
                                                 <button class="btn btn-xs btn-flat btn-info">
                                                     Detail
                                                 </button>
                                             </a>
                                         </td>
-                                        <td class="center">
-                                            <a href='/admin/editseminar/<?= $d['id_jadwal']; ?>'>
-                                                <button class="btn btn-xs btn-flat btn-success">
-                                                    jadwalkan sidang
+                                        <td>
+
+                                            <a href='<?php echo site_url('admin/detailseminar'); ?>'><button class="btn btn-xs btn-flat btn-success btnbrg-edit">
+                                                    <i class="fa fa-edit"></i>
+                                                </button></a>
+
+                                            <a href='/admin/ooo/' onClick="return confirm('Anda yakin akan menghapus data ini ?')">
+                                                <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
+                                                    <i class="fa fa-times"></i>
                                                 </button>
                                             </a>
                                         </td>

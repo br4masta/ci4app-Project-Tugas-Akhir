@@ -89,6 +89,14 @@
                 <li class="nav-item">
                     <a href="<?php echo site_url('admin/jadwalseminar'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
+                        <p>Pendjadwalan Sempro</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="<?php echo site_url('admin/seminarterjadwal'); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
                         <p>Seminar Proposal</p>
                     </a>
                 </li>
@@ -97,7 +105,15 @@
                 <li class="nav-item">
                     <a href="<?php echo site_url('admin/jadwalskripsi'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Tugas Akhir</p>
+                        <p>pendjadwalan Skripsi</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="<?php echo site_url('admin/skripsiterjadwal'); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Sidang Tugas Akhir</p>
                     </a>
                 </li>
             </ul>

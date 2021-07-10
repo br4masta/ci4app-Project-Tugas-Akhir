@@ -117,6 +117,45 @@ class Admin extends BaseController
 		// return view('admin/Data Pengajuan Judul/Pengajuan Judul', $data);
 	}
 	//------------------BAGIAN PENjadwalan -----------------------
+	public function seminarterjadwal()
+	{
+
+
+
+		$penjadwalan = $this->penjadwalanmodel->get_jadwalseminarterjadwal1();
+		$penjadwalan2 = $this->penjadwalanmodel->get_jadwalseminarterjadwal2();
+
+
+		$data = [
+
+			'jadwal' => $penjadwalan,
+			'jadwal2' => $penjadwalan2,
+
+
+
+		];
+		return view('admin/pendjadwalan/Seminar Proposal terjadwal', $data);
+	}
+
+	public function skripsiterjadwal()
+	{
+
+		$penjadwalan = $this->penjadwalansidangtamodel->get_jadwalsidangtaterjadwal1();
+		$penjadwalan2 = $this->penjadwalansidangtamodel->get_jadwalsidangtaterjadwal2();
+
+
+
+		$data = [
+
+			'jadwal' => $penjadwalan,
+			'jadwal2' => $penjadwalan2,
+
+
+
+		];
+		return view('admin/pendjadwalan/Skripsi terjadwal', $data);
+	}
+
 	public function jadwalseminar()
 	{
 
@@ -139,8 +178,8 @@ class Admin extends BaseController
 	public function jadwalskripsi()
 	{
 
-		$penjadwalan = $this->penjadwalanmodel->get_jadwalsidangta();
-		$penjadwalan2 = $this->penjadwalanmodel->get_jadwalsidangta2();
+		$penjadwalan = $this->penjadwalansidangtamodel->get_jadwalsidangta1();
+		$penjadwalan2 = $this->penjadwalansidangtamodel->get_jadwalsidangta2();
 
 
 
@@ -164,10 +203,11 @@ class Admin extends BaseController
 			'tempat_sidang_ta' => $this->request->getVar('ruang'),
 			'penguji_1' => $this->request->getVar('penguji1'),
 			'penguji_2' => $this->request->getVar('penguji2'),
+			'status_penjadwalan_kaprodi_ta' => 'sudah terjadwal',
 
 
 		]);
-		session()->setFlashdata('pesan', 'data berhasil di tambah');
+		session()->setFlashdata('pesan', 'jadwal berhasil di tambahkan');
 
 		return redirect()->to('/admin/jadwalskripsi');
 	}
@@ -181,6 +221,7 @@ class Admin extends BaseController
 			'tempat_sidang' => $this->request->getVar('ruang'),
 			'penguji_1' => $this->request->getVar('penguji1'),
 			'penguji_2' => $this->request->getVar('penguji2'),
+			'status_penjadwalan_kaprodi' => 'sudah terjadwal',
 
 
 		]);
@@ -215,13 +256,51 @@ class Admin extends BaseController
 		return view('admin/pendjadwalan/Edit Seminar Proposal', $data);
 	}
 
-	public function detailseminar()
+	public function detailseminarterjadwal($data)
 	{
-		return view('admin/pendjadwalan/Detail Seminar Proposal');
+		$data = [
+
+
+			'data3' => $this->penjadwalanmodel->get_jadwalseminarterjadwal1($data),
+			'data4' => $this->penjadwalanmodel->get_jadwalseminarterjadwal2($data),
+
+		];
+
+		return view('admin/pendjadwalan/Detail Seminar Proposal terjadwal', $data);
 	}
-	public function detailskripsi()
+	public function detailseminar($data)
 	{
-		return view('admin/pendjadwalan/Detail Skripsi');
+		$data = [
+
+			'data1' => $this->penjadwalanmodel->get_jadwalseminar1($data),
+			'data2' => $this->penjadwalanmodel->get_jadwalseminar2($data),
+
+		];
+
+		return view('admin/pendjadwalan/Detail Seminar Proposal', $data);
+	}
+	public function detailskripsiterjadwal($data)
+	{
+		$data = [
+
+
+			'data3' => $this->penjadwalansidangtamodel->get_jadwalsidangtaterjadwal1($data),
+			'data4' => $this->penjadwalansidangtamodel->get_jadwalsidangtaterjadwal2($data),
+
+		];
+
+		return view('admin/pendjadwalan/Detail Skripsi terjadwal', $data);
+	}
+	public function detailskripsi($data)
+	{
+		$data = [
+
+			'data1' => $this->penjadwalansidangtamodel->get_jadwalsidangta1($data),
+			'data2' => $this->penjadwalansidangtamodel->get_jadwalsidangta2($data),
+
+		];
+
+		return view('admin/pendjadwalan/Detail Skripsi', $data);
 	}
 	//------------------BAGIAN berita -----------------------
 	public function Beritaseminar()

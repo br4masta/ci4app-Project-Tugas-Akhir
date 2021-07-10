@@ -107,7 +107,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-8">
-                                    <button class="btn btn-primary btn-square">Simpan</button>
+                                    <button class="btn btn-primary btn-square">Jadwalkan</button>
                                     <a href="<?= site_url('admin/jadwalskripsi'); ?>" class="btn btn-warning btn-square ">Kembali</a>
                                 </div>
                             </div>

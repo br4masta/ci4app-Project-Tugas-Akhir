@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Data Mahasiswa Seminar Proposal</h1>
+                <h1 class="m-0">Data Jadwal Mahasiswa Skripsi</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -34,7 +34,7 @@
                                 <?= session()->getFlashdata('pesan'); ?>
                             </div>
                         <?php endif; ?>
-                        <h3 class="card-title">Data Seminar Proposal</h3>
+                        <h3 class="card-title">Data Sidang Tugas Akhir</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -45,10 +45,18 @@
                                     <th>NIM</th>
                                     <th>Nama</th>
                                     <th>Judul</th>
+                                    <th>Dosen penguji I</th>
+                                    <th>Dosen penguji II</th>
+                                    <th>Tanggal</th>
+                                    <th>Tempat</th>
+                                    <th>acara</th>
                                     <th>Status Penjadwalan</th>
+                                    <th>detail</th>
+                                    <th>aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
+
                                 <?php $i = 1; ?>
                                 <?php foreach ($jadwal as $c);
                                 foreach ($jadwal2 as $d) : ?>
@@ -58,21 +66,30 @@
                                         </td>
                                         <td><?= $d['nama_mhs']; ?></td>
                                         <td> <?= $d['judul']; ?></td>
-                                        <td> <?= $d['status_penjadwalan_kaprodi']; ?></td>
-
+                                        <td><?= $c['nama_dosen']; ?></td>
+                                        <td><?= $d['nama_dosen']; ?></td>
+                                        <td><?= $d['tanggal_sidang_ta']; ?></td>
+                                        <td><?= $d['tempat_sidang_ta']; ?></td>
+                                        <td><?= $d['acara_sidang_ta']; ?></td>
+                                        <td><?= $d['status_penjadwalan_kaprodi_ta']; ?></td>
                                         <td>
-                                            <a href='/admin/detailseminar/<?= $d['id_jadwal']; ?>'>
+                                            <a href='/admin/detailskripsiterjadwal/<?= $d['id_jadwal_ta']; ?>'>
                                                 <button class="btn btn-xs btn-flat btn-info">
                                                     Detail
                                                 </button>
                                             </a>
                                         </td>
                                         <td class="center">
-                                            <a href='/admin/editseminar/<?= $d['id_jadwal']; ?>'>
-                                                <button class="btn btn-xs btn-flat btn-success">
-                                                    jadwalkan sidang
+                                            <a href='<?php echo site_url('admin/detailseminar'); ?>'><button class="btn btn-xs btn-flat btn-success btnbrg-edit">
+                                                    <i class="fa fa-edit"></i>
+                                                </button></a>
+
+                                            <a href='/admin/ooo/' onClick="return confirm('Anda yakin akan menghapus data ini ?')">
+                                                <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
+                                                    <i class="fa fa-times"></i>
                                                 </button>
                                             </a>
+
                                         </td>
                                     </tr><?php endforeach; ?>
 
@@ -103,6 +120,7 @@
             "scrollX": true,
             "scrollCollapse": true,
             "paging": false,
+
             "fixedColumns": {
                 leftColumns: 2
             }
