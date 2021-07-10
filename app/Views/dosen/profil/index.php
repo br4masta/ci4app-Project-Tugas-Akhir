@@ -31,7 +31,7 @@
 
 <!-- Page specific script -->
 <script>
-    function datamahasiswa_profil() {
+    function datadsn_profil() {
         $.ajax({
             url: "<?= site_url('dosen/showprofil/id') ?>",
             dataType: "json",
@@ -45,7 +45,7 @@
     }
 
     $(document).ready(function() {
-        datamahasiswa_profil();
+        datadsn_profil();
     });
 </script>
 <?= $this->endSection(); ?>

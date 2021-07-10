@@ -28,7 +28,6 @@ class Dosen extends BaseController
 
 			$data = [
 
-				//'datadosenta' => $datadosenta
 				'tampildatadosen' => $this->data_dsn->get_profil_datadosenta($this->id)
 
 			];

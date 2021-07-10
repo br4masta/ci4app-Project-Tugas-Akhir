@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Jul 2021 pada 08.40
+-- Waktu pembuatan: 10 Jul 2021 pada 19.30
 -- Versi server: 10.4.18-MariaDB
 -- Versi PHP: 7.4.16
 
@@ -166,7 +166,8 @@ INSERT INTO `dosen_pembimbing` (`id_dosenpembimbing`, `id_dosenta`, `role_pembim
 (4, 2, 'dosen pembimbing II'),
 (5, 3, 'dosen pembimbing I'),
 (6, 14, 'dosen pembimbing I'),
-(8, 15, 'dosen pembimbing II');
+(8, 15, 'dosen pembimbing II'),
+(11, 9, 'dosen pembimbing I');
 
 -- --------------------------------------------------------
 
@@ -617,7 +618,7 @@ ALTER TABLE `dosen`
 -- AUTO_INCREMENT untuk tabel `dosen_pembimbing`
 --
 ALTER TABLE `dosen_pembimbing`
-  MODIFY `id_dosenpembimbing` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_dosenpembimbing` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `dosen_penguji`

@@ -40,7 +40,19 @@ foreach ($tampildatadosen as $row2) : ?>
                                 </tr>
                                 <tr>
                                     <th scope="row">NIDN</th>
-                                    <td><?= $row2['nidn_dosen'] ?></td>
+                                    <td><?= $row2['nidn_dosen']; ?></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Status</th>
+                                    <td>
+                                        <?= $row2['role_pembimbing']; ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tahun Akademik</th>
+                                    <td>
+                                        <?= $row2['tahun_akademik']; ?>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Jurusan/Fakultas</th>
@@ -52,19 +64,19 @@ foreach ($tampildatadosen as $row2) : ?>
                                     <th scope="row">Jenis Kelamin</th>
                                     <td>
                                        
-                                      <?= $row2['jkdosen'] ?>
+                                      <?= $row2['jkdosen']; ?>
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <th scope="row">No. Telp</th>
-                                    <td>  <?= $row2['notelp'] ?>
+                                    <td>  <?= $row2['notelp']; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Email</th>
                                     <td>
-                                         <?= $row2['email'] ?>
+                                         <?= $row2['email']; ?>
                                     </td>
                                 </tr>
                             </tbody>

@@ -24,6 +24,8 @@ class dosenModel extends Model
             ->join('leveling_dosen ', 'leveling_dosen.id_user = user.id_user')
             ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = leveling_dosen.id_dosenta')
             ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
+            ->join('dosen_pembimbing', 'dosen_pembimbing.id_dosenta = dosen_tugasakhir.id_dosenta')
+            ->join('data_akademik', 'data_akademik.id_dataakademik = dosen_tugasakhir.id_dataakademik')
             ->where('user.id_user', $id)
             ->get()->getResultArray();
             
