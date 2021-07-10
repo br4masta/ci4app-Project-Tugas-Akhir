@@ -37,6 +37,9 @@ class Admin extends BaseController
 
 	public function __construct()
 	{
+		$session = session();
+		$this->id = $session->get('user_id');
+
 		$this->db = \Config\Database::connect();
 		$this->profilmodel = new admin_profilmodel();
 		$this->beritamodel = new admin_beritamodel();
@@ -56,21 +59,13 @@ class Admin extends BaseController
 	public function index()
 	{
 
-		$pengajuan_judul = $this->pengajuanmodel->get_pengajuan();
-		$pengajuan_judul2 = $this->pengajuanmodel->get_pengajuan2();
-		$data = [
-
-			'datajudul' => $pengajuan_judul,
-			'datajudul2' => $pengajuan_judul2,
-
-		];
-		return view('admin/Data Pengajuan Judul/Pengajuan Judul', $data);
+		return redirect()->to('/admin/profil');
 	}
 
 	public function Profil()
 	{
 
-		$profiladmin = $this->profilmodel->get_profil();
+		$profiladmin = $this->profilmodel->get_profil($this->id);
 
 
 		$data = [
@@ -209,7 +204,7 @@ class Admin extends BaseController
 		]);
 		session()->setFlashdata('pesan', 'jadwal berhasil di tambahkan');
 
-		return redirect()->to('/admin/jadwalskripsi');
+		return redirect()->to('/admin/skripsiterjadwal');
 	}
 	public function updatejadwalseminar($id)
 	{
@@ -225,9 +220,9 @@ class Admin extends BaseController
 
 
 		]);
-		session()->setFlashdata('pesan', 'data berhasil di tambah');
+		session()->setFlashdata('pesan', 'jadwal berhasil di tambahkan');
 
-		return redirect()->to('/admin/jadwalseminar');
+		return redirect()->to('/admin/seminarterjadwal');
 	}
 	public function editskripsi($data)
 	{
@@ -302,6 +297,8 @@ class Admin extends BaseController
 
 		return view('admin/pendjadwalan/Detail Skripsi', $data);
 	}
+
+
 	//------------------BAGIAN berita -----------------------
 	public function Beritaseminar()
 	{

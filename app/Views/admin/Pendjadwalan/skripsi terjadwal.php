@@ -80,15 +80,15 @@
                                             </a>
                                         </td>
                                         <td class="center">
-                                            <a href='<?php echo site_url('admin/detailseminar'); ?>'><button class="btn btn-xs btn-flat btn-success btnbrg-edit">
+                                            <a href='/admin/editskripsi/<?= $d['id_jadwal_ta']; ?>'><button class="btn btn-xs btn-flat btn-success btnbrg-edit">
                                                     <i class="fa fa-edit"></i>
                                                 </button></a>
 
-                                            <a href='/admin/ooo/' onClick="return confirm('Anda yakin akan menghapus data ini ?')">
+                                            <!-- <a href='/admin/ooo/' onClick="return confirm('Anda yakin akan menghapus data ini ?')">
                                                 <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
                                                     <i class="fa fa-times"></i>
                                                 </button>
-                                            </a>
+                                            </a> -->
 
                                         </td>
                                     </tr><?php endforeach; ?>

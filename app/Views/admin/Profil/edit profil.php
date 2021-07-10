@@ -29,24 +29,17 @@
     <div class="data">
         <hr>
         <div class="row">
-            <div class="col-lg-3 col-md-3">
+            <!-- <div class="col-lg-3 col-md-3">
                 <div class="foto">
                     <h4>Foto</h4>
                     <hr>
-                    <img src="/assets/img/dosen 1.jpg" alt="">
+                    <img src="/assets/img/dosen 1.jpg" alt="" style="">
                 </div>
-            </div>
+            </div> -->
 
             <div class="col-lg-9 col-md-9">
                 <div class="form">
                     <h4>Biodata Dosen</h4>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a href='/admin/detailskripsi/'>
-                            <button class="btn btn-xs btn-flat btn-info " float='right' ;>
-                                Ubah profil
-                            </button>
-                    </div>
-                    </a>
                     <hr>
                     <!-- Table 2 -->
                     <table class="table table-striped table-borderless">
