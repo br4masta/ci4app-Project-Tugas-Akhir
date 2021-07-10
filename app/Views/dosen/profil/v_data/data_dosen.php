@@ -11,15 +11,6 @@
             <h3 class="profile-username text-center"><?= $row1['nama_dosen']; ?></h3>
 
             <p class="text-muted text-center"><?= $row1['nidn_dosen']; ?></p>
-
-            <ul class="list-group list-group-unbordered mb-3">
-                <li class="list-group-item">
-                    <b>Dosen Pembimbing I</b> <a class="float-right"></a>
-                </li>
-                <li class="list-group-item">
-                    <b>Dosen Pembimbing II</b> <a class="float-right"></a>
-                </li>
-            </ul>
         </div>
     <?php break;
                 endforeach ?>
@@ -45,11 +36,11 @@ foreach ($tampildatadosen as $row2) : ?>
                             <tbody>
                                 <tr>
                                     <th scope="row">Nama Lengkap</th>
-                                    <td></td>
+                                    <td> <?= $row2['nama_dosen']; ?></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">NIM</th>
-                                    <td></td>
+                                    <th scope="row">NIDN</th>
+                                    <td><?= $row2['nidn_dosen'] ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Jurusan/Fakultas</th>
@@ -60,43 +51,20 @@ foreach ($tampildatadosen as $row2) : ?>
                                 <tr>
                                     <th scope="row">Jenis Kelamin</th>
                                     <td>
-                                        <div class="mb-3">
-                                            <input type="text" class="form-control" id="exampleFormControlInput1" value="">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Tempat Lahir</th>
-                                    <td>
-                                        <div class="mb-3">
-                                            <input type="text" class="form-control" id="exampleFormControlInput1" value="">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Tanggal Lahir</th>
-                                    <td>
-                                        <div class="input-group mb-3">
-                                            <input class="form-control" type="date" value="" id="example-date-input">
-                                            <span class="input-group-text" id="basic-addon2"><i class="bi bi-calendar-date"></i></span>
-                                        </div>
+                                       
+                                      <?= $row2['jkdosen'] ?>
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <th scope="row">No. Telp</th>
-                                    <td>
-                                        <div class="mb-3">
-                                            <input type="text" class="form-control" id="exampleFormControlInput1" value="" placeholder="081234567890">
-                                        </div>
+                                    <td>  <?= $row2['notelp'] ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Email</th>
                                     <td>
-                                        <div class="mb-3">
-                                            <input type="email" class="form-control" id="exampleFormControlInput1" value="" placeholder="name@example.com">
-                                        </div>
+                                         <?= $row2['email'] ?>
                                     </td>
                                 </tr>
                             </tbody>
