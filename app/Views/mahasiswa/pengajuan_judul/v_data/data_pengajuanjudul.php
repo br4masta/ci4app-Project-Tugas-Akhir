@@ -56,12 +56,10 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-
                         <div class="form-group">
                             <label for="#" class="col-form-label">Deskripsi Keterangan</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="7"><?= $row['deskripsi']; ?></textarea>
                         </div>
-
                     </div>
                 </div>
                 <div class="modal-footer">

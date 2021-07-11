@@ -383,8 +383,8 @@ class Mahasiswa extends BaseController
 
 			$valid = $this->validate([
 				'judul' => [
-					'label' => 'Judul Bimbingan TA',
-					'rules' => 'required|is_unique[bimbingan_ta.judul_bimbingan_ta]',
+					'label' => 'Judul Final TA',
+					'rules' => 'required|is_unique[bimbingan_ta.judul_final_ta]',
 					'errors' => [
 						'required' =>  '{field} tidak boleh kosong',
 					]
@@ -411,7 +411,7 @@ class Mahasiswa extends BaseController
 				$fileName = $dataBerkas->getRandomName();
 				$data = [
 					'id_seminar' => $this->request->getVar('id_seminar'),
-					'judul_bimbingan_ta' => $this->request->getVar('judul'),
+					'judul_final_ta' => $this->request->getVar('judul'),
 					'berkas_bimbingan_ta' => $fileName,
 				];
 

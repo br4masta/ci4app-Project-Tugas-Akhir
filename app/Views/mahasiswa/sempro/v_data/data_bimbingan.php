@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Halaman Bimbingan Judul</h1>
+                <h1>Halaman Bimbingan Tugas Akhir</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -40,7 +40,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>NIM</th>
-                                    <th>Judul Bimbingan</th>
+                                    <th>Judul Final</th>
                                     <th>berkas bimbingan</th>
                                     <th>catatan Bimbingan</th>
                                     <th>tanggal Bimbingan</th>
@@ -54,7 +54,7 @@
                                     <tr>
                                         <td><?= $i; ?></td>
                                         <td><?= $row['nim_mhs']; ?></td>
-                                        <td><?= $row['judul_bimbingan_ta']; ?></td>
+                                        <td><?= $row['judul_final_ta']; ?></td>
                                         <td><?= $row['berkas_bimbingan_ta']; ?></td>
                                         <td><?= $row['catatan_bimbingan_ta']; ?></td>
                                         <td><?= $row['tanggal_bimbingan_ta']; ?></td>

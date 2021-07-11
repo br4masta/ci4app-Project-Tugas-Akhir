@@ -30,29 +30,10 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="card-title  d-flex">
-                            <?php
-                            $session = session();
-                            $id = $session->get('user_id');
-                            foreach ((new \App\Models\Model_bimbinganmhs)->get_recordbimbingan($id_ok) as  $data) { ?>
-                                <?php if (($data['id_pengajuan'] >= 1) && ($data['id_pengajuan'] < 8)) {
-                                    echo '<button type="button" class="btn btn-primary btn-sm tomboltambah">
-                                         <i class=" fa fa-plus-circle"></i> Tambah Data
-                                    </button>';
-                                } elseif ($data['id_pengajuan'] == 0) {
-                                    echo '<button type="button" class="btn btn-primary btn-sm tomboltambah">
-                                        <i class=" fa fa-plus-circle"></i> Tambah Data
-                                   </button>';
-                                } else {
-                                    echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                         <strong>MAAF!</strong> Pengajuan Bimbingan telah ditolak 8x Silahkan Mengajukan Judul Baru.
-                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                           <span aria-hidden="true">&times;</span>
-                                         </button>
-                                       </div>';
-                                } ?>
-                            <?php break;
-                            } ?>
-                        </div><br><br><br>
+                        <button type="button" class="btn btn-primary btn-sm tomboltambah">
+                                <i class=" fa fa-plus-circle"></i> Tambah Data
+                            </button>
+                        </div><br><br>
                         <table id="data_detailbimbingan" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
