@@ -45,13 +45,7 @@
                                     <th>NIM</th>
                                     <th>Nama</th>
                                     <th>Judul</th>
-                                    <th>Dosen Penguji I</th>
-                                    <th>Dosen Penguji II</th>
-                                    <th>Tanggal</th>
-                                    <th>Tempat</th>
-                                    <th>acara</th>
-                                    <th>detail</th>
-                                    <th>aksi</th>
+                                    <th>Status Penjadwalan</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -64,19 +58,7 @@
                                         </td>
                                         <td><?= $d['nama_mhs']; ?></td>
                                         <td> <?= $d['judul']; ?></td>
-                                        <td>
-                                            <?= $c['nama_dosen']; ?>
-
-
-                                        </td>
-                                        <td>
-                                            <?= $d['nama_dosen']; ?>
-
-                                        </td>
-                                        <td><?= $d['tanggal_sidang']; ?></td>
-                                        <td><?= $d['tempat_sidang']; ?></td>
-                                        <td><?= $d['acara_sidang']; ?></td>
-
+                                        <td> <?= $d['status_penjadwalan_kaprodi']; ?></td>
 
                                         <td>
                                             <a href='/kaprodi/detailseminar/<?= $d['id_jadwal']; ?>'>
@@ -116,21 +98,15 @@
 <!-- Page specific script -->
 <script>
     $(function() {
-        $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
+        $("#datapengajuan").DataTable({
+            "scrollY": "300px",
+            "scrollX": true,
+            "scrollCollapse": true,
+            "paging": false,
+            "fixedColumns": {
+                leftColumns: 2
+            }
+        })
     });
 </script>
 <!-- /.content -->

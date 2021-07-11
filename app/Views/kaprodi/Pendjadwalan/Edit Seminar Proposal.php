@@ -29,7 +29,6 @@
                     <!-- Start: Bootstrap Form Basic --><?php foreach ($data1 as $c);
                                                         foreach ($data2 as $d) : ?>
                         <form class="bootstrap-form-with-validation mx-5" action="/kaprodi/updatejadwalseminar/<?= $c['id_jadwal']; ?>" method="POST">
-                            <?= csrf_field(); ?>
                             <div class="row mb-3 mt-3">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Nama</label>
                                 <div class="col-sm-10">
@@ -106,9 +105,12 @@
                                     </select>
                                 </div>
                             </div>
+                            <!-- <input type="hidden" name="status penjadwalan" id="status penjadwalan" value="sudah terjadwal"> -->
+
+
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-8">
-                                    <button class="btn btn-primary btn-square">Simpan</button>
+                                    <button class="btn btn-primary btn-square">Jadwalkan</button>
                                     <a href="<?= site_url('kaprodi/jadwalseminar'); ?>" class="btn btn-warning btn-square ">Kembali</a>
                                 </div>
                             </div>

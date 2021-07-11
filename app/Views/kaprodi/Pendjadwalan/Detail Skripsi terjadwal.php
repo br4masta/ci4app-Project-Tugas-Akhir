@@ -33,8 +33,8 @@
     <div class="row">
         <div class="col">
             <div class="card">
-                <?php foreach ($data1 as $c);
-                foreach ($data2 as $d) : ?>
+                <?php foreach ($data3 as $c);
+                foreach ($data4 as $d) : ?>
                     <form class="bootstrap-form-with-validation mx-5">
 
 
@@ -68,32 +68,32 @@
                         <div class="row mb-3">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Tanggal</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputEmail3" value="-" readonly>
+                                <input type="email" class="form-control" id="inputEmail3" value="<?= $c['tanggal_sidang_ta']; ?>" readonly>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Pukul</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputEmail3" value="-" readonly>
+                                <input type="email" class="form-control" id="inputEmail3" value="09.30" readonly>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Ruang</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputEmail3" value="-" readonly>
+                                <input type="email" class="form-control" id="inputEmail3" value="<?= $c['tempat_sidang_ta']; ?> " readonly>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Dosen Penguji 1</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputEmail3" value="-" readonly>
+                                <input type="email" class="form-control" id="inputEmail3" value="<?= $c['nama_dosen']; ?>" readonly>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Dosen Penguji 2</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputEmail3" value="-" readonly>
+                                <input type="email" class="form-control" id="inputEmail3" value="<?= $d['nama_dosen']; ?>" readonly>
                             </div>
                         </div>
                         <div class=""><label for="textarea-input" class=""></label><label for=" search-input"><strong>Berkas:</strong></label></div>

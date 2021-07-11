@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Data Mahasiswa Skripsi</h1>
+                <h1 class="m-0">Data Jadwal Mahasiswa Seminar Proposal</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -34,7 +34,7 @@
                                 <?= session()->getFlashdata('pesan'); ?>
                             </div>
                         <?php endif; ?>
-                        <h3 class="card-title">Data Sidang Tugas Akhir</h3>
+                        <h3 class="card-title">Data Seminar Proposal</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -45,13 +45,18 @@
                                     <th>NIM</th>
                                     <th>Nama</th>
                                     <th>Judul</th>
+                                    <th>Dosen Penguji I</th>
+                                    <th>Dosen Penguji II</th>
+                                    <th>Tanggal</th>
+                                    <th>Tempat</th>
+                                    <th>Acara</th>
+
                                     <th>Status Pendjadwalan</th>
-                                    <th>detail</th>
-                                    <th>aksi</th>
+                                    <th>Detail</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-
                                 <?php $i = 1; ?>
                                 <?php foreach ($jadwal as $c);
                                 foreach ($jadwal2 as $d) : ?>
@@ -61,22 +66,39 @@
                                         </td>
                                         <td><?= $d['nama_mhs']; ?></td>
                                         <td> <?= $d['judul']; ?></td>
-
-                                        <td><?= $d['status_penjadwalan_kaprodi_ta']; ?></td>
                                         <td>
-                                            <a href='/kaprodi/detailskripsi/<?= $d['id_jadwal_ta']; ?>'>
+                                            <?= $c['nama_dosen']; ?>
+
+
+                                        </td>
+                                        <td>
+                                            <?= $d['nama_dosen']; ?>
+
+                                        </td>
+                                        <td><?= $d['tanggal_sidang']; ?></td>
+                                        <td><?= $d['tempat_sidang']; ?></td>
+                                        <td><?= $d['acara_sidang']; ?></td>
+                                        <td><?= $d['status_penjadwalan_kaprodi']; ?></td>
+
+
+                                        <td>
+                                            <a href='/kaprodi/detailseminarterjadwal/<?= $d['id_jadwal']; ?>'>
                                                 <button class="btn btn-xs btn-flat btn-info">
                                                     Detail
                                                 </button>
                                             </a>
                                         </td>
-                                        <td class="center">
-                                            <a href='/kaprodi/editskripsi/<?= $d['id_jadwal_ta']; ?>'>
-                                                <button class="btn btn-xs btn-flat btn-success">
-                                                    jadwalkan sidang
-                                                </button>
-                                            </a>
+                                        <td>
 
+                                            <a href='/kaprodi/editseminar/<?= $d['id_jadwal']; ?>'><button class="btn btn-xs btn-flat btn-success btnbrg-edit">
+                                                    <i class="fa fa-edit"></i>
+                                                </button></a>
+
+                                            <!-- <a href='/kaprodi/ooo/' onClick="return confirm('Anda yakin akan menghapus data ini ?')">
+                                                <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
+                                                    <i class="fa fa-times"></i>
+                                                </button>
+                                            </a> -->
                                         </td>
                                     </tr><?php endforeach; ?>
 
@@ -107,10 +129,6 @@
             "scrollX": true,
             "scrollCollapse": true,
             "paging": false,
-            "responsive": true,
-            "searching": true,
-            "lengthChange": false,
-            "autoWidth": false,
             "fixedColumns": {
                 leftColumns: 2
             }

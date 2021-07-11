@@ -1,11 +1,21 @@
 <?= $this->extend('templates/index'); ?>
 
 <?= $this->section('menu'); ?>
+<link rel="stylesheet" href="/assets/admin/css.css">
+
 <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
         <li class="nav-header">Menu Kaprodi</li>
+        <li class="nav-item">
+            <a href=" <?php echo site_url('kaprodi/profil'); ?>" class="nav-link">
+                <i class=" fas fa-user"></i>
+                <p>
+                    Profil
+                </p>
+            </a>
+        </li>
         <li class="nav-item">
             <a href=" <?php echo site_url('kaprodi/pengajuan'); ?>" class="nav-link">
                 <i class=" fa fa-copy"></i>
@@ -14,6 +24,7 @@
                 </p>
             </a>
         </li>
+
         <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class=" fas fa-graduation-cap "></i>
@@ -26,6 +37,14 @@
                 <li class="nav-item">
                     <a href="<?php echo site_url('kaprodi/jadwalseminar'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
+                        <p>Pendjadwalan Sempro</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="<?php echo site_url('kaprodi/seminarterjadwal'); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
                         <p>Seminar Proposal</p>
                     </a>
                 </li>
@@ -34,7 +53,15 @@
                 <li class="nav-item">
                     <a href="<?php echo site_url('kaprodi/jadwalskripsi'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Tugas Akhir</p>
+                        <p>pendjadwalan Skripsi</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="<?php echo site_url('kaprodi/skripsiterjadwal'); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Sidang Tugas Akhir</p>
                     </a>
                 </li>
             </ul>

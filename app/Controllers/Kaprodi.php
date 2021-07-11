@@ -32,6 +32,8 @@ class Kaprodi extends BaseController
 
     public function __construct()
     {
+        $session = session();
+        $this->id = $session->get('user_id');
         $this->db = \Config\Database::connect();
         $this->profilmodel = new admin_profilmodel();
         $this->beritamodel = new admin_beritamodel();
@@ -48,16 +50,25 @@ class Kaprodi extends BaseController
 
     public function index()
     {
-        $pengajuanModel = new \App\Models\pengajuanModel();
-        $pengajuan_judul = $pengajuanModel->get_pengajuan();
-        $pengajuan_judul2 = $pengajuanModel->get_pengajuan2();
-        $data = [
 
-            'datajudul' => $pengajuan_judul,
-            'datajudul2' => $pengajuan_judul2,
+        return redirect()->to('/kaprodi/profil');
+    }
+
+    public function Profil()
+    {
+
+        $profiladmin = $this->profilmodel->get_profil($this->id);
+
+
+        $data = [
+            'heading'    => 'profil',
+            'data_profil' => $profiladmin
+
+
 
         ];
-        return view('kaprodi/Pengajuan/Pengajuan judul', $data);
+
+        return view('kaprodi/profil/profil', $data);
     }
 
     public function pengajuan()
@@ -92,11 +103,52 @@ class Kaprodi extends BaseController
     }
 
     // ---------------------PENJADWALAN ----------------------
+    public function seminarterjadwal()
+    {
+
+
+
+        $penjadwalan = $this->penjadwalanmodel->get_jadwalseminarterjadwal1();
+        $penjadwalan2 = $this->penjadwalanmodel->get_jadwalseminarterjadwal2();
+
+
+        $data = [
+
+            'jadwal' => $penjadwalan,
+            'jadwal2' => $penjadwalan2,
+
+
+
+        ];
+        return view('kaprodi/pendjadwalan/Seminar Proposal terjadwal', $data);
+    }
+
+    public function skripsiterjadwal()
+    {
+
+        $penjadwalan = $this->penjadwalansidangtamodel->get_jadwalsidangtaterjadwal1();
+        $penjadwalan2 = $this->penjadwalansidangtamodel->get_jadwalsidangtaterjadwal2();
+
+
+
+        $data = [
+
+            'jadwal' => $penjadwalan,
+            'jadwal2' => $penjadwalan2,
+
+
+
+        ];
+        return view('kaprodi/pendjadwalan/Skripsi terjadwal', $data);
+    }
+
     public function jadwalseminar()
     {
-        $penjadwalanModel = new \App\Models\penjadwalanModel();
-        $penjadwalan = $penjadwalanModel->get_jadwalseminar();
-        $penjadwalan2 = $penjadwalanModel->get_jadwalseminar2();
+
+
+
+        $penjadwalan = $this->penjadwalanmodel->get_jadwalseminar1();
+        $penjadwalan2 = $this->penjadwalanmodel->get_jadwalseminar2();
 
 
         $data = [
@@ -111,17 +163,57 @@ class Kaprodi extends BaseController
     }
     public function jadwalskripsi()
     {
-        $penjadwalanModel = new \App\Models\penjadwalanModel();
-        $penjadwalan = $penjadwalanModel->get_jadwalsidangta();
-        $penjadwalan2 = $penjadwalanModel->get_jadwalsidangta2();
+
+        $penjadwalan = $this->penjadwalansidangtamodel->get_jadwalsidangta1();
+        $penjadwalan2 = $this->penjadwalansidangtamodel->get_jadwalsidangta2();
+
+
 
         $data = [
 
             'jadwal' => $penjadwalan,
             'jadwal2' => $penjadwalan2,
 
+
+
         ];
         return view('kaprodi/pendjadwalan/Skripsi', $data);
+    }
+    public function updatejadwalskripsi($id)
+    {
+        // dd($this->request->getVar());
+
+        $this->penjadwalansidangtamodel->save([
+            'id_jadwal_ta' => $id,
+            'tanggal_sidang_ta' => $this->request->getVar('tanggal_ujian'),
+            'tempat_sidang_ta' => $this->request->getVar('ruang'),
+            'penguji_1' => $this->request->getVar('penguji1'),
+            'penguji_2' => $this->request->getVar('penguji2'),
+            'status_penjadwalan_kaprodi_ta' => 'sudah terjadwal',
+
+
+        ]);
+        session()->setFlashdata('pesan', 'jadwal berhasil di tambahkan');
+
+        return redirect()->to('/kaprodi/skripsiterjadwal');
+    }
+    public function updatejadwalseminar($id)
+    {
+        // dd($this->request->getVar());
+
+        $this->penjadwalanmodel->save([
+            'id_jadwal' => $id,
+            'tanggal_sidang' => $this->request->getVar('tanggal_ujian'),
+            'tempat_sidang' => $this->request->getVar('ruang'),
+            'penguji_1' => $this->request->getVar('penguji1'),
+            'penguji_2' => $this->request->getVar('penguji2'),
+            'status_penjadwalan_kaprodi' => 'sudah terjadwal',
+
+
+        ]);
+        session()->setFlashdata('pesan', 'jadwal berhasil di tambahkan');
+
+        return redirect()->to('/kaprodi/seminarterjadwal');
     }
     public function editskripsi($data)
     {
@@ -135,23 +227,7 @@ class Kaprodi extends BaseController
         ];
         return view('kaprodi/pendjadwalan/Edit Skripsi', $data);
     }
-    public function updatejadwalskripsi($id)
-    {
-        // dd($this->request->getVar());
 
-        $this->penjadwalansidangtamodel->save([
-            'id_jadwal_ta' => $id,
-            'tanggal_sidang_ta' => $this->request->getVar('tanggal_ujian'),
-            'tempat_sidang_ta' => $this->request->getVar('ruang'),
-            'penguji_1' => $this->request->getVar('penguji1'),
-            'penguji_2' => $this->request->getVar('penguji2'),
-
-
-        ]);
-        session()->setFlashdata('pesan', 'data berhasil di tambah');
-
-        return redirect()->to('/kaprodi/jadwalskripsi');
-    }
     public function editseminar($data)
     {
         $data = [
@@ -166,35 +242,40 @@ class Kaprodi extends BaseController
         return view('kaprodi/pendjadwalan/Edit Seminar Proposal', $data);
     }
 
-    public function updatejadwalseminar($id)
+    public function detailseminarterjadwal($data)
     {
-        // dd($this->request->getVar());
-
-        $this->penjadwalanmodel->save([
-            'id_jadwal' => $id,
-            'tanggal_sidang' => $this->request->getVar('tanggal_ujian'),
-            'tempat_sidang' => $this->request->getVar('ruang'),
-            'penguji_1' => $this->request->getVar('penguji1'),
-            'penguji_2' => $this->request->getVar('penguji2'),
+        $data = [
 
 
-        ]);
-        session()->setFlashdata('pesan', 'data berhasil di tambah');
+            'data3' => $this->penjadwalanmodel->get_jadwalseminarterjadwal1($data),
+            'data4' => $this->penjadwalanmodel->get_jadwalseminarterjadwal2($data),
 
-        return redirect()->to('/kaprodi/jadwalseminar');
+        ];
+
+        return view('kaprodi/pendjadwalan/Detail Seminar Proposal terjadwal', $data);
     }
-
     public function detailseminar($data)
     {
         $data = [
 
             'data1' => $this->penjadwalanmodel->get_jadwalseminar1($data),
             'data2' => $this->penjadwalanmodel->get_jadwalseminar2($data),
-            'data3' => $this->dosenmodel->get_penguji1(),
-            'data4' => $this->dosenmodel->get_penguji2(),
 
         ];
+
         return view('kaprodi/pendjadwalan/Detail Seminar Proposal', $data);
+    }
+    public function detailskripsiterjadwal($data)
+    {
+        $data = [
+
+
+            'data3' => $this->penjadwalansidangtamodel->get_jadwalsidangtaterjadwal1($data),
+            'data4' => $this->penjadwalansidangtamodel->get_jadwalsidangtaterjadwal2($data),
+
+        ];
+
+        return view('kaprodi/pendjadwalan/Detail Skripsi terjadwal', $data);
     }
     public function detailskripsi($data)
     {
@@ -202,13 +283,12 @@ class Kaprodi extends BaseController
 
             'data1' => $this->penjadwalansidangtamodel->get_jadwalsidangta1($data),
             'data2' => $this->penjadwalansidangtamodel->get_jadwalsidangta2($data),
-            'data3' => $this->dosenmodel->get_penguji1(),
-            'data4' => $this->dosenmodel->get_penguji2(),
 
         ];
 
         return view('kaprodi/pendjadwalan/Detail Skripsi', $data);
     }
+    // ----------------------END JADWAL-----------------------
     public function Berita()
     {
         $beritaModel = new \App\Models\beritaModel();

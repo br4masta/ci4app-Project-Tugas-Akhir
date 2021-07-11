@@ -29,7 +29,6 @@
                     <!-- Start: Bootstrap Form Basic --><?php foreach ($data1 as $c);
                                                         foreach ($data2 as $d) : ?>
                         <form class="bootstrap-form-with-validation mx-5" action="/kaprodi/updatejadwalskripsi/<?= $c['id_jadwal_ta']; ?>" method="POST">
-                            <?= csrf_field(); ?>
                             <div class="row mb-3 mt-3">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Nama</label>
                                 <div class="col-sm-10">
@@ -108,8 +107,8 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-8">
-                                    <button class="btn btn-primary btn-square">Simpan</button>
-                                    <a href="<?= site_url('admin/jadwalskripsi'); ?>" class="btn btn-warning btn-square ">Kembali</a>
+                                    <button class="btn btn-primary btn-square">Jadwalkan</button>
+                                    <a href="<?= site_url('kaprodi/jadwalskripsi'); ?>" class="btn btn-warning btn-square ">Kembali</a>
                                 </div>
                             </div>
 
@@ -121,7 +120,6 @@
         </div>
     </div>
 </div>
-
 
 <!-- /.content -->
 <!-- Page specific script -->
