@@ -14,6 +14,7 @@ use App\Models\admin_levelingmodel;
 use App\Models\UserModel;
 use App\Models\admin_penjadwalansidang_ta_model;
 use App\Models\admin_dosenpembimbingmodel;
+use App\Models\admin_dosenpengujimodel;
 
 
 
@@ -34,6 +35,7 @@ class Admin extends BaseController
 	protected $db;
 	protected $penjadwalansidangtamodel;
 	protected $pembimbingmodel;
+	protected $pengujimodel;
 
 	public function __construct()
 	{
@@ -53,6 +55,7 @@ class Admin extends BaseController
 		$this->user = new UserModel();
 		$this->penjadwalansidangtamodel = new admin_penjadwalansidang_ta_model();
 		$this->pembimbingmodel = new admin_dosenpembimbingmodel();
+		$this->pengujimodel = new admin_dosenpengujimodel();
 	}
 
 
@@ -369,19 +372,7 @@ class Admin extends BaseController
 		];
 		return view('admin/Data pembagian dosen/Data Dosen Tugas Akhir', $data);
 	}
-	public function datadosenpenguji()
-	{
 
-		$datapenguji = $this->dosenmodel->get_penguji();
-
-		$data = [
-
-			'datapenguji' => $datapenguji,
-
-
-		];
-		return view('admin/Data pembagian dosen/Data Dosen Penguji', $data);
-	}
 
 
 	public function datadosenpembimbing()
@@ -392,7 +383,7 @@ class Admin extends BaseController
 		$data = [
 
 			'datapembimbing' => $datapembimbing,
-			'data_dosenta' => $this->dosen_tugasakhirmodel->get_dosenta()
+			'data_dosenta' => $this->dosen_tugasakhirmodel->get_dosentapembimbing()
 
 		];
 		return view('admin/Data pembagian dosen/Data Dosen Pembimbing', $data);
@@ -449,6 +440,52 @@ class Admin extends BaseController
 
 		];
 		return view('admin/Data pembagian dosen/detail Data dosen pembimbing', $data);
+	}
+	public function datadosenpenguji()
+	{
+
+		$datapenguji = $this->dosenmodel->get_penguji();
+
+		$data = [
+
+			'datapenguji' => $datapenguji,
+			'data_dosenta' => $this->dosen_tugasakhirmodel->get_dosentapenguji()
+
+		];
+		return view('admin/Data pembagian dosen/Data Dosen Penguji', $data);
+	}
+	public function tambahdatadosenpenguji()
+	{
+		// dd($this->request->getVar());
+
+		$this->pengujimodel->save([
+			'id_dosenta' => $this->request->getVar('id_dosenta'),
+			'role_penguji' => $this->request->getVar('role_penguji'),
+
+
+
+		]);
+
+		session()->setFlashdata('pesan', 'data berhasil di tambah');
+
+		return redirect()->to('/admin/datadosenpeguji');
+	}
+	public function editdatadosenpenguji($id)
+	{
+		// dd($this->request->getVar());
+
+		$this->pengujimodel->save([
+			'id_dosenpenguji' => $id,
+			'id_dosenta' => $this->request->getVar('id_dosenta'),
+			'role_penguji' => $this->request->getVar('role_penguji'),
+
+
+
+		]);
+
+		session()->setFlashdata('pesan', 'data berhasil di ubah');
+
+		return redirect()->to('/admin/datadosenpenguji');
 	}
 	//------------------BAGIAN data akademik -----------------------
 	public function Dataakademik()

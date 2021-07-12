@@ -38,9 +38,9 @@
                     <div class="card-body">
                         <p><strong>Data Dosen</strong></p>
                         <div class="card-title  d-flex ">
-                            <!-- <a href="<?= site_url('admin/tambahdatadosen'); ?>"><button type="button" class="btn btn-primary btn-sm">
-                                    <i class=" fa fa-plus-circle"></i> Tambah Data
-                                </button></a> -->
+                            <a href=""><button type="button" class="btn btn-primary btn-sm">
+                                    <i class=" fa fa-plus-circle"></i> Tambah hak akses
+                                </button></a>
                         </div>
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>

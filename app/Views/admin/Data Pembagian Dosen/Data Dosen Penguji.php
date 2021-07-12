@@ -25,7 +25,11 @@
     <div class="row">
         <div class="col">
             <div class="card">
-
+                <?php if (session()->getFlashdata('pesan')) : ?>
+                    <div class="alert alert-success" role="alert">
+                        <?= session()->getFlashdata('pesan'); ?>
+                    </div>
+                <?php endif; ?>
                 <div class="the-box full">
                     <div class="table-responsive" style="margin:5px;padding:5px" id="stack-personal">
                         <p><strong>Data Dosen Penguji</strong></p>
@@ -66,7 +70,7 @@
                                         </td>
                                         <td class="center">
 
-                                            <button class="btn btn-xs btn-flat btn-success btnbrg-edit" data-toggle="modal" data-target="#modaledit">
+                                            <button class="btn btn-xs btn-flat btn-success btnbrg-edit" data-toggle="modal" data-target="#modaledit<?= $d['id_dosenpenguji']; ?>">
                                                 <i class=" fa fa-edit"></i>
                                             </button>
 
@@ -99,107 +103,104 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Nama Dosen</label>
-                    <div class="col-sm-6">
-                        <select name="jenkel" id="jenkel" class="form-control">
-                            <option value="">-Pilih-</option>
-                            <option value="Laki-laki">Tory Ariyanto</option>
-                            <option value="Perempuan">Sucipto</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">NIDN </label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="nim" name="nim" value="2018420017" readonly>
-                    </div>
-                </div>
+            <form action="/admin/tambahdatadosenpenguji" method="POST">
 
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label"> Pilih Role</label>
-                    <div class="col-sm-6">
-                        <select name="jenkel" id="jenkel" class="form-control">
-                            <option value="">-Pilih-</option>
-                            <option value="Laki-laki">Dosen Penguji I</option>
-                            <option value="Perempuan">Dosen Penguji II</option>
-                        </select>
-                    </div>
-                </div>
+                <?= csrf_field(); ?>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Nama Dosen</label>
+                        <div class="col-sm-6">
+                            <select name="id_dosenta" id="id_dosenta" class="form-control">
+                                <option value="">-Pilih-</option>
+                                <?php foreach ($data_dosenta as $d) :
+                                ?>
+                                    <!-- value = level dosen -->
+                                    <option value="<?= $d['id_dosenta']; ?>"><?= $d['nidn_dosen']; ?>- <?= $d['nama_dosen']; ?> </option>
 
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">plot semester </label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="nim" name="nim" value="2018/2019">
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
                     </div>
-                </div>
+
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label"> Pilih Role</label>
+                        <div class="col-sm-6">
+                            <select name="role_penguji" id="role_penguji" class="form-control">
+                                <option value="">-Pilih-</option>
+                                <option value="dosen penguji 1">Dosen penguji 1</option>
+                                <option value="dosen penguji 2">Dosen penguji 2</option>
+                            </select>
+                        </div>
+                    </div>
 
 
-            </div>
-            <div class="modal-footer">
-                <button type="submit" id="btn-simpan" class="btn btn-primary btnsimpan">Ajukan Judul</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="btn-simpan" class="btn btn-primary btnsimpan">tambah</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
 
 <!-- Modal edit-->
-<div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+<!-- Modal edit--><?php foreach ($datapenguji as $c) : ?>
+    <div class="modal fade" id="modaledit<?= $c['id_dosenpenguji']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="/admin/editdatadosenpenguji/<?= $c['id_dosenpenguji']; ?>" method="POST">
+
+                    <?= csrf_field(); ?>
+                    <div class="modal-body">
+                        <input type="hidden" name="id_dosenta" id="id_dosenta" value="<?= $c['id_dosenta']; ?>">
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">Nama Dosen </label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="nama" name="nama" value="<?= $c['nama_dosen']; ?>" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">NIDN </label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="nidn" name="nidn" value="<?= $c['nidn_dosen']; ?>" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label"> Pilih Role</label>
+                            <div class="col-sm-6">
+                                <select name="role_penguji" id="role_penguji" class="form-control">
+                                    <option value="">-Pilih-</option>
+                                    <option value="dosen penguji 1">Dosen penguji 1</option>
+                                    <option value="dosen penguji 2">Dosen penguji 2</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" id="btn-simpan" class="btn btn-primary btnsimpan">Edit data</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+
             </div>
-            <div class="modal-body">
 
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Nama Dosen </label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="nim" name="nim" value="Tory Ariyanto" readonly>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">NIDN </label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="nim" name="nim" value="2018420017" readonly>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label"> Pilih Role</label>
-                    <div class="col-sm-6">
-                        <select name="jenkel" id="jenkel" class="form-control">
-                            <option value="">-Pilih-</option>
-                            <option value="Laki-laki">Dosen Penguji I</option>
-                            <option value="Perempuan">Dosen Penguji II</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">plot semester </label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="nim" name="nim" value="2018/2019">
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="submit" id="btn-simpan" class="btn btn-primary btnsimpan">Edit data</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
 
         </div>
-
-
-    </div>
-</div>
+    </div><?php endforeach; ?>
 <!-- Page specific script -->
 <script>
     $(function() {

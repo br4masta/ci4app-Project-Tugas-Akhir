@@ -74,6 +74,7 @@ class admin_dosenmodel extends Model
             ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_penguji.id_dosenta')
             ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
             ->join('data_akademik', 'data_akademik.id_dataakademik = dosen_tugasakhir.id_dataakademik')
+            ->where(['status' => 'aktif'])
             ->get()->getResultArray();
     }
     public function get_penguji1()
