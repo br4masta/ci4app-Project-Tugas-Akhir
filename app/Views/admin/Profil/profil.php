@@ -49,114 +49,70 @@
                     </a>
                     <hr>
                     <!-- Table 2 -->
-                    <table class="table table-striped table-borderless">
-                        <tbody>
+                    <?php foreach ($data_profil as $c) : ?>
+                        <table class="table table-striped table-borderless">
+                            <tbody>
 
-                            <tr>
-                                <?php foreach ($data_profil as $c) : ?><th scope="row">Nama Lengkap</th>
-                                    <td><?= $c['nama_dosen']; ?></td><?php endforeach; ?>
-                            </tr>
-                            <tr>
+                                <tr>
+                                    <th scope="row">Nama Lengkap</th>
+                                    <td><?= $c['nama_dosen']; ?></td>
+                                </tr>
+                                <tr>
 
-                                <?php foreach ($data_profil as $c) : ?>
+
                                     <th scope="row">nidn</th>
                                     <td><?= $c['nidn_dosen']; ?></td>
-                                <?php endforeach; ?>
-                            </tr>
 
-                            <tr>
-                                <th scope="row">Jurusan/Fakultas</th>
-                                <td>
-                                    Teknik Informatika/Teknik
-                                </td>
-                            </tr>
+                                </tr>
 
-                            <tr>
-                                <th scope="row">Jenis Kelamin</th>
-                                <td>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                        <label class="form-check-label" for="inlineRadio1">Laki-Laki</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                        <label class="form-check-label" for="inlineRadio2">Perempuan</label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Agama</th>
-                                <td>
-                                    <select class="form-control" aria-label="Default select example">
-                                        <option selected>--- Pilih Agama ---</option>
-                                        <option value="1">Islam</option>
-                                        <option value="2">Kristen</option>
-                                        <option value="3">Hindu</option>
-                                        <option value="3">Budha</option>
-                                        <option value="3">KonghuCu</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <<th scope="row">Tempat lahir</th>
+                                <tr>
+                                    <th scope="row">Status</th>
                                     <td>
-                                        <div class="mb-3">
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                        </div>
-                                    </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Tanggal Lahir</th>
-                                <td>
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="MM/DD/YYYY" aria-label="Tanggal Lahir" aria-describedby="basic-addon2">
-                                        <span class="input-group-text" id="basic-addon2"><i class="bi bi-calendar-date"></i></span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Alamat</th>
-                                <td>
-                                    <div class="mb-3">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">No. Telp</th>
-                                <td>
-                                    <div class="mb-3">
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="081234567890">
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Email</th>
-                                <td>
-                                    <div class="mb-3">
-                                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Pin</th>
-                                <td>
-                                    <div class="mb-3">
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="3213">
-                                    </div>
-                                </td>
-                            </tr>
+                                        <?php if ($c['level'] == "1") :
+                                            echo 'Admin';
+                                        elseif ($c['level'] == "2") :
+                                            echo 'Dosen Pembimbing';
+                                        elseif ($c['level'] == "4") :
+                                            echo 'Dosen Penguji';
+                                        elseif ($c['level'] == "5") :
+                                            echo 'Kaprodi';
 
-                            <tr>
-                                <th scope="row">HP </th>
-                                <td>
-                                    <div class="mb-3">
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="081234567890">
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                        endif ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tahun Akademik</th>
+                                    <td>
+                                        <?= $c['tahun_akademik']; ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Jurusan/Fakultas</th>
+                                    <td>
+                                        Teknik Informatika/Teknik
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Jenis Kelamin</th>
+                                    <td>
+
+                                        <?= $c['jkdosen']; ?>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">No. Telp</th>
+                                    <td> <?= $c['notelp']; ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Email</th>
+                                    <td>
+                                        <?= $c['email']; ?>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table><?php endforeach; ?>
                     <!-- Akhir Table 2 -->
 
                     <div class="proses">

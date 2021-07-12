@@ -48,7 +48,7 @@
                                     <th width='15%'>Role</th>
                                     <th width='15%'>Plot</th>
                                     <th width='15%'>FOTO</th>
-                                    <th width='5%'>Detail</th>
+                                    <!-- <th width='5%'>Detail</th> -->
                                     <th width='5%'>Aksi</th>
                                 </tr>
                             </thead>
@@ -61,20 +61,15 @@
                                         <td><?= $d['role_penguji']; ?></td>
                                         <td><?= $d['tahun_akademik']; ?></td>
                                         <td><img src='http://localhost/CodeIgniter_SiMonTA-master/assets/mahasiswa/anonim.png' width='20%'></td>
-                                        <td>
-                                            <a href='<?= site_url('admin/detaildatadosenpenguji'); ?>'>
-                                                <button class="btn btn-xs btn-flat btn-info">
-                                                    Detail
-                                                </button>
-                                            </a>
-                                        </td>
+
                                         <td class="center">
 
                                             <button class="btn btn-xs btn-flat btn-success btnbrg-edit" data-toggle="modal" data-target="#modaledit<?= $d['id_dosenpenguji']; ?>">
                                                 <i class=" fa fa-edit"></i>
                                             </button>
 
-                                            <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
+                                            <a href="/admin/deletepenguji/<?= $d['id_dosenpenguji']; ?>" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
+
                                             <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
                                                 <i class="fa fa-times"></i>
                                             </button>

@@ -367,6 +367,8 @@ class Admin extends BaseController
 		$data = [
 
 			'datadosenta' => $datadosenta,
+			'datadosenpenguji' => $this->dosen_tugasakhirmodel->get_dosen_tugasakhir_penguji(),
+			'datadosenpembimbing' => $this->dosen_tugasakhirmodel->get_dosen_tugasakhir_pembimbing(),
 
 
 		];
@@ -468,7 +470,7 @@ class Admin extends BaseController
 
 		session()->setFlashdata('pesan', 'data berhasil di tambah');
 
-		return redirect()->to('/admin/datadosenpeguji');
+		return redirect()->to('/admin/datadosenpenguji');
 	}
 	public function editdatadosenpenguji($id)
 	{
@@ -485,6 +487,12 @@ class Admin extends BaseController
 
 		session()->setFlashdata('pesan', 'data berhasil di ubah');
 
+		return redirect()->to('/admin/datadosenpenguji');
+	}
+	public function deletepenguji($id)
+	{
+		$this->pengujimodel->delete($id);
+		session()->setFlashdata('pesan', 'data berhasil di hapus');
 		return redirect()->to('/admin/datadosenpenguji');
 	}
 	//------------------BAGIAN data akademik -----------------------
@@ -573,7 +581,13 @@ class Admin extends BaseController
 
 	public function tambahdatadosen()
 	{
-		return view('admin/Data Dosen/Tambah Data Dosen');
+
+		$data = [
+
+			'dataakademik' => $this->dataakademikmodel->get_dataakademik(),
+
+		];
+		return view('admin/Data Dosen/Tambah Data Dosen', $data);
 	}
 
 	public function editdatadosen()
@@ -589,11 +603,14 @@ class Admin extends BaseController
 
 		$data = [
 
-			'datadosen' => $datadosen
+			'datadosen' => $datadosen,
+			'dosenta' => $this->dosen_tugasakhirmodel->get_dosen($id),
 
 		];
 		return view('admin/Data Dosen/detail Data Dosen', $data);
 	}
+
+
 	public function savedatadosen()
 	{
 		// dd($this->request->getVar());
@@ -624,7 +641,7 @@ class Admin extends BaseController
 
 		$this->dosen_tugasakhirmodel->save([
 			'id_dosen' => $iddosen,
-			'id_dataakademik' => '1'
+			'id_dataakademik' => $this->request->getVar('id_dataakademik')
 
 
 		]);
@@ -673,6 +690,58 @@ class Admin extends BaseController
 		// dd($datauser);
 
 		// return redirect()->to('/admin/Datadosen');
+	}
+
+	public function tambahdosenhakakses($id)
+	{ //------------------BAGIAN detail data dosen berisi detail data dosen beserta hak aksesnya -----------------------
+
+
+		// dd($this->request->getVar());
+		$this->db->transStart();
+		$this->user->save([
+			'username' => $this->request->getVar('username'),
+			'password' => $this->request->getVar('password'),
+			'level' => $this->request->getVar('jabatan')
+
+		]);
+		$iduser = $this->user->getInsertID();
+
+		$this->levelingmodel->save([
+			'id_dosenta' => $this->request->getVar('id_dosenta'),
+			'id_user' => $iduser
+
+
+		]);
+		$this->db->transComplete();
+		session()->setFlashdata('pesan', 'data berhasil di tambah');
+
+		return redirect()->to("/admin/detaildatadosen/$id");
+	}
+
+	public function deletedosenhakakses($id)
+	{ //------------------BAGIAN detail data dosen berisi detail data dosen beserta hak aksesnya -----------------------
+		$data = [
+
+			'datadosen' => $this->levelingmodel->get_deletedosen($id)
+
+		];
+		$a = $data['datadosen'];
+		$b = $a['0'];
+		$c = $b['id_user'];
+		// dd($c);
+		$this->db->transStart();
+		$this->levelingmodel->delete([
+			'id_level' => $id,
+
+		]);
+		$this->user->delete([
+			'id_user' => $c,
+
+		]);
+		$this->db->transComplete();
+
+		session()->setFlashdata('pesan', 'Hak akses berhasil di hapus');
+		return redirect()->to("/admin/Datadosen");
 	}
 	//--------------------------------------------------------------------
 

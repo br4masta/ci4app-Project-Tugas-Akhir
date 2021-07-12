@@ -38,14 +38,14 @@ class admin_dosenmodel extends Model
 
                 ->get()->getResultArray();
         }
-        return $this->db->table('leveling_dosen')
+        return $this->db->table('dosen_tugasakhir')
+            ->join('leveling_dosen', 'leveling_dosen.id_dosenta = dosen_tugasakhir.id_dosenta')
             ->join('user', 'user.id_user = leveling_dosen.id_user')
-            ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = leveling_dosen.id_dosenta')
             ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
             // ->select([
             //     'leveling_dosen.id_dosenta as id_dosenta1',
             // ])
-            ->where(['leveling_dosen.id_dosenta' => $id])
+            ->where(['dosen_tugasakhir.id_dosenta' => $id])
             ->get()->getResultArray();
     }
 

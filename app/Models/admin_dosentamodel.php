@@ -19,6 +19,7 @@ class admin_dosentamodel extends Model
             ->join('user', 'user.id_user = leveling_dosen.id_user')
             ->join('data_akademik', 'data_akademik.id_dataakademik = dosen_tugasakhir.id_dataakademik')
             ->where(['level' => '2'])
+            ->where(['status' => 'aktif'])
             ->get()->getResultArray();
     }
     public function get_dosentapenguji()
@@ -29,6 +30,18 @@ class admin_dosentamodel extends Model
             ->join('user', 'user.id_user = leveling_dosen.id_user')
             ->join('data_akademik', 'data_akademik.id_dataakademik = dosen_tugasakhir.id_dataakademik')
             ->where(['level' => '4'])
+            ->where(['status' => 'aktif'])
+            ->get()->getResultArray();
+    }
+    // ------untuk memanggil model tambah hak akses di detail dosen
+    public function get_dosen($id)
+    {
+
+        return $this->db->table('dosen_tugasakhir')
+            ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
+            ->join('data_akademik', 'data_akademik.id_dataakademik = dosen_tugasakhir.id_dataakademik')
+            ->where(['status' => 'aktif'])
+            ->where(['dosen_tugasakhir.id_dosenta' => $id])
             ->get()->getResultArray();
     }
 }

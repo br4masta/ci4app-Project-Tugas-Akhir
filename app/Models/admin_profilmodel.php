@@ -23,6 +23,7 @@ class admin_profilmodel extends Model
         return $this->db->table('leveling_dosen')
 
             ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = leveling_dosen.id_dosenta')
+            ->join('data_akademik', 'data_akademik.id_dataakademik = dosen_tugasakhir.id_dataakademik')
             ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
             ->join('user', 'user.id_user = leveling_dosen.id_user')
             ->where('user.id_user', $id)

@@ -45,7 +45,7 @@
                                     <th>Role II</th>
                                     <th>Ploting Semester</th>
 
-                                    <th>aksi</th>
+                                    <!-- <th>aksi</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -57,12 +57,12 @@
                                         <td><?= $d['nidn_dosen']; ?>
                                         </td>
                                         <td><?= $d['nama_dosen']; ?></td>
-                                        <td><?= $d['role_pembimbing']; ?></td>
+                                        <td><?= $d['role_pembimbing']; ?> </td>
                                         <td> <?= $d['role_penguji']; ?> </td>
                                         <td><?= $d['tahun_akademik']; ?></td>
 
 
-                                        <td class="center">
+                                        <!-- <td class="center">
 
                                             <button class="btn btn-xs btn-flat btn-success btnbrg-edit" data-toggle="modal" data-target="#modaledit">
                                                 <i class=" fa fa-edit"></i>
@@ -73,9 +73,10 @@
                                                 <i class="fa fa-times"></i>
                                             </button>
                                             </a>
-                                        </td>
+                                        </td> -->
 
                                     </tr><?php endforeach; ?>
+
 
 
                             </tbody>

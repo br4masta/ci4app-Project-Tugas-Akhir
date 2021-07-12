@@ -24,7 +24,12 @@
             <form action="/admin/savedatadosen" method="POST">
 
                 <?= csrf_field(); ?>
-                <!-- <input type="hidden" id="id_" name="id_" value="1"> -->
+                <?php foreach ($dataakademik as $c) : ?>
+
+                    <input type="hidden" name="id_dataakademik" id="id_dataakademik" value="<?= $c['id_dataakademik']; ?>">
+
+                <?php endforeach; ?>
+
                 <div class="form-group">
                     <label class="col-sm-2 control-label">NIDN</label>
                     <div class="col-sm-8">
