@@ -59,7 +59,12 @@
                                         <td><?= $a['tanggal_akhir']; ?></td>
                                         <td><?= $a['semester']; ?></td>
                                         <td>
-                                            <?= $a['status']; ?>
+                                            <?php if ($a['status'] == "aktif") :
+                                                echo '<span class="badge badge-success d-inline-flex p-2">AKTIF</span>';
+                                            elseif ($a['status'] == "nonaktif") :
+                                                echo '<span class="badge badge-danger d-inline-flex p-2">NONAKTIF</span>';
+
+                                            endif ?>
                                         </td>
                                         <td>
 

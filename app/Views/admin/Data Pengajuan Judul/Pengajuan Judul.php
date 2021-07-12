@@ -66,7 +66,13 @@
                                         <td><?= $c['nama_dosen']; ?></td>
                                         <td><?= $d['nama_dosen']; ?></td>
                                         <td style="text-align: center; ">
-                                            <span class="badge badge-danger d-inline-flex p-2"> <?= $d['status_pengajuan']; ?></span>
+                                            <?php if ($d['status_pengajuan'] == "belum di setujui") :
+                                                echo '<span class="badge badge-warning d-inline-flex p-2">Belum Disetujui</span>';
+                                            elseif ($d['status_pengajuan'] == "di setujui") :
+                                                echo '<span class="badge badge-success d-inline-flex p-2">Disetujui</span>';
+                                            else :
+                                                echo '<span class="badge badge-danger d-inline-flex p-2">DiTolak</span>';
+                                            endif ?>
                                         </td>
 
 
