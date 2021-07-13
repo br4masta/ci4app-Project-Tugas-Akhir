@@ -501,10 +501,11 @@ class Admin extends BaseController
 		$dataakademikModel = new \App\Models\dataakademikModel();
 		$dataakademik = $dataakademikModel->findAll();
 
+		session();
 		$data = [
 
-			'dataakademik' => $dataakademik
-
+			'dataakademik' => $dataakademik,
+			'validation' => \config\Services::validation(),
 		];
 		return view('admin/Data Akademik/Data Akademik', $data);
 	}
@@ -526,11 +527,65 @@ class Admin extends BaseController
 	}
 	public function tambahdataakademik()
 	{
-		// dd($this->request->getVar());
 
+		// validasi input
+		if (!$this->validate([
+			'tahun_akademik' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => '{field} wajib di isi.',
+
+				]
+
+
+			],
+			'semester' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => '{field} wajib di isi.',
+
+				]
+
+
+			],
+			'mulai' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => '{field} wajib di isi.',
+
+				]
+
+
+			],
+			'akhir' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => '{field} wajib di isi.',
+
+				]
+
+
+			]
+
+		])) {
+			$validation = \config\Services::validation();
+			return redirect()->to('/admin/dataakademik')->withInput()->with('validation', $validation);
+		}
+
+		$id = 'aa';
+		$data1 = $this->request->getVar('tahun_akademik');
+		$data2 = $this->request->getVar('tahun_akademik2');
+		$data = [
+
+			'coba' => ($data1 . '/' . $data2),
+
+		];
+
+
+		// dd($data);
 		$this->dataakademikmodel->save([
 
-			'tahun_akademik' => $this->request->getVar('tahun_akademik'),
+			'tahun_akademik' => $data,
 			'tanggal_mulai' => $this->request->getVar('tanggal_mulai'),
 			'tanggal_akhir' => $this->request->getVar('tanggal_akhir'),
 			'semester' => $this->request->getVar('semester'),
@@ -581,11 +636,11 @@ class Admin extends BaseController
 
 	public function tambahdatadosen()
 	{
-
+		session();
 		$data = [
 
 			'dataakademik' => $this->dataakademikmodel->get_dataakademik(),
-
+			'validation' => \config\Services::validation(),
 		];
 		return view('admin/Data Dosen/Tambah Data Dosen', $data);
 	}
@@ -597,15 +652,16 @@ class Admin extends BaseController
 
 	public function detaildatadosen($id)
 	{ //------------------BAGIAN detail data dosen berisi detail data dosen beserta hak aksesnya -----------------------
+
 		$dosenModel = new \App\Models\admin_dosenModel();
 		$datadosen = $dosenModel->get_dosen($id);
 
-
+		session();
 		$data = [
 
 			'datadosen' => $datadosen,
 			'dosenta' => $this->dosen_tugasakhirmodel->get_dosen($id),
-
+			'validation' => \config\Services::validation(),
 		];
 		return view('admin/Data Dosen/detail Data Dosen', $data);
 	}
@@ -613,6 +669,50 @@ class Admin extends BaseController
 
 	public function savedatadosen()
 	{
+		// validasi input
+		if (!$this->validate([
+			'nidn' => [
+				'rules' => 'required|is_unique[dosen.nidn_dosen]',
+				'errors' => [
+					'required' => '{field} wajib di isi.',
+					'is_unique' => '{field} sudah terdaftar'
+				]
+
+
+			],
+			'nama' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => '{field} wajib di isi.',
+
+				]
+
+
+			],
+			'username' => [
+				'rules' => 'required|is_unique[user.username]',
+				'errors' => [
+					'required' => '{field} wajib di isi.',
+					'is_unique' => '{field} sudah terdaftar'
+				]
+
+
+			],
+			'password' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => '{field} wajib di isi.',
+
+				]
+
+
+			]
+
+		])) {
+			$validation = \config\Services::validation();
+			return redirect()->to('/admin/tambahdatadosen')->withInput()->with('validation', $validation);
+		}
+
 		// dd($this->request->getVar());
 
 		// $this->dosenmodel->insert_dosen($data);
@@ -695,7 +795,31 @@ class Admin extends BaseController
 	public function tambahdosenhakakses($id)
 	{ //------------------BAGIAN detail data dosen berisi detail data dosen beserta hak aksesnya -----------------------
 
+		if (!$this->validate([
 
+			'username' => [
+				'rules' => 'required|is_unique[user.username]',
+				'errors' => [
+					'required' => '{field} wajib di isi.',
+					'is_unique' => '{field} sudah terdaftar'
+				]
+
+
+			],
+			'password' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => '{field} wajib di isi.'
+
+				]
+
+
+			]
+
+		])) {
+			$validation = \config\Services::validation();
+			return redirect()->to("/admin/detaildatadosen/$id")->withInput()->with('validation', $validation);
+		}
 		// dd($this->request->getVar());
 		$this->db->transStart();
 		$this->user->save([

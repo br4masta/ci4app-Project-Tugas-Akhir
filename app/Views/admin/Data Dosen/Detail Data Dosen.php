@@ -147,13 +147,20 @@
                         <div class="form-group row">
                             <label for="" class="col-sm-2 col-form-label">Username </label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="username" name="username" value="">
+                                <input type="text" class="form-control <?= ($validation->hasError('username')) ? 'is-invalid' : ''; ?>" id="username" name="username" value="">
+                                <div class="invalid-feedback">
+                                    <?= $validation->getError('username'); ?>
+                                </div>
                             </div>
+
                         </div>
                         <div class="form-group row">
                             <label for="" class="col-sm-2 col-form-label">Password </label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="password" name="password" value="">
+                                <input type="text" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" id="password" name="password" value="">
+                                <div class="invalid-feedback">
+                                    <?= $validation->getError('password'); ?>
+                                </div>
                             </div>
                         </div>
 

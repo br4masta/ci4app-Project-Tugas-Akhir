@@ -106,32 +106,48 @@
                 <div class="modal-body">
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label">Tahun Akademik</label>
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" id="tahun_akademik" name="tahun_akademik" value="">
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control <?= ($validation->hasError('tahun_akademik')) ? 'is-invalid' : ''; ?>" id="tahun_akademik" name="tahun_akademik" value=""> / <input type="text" class="form-control <?= ($validation->hasError('tahun_akademik')) ? 'is-invalid' : ''; ?>" id="tahun_akademik2" name="tahun_akademik2" value="">
+
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('tahun_akademik'); ?>
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label"> Semester</label>
                         <div class="col-sm-6">
-                            <select name="semester" id="semester" class="form-control">
+                            <select name="semester" id="semester" class="form-control <?= ($validation->hasError('semester')) ? 'is-invalid' : ''; ?>">
                                 <option value="">-Pilih-</option>
                                 <option value="ganjil">Genap</option>
                                 <option value="genap">Ganjil</option>
                             </select>
+
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('semester'); ?>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label"> Mulai</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="date" name="tanggal_mulai" id="tanggal_mulai">
+                            <input class="form-control <?= ($validation->hasError('mulai')) ? 'is-invalid' : ''; ?>" type="date" name="tanggal_mulai" id="tanggal_mulai">
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('mulai'); ?>
+                            </div>
                         </div>
+
                     </div>
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label"> Akhir</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="date" name="tanggal_akhir" id="tanggal_akhir">
+                            <input class="form-control <?= ($validation->hasError('akhir')) ? 'is-invalid' : ''; ?>" type="date" name="tanggal_akhir" id="tanggal_akhir">
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('akhir'); ?>
+                            </div>
                         </div>
+
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-2 control-label">Status</label>

@@ -33,36 +33,48 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">NIDN</label>
                     <div class="col-sm-8">
-                        <input name="nidn" class="form-control" id="nidn" type="text" value="" autofocus />
+                        <input name="nidn" class="form-control <?= ($validation->hasError('nidn')) ? 'is-invalid' : ''; ?>" id="nidn" type="text" value="<?= old('nidn') ?>" autofocus />
                         <span></span>
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('nidn'); ?>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Nama</label>
                     <div class="col-sm-8">
-                        <input name="nama" class="form-control" id="nama" type="text" value=" " />
+                        <input name="nama" class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>" id="nama" type="text" value="<?= old('nama') ?> " />
                         <span></span>
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('nama'); ?>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Username</label>
                     <div class="col-sm-8">
-                        <input name="username" class="form-control" id="username" type="text" value="" />
+                        <input name="username" class="form-control <?= ($validation->hasError('username')) ? 'is-invalid' : ''; ?>" id="username" type="text" value="<?= old('username') ?>" />
                         <span></span>
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('username'); ?>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Password</label>
                     <div class="col-sm-8">
-                        <input name="password" id="pass" class="form-control" type="password" value="" />
+                        <input name="password" id="pass" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" type="password" value="<?= old('password') ?>" />
                         <span></span>
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('password'); ?>
+                        </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Hak akses</label>
                     <div class="col-sm-8">
-                        <select class="form-control" name="jabatan">
+                        <select class="form-control" name="jabatan" id="jabatan">
                             <option value="">- Pilih Disini -</option>
                             <option value='1' selected>Administrator</option>
                             <option value='2'>Dosen Pembimbing</option>
@@ -75,10 +87,10 @@
                     <span></span>
                     <span></span>
                 </div>
-                <div class="form-group">
+                <div class=" form-group">
                     <label class="col-sm-2 control-label">Foto</label>
                     <div class="col-sm-8">
-                        <input name="foto" id="foto" type="file" class="form-control" />
+                        <input name="foto" id="foto" type="file" class="form-control" value="<?= old('foto') ?>" />
                     </div>
                 </div>
                 <div class="form-group">
