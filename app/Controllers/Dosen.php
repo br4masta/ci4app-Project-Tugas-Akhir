@@ -8,7 +8,7 @@ use App\Models\dosen_pengajuanjudul;
 class Dosen extends BaseController
 {
 	protected $data_dsn;
-	protected $pengajuan_judul;
+	protected $judul;
 
 	// jika model ingin dipakai banyak method, buat construct
 
@@ -18,7 +18,7 @@ class Dosen extends BaseController
 		$this->id = $session->get('user_id');
 		$this->validasi = \Config\Services::validation();
 		$this->data_dsn = new dosenModel();
-		$this->pengajuan_judul = new dosenModel();
+		$this->judul = new dosenModel();
 
 	}
 	// ----------------------BAGIAN PROFIL--------------------------
@@ -59,7 +59,7 @@ class Dosen extends BaseController
 		$id = $session->get('user_id');
 		if ($this->request->isAJAX()) {
 			$data = [
-				'tampildata' => $this->pengajuan_judul->get_pengajuanjuduldsn($id)
+				'tampildatadsn' => $this->judul->get_pengajuanjuduldsn($id)
 			];
 			$msg = [
 				'data' => view('dosen/pengajuanjudul/v_data/datapengajuanjudul', $data)

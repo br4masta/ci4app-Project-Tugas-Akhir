@@ -11,13 +11,13 @@
                 <th>Judul</th>
                 <th>Nama Dosen Pembimbing I</th>
                 <th>Nama Dosen Pembimbing II</th>
-                <th>Deskripsi Proposal</th>
+                <th>File</th>
                 <th>Status</th>
                 <th>Aksi</th>
             </tr>
         </thead>
         <?php $i = 1;
-        foreach ($tampildata as $td): ?>
+        foreach ($tampildatadsn as $td): ?>
             <tbody>
                 <tr>
                     <td><?= $i++ ?></td>
@@ -26,7 +26,6 @@
                     <td><?= $td['judul']; ?></td>
                     <td><?= $td['dos1_nama']; ?></td>
                     <td><?= $td['dos2_nama']; ?></td>
-                    <td><?= $td['deskripsi']; ?></td>
                     <td>
                         <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
                     </td>
@@ -38,7 +37,23 @@
                         </button></a>
                     </td>
                 </tr>
+                  <?php endforeach ?>
             </tbody>
         </table>
     </div>
-<?php endforeach ?>
+
+
+<script>
+    $(document).ready(function() {
+        $("#datapengajuan").DataTable({
+            "scrollY": "300px",
+            "scrollX": true,
+            "scrollCollapse": true,
+            "paging": false,
+            "fixedColumns": {
+                leftColumns: 2
+            }
+        })
+    });
+</script>
+
