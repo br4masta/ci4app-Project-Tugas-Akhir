@@ -41,7 +41,7 @@
                 <div class="form">
                     <h4>Biodata Dosen</h4>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a href='/admin/detailskripsi/'>
+                        <a href='/admin/editprofil'>
                             <button class="btn btn-xs btn-flat btn-info " float='right' ;>
                                 Ubah profil
                             </button>

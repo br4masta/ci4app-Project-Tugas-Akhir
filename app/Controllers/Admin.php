@@ -81,6 +81,22 @@ class Admin extends BaseController
 
 		return view('admin/profil/profil', $data);
 	}
+	public function editprofil()
+	{
+
+		$profiladmin = $this->profilmodel->get_profil($this->id);
+
+
+		$data = [
+			'heading'	=> 'profil',
+			'data_profil' => $profiladmin
+
+
+
+		];
+
+		return view('admin/profil/edit profil', $data);
+	}
 	//------------------BAGIAN PENGAJUAN JUDUL -----------------------
 	public function pengajuan()
 	{
@@ -367,8 +383,8 @@ class Admin extends BaseController
 		$data = [
 
 			'datadosenta' => $datadosenta,
-			'datadosenpenguji' => $this->dosen_tugasakhirmodel->get_dosen_tugasakhir_penguji(),
-			'datadosenpembimbing' => $this->dosen_tugasakhirmodel->get_dosen_tugasakhir_pembimbing(),
+			// 'datadosenpenguji' => $this->dosen_tugasakhirmodel->get_dosen_tugasakhir_penguji(),
+			// 'datadosenpembimbing' => $this->dosen_tugasakhirmodel->get_dosen_tugasakhir_pembimbing(),
 
 
 		];

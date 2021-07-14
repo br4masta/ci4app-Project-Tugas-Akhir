@@ -211,4 +211,4 @@
 <!-- /.content -->
 <?= $this->endSection(); ?>
 
-<?= $this->include('admin/menu'); ?>
+<?= $this->include('kaprodi/menu'); ?>
