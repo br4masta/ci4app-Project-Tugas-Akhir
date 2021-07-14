@@ -3,10 +3,12 @@
 namespace App\Controllers;
 
 use App\Models\dosenModel;
+use App\Models\dosen_pengajuanjudul;
 
 class Dosen extends BaseController
 {
 	protected $data_dsn;
+	protected $pengajuan_judul;
 
 	// jika model ingin dipakai banyak method, buat construct
 
@@ -16,6 +18,8 @@ class Dosen extends BaseController
 		$this->id = $session->get('user_id');
 		$this->validasi = \Config\Services::validation();
 		$this->data_dsn = new dosenModel();
+		$this->pengajuan_judul = new dosenModel();
+
 	}
 	// ----------------------BAGIAN PROFIL--------------------------
 	public function index()
@@ -40,15 +44,34 @@ class Dosen extends BaseController
 			exit('Maaf tidak dapat diproses');
 		}
 	}
-
+	//------------------BAGIAN PENGAJUAN JUDUL ----------------------- 
 	public function judul()
 	{
 		$data = [
 			'title' => 'Dosen | Data Judul'
 		];
-		return view('dosen/judul', $data);
+		return view('dosen/pengajuanjudul/judul', $data);
 	}
 
+	public function ambildatajudul()
+	{
+		$session = session();
+		$id = $session->get('user_id');
+		if ($this->request->isAJAX()) {
+			$data = [
+				'tampildata' => $this->pengajuan_judul->get_pengajuanjuduldsn($id)
+			];
+			$msg = [
+				'data' => view('dosen/pengajuanjudul/v_data/datapengajuanjudul', $data)
+			];
+
+			echo json_encode($msg);
+		} else {
+			exit('Maaf tidak dapat diproses');
+		}
+	} 
+
+	// AKHIR JUDUL -----------------------------------------------
 	public function bimbingan()
 	{
 		$data = [
