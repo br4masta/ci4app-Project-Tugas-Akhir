@@ -56,15 +56,16 @@
                             </thead>
                             <tbody>
                                 <?php $i = 1; ?>
-                                <?php foreach ($datajudul as $c);
-                                foreach ($datajudul2 as $d) : ?>
+
+                                <?php foreach ($datajudul as $d) : ?>
+
                                     <tr>
                                         <td><?= $i++; ?></td>
                                         <td><?= $d['nim_mhs']; ?></td>
                                         <td><?= $d['nama_mhs']; ?></td>
                                         <td> <?= $d['judul']; ?></td>
-                                        <td><?= $c['nama_dosen']; ?></td>
-                                        <td><?= $d['nama_dosen']; ?></td>
+                                        <td><?= $d['nama_pembimbing1']; ?></td>
+                                        <td><?= $d['nama_pembimbing2']; ?></td>
                                         <td style="text-align: center; ">
                                             <?php if ($d['status_pengajuan'] == "belum di setujui") :
                                                 echo '<span class="badge badge-warning d-inline-flex p-2">Belum Disetujui</span>';
@@ -113,8 +114,7 @@
 <!-- /.content -->
 
 <!-- Modal tambah-->
-<?php foreach ($datajudul as $c);
-foreach ($datajudul2 as $d) : ?>
+<?php foreach ($datajudul as $d) : ?>
     <div class="modal fade" id="modaltambah<?= $d['id_pengajuan']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -170,8 +170,7 @@ foreach ($datajudul2 as $d) : ?>
         </div>
     </div><?php endforeach; ?>
 
-<!-- Modal detail--><?php foreach ($datajudul as $c);
-                    foreach ($datajudul2 as $d) : ?>
+<!-- Modal detail--><?php foreach ($datajudul as $d) : ?>
     <div class="modal fade" id="Detail<?= $d['id_pengajuan']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -197,13 +196,13 @@ foreach ($datajudul2 as $d) : ?>
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label">Calon dosen pembimbing I</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="nim" name="nim" value="<?= $c['nama_dosen']; ?>" readonly>
+                            <input type="text" class="form-control" id="nim" name="nim" value="<?= $d['nama_pembimbing1']; ?>" readonly>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label">Calon dosen pembimbing II</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="nim" name="nim" value="<?= $d['nama_dosen']; ?>" readonly>
+                            <input type="text" class="form-control" id="nim" name="nim" value="<?= $d['nama_pembimbing2']; ?>" readonly>
                         </div>
                     </div>
                     <div class="form-group row">

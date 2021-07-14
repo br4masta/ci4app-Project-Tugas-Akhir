@@ -102,11 +102,12 @@ class Admin extends BaseController
 	{
 
 		$pengajuan_judul = $this->pengajuanmodel->get_pengajuan();
-		$pengajuan_judul2 = $this->pengajuanmodel->get_pengajuan2();
+		// dd($pengajuan_judul);
+		// $pengajuan_judul2 = $this->pengajuanmodel->get_pengajuan2();
 		$data = [
 
 			'datajudul' => $pengajuan_judul,
-			'datajudul2' => $pengajuan_judul2,
+			// 'datajudul2' => $pengajuan_judul2,
 
 
 		];

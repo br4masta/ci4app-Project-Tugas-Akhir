@@ -74,12 +74,13 @@ class Kaprodi extends BaseController
     public function pengajuan()
     {
         $pengajuanModel = new \App\Models\pengajuanModel();
-        $pengajuan_judul = $pengajuanModel->get_pengajuan();
-        $pengajuan_judul2 = $pengajuanModel->get_pengajuan2();
+        $pengajuan_judul = $this->pengajuanmodel->get_pengajuan();
+        // dd($pengajuan_judul);
+        // $pengajuan_judul2 = $pengajuanModel->get_pengajuan2();
         $data = [
 
             'datajudul' => $pengajuan_judul,
-            'datajudul2' => $pengajuan_judul2,
+            // 'datajudul2' => $pengajuan_judul2,
 
         ];
         return view('kaprodi/Pengajuan/Pengajuan judul', $data);

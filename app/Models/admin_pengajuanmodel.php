@@ -14,19 +14,36 @@ class admin_pengajuanmodel extends Model
     {
         return $this->db->table('pengajuan_judul')
             ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
-            ->join('dosen_pembimbing', 'dosen_pembimbing.id_dosenpembimbing = pengajuan_judul.dosenpembimbing1')
+            // ============PEMBIMBING 1=========
+            ->join('dosen_pembimbing as dospem1', 'dospem1.id_dosenpembimbing = pengajuan_judul.dosenpembimbing1')
+            ->join('dosen_tugasakhir as dosta1', 'dosta1.id_dosenta = dospem1.id_dosenta')
+            ->join('dosen as pembimbing1', 'pembimbing1.id_dosen = dosta1.id_dosen')
 
-            ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_pembimbing.id_dosenta')
-            ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
+            // ============PEMBIMBING 2=========
+            ->join('dosen_pembimbing as dospem2', 'dospem2.id_dosenpembimbing = pengajuan_judul.dosenpembimbing2')
+            ->join('dosen_tugasakhir as dosta2', 'dosta2.id_dosenta = dospem2.id_dosenta')
+            ->join('dosen as pembimbing2', 'pembimbing2.id_dosen = dosta2.id_dosen')
+
+            ->select([
+                'pembimbing1.nama_dosen as nama_pembimbing1',
+                'pembimbing2.nama_dosen as nama_pembimbing2',
+                'mahasiswa.nama_mhs',
+                'mahasiswa.nim_mhs',
+                'pengajuan_judul.judul',
+                'pengajuan_judul.status_pengajuan',
+                'pengajuan_judul.id_pengajuan',
+                'pengajuan_judul.catatan',
+                'pengajuan_judul.deskripsi_judul',
+            ])
             ->get()->getResultArray();
     }
-    public function get_pengajuan2()
-    {
-        return $this->db->table('pengajuan_judul')
-            ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
-            ->join('dosen_pembimbing', 'dosen_pembimbing.id_dosenpembimbing = pengajuan_judul.dosenpembimbing2')
-            ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_pembimbing.id_dosenta')
-            ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
-            ->get()->getResultArray();
-    }
+    // public function get_pengajuan2()
+    // {
+    //     return $this->db->table('pengajuan_judul')
+    //         ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
+    //         ->join('dosen_pembimbing', 'dosen_pembimbing.id_dosenpembimbing = pengajuan_judul.dosenpembimbing2')
+    //         ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_pembimbing.id_dosenta')
+    //         ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
+    //         ->get()->getResultArray();
+    // }
 }
