@@ -662,13 +662,98 @@ class Admin extends BaseController
 		return view('admin/Data Dosen/Tambah Data Dosen', $data);
 	}
 
-	public function editdatadosen()
+	public function editdatadosen($id)
 	{
-		return view('admin/Data Dosen/Edit Data Dosen');
+		$dosenModel = new \App\Models\admin_dosenModel();
+		$datadosen = $dosenModel->get_editdosen($id);
+		session();
+		$data = [
+
+			'datadosen' => $datadosen,
+			'validation' => \config\Services::validation(),
+
+		];
+
+		return view('admin/Data dosen/edit Data dosen', $data);
 	}
 
+	public function updatedatadosen($id)
+	{
+
+		if (!$this->validate([
+			'nidn' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => '{field} wajib di isi.',
+
+				]
+
+
+			],
+			'nama' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => '{field} wajib di isi.',
+
+				]
+
+
+			],
+
+
+			'foto' => [
+				'rules' => 'max_size[foto,1024]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png]',
+				'errors' => [
+					// 'uploaded' => 'Pilih Gambar Terlebih Dahulu',
+					'max_size' => 'Ukuran Gambar Terlalu besar',
+					'is_image' => 'Yang Anda pilih bukan gambar',
+					'mime_in' => 'Yang Anda pilih bukan gambar',
+
+				]
+				// 
+			]
+
+		])) {
+			// $validation = \config\Services::validation();
+			// return redirect()->to('/admin/tambahdatadosen')->withInput()->with('validation', $validation);
+			return redirect()->to("/admin/editdatadosen/$id")->withInput();
+		}
+
+		$fileFoto = $this->request->getFile('foto');
+
+		if ($fileFoto->getError() == 4) {
+			$foto = $this->request->getVar('fotolama');
+		} else {
+
+			// // pindah ke public/img
+			$fileFoto->move('img');
+			// // 
+			$foto = $fileFoto->getName();
+			// hapus file yang lama
+			unlink('img/' . $this->request->getVar('fotolama'));
+		}
+
+		// dd($this->request->getVar());
+		$this->db->transStart();
+
+		$this->dosenmodel->save([
+			'id_dosen' => $id,
+			'nidn_dosen' => $this->request->getVar('nidn'),
+			'nama_dosen' => $this->request->getVar('nama'),
+			'foto_dosen' => $foto,
+
+
+
+		]);
+		$this->db->transComplete();
+		session()->setFlashdata('pesanubah', 'data berhasil di ubah');
+
+		return redirect()->to('/admin/datadosen');
+	}
+
+	//------------------BAGIAN detail data dosen berisi detail data dosen beserta hak aksesnya -----------------------
 	public function detaildatadosen($id)
-	{ //------------------BAGIAN detail data dosen berisi detail data dosen beserta hak aksesnya -----------------------
+	{
 
 		$dosenModel = new \App\Models\admin_dosenModel();
 		$datadosen = $dosenModel->get_dosen($id);
@@ -686,6 +771,11 @@ class Admin extends BaseController
 
 	public function savedatadosen()
 	{
+
+
+
+
+		// dd($this->request->getFile('foto'));
 		// validasi input
 		if (!$this->validate([
 			'nidn' => [
@@ -723,22 +813,53 @@ class Admin extends BaseController
 				]
 
 
+			],
+
+
+			'foto' => [
+				'rules' => 'max_size[foto,1024]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png]',
+				'errors' => [
+					// 'uploaded' => 'Pilih Gambar Terlebih Dahulu',
+					'max_size' => 'Ukuran Gambar Terlalu besar',
+					'is_image' => 'Yang Anda pilih bukan gambar',
+					'mime_in' => 'Yang Anda pilih bukan gambar',
+
+				]
+				// 
 			]
 
 		])) {
-			$validation = \config\Services::validation();
-			return redirect()->to('/admin/tambahdatadosen')->withInput()->with('validation', $validation);
+			// $validation = \config\Services::validation();
+			// return redirect()->to('/admin/tambahdatadosen')->withInput()->with('validation', $validation);
+			return redirect()->to('/admin/tambahdatadosen')->withInput();
 		}
 
-		// dd($this->request->getVar());
+		// dd('berhasil');
+		// // ambil gambar
+		$fileFoto = $this->request->getFile('foto');
 
-		// $this->dosenmodel->insert_dosen($data);
+		if ($fileFoto->getError() == 4) {
+			$foto = 'default.png';
+		} else {
+
+			// // pindah ke public/img
+			$fileFoto->move('img');
+			// // 
+			$foto = $fileFoto->getName();
+		}
+
+
+
+
+
 
 		$this->db->transStart();
 		// $dosenModel = new \App\Models\admin_dosenModel();
 		$this->dosenmodel->save([
 			'nidn_dosen' => $this->request->getVar('nidn'),
 			'nama_dosen' => $this->request->getVar('nama'),
+			'foto_dosen' => $foto,
+
 
 
 		]);
@@ -808,6 +929,48 @@ class Admin extends BaseController
 
 		// return redirect()->to('/admin/Datadosen');
 	}
+
+	public function deletedatadosen($id)
+	{ //------------------BAGIAN detail data dosen berisi detail data dosen beserta hak aksesnya -----------------------
+		// $data = $this->levelingmodel->get_deletedatadosen($id);
+		// // $a = $data['id_dosen'];
+		// // dd($data);
+		// $i = '0';
+		// $a = $data[$i];
+
+
+		// dd($a['id_user']);
+		// $this->db->transStart();
+		// $this->dosenmodel->delete([
+		// 	'id_dosen' => $id,
+
+		// ]);
+
+		// $this->dosen_tugasakhirmodel->delete([
+		// 	'id_dosenta' => $a['id_dosenta'],
+
+		// ]);
+		// for ($i = 0; $i <= 2; $i++) {
+
+		// 	$a = $data[$i];
+
+		// 	$this->levelingmodel->delete([
+		// 		'id_dosen' => $id,
+
+		// 	]);
+		// 	// $iduser = $this->levelingmodel->getInsertID();
+		// 	// dd($iduser);
+		// 	$this->user->delete([
+		// 		'id_dosen' => $id,
+
+		// 	]);
+		// }
+		// $this->db->transComplete();
+
+		// session()->setFlashdata('pesan', 'data berhasil di hapus');
+		// return redirect()->to("/admin/Datadosen");
+	}
+
 
 	public function tambahdosenhakakses($id)
 	{ //------------------BAGIAN detail data dosen berisi detail data dosen beserta hak aksesnya -----------------------

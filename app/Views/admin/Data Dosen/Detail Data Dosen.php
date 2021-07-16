@@ -72,7 +72,7 @@
                                         </td>
                                         <td><?= $d['nama_dosen']; ?></td>
 
-                                        <td><img src="<?= base_url('assets/img/dosen 1.jpg');  ?>" alt="" width="70"></td>
+                                        <td><img src="/img/<?= $d['foto_dosen']; ?>" alt="" width="70"></td>
 
                                         <td><?= $d['username']; ?>
 

@@ -36,7 +36,13 @@
                             <div class="alert alert-success" role="alert">
                                 <?= session()->getFlashdata('pesan'); ?>
                             </div>
+                        <?php elseif (session()->getFlashdata('pesanubah')) : ?>
+                            <div class="alert alert-warning" role="alert">
+                                <?= session()->getFlashdata('pesanubah'); ?>
+                            </div>
                         <?php endif; ?>
+
+
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -69,7 +75,7 @@
                                         </td>
                                         <td><?= $d['nama_dosen']; ?></td>
 
-                                        <td><img src="<?= base_url('assets/img/dosen 1.jpg');  ?>" alt="" width="70"></td>
+                                        <td><img src="/img/<?= $d['foto_dosen']; ?>" alt="" width="70"></td>
                                         <td>
                                             <a href="/admin/detaildatadosen/<?= $d['id_dosenta']; ?>">
                                                 <button class="btn btn-xs btn-flat btn-info " data-toggle="modal" data-target="#Detail">
@@ -78,15 +84,15 @@
                                             </a>
                                         </td>
                                         <td class="center">
-                                            <a href="<?= site_url('admin/editdatadosen'); ?>" />
+                                            <a href="/admin/editdatadosen/<?= $d['id_dosen']; ?>" />
                                             <button class="btn btn-xs btn-flat btn-success btnbrg-edit">
                                                 <i class="fa fa-edit"></i>
                                             </button>
                                             </a>
-                                            <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
-                                            <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
-                                                <i class="fa fa-times"></i>
-                                            </button>
+                                            <a href="/admin/deletedatadosen/<?= $d['id_dosen']; ?>" onClick="return confirm('Anda yakin akan menghapus data ini ?')">
+                                                <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
+                                                    <i class="fa fa-times"></i>
+                                                </button>
                                             </a>
                                         </td>
                                     </tr>

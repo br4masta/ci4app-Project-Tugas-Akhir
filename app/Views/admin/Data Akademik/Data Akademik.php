@@ -107,7 +107,7 @@
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label">Tahun Akademik</label>
                         <div class="col-sm-2">
-                            <input type="text" class="form-control <?= ($validation->hasError('tahun_akademik')) ? 'is-invalid' : ''; ?>" id="tahun_akademik" name="tahun_akademik" value=""> / <input type="text" class="form-control <?= ($validation->hasError('tahun_akademik')) ? 'is-invalid' : ''; ?>" id="tahun_akademik2" name="tahun_akademik2" value="">
+                            <input type="text" class="form-control <?= ($validation->hasError('tahun_akademik')) ? 'is-invalid' : ''; ?>" id="tahun_akademik" name="tahun_akademik" value="" placeholder="*2019"> / <input type="text" class="form-control <?= ($validation->hasError('tahun_akademik')) ? 'is-invalid' : ''; ?>" id="tahun_akademik2" name="tahun_akademik2" value="" placeholder="*2020">
 
                             <div class="invalid-feedback">
                                 <?= $validation->getError('tahun_akademik'); ?>

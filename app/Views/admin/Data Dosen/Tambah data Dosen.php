@@ -21,7 +21,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <form action="/admin/savedatadosen" method="POST">
+            <form action="/admin/savedatadosen" method="POST" enctype="multipart/form-data">
 
                 <?= csrf_field(); ?>
                 <?php foreach ($dataakademik as $c) : ?>
@@ -87,12 +87,21 @@
                     <span></span>
                     <span></span>
                 </div>
+
                 <div class=" form-group">
                     <label class="col-sm-2 control-label">Foto</label>
+                    <div class="col-sm-2">
+                        <img src="/img/default.png" class="img-thumbnail img-preview">
+                    </div>
                     <div class="col-sm-8">
-                        <input name="foto" id="foto" type="file" class="form-control" value="<?= old('foto') ?>" />
+                        <input name="foto" id="foto" type="file" class="form-control <?= ($validation->hasError('foto')) ? 'is-invalid' : ''; ?>" onchange="previewImg()" />
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('foto'); ?>
+                        </div>
+
                     </div>
                 </div>
+
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-8">
                         <button class="btn btn-primary btn-square">Simpan</button>
@@ -123,6 +132,19 @@
             "responsive": true,
         });
     });
+
+    function previewImg() {
+        const foto = document.querySelector('#foto');
+
+        const imgPreview = document.querySelector('.img-preview');
+
+        const fileFoto = new FileReader();
+        fileFoto.readAsDataURL(foto.files[0]);
+
+        fileFoto.onload = function(e) {
+            imgPreview.src = e.target.result;
+        }
+    }
 </script>
 <!-- /.content -->
 <?= $this->endSection(); ?>

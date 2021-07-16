@@ -28,6 +28,24 @@ class admin_dosenmodel extends Model
             ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
             ->get()->getResultArray();
     }
+
+
+
+    public function get_editdosen($id = false)
+    {
+        if ($id == false) {
+            return $this->db->table('dosen_tugasakhir')
+                ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
+                ->join('data_akademik', 'data_akademik.id_dataakademik = dosen_tugasakhir.id_dataakademik')
+                ->where(['status' => 'aktif'])
+
+                ->get()->getResultArray();
+        }
+        return $this->db->table('dosen')
+            ->where(['id_dosen' => $id])
+            ->get()->getResultArray();
+    }
+
     public function get_dosen($id = false)
     {
         if ($id == false) {

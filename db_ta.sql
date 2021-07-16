@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2021 at 03:33 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 7.3.28
+-- Generation Time: Jul 16, 2021 at 09:44 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,31 +38,6 @@ CREATE TABLE `bimbingan` (
   `status_bimbingan` enum('disetujui','belum di setujui','ditolak') NOT NULL DEFAULT 'belum di setujui'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `bimbingan`
---
-
-INSERT INTO `bimbingan` (`id_bimbingan`, `id_pengajuan`, `tanggal_bimbingan`, `judul_bimbingan`, `deskripsi_bimbingan`, `berkas_bimbingan`, `catatan_bimbingan`, `status_bimbingan`) VALUES
-(1, 5, '2021-06-01', 'bab 1', 'Deskripsi Bimbingan', 'bab1.pdf', 'perbaikan untuk latarblekang masalah', 'belum di setujui'),
-(2, 5, '2021-06-30', 'bab 2', 'Deskripsi Bimbingan', 'update bab2.pdf', '-', 'belum di setujui'),
-(3, 6, '2021-06-30', 'bab 1-3', 'Deskripsi Bimbingan', 'sistem infomasi rumah sakit.pdf', 'sudah sempurna', 'disetujui'),
-(6, 5, '0000-00-00', '132', '123213', '1625401945_6cc179d3df4fe5676ce1.pdf', '', 'belum di setujui'),
-(7, 5, '0000-00-00', 'wqeqw', 'qweqwe', '1625401972_885d2dda302740e9474e.pdf', '', 'belum di setujui'),
-(8, 5, '0000-00-00', 'asd', 'asd', '1625463574_a6a163628ae6aaa6e73b.pdf', '', 'belum di setujui'),
-(9, 5, '0000-00-00', '213', '123', '1625463588_5d96f80f62c5db231de9.pdf', '', 'belum di setujui'),
-(10, 5, '2021-07-13', 'asd', 'asd', 'asd', 'asd', 'belum di setujui'),
-(11, 5, '2021-07-21', 'asd', 'asd', 'sad', 'asd', 'belum di setujui'),
-(12, 7, '0000-00-00', '12', '12', '1625463735_7eebe223a1783046f048.pdf', '', 'belum di setujui'),
-(13, 7, '0000-00-00', 'asd222', 'asd22', '1625465137_7b3e6dbc6040512df2ba.pdf', '', 'belum di setujui'),
-(14, 7, '0000-00-00', '222', '3131313', '1625465194_2cd4f88317d1f6e1afff.pdf', '', 'belum di setujui'),
-(15, 7, '0000-00-00', 'qweqrq', 'qwrqr', '1625466763_0b73cb88d6413f1a2e49.pdf', '', 'belum di setujui'),
-(16, 7, '0000-00-00', '23www', '123www', '1625467327_d6fffe11465a8778f0fe.pdf', '', 'belum di setujui'),
-(17, 7, '0000-00-00', '22', '222', '1625467394_fa6db7308ede1e9aa456.pdf', '', 'belum di setujui'),
-(18, 7, '0000-00-00', 'ww', 'www', '1625468665_1d5ecfcd11b705a8c7fa.pdf', '', 'belum di setujui'),
-(19, 6, '2021-07-06', 'asd', 'asd', 'asd', 'asd', 'belum di setujui'),
-(20, 7, '0000-00-00', '45', '45', '1625567063_4c5d2a01de478addcf04.pdf', '', 'belum di setujui'),
-(21, 5, '0000-00-00', '2135654656', 'qeqweq', '1626009131_58516efbde1cd20a076f.pdf', '', 'belum di setujui');
-
 -- --------------------------------------------------------
 
 --
@@ -78,17 +53,6 @@ CREATE TABLE `bimbingan_ta` (
   `catatan_bimbingan_ta` text NOT NULL,
   `status_bimbingan_ta` enum('disetujui','belum di setujui','ditolak') NOT NULL DEFAULT 'belum di setujui'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `bimbingan_ta`
---
-
-INSERT INTO `bimbingan_ta` (`id_bimbingan_ta`, `id_seminar`, `tanggal_bimbingan_ta`, `judul_final_ta`, `berkas_bimbingan_ta`, `catatan_bimbingan_ta`, `status_bimbingan_ta`) VALUES
-(1, 2, '2021-09-01', 'bab 5', 'bab.pdf', '-', 'belum di setujui'),
-(2, 2, '2021-09-07', 'bab 7', 'bab 7.pdf', 'lanjut sidang', 'disetujui'),
-(3, 5, '2021-07-15', 'asd', 'asd', 'asd', 'belum di setujui'),
-(4, 5, '2021-07-20', 'asdasd', '1625579766_4422f922d4e0bca713dd.pdf', '', 'belum di setujui'),
-(5, 5, '0000-00-00', '14141414', '1626007868_83a699f66f765862c85b.pdf', '', 'belum di setujui');
 
 -- --------------------------------------------------------
 
@@ -126,7 +90,7 @@ CREATE TABLE `dosen` (
   `notelp` varchar(225) DEFAULT NULL,
   `jkdosen` varchar(225) DEFAULT NULL,
   `email` varchar(225) DEFAULT NULL,
-  `foto_dosen` varchar(50) NOT NULL
+  `foto_dosen` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -134,18 +98,15 @@ CREATE TABLE `dosen` (
 --
 
 INSERT INTO `dosen` (`id_dosen`, `nidn_dosen`, `nama_dosen`, `notelp`, `jkdosen`, `email`, `foto_dosen`) VALUES
-(1, 'dosen', 'dosen', NULL, NULL, NULL, 'dosen.jpg'),
-(2, '520007689', 'ir.sucipto s.it', NULL, NULL, NULL, 'sucipto.jpg'),
-(3, '212', 'pak edy', NULL, NULL, NULL, 'pak edy.jpg'),
-(4, 'wahyu', ' wahyu', NULL, NULL, NULL, ''),
-(5, 'wahyudi', ' wahyudi', NULL, NULL, NULL, ''),
-(7, 'sasassa', ' saaassas', NULL, NULL, NULL, ''),
-(8, 'hariono', ' hariono', NULL, NULL, NULL, ''),
-(9, '200000001', ' dosen azza satu', '089897896895', 'Laki laki', 'azzasatu@gmail.com', 'azzz.png'),
-(10, '2000001', ' dosen azza dua', '089688799566', 'Laki', 'azzakun@gmail.com', ''),
-(11, '20000003', ' dosen azza tiga', '089688799569', 'Laki', 'azzz@rocketmail.com', ''),
-(12, '2000004', ' dosen azza empat', '089688799564', 'L', 'azzasa@gamil.com', ''),
-(13, '2000005', ' dosen azza lima', NULL, NULL, NULL, '');
+(1, 'dosen', 'dosen', NULL, NULL, NULL, 'default.png'),
+(3, '212', 'pak edy', NULL, NULL, NULL, 'default.png'),
+(7, 'sasassa', ' saaassas', NULL, NULL, NULL, 'default.png'),
+(8, 'hariono', ' hariono', NULL, NULL, NULL, 'default.png'),
+(9, '200000001', ' dosen azza satu', '089897896895', 'Laki laki', 'azzasatu@gmail.com', 'default.png'),
+(10, '2000001', ' dosen azza dua', '089688799566', 'Laki', 'azzakun@gmail.com', 'default.png'),
+(11, '20000003', ' dosen azza tiga', '089688799569', 'Laki', 'azzz@rocketmail.com', 'default.png'),
+(12, '2000004', ' dosen azza empat', '089688799564', 'L', 'azzasa@gamil.com', 'default.png'),
+(13, '2000005', ' dosen azza lima', NULL, NULL, NULL, 'default.png');
 
 -- --------------------------------------------------------
 
@@ -164,8 +125,6 @@ CREATE TABLE `dosen_pembimbing` (
 --
 
 INSERT INTO `dosen_pembimbing` (`id_dosenpembimbing`, `id_dosenta`, `role_pembimbing`) VALUES
-(3, 1, 'dosen pembimbing I'),
-(4, 2, 'dosen pembimbing II'),
 (5, 3, 'dosen pembimbing I'),
 (6, 14, 'dosen pembimbing I'),
 (8, 15, 'dosen pembimbing II');
@@ -187,8 +146,6 @@ CREATE TABLE `dosen_penguji` (
 --
 
 INSERT INTO `dosen_penguji` (`id_dosenpenguji`, `id_dosenta`, `role_penguji`) VALUES
-(2, 1, 'dosen penguji 2'),
-(3, 2, 'dosen penguji 1'),
 (4, 3, 'dosen penguji 2');
 
 -- --------------------------------------------------------
@@ -208,16 +165,9 @@ CREATE TABLE `dosen_tugasakhir` (
 --
 
 INSERT INTO `dosen_tugasakhir` (`id_dosenta`, `id_dosen`, `id_dataakademik`) VALUES
-(1, 2, 1),
-(2, 1, 1),
 (3, 3, 1),
-(4, 2, 2),
-(5, 4, 1),
-(6, 5, 1),
 (8, 7, 1),
 (9, 8, 1),
-(12, 4, 1),
-(13, 5, 1),
 (14, 9, 1),
 (15, 10, 1),
 (16, 11, 1),
@@ -242,15 +192,9 @@ CREATE TABLE `leveling_dosen` (
 
 INSERT INTO `leveling_dosen` (`id_level`, `id_dosenta`, `id_user`) VALUES
 (1, 3, 5),
-(2, 2, 4),
-(3, 1, 3),
-(4, 1, 11),
-(5, 6, 13),
-(6, 8, 15),
 (7, 9, 16),
 (8, 14, 17),
 (9, 15, 18),
-(10, 16, 19),
 (11, 17, 20),
 (12, 18, 21);
 
@@ -303,16 +247,6 @@ CREATE TABLE `pengajuan_judul` (
   `catatan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `pengajuan_judul`
---
-
-INSERT INTO `pengajuan_judul` (`id_pengajuan`, `id_mhs`, `judul`, `deskripsi`, `dosenpembimbing1`, `dosenpembimbing2`, `status_pengajuan`, `deskripsi_judul`, `catatan`) VALUES
-(5, 1, 'sistem kelayakan terbang', 'pembuatan sistem informasi perihal pengelolaan data secara di gitalisasi untuk proses pemeriksaan rutin pesawat sebelum lepas landas.', 3, 4, 'belum di setujui', NULL, 'kurang rapi'),
-(6, 2, 'sitem infomasi rumah sakit', 'pengembangan sistem secara digitalisasi terhadap rumah sakit di sebuah desa', 5, 4, 'di setujui', NULL, 'sudah bagus'),
-(7, 1, 'judul', 'pengembangan sistem secara digitalisasi terhadap rumah sakit di sebuah desa', 5, 4, 'belum di setujui', '1625457466_bdb67a3301621438a87d.pdf', ''),
-(8, 2, 'sistem pakar pendeteksi gangguan pencernaan', 'sistem pakar yang membantu mendeteksi gangguan pencernaan', 3, 4, 'belum di setujui', '1625713485_0c1889c9b090474a52f5.pdf', '');
-
 -- --------------------------------------------------------
 
 --
@@ -331,17 +265,6 @@ CREATE TABLE `penjadwalan_sidang` (
   `status_penjadwalan_kaprodi` enum('sudah terjadwal','belum terjadwal') NOT NULL DEFAULT 'belum terjadwal'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `penjadwalan_sidang`
---
-
-INSERT INTO `penjadwalan_sidang` (`id_jadwal`, `id_bimbingan`, `penguji_1`, `penguji_2`, `berkas_proposal`, `acara_sidang`, `tanggal_sidang`, `tempat_sidang`, `status_penjadwalan_kaprodi`) VALUES
-(2, 3, 3, 2, '', 'seminar proposal', '2021-07-17 00:00:00', '      506', 'sudah terjadwal'),
-(3, 3, 3, 2, NULL, 'seminar proposal', '2021-07-21 00:00:00', ' 109', 'sudah terjadwal'),
-(18, 18, 3, 4, '1625566464_6640333a31172727c404.pdf', 'seminar proposal', '2021-07-14 17:21:56', '208', 'sudah terjadwal'),
-(19, 20, 3, 4, '1625578843_4f74b9f6002463eace93.pdf', 'seminar proposal', '0000-00-00 00:00:00', '', 'belum terjadwal'),
-(20, 20, 3, 2, '1625635936_1d1b43ce2e9feffe8f5e.pdf', 'seminar proposal', '0000-00-00 00:00:00', '', 'belum terjadwal');
-
 -- --------------------------------------------------------
 
 --
@@ -358,14 +281,6 @@ CREATE TABLE `penjadwalan_sidang_ta` (
   `tempat_sidang_ta` varchar(50) NOT NULL,
   `status_penjadwalan_kaprodi_ta` enum('sudah terjadwal','belum terjadwal') NOT NULL DEFAULT 'belum terjadwal'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `penjadwalan_sidang_ta`
---
-
-INSERT INTO `penjadwalan_sidang_ta` (`id_jadwal_ta`, `id_bimbingan_ta`, `penguji_1`, `penguji_2`, `acara_sidang_ta`, `tanggal_sidang_ta`, `tempat_sidang_ta`, `status_penjadwalan_kaprodi_ta`) VALUES
-(1, 2, 3, 2, 'sidang tugas akhir', '2021-07-17', '  301', 'sudah terjadwal'),
-(2, 4, 3, 4, 'sidang tugas akhir', '2021-07-24', ' 509', 'belum terjadwal');
 
 -- --------------------------------------------------------
 
@@ -389,15 +304,6 @@ CREATE TABLE `seminar_proposal` (
   `catatan_pembimbing_2` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `seminar_proposal`
---
-
-INSERT INTO `seminar_proposal` (`id_seminar`, `id_jadwal`, `nilai`, `catatan`, `status`, `nilai_penguji_1`, `nilai_penguji_2`, `nilai_pembimbing_1`, `nilai_pembimbing_2`, `catatan_penguji_1`, `catatan_penguji_2`, `catatan_pembimbing_1`, `catatan_pembimbing_2`) VALUES
-(2, 2, '89', 'sudah cukup sesuai bisa lanjut ke bab berikutnya', 'lanjut', 90, 80, 90, 88, 'sudah bagus', 'perlu pembenahan seikit pada metode', 'sudah mantap', 'sudah cukup'),
-(4, 2, '89', '', 'lanjut', 89, 90, 90, 88, 'bagus', 'lanjut!', 'semangat', 'bagian referensi di tambahi lagi'),
-(5, 18, '79', 'asd', 'disetujui dengan revisi', 78, 80, 80, 80, 'perlu perbaikan', 'perbaiki lagi', 'bagian latar belakang masih sangat kurang', 'asa revisi di bagian daftar isinya');
-
 -- --------------------------------------------------------
 
 --
@@ -420,14 +326,6 @@ CREATE TABLE `sidang_tugasakhir` (
   `catatan_pembimbing_2_ta` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `sidang_tugasakhir`
---
-
-INSERT INTO `sidang_tugasakhir` (`id_sidangta`, `id_jadwal_ta`, `nilai_ta`, `catatan_ta`, `status_ta`, `nilai_penguji_1_ta`, `nilai_penguji_2_ta`, `nilai_pembimbing_1_ta`, `nilai_pembimbing_2_ta`, `catatan_penguji_1_ta`, `catatan_penguji_2_ta`, `catatan_pembimbing_1_ta`, `catatan_pembimbing_2_ta`) VALUES
-(2, 1, '90', 'great job!', 'lulus', 90, 90, 90, 90, 'udah sangat bagus', 'selamat kamu lulus', 'tidak ada catatan', 'sudah bagus'),
-(3, 2, '90', 'asd', 'lulus', 89, 90, 90, 90, 'bagus', 'sudah sangat baik', 'tidak ada revisi', 'sudah bagus');
-
 -- --------------------------------------------------------
 
 --
@@ -447,7 +345,6 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `level`) VALUES
 (1, 'as', 'as', '3'),
-(2, 'dosen', 'dosen', '2'),
 (3, 'dosenpenguji', 'penguji', '4'),
 (4, 'kaprodi', 'kaprodi', '5'),
 (5, 'admin', 'admin', '1'),
@@ -455,16 +352,11 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `level`) VALUES
 (9, 'mahasiswa', 'mahasiswa', '3'),
 (10, 'sucipto', 'sucipto', '2'),
 (11, 'admin2', 'admin2', '1'),
-(12, 'wahyu', 'wahyu', '1'),
-(13, 'wahyudi', 'wahyudi', '1'),
-(15, 'sasasaas', 'sasassas', '1'),
 (16, 'hariono', 'hariono', '4'),
 (17, 'dosenazzasatu', 'dosenazzasatu', '2'),
 (18, 'dosenazzadua', 'dosenazzadua', '2'),
-(19, 'dosenazzatiga', 'dosenazzatiga', '2'),
 (20, 'dosen azza empat', 'dosenazzaempat', '2'),
-(21, 'dosen azza lima', 'dosenazzalima', '2'),
-(22, NULL, NULL, NULL);
+(21, 'dosen azza lima', 'dosenazzalima', '2');
 
 --
 -- Indexes for dumped tables
@@ -606,37 +498,37 @@ ALTER TABLE `bimbingan_ta`
 -- AUTO_INCREMENT for table `data_akademik`
 --
 ALTER TABLE `data_akademik`
-  MODIFY `id_dataakademik` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_dataakademik` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `dosen`
 --
 ALTER TABLE `dosen`
-  MODIFY `id_dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `dosen_pembimbing`
 --
 ALTER TABLE `dosen_pembimbing`
-  MODIFY `id_dosenpembimbing` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_dosenpembimbing` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `dosen_penguji`
 --
 ALTER TABLE `dosen_penguji`
-  MODIFY `id_dosenpenguji` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_dosenpenguji` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `dosen_tugasakhir`
 --
 ALTER TABLE `dosen_tugasakhir`
-  MODIFY `id_dosenta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_dosenta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `leveling_dosen`
 --
 ALTER TABLE `leveling_dosen`
-  MODIFY `id_level` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_level` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `mahasiswa`
@@ -678,7 +570,7 @@ ALTER TABLE `sidang_tugasakhir`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- Constraints for dumped tables
