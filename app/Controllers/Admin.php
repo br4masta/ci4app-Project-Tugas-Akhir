@@ -97,6 +97,25 @@ class Admin extends BaseController
 
 		return view('admin/profil/edit profil', $data);
 	}
+
+	public function updatedataprofil($id)
+	{
+		// dd($this->request->getVar());
+
+
+		$this->profilmodel->save([
+			'id_dosen'	=> $id,
+			'notelp' => $this->request->getVar('no_hp'),
+			'email' => $this->request->getVar('email'),
+			'jkdosen' => $this->request->getVar('jeniskelamin')
+
+
+
+		]);
+		session()->setFlashdata('pesan', 'profil berhasil di ubah');
+
+		return redirect()->to('/admin/profil');
+	}
 	//------------------BAGIAN PENGAJUAN JUDUL -----------------------
 	public function pengajuan()
 	{

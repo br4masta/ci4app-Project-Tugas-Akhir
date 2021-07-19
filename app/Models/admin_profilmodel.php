@@ -6,8 +6,9 @@ use CodeIgniter\Model;
 
 class admin_profilmodel extends Model
 {
-    protected $table = 'leveling_dosen';
-    protected $primaryKey = 'id_level';
+    protected $table = 'dosen';
+    protected $primaryKey = 'id_dosen';
+    protected $allowedFields = ['id_dosen', 'nama_dosen', 'jkdosen', 'notelp', 'fotodosen', 'email'];
 
     public function get_profil($id = false)
     {

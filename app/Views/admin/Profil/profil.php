@@ -39,6 +39,11 @@
 
             <div class="col-lg-9 col-md-9">
                 <div class="form">
+                    <?php if (session()->getFlashdata('pesan')) : ?>
+                        <div class="alert alert-success" role="alert">
+                            <?= session()->getFlashdata('pesan'); ?>
+                        </div>
+                    <?php endif; ?>
                     <h4>Biodata Dosen</h4>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <a href='/admin/editprofil'>
@@ -115,9 +120,7 @@
                         </table><?php endforeach; ?>
                     <!-- Akhir Table 2 -->
 
-                    <div class="proses">
-                        <button class="btn btn-primary tombol">Proses</button>
-                    </div>
+
                 </div>
             </div>
         </div>
