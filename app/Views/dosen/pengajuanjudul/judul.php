@@ -48,6 +48,7 @@
     function datamahasiswa() {
         $.ajax({
             url: "<?= site_url('dosen/ambildatajudul/id') ?>",
+            url2: "<?= site_url('dosen/ambildatajudul2/id') ?>",
             dataType: "json",
             success: function(response) {
                 $('.viewdata').html(response.data);

@@ -57,21 +57,38 @@ class Dosen extends BaseController
 	{
 		$session = session();
 		$id = $session->get('user_id');
-		if ($this->request->isAJAX()) {
+		 if ($this->request->isAJAX()) {
 			$data = [
-				'tampildatadsn' => $this->judul->get_pengajuanjuduldsn($id)
+				'tampildatadsn2' => $this->judul->get_pengajuanjuduldsn2($id)
 			];
 			$msg = [
-				'data' => view('dosen/pengajuanjudul/v_data/datapengajuanjudul', $data)
+				'data' => view('dosen/pengajuanjudul/v_data/datapengajuanjudul2', $data),
 			];
 
 			echo json_encode($msg);
 		} else {
 			exit('Maaf tidak dapat diproses');
 		}
-	} 
+	}
+		public function ambildatajudul2()
+	{
+		$session = session();
+		$id = $session->get('user_id');
+		 if ($this->request->isAJAX()) {
+			$data = [
+				'tampildatadsn2' => $this->judul->get_pengajuanjuduldsn($id)
+			];
+			$msg = [
+				'data' => view('dosen/pengajuanjudul/v_data/datapengajuanjudul', $data),
+			];
 
-	// AKHIR JUDUL -----------------------------------------------
+			echo json_encode($msg);
+		} else {
+			exit('Maaf tidak dapat diproses');
+		}
+}
+
+	// -----------------------------------AKHIR JUDUL -----------------------------------------------
 	public function bimbingan()
 	{
 		$data = [
