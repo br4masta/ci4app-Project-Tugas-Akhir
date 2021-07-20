@@ -80,8 +80,7 @@ foreach ($tampildata as $row2) : ?>
                                     </td>
                                 </tr>
                             </tbody>
-                            <?php break;
-                                endforeach ?>
+                          
                         </table>
                     </div>
                     <!-- /.tab-content -->
@@ -91,4 +90,7 @@ foreach ($tampildata as $row2) : ?>
         </div>
         <!-- /.col -->
     </div>
+
     <!-- /.row -->
+  <?php break;
+endforeach ?>

@@ -65,24 +65,6 @@
                                     </td>
 
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>2018420003
-                                    </td>
-                                    <td>Aditya Hermanto</td>
-                                    <td> Sistem Informasi Pendukung keputusan kelayakan terbang</td>
-                                    <td>sucipto</td>
-                                    <td>Skripsi</td>
-
-                                    <td>
-                                        <a href='<?php echo site_url('dosenpenguji/detailberita'); ?>'>
-                                            <button class="btn btn-xs btn-flat btn-info">
-                                                Detail
-                                            </button>
-                                        </a>
-                                    </td>
-
-                                </tr>
 
                             </tbody>
 
