@@ -322,7 +322,7 @@ class Admin extends BaseController
 			'data1' => $this->penjadwalanmodel->get_jadwalseminar1($data),
 			'data2' => $this->penjadwalanmodel->get_jadwalseminar2($data),
 			'data3' => $this->dosenmodel->get_penguji1(),
-			'data4' => $this->dosenmodel->get_penguji2(),
+			// 'data4' => $this->dosenmodel->get_penguji2(),
 
 		];
 
@@ -520,13 +520,14 @@ class Admin extends BaseController
 	}
 	public function datadosenpenguji()
 	{
-
+		session();
 		$datapenguji = $this->dosenmodel->get_penguji();
 
 		$data = [
 
 			'datapenguji' => $datapenguji,
-			'data_dosenta' => $this->dosen_tugasakhirmodel->get_dosentapenguji()
+			'data_dosenta' => $this->dosen_tugasakhirmodel->get_dosentapenguji(),
+			'validation' => \config\Services::validation(),
 
 		];
 		return view('admin/Data pembagian dosen/Data Dosen Penguji', $data);
@@ -534,6 +535,23 @@ class Admin extends BaseController
 	public function tambahdatadosenpenguji()
 	{
 		// dd($this->request->getVar());
+		if (!$this->validate([
+
+			'id_dosenta' => [
+				'rules' => 'required|is_unique[dosen_penguji.id_dosenta]',
+				'errors' => [
+					'required' => '{field} wajib di isi.',
+					'is_unique' => '{field} sudah terdaftar'
+				]
+
+
+			],
+
+
+		])) {
+			$validation = \config\Services::validation();
+			return redirect()->to("/admin/datadosenpenguji")->withInput()->with('validation', $validation);
+		}
 
 		$this->pengujimodel->save([
 			'id_dosenta' => $this->request->getVar('id_dosenta'),
@@ -550,6 +568,9 @@ class Admin extends BaseController
 	public function editdatadosenpenguji($id)
 	{
 		// dd($this->request->getVar());
+		// validasi
+
+
 
 		$this->pengujimodel->save([
 			'id_dosenpenguji' => $id,

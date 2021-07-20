@@ -105,14 +105,17 @@
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label">Nama Dosen</label>
                         <div class="col-sm-6">
-                            <select name="id_dosenta" id="id_dosenta" class="form-control">
+                            <select name="id_dosenta" id="id_dosenta" class="form-control <?= ($validation->hasError('id_dosenta')) ? 'is-invalid' : ''; ?>">
                                 <option value="">-Pilih-</option>
                                 <?php foreach ($data_dosenta as $d) :
                                 ?>
                                     <!-- value = level dosen -->
                                     <option value="<?= $d['id_dosenta']; ?>"><?= $d['nidn_dosen']; ?>- <?= $d['nama_dosen']; ?> </option>
-
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('id_dosenta'); ?>
+                                    </div>
                                 <?php endforeach; ?>
+
                             </select>
                         </div>
                     </div>
@@ -122,8 +125,8 @@
                         <div class="col-sm-6">
                             <select name="role_penguji" id="role_penguji" class="form-control">
                                 <option value="">-Pilih-</option>
-                                <option value="dosen penguji 1">Dosen penguji 1</option>
-                                <option value="dosen penguji 2">Dosen penguji 2</option>
+                                <option value="penguji">Dosen penguji 1</option>
+                                <option value="penguji">Dosen penguji 2</option>
                             </select>
                         </div>
                     </div>
@@ -175,8 +178,8 @@
                             <div class="col-sm-6">
                                 <select name="role_penguji" id="role_penguji" class="form-control">
                                     <option value="">-Pilih-</option>
-                                    <option value="dosen penguji 1">Dosen penguji 1</option>
-                                    <option value="dosen penguji 2">Dosen penguji 2</option>
+                                    <option selected value="penguji">Dosen penguji 1</option>
+
                                 </select>
                             </div>
                         </div>
