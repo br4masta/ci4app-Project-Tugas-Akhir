@@ -32,8 +32,9 @@
             <div class="col-lg-3 col-md-3">
                 <div class="foto">
                     <h4>Foto</h4>
-                    <hr>
-                    <img src="/assets/img/dosen 1.jpg" alt="">
+                    <hr><?php foreach ($data_profil as $c) : ?>
+                        <img src="/img/<?= $c['foto_dosen']; ?>" alt="">
+                    <?php endforeach; ?>
                 </div>
             </div>
 

@@ -8,7 +8,16 @@ class admin_profilmodel extends Model
 {
     protected $table = 'dosen';
     protected $primaryKey = 'id_dosen';
-    protected $allowedFields = ['id_dosen', 'nama_dosen', 'jkdosen', 'notelp', 'fotodosen', 'email'];
+    protected $allowedFields = ['id_dosen', 'nama_dosen', 'jkdosen', 'notelp', 'foto_dosen', 'email'];
+
+    public function get_dosen($id)
+    {
+        return $this->db->table('dosen')
+
+
+            ->where('id_dosen', $id)
+            ->get()->getResultArray();
+    }
 
     public function get_profil($id = false)
     {

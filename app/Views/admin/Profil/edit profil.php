@@ -136,6 +136,7 @@
                                             </div>
                                         </td>
                                     </tr>
+
                                     <!-- <tr>
                                 <th scope="row">Pin</th>
                                 <td>
@@ -155,7 +156,19 @@
                             </tr> -->
                                 </tbody>
                             </table>
-
+                            <div class=" form-group">
+                                <label class="col-sm-2 control-label">Foto</label>
+                                <div class="col-sm-2">
+                                    <img src="/img/<?= $c['foto_dosen']; ?>" class="img-thumbnail img-preview">
+                                </div>
+                                <div class="col-sm-8">
+                                    <input name="foto" id="foto" type="file" value="<?= $c['foto_dosen']; ?>" class="form-control <?= ($validation->hasError('foto')) ? 'is-invalid' : ''; ?>" onchange="previewImg()" />
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('foto'); ?>
+                                    </div>
+                                    <input type="hidden" name="fotolama" id="fotolama" value="<?= $c['foto_dosen']; ?>">
+                                </div>
+                            </div>
                             <div class="proses">
                                 <button class="btn btn-primary tombol">Proses</button>
                             </div>
@@ -169,6 +182,20 @@
 </div>
 <!-- /.content -->
 <!-- /.content -->
+<script>
+    function previewImg() {
+        const foto = document.querySelector('#foto');
+
+        const imgPreview = document.querySelector('.img-preview');
+
+        const fileFoto = new FileReader();
+        fileFoto.readAsDataURL(foto.files[0]);
+
+        fileFoto.onload = function(e) {
+            imgPreview.src = e.target.result;
+        }
+    }
+</script>
 <?= $this->endSection(); ?>
 
 <?= $this->include('admin/menu'); ?>
