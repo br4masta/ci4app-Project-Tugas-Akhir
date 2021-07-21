@@ -345,7 +345,7 @@ class Mahasiswa extends BaseController
 	}
 	//------------------END BAGIAN SIDANG TA-----------------------
     
-	//------------------BAGIAN SEMPRO-----------------------
+	//------------------BAGIAN BAGIAN BiMBINGAN TUGAS AKHIR-----------------------
 	public function Seminar()
 	{
 		return view('mahasiswa/sempro/sempro');
@@ -442,8 +442,29 @@ class Mahasiswa extends BaseController
 			exit('Maaf tidak dapat diproses');
 		}
 	}
-	//------------------END BAGIAN SEMPRO-----------------------
+	//------------------END BAGIAN BiMBINGAN TUGAS AKHIR-----------------------
 
+	//------------------BAGIAN HASIL SEMINAR-----------------------
+
+	public function bimbingan_mhs_ta()
+	{
+		return view('mahasiswa/Hasil_seminar/Hasil_seminar');
+	}
+	public function ambildatahasilseminar()
+	{
+		if ($this->request->isAJAX()) {
+			$data = [
+				'tampildata' => $this->sempro2->get_ambil_sempro($this->id)
+			];
+			$msg = [
+				'data' => view('mahasiswa/Hasil_seminar/v_data/data_seminar', $data)
+			];
+			echo json_encode($msg);
+		} else {
+			exit('Maaf tidak dapat diproses');
+		}
+	}
+    //--------------------------------------------------------------------
 
 	//------------------BAGIAN DATA PROFIL----------------------- 
 	public function showprofil()

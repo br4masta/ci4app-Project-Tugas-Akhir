@@ -39,6 +39,8 @@ class Model_pengajuanjudulmhs extends Model
                 'pengajuan_judul.judul',
                 'pengajuan_judul.deskripsi',
                 'pengajuan_judul.status_pengajuan',
+                'pengajuan_judul.konfirmasi_pembimbing_1',
+                'pengajuan_judul.konfirmasi_pembimbing_2',
             ])
             ->get()->getResultArray();
     }

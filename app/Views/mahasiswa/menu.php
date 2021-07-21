@@ -54,9 +54,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="<?= site_url('mahasiswa/bimbingan_mhs_ta'); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Hasil Seminar Proposal</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="<?= site_url('mahasiswa/seminar'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Seminar Proposal</p>
+                        <p>Bimbingan Tugas Akhir</p>
                     </a>
                 </li>
                 <li class="nav-item">

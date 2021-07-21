@@ -7,7 +7,8 @@
             <th>Judul</th>
             <th>Dosen Pembimbing I</th>
             <th>Dosen Pembimbing II</th>
-            <th>File PDF Judul</th>
+            <th>Konfirmasi Dosen Pembimbing I</th>
+            <th>Konfirmasi Dosen Pembimbing II</th>
             <th>ACC Kaprodi</th>
             <th>aksi</th>
         </tr>
@@ -23,9 +24,22 @@
                 <td><?= $row['judul']; ?></td>
                 <td><?= $row['dos1_nama']; ?></td>
                 <td><?= $row['dos2_nama']; ?></td>
-                <td style="text-align: center; vertical-align: middle;">
-                    <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
-                </td>
+                <td style="text-align: center; vertical-align: middle;"> 
+                    <?php if ($row['status_pengajuan'] == "belum di setujui") :
+                            echo '<span class="badge badge-warning d-inline-flex p-2">Belum Disetujui</span>';
+                        elseif ($row['status_pengajuan'] == "di setujui") :
+                            echo '<span class="badge badge-success d-inline-flex p-2">Disetujui</span>';
+                        else :
+                            echo '<span class="badge badge-danger d-inline-flex p-2">DiTolak</span>';
+                        endif ?></td>
+                <td style="text-align: center; vertical-align: middle;"> 
+                    <?php if ($row['status_pengajuan'] == "belum di setujui") :
+                            echo '<span class="badge badge-warning d-inline-flex p-2">Belum Disetujui</span>';
+                        elseif ($row['status_pengajuan'] == "di setujui") :
+                            echo '<span class="badge badge-success d-inline-flex p-2">Disetujui</span>';
+                        else :
+                            echo '<span class="badge badge-danger d-inline-flex p-2">DiTolak</span>';
+                        endif ?></td>
                 <td style="text-align: center; vertical-align: middle;">
                     <?php if ($row['status_pengajuan'] == "belum di setujui") :
                         echo '<span class="badge badge-warning d-inline-flex p-2">Belum Disetujui</span>';
