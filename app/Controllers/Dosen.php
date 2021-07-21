@@ -19,7 +19,6 @@ class Dosen extends BaseController
 		$this->validasi = \Config\Services::validation();
 		$this->data_dsn = new dosenModel();
 		$this->judul = new dosenModel();
-
 	}
 	// ----------------------BAGIAN PROFIL--------------------------
 	public function index()
@@ -53,16 +52,33 @@ class Dosen extends BaseController
 		return view('dosen/pengajuanjudul/judul', $data);
 	}
 
+	public function pengajuanjudul()
+	{
+		$session = session();
+		$data = $session->get('user_id');
+
+
+
+		$data = [
+			'tampildatadsn' => $this->judul->get_bimbingan_pembimbing1($data),
+			'tampildatadsn2' => $this->judul->get_bimbingan_pembimbing2($data),
+		];
+
+
+		return view('dosen/pengajuanjudul/datapengajuan', $data);
+	}
+
 	public function ambildatajudul()
 	{
 		$session = session();
-		$id = $session->get('user_id');
-		 if ($this->request->isAJAX()) {
+		$data = $session->get('user_id');
+		if ($this->request->isAJAX()) {
 			$data = [
-				'tampildatadsn2' => $this->judul->get_pengajuanjuduldsn2($id)
+				'tampildatadsn' => $this->judul->get_bimbingan_pembimbing1($data),
+				'tampildatadsn2' => $this->judul->get_bimbingan_pembimbing2($data),
 			];
 			$msg = [
-				'data' => view('dosen/pengajuanjudul/v_data/datapengajuanjudul2', $data),
+				'data' => view('dosen/pengajuanjudul/v_data/datapengajuanjudul', $data),
 			];
 
 			echo json_encode($msg);
@@ -70,11 +86,11 @@ class Dosen extends BaseController
 			exit('Maaf tidak dapat diproses');
 		}
 	}
-		public function ambildatajudul2()
+	public function ambildatajudul2()
 	{
 		$session = session();
 		$id = $session->get('user_id');
-		 if ($this->request->isAJAX()) {
+		if ($this->request->isAJAX()) {
 			$data = [
 				'tampildatadsn2' => $this->judul->get_pengajuanjuduldsn($id)
 			];
@@ -86,7 +102,7 @@ class Dosen extends BaseController
 		} else {
 			exit('Maaf tidak dapat diproses');
 		}
-}
+	}
 
 	// -----------------------------------AKHIR JUDUL -----------------------------------------------
 	public function bimbingan()
