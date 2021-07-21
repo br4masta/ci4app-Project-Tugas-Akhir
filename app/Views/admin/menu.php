@@ -61,12 +61,12 @@
                         <p>Data Dosen Penguji</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="<?php echo site_url('admin/datadosenta'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Data Dosen Tugas Akhir</p>
                     </a>
-                </li>
+                </li> -->
             </ul>
         </li>
         <li class="nav-item">

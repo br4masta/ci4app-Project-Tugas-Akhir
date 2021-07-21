@@ -57,8 +57,20 @@
                                         <td><?= $d['nidn_dosen']; ?>
                                         </td>
                                         <td><?= $d['nama_dosen']; ?></td>
-                                        <td><?= $d['role_pembimbing']; ?> </td>
-                                        <td> <?= $d['role_penguji']; ?> </td>
+                                        <td><?php if ($d['role_pembimbing'] == "null") :
+                                                echo '-';
+                                            else :
+                                                echo $d['role_pembimbing'];
+
+                                            endif ?> </td>
+                                        <td>
+                                            <?php if ($d['role_penguji'] == "null") :
+                                                echo '-';
+                                            elseif ($d['role_penguji'] == "penguji") :
+                                                echo 'Dosen Penguji';
+
+                                            endif ?></td>
+                                        </td>
                                         <td><?= $d['tahun_akademik']; ?></td>
 
 

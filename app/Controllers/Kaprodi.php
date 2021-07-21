@@ -70,6 +70,80 @@ class Kaprodi extends BaseController
 
         return view('kaprodi/profil/profil', $data);
     }
+    public function editprofil()
+    {
+
+        $profiladmin = $this->profilmodel->get_profil($this->id);
+        session();
+
+        $data = [
+            'heading'    => 'profil',
+            'data_profil' => $profiladmin,
+            'validation' => \config\Services::validation(),
+
+
+        ];
+
+        return view('kaprodi/profil/edit profil', $data);
+    }
+
+    public function updatedataprofil($id)
+    {
+        $this->db->transStart();
+        // dd($this->request->getVar());
+        if (!$this->validate([
+            'foto' => [
+                'rules' => 'max_size[foto,1024]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    // 'uploaded' => 'Pilih Gambar Terlebih Dahulu',
+                    'max_size' => 'Ukuran Gambar Terlalu besar',
+                    'is_image' => 'Yang Anda pilih bukan gambar',
+                    'mime_in' => 'Yang Anda pilih bukan gambar',
+
+                ]
+                // 
+            ]
+
+
+        ])) {
+
+            return redirect()->to('/kaprodi/editprofil')->withInput();
+        }
+
+        $fileFoto = $this->request->getFile('foto');
+
+        if ($fileFoto->getError() == 4) {
+            $foto = $this->request->getVar('fotolama');
+        } else {
+
+            // // pindah ke public/img
+            $fileFoto->move('img');
+            // // 
+            $foto = $fileFoto->getName();
+            $fotoid = $this->profilmodel->get_dosen($id);
+            // dd($fotoid);
+            if ($fotoid['0']['foto_dosen'] != 'default.png') {
+                unlink('img/' . $this->request->getVar('fotolama'));
+            }
+        }
+
+
+        $this->profilmodel->save([
+            'id_dosen'    => $id,
+            'nama_dosen' => $this->request->getVar('nama'),
+            'notelp' => $this->request->getVar('no_hp'),
+            'email' => $this->request->getVar('email'),
+            'jkdosen' => $this->request->getVar('jeniskelamin'),
+            'foto_dosen' => $foto,
+
+
+
+        ]);
+        $this->db->transComplete();
+        session()->setFlashdata('pesan', 'profil berhasil di ubah');
+
+        return redirect()->to('/kaprodi/profil');
+    }
 
     public function pengajuan()
     {
