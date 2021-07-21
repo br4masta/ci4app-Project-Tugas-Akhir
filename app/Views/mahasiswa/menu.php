@@ -66,6 +66,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="<?= site_url('mahasiswa/pengajuan_ta'); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Pengajuan Tugas Akhir</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="<?= site_url('mahasiswa/sidang_ta'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Hasil Sidang Tugas AKhir</p>

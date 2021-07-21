@@ -52,14 +52,14 @@
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Detail Nilai dan Catatan Seminar proposal</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Detail Nilai dan Catatan Tugas Akhir</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body modal-lg">
                     <div class="row">
-                        <div class="col-lg-6"> 
+                        <div class="col-lg-6">
                             <table class="table table-borderless">
                                 <tr>
                                     <th>Nilai Penguji I</th>
@@ -80,10 +80,10 @@
                                 <tr>
                                     <th>Nilai Akhir Sempro</th>
                                     <td>
-                                    <?php $tot = $row['nilai_penguji_1_ta'] + $row['nilai_penguji_2_ta'] + $row['nilai_pembimbing_1_ta'] + $row['nilai_pembimbing_2_ta'];
+                                        <?php $tot = $row['nilai_penguji_1_ta'] + $row['nilai_penguji_2_ta'] + $row['nilai_pembimbing_1_ta'] + $row['nilai_pembimbing_2_ta'];
                                         $rata = $tot / 4;
                                         echo $rata; ?>
-                                     
+
                                     </td>
                                 </tr>
                             </table>

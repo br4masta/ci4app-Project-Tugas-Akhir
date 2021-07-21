@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Halaman Seminar Proposal</h1>
+                <h1>Halaman Bimbingan Tugas Akhir</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -25,7 +25,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">DataTable Sidang Tugas Akhir Mahasiswa</h3>
+                        <h3 class="card-title">DataTable Bimbingan Tugas Akhir Mahasiswa</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">

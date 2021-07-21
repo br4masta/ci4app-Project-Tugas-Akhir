@@ -322,7 +322,7 @@ class Mahasiswa extends BaseController
 		return view('mahasiswa/pengajuan_sempro/pengajuansempro');
 	}
 
-    //------------------END BAGIAN PENGAJUAN SEMPRO-----------------------
+	//------------------END BAGIAN PENGAJUAN SEMPRO-----------------------
 
 	//------------------BAGIAN SIDANG TA-----------------------
 	public function ambildatasidang()
@@ -339,12 +339,92 @@ class Mahasiswa extends BaseController
 			exit('Maaf tidak dapat diproses');
 		}
 	}
+
 	public function Sidang_ta()
 	{
 		return view('mahasiswa/sidang/sidang');
 	}
 	//------------------END BAGIAN SIDANG TA-----------------------
-    
+
+	//------------------BAGIAN PENGAJUAN SIDANG TA-----------------------
+	public function ambildatasidangTA()
+	{
+		if ($this->request->isAJAX()) {
+			$data = [
+				'tampildata' => $this->sidang_tugasakhir1->get_sidang_ta2($this->id)
+			];
+			$msg = [
+				'data' => view('mahasiswa/pengajuan_ta/v_data/data_pengajuan', $data)
+			];
+			echo json_encode($msg);
+		} else {
+			exit('Maaf tidak dapat diproses');
+		}
+	}
+
+	public function simpandatapengajuanta()
+	{
+		if ($this->request->isAJAX()) {
+
+			$nama_judul = $this->request->getVar('judul');
+			$validation = \Config\Services::validation();
+
+			$valid = $this->validate([
+				'berkas' => [
+					'label' => 'Berkas Judul Mahasiswa',
+					'rules' => 'uploaded[berkas]|ext_in[berkas,pdf]|max_size[berkas,2048]',
+					'errors' => [
+						'uploaded' => 'Harus Ada File yang diupload',
+						'max_size' => 'Ukuran File Maksimal 2 MB'
+					]
+				]
+			]);
+
+			if (!$valid) {
+				$msg = [
+					'error' => [
+						'berkas'    => $validation->getError('berkas')
+					]
+				];
+			} else {
+				$dataBerkas = $this->request->getFile('berkas');
+				$fileName = $dataBerkas->getRandomName();
+				$data = [
+					'id_bimbingan_ta' => $this->request->getVar('id_bimbingan_ta'),
+					'berkas_proposal_ta' => $fileName,
+				];
+
+				$dataBerkas->move('assets/img/File', $nama_judul . '.' . $dataBerkas->getExtension());
+				$this->sidang_tugasakhir1->insert_pengajuan_ta($data);
+
+				$msg = [
+					'sukses' => 'Data mahasiswa berhasil disimpan'
+				];
+			}
+			echo json_encode($msg);
+		} else {
+			exit('Maaf tidak dapat diproses');
+		}
+	}
+
+	public function formtambahpengajuanTA()
+	{
+		if ($this->request->isAJAX()) {
+			$msg = [
+				'data' => view('mahasiswa/pengajuan_ta/v_data/modal_tambah')
+			];
+			echo json_encode($msg);
+		} else {
+			exit('Maaf tidak dapat diproses');
+		}
+	}
+
+	public function Pengajuan_ta()
+	{
+		return view('mahasiswa/pengajuan_ta/pengajuan_ta');
+	}
+	//------------------END BAGIAN SIDANG TA-----------------------
+
 	//------------------BAGIAN BAGIAN BiMBINGAN TUGAS AKHIR-----------------------
 	public function Seminar()
 	{
@@ -464,7 +544,7 @@ class Mahasiswa extends BaseController
 			exit('Maaf tidak dapat diproses');
 		}
 	}
-    //--------------------------------------------------------------------
+	//--------------------------------------------------------------------
 
 	//------------------BAGIAN DATA PROFIL----------------------- 
 	public function showprofil()
