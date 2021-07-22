@@ -61,19 +61,19 @@
                             <div class="row mb-3">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Tanggal</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="date" name="tanggal ujian">
+                                    <input class="form-control" type="date" name="tanggal ujian" value="<?= $d['tanggal_sidang']; ?>">
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Pukul</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="time" name="jam ujian">
+                                    <input class="form-control" type="time" name="pukul" id="pukul" value="<?= $d['jam_sidang']; ?>">
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Ruang</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="ruang" name="ruang" value=" <?= $d['tempat_sidang']; ?>">
+                                    <input type="text" class="form-control" id="ruang" name="ruang" value="<?= $d['tempat_sidang']; ?>">
                                 </div>
                             </div>
 
@@ -97,7 +97,7 @@
 
                                     <select class="form-control" id="penguji2" name="penguji2">
                                         <option value="" selected>--Pilih Disini--</option>
-                                        <?php foreach ($data4 as $b) :
+                                        <?php foreach ($data3 as $b) :
                                         ?>
                                             <option value='<?= $b['id_dosenpenguji']; ?>'><?= $b['nama_dosen']; ?></option><?php endforeach; ?>
 

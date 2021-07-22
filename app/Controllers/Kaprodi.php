@@ -257,17 +257,19 @@ class Kaprodi extends BaseController
     public function updatejadwalskripsi($id)
     {
         // dd($this->request->getVar());
-
+        $this->db->transStart();
         $this->penjadwalansidangtamodel->save([
             'id_jadwal_ta' => $id,
             'tanggal_sidang_ta' => $this->request->getVar('tanggal_ujian'),
             'tempat_sidang_ta' => $this->request->getVar('ruang'),
+            'jam_sidang_ta' => $this->request->getVar('pukul'),
             'penguji_1' => $this->request->getVar('penguji1'),
             'penguji_2' => $this->request->getVar('penguji2'),
             'status_penjadwalan_kaprodi_ta' => 'sudah terjadwal',
 
 
         ]);
+        $this->db->transComplete();
         session()->setFlashdata('pesan', 'jadwal berhasil di tambahkan');
 
         return redirect()->to('/kaprodi/skripsiterjadwal');
@@ -275,17 +277,19 @@ class Kaprodi extends BaseController
     public function updatejadwalseminar($id)
     {
         // dd($this->request->getVar());
-
+        $this->db->transStart();
         $this->penjadwalanmodel->save([
             'id_jadwal' => $id,
             'tanggal_sidang' => $this->request->getVar('tanggal_ujian'),
             'tempat_sidang' => $this->request->getVar('ruang'),
+            'jam_sidang' => $this->request->getVar('pukul'),
             'penguji_1' => $this->request->getVar('penguji1'),
             'penguji_2' => $this->request->getVar('penguji2'),
             'status_penjadwalan_kaprodi' => 'sudah terjadwal',
 
 
         ]);
+        $this->db->transComplete();
         session()->setFlashdata('pesan', 'jadwal berhasil di tambahkan');
 
         return redirect()->to('/kaprodi/seminarterjadwal');

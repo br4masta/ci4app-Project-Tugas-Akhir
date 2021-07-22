@@ -8,7 +8,7 @@ class admin_penjadwalanmodel extends Model
 {
     protected $table = 'penjadwalan_sidang';
     protected $primaryKey = 'id_jadwal';
-    protected $allowedFields = ['tanggal_sidang', 'tempat_sidang', 'penguji_1', 'penguji_2', 'status_penjadwalan_kaprodi'];
+    protected $allowedFields = ['jam_sidang', 'tanggal_sidang', 'tempat_sidang', 'penguji_1', 'penguji_2', 'status_penjadwalan_kaprodi'];
 
 
     public function get_jadwalseminar1($data = false)

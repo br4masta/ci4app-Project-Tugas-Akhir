@@ -50,7 +50,7 @@
                                     <th>Tanggal</th>
                                     <th>Tempat</th>
                                     <th>Acara</th>
-
+                                    <th>Pukul</th>
                                     <th>Status Pendjadwalan</th>
                                     <th>Detail</th>
                                     <th>Aksi</th>
@@ -78,6 +78,7 @@
                                         <td><?= $d['tanggal_sidang']; ?></td>
                                         <td><?= $d['tempat_sidang']; ?></td>
                                         <td><?= $d['acara_sidang']; ?></td>
+                                        <td><?= $d['jam_sidang']; ?></td>
                                         <td><?= $d['status_penjadwalan_kaprodi']; ?></td>
 
 
