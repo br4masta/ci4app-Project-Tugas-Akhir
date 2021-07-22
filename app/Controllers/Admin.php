@@ -725,6 +725,7 @@ class Admin extends BaseController
 
 			'datadosen' => $datadosen,
 
+
 		];
 
 
@@ -1013,43 +1014,41 @@ class Admin extends BaseController
 
 	public function deletedatadosen($id)
 	{ //------------------BAGIAN detail data dosen berisi detail data dosen beserta hak aksesnya -----------------------
-		// $data = $this->levelingmodel->get_deletedatadosen($id);
-		// // $a = $data['id_dosen'];
-		// // dd($data);
-		// $i = '0';
-		// $a = $data[$i];
+		$data = $this->levelingmodel->get_deletedatadosen($id);
+
+		// $a = $data['id_dosen'];
+		// dd($data);
+		$i = '0';
+		$a = $data[$i];
+		$a = $i++;
+		$jmlhdata = count($data);
 
 
-		// dd($a['id_user']);
-		// $this->db->transStart();
-		// $this->dosenmodel->delete([
-		// 	'id_dosen' => $id,
+		// dd($data['0']['id_dosenta']);
 
-		// ]);
+		$this->db->transStart();
+		$this->dosenmodel->delete([
+			'id_dosen' => $id,
 
-		// $this->dosen_tugasakhirmodel->delete([
-		// 	'id_dosenta' => $a['id_dosenta'],
+		]);
 
-		// ]);
-		// for ($i = 0; $i <= 2; $i++) {
+		$this->levelingmodel->delete([
+			'id_dosen_ta' => $data['0']['id_dosenta'],
 
-		// 	$a = $data[$i];
+		]);
 
-		// 	$this->levelingmodel->delete([
-		// 		'id_dosen' => $id,
+		for ($i = 0; $i < $jmlhdata; $i++) {
 
-		// 	]);
-		// 	// $iduser = $this->levelingmodel->getInsertID();
-		// 	// dd($iduser);
-		// 	$this->user->delete([
-		// 		'id_dosen' => $id,
 
-		// 	]);
-		// }
-		// $this->db->transComplete();
+			$this->user->delete([
+				'id_user' => $data[$i]['id_user'],
 
-		// session()->setFlashdata('pesan', 'data berhasil di hapus');
-		// return redirect()->to("/admin/Datadosen");
+			]);
+		}
+		$this->db->transComplete();
+
+		session()->setFlashdata('pesan', 'data berhasil di hapus');
+		return redirect()->to("/admin/Datadosen");
 	}
 
 
