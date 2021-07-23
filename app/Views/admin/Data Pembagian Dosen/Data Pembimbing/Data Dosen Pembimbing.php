@@ -30,6 +30,10 @@
                         <div class="alert alert-success" role="alert">
                             <?= session()->getFlashdata('pesan'); ?>
                         </div>
+                    <?php elseif (session()->getFlashdata('pesandelete')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?= session()->getFlashdata('pesandelete'); ?>
+                        </div>
                     <?php endif; ?>
                 </div>
                 <div class="the-box full">
@@ -75,7 +79,7 @@
                                             <i class=" fa fa-edit"></i>
                                         </button>
 
-                                        <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')">
+                                        <a href="/admin/deletedatapembimbing/<?= $c['id_dosenpembimbing']; ?>" onClick="return confirm('Anda yakin akan menghapus data ini ?')">
                                             <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
                                                 <i class="fa fa-times"></i>
                                             </button>
@@ -225,6 +229,7 @@
 
         </div>
     </div><?php endforeach; ?>
+
 
 <!-- Page specific script -->
 <script>

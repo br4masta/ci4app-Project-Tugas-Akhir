@@ -465,7 +465,7 @@ class Admin extends BaseController
 			'data_dosenta' => $this->dosen_tugasakhirmodel->get_dosentapembimbing()
 
 		];
-		return view('admin/Data pembagian dosen/Data Dosen Pembimbing', $data);
+		return view('admin/Data pembagian dosen/data pembimbing/Data Dosen Pembimbing', $data);
 	}
 
 	public function tambahdatadosenpembimbing()
@@ -502,6 +502,18 @@ class Admin extends BaseController
 		return redirect()->to('/admin/datadosenpembimbing');
 	}
 
+	public function deletedatapembimbing($id)
+	{
+		// dd($this->request->getVar());
+		$this->db->transStart();
+		$this->pembimbingmodel->delete([
+			'id_dosenpembimbing' => $id,
+		]);
+		$this->db->transComplete();
+		session()->setFlashdata('pesandelete', 'data berhasil di hapus');
+
+		return redirect()->to('/admin/datadosenpembimbing');
+	}
 
 	public function detaildatadosenpembimbing($data)
 	{
@@ -518,7 +530,7 @@ class Admin extends BaseController
 
 
 		];
-		return view('admin/Data pembagian dosen/detail Data dosen pembimbing', $data);
+		return view('admin/Data pembagian dosen/data pembimbing/detail Data dosen pembimbing', $data);
 	}
 	public function datadosenpenguji()
 	{
