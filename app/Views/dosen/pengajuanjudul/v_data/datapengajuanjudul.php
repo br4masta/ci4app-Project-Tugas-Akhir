@@ -9,8 +9,6 @@
                   <th>NIM</th>
                   <th>Nama Mahasiswa</th>
                   <th>Judul</th>
-                  <th>Nama Dosen Pembimbing I</th>
-                  <th>Nama Dosen Pembimbing II</th>
                   <th>File</th>
                   <th>Status</th>
                   <th>Aksi</th>
@@ -25,7 +23,6 @@
                   </td>
                   <td><?= $c['nama_mhs']; ?></td>
                   <td> <?= $c['judul']; ?> </td>
-
                   <td>
                       <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
                   </td>
@@ -39,7 +36,7 @@
 
               </tr>
           <?php endforeach; ?>
-          <?php foreach ($tampildatadsn2 as $d) : ?>
+          <?php foreach ($tampildatadsn2 as $d) :  ?>
               <tr>
                   <td><?= $i++; ?></td>
                   <td><?= $d['nim_mhs']; ?>

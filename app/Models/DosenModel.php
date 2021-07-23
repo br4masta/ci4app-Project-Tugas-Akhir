@@ -33,24 +33,18 @@ class dosenModel extends Model
             ->where('user.id_user', $id)
             ->get()->getResultArray();
     }
-    public function get_pengajuanjuduldsn($id)
+    public function get_pengajuanjuduldsn1($data = false)
     {
-        return $this->table_pengajuan
+        return $this->table('pengajuan_judul')
             ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
             ->join('dosen_pembimbing as dospem1', 'dospem1.id_dosenpembimbing = pengajuan_judul.dosenpembimbing1')
             ->join('dosen_tugasakhir as doshir1', 'doshir1.id_dosenta = dospem1.id_dosenta')
             ->join('dosen as dos1', 'dos1.id_dosen = doshir1.id_dosen')
             ->join('leveling_dosen', 'leveling_dosen.id_dosenta = doshir1.id_dosenta')
             ->join('user', 'user.id_user = leveling_dosen.id_user')
-            ->join('dosen_pembimbing as dospem2', 'dospem2.id_dosenpembimbing = pengajuan_judul.dosenpembimbing2')
-            ->join('dosen_tugasakhir as doshir2', 'doshir2.id_dosenta = dospem2.id_dosenta')
-            ->join('dosen as dos2', 'dos2.id_dosen = doshir2.id_dosen')
-            ->join('leveling_dosen as lvl2', 'lvl2.id_dosenta = doshir2.id_dosenta')
-            ->join('user as hole', 'hole.id_user = lvl2.id_user')
-            ->where('user.id_user', $id)
+            ->where(['user.id_user' => $data])
             ->select([
                 'dos1.nama_dosen as dos1_nama',
-                'dos2.nama_dosen as dos2_nama',
                 'mahasiswa.id_mhs',
                 'mahasiswa.nama_mhs',
                 'mahasiswa.nim_mhs',
@@ -65,23 +59,17 @@ class dosenModel extends Model
             ->get()->getResultArray();
     }
 
-    public function get_pengajuanjuduldsn2($id)
+    public function get_pengajuanjuduldsn2($data = false)
     {
-        return $this->table_pengajuan2
+        return $this->table('pengajuan_judul')
             ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
-            ->join('dosen_pembimbing as dospem1', 'dospem1.id_dosenpembimbing = pengajuan_judul.dosenpembimbing1')
-            ->join('dosen_tugasakhir as doshir1', 'doshir1.id_dosenta = dospem1.id_dosenta')
-            ->join('dosen as dos1', 'dos1.id_dosen = doshir1.id_dosen')
-            ->join('leveling_dosen', 'leveling_dosen.id_dosenta = doshir1.id_dosenta')
-            ->join('user', 'user.id_user = leveling_dosen.id_user')
             ->join('dosen_pembimbing as dospem2', 'dospem2.id_dosenpembimbing = pengajuan_judul.dosenpembimbing2')
             ->join('dosen_tugasakhir as doshir2', 'doshir2.id_dosenta = dospem2.id_dosenta')
             ->join('dosen as dos2', 'dos2.id_dosen = doshir2.id_dosen')
             ->join('leveling_dosen as lvl2', 'lvl2.id_dosenta = doshir2.id_dosenta')
-            ->join('user as hole', 'hole.id_user = lvl2.id_user')
-            ->where('hole.id_user', $id)
+            ->join('user', 'user.id_user = lvl2.id_user')
+            ->where(['user.id_user' => $data])
             ->select([
-                'dos1.nama_dosen as dos1_nama',
                 'dos2.nama_dosen as dos2_nama',
                 'mahasiswa.id_mhs',
                 'mahasiswa.nama_mhs',
@@ -99,16 +87,7 @@ class dosenModel extends Model
 
     public function get_bimbingan_pembimbing1($data = false)
     {
-        if ($data == false) {
-            return $this->db->table('pengajuan_judul')
-
-                ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
-                ->join('dosen_pembimbing', 'dosen_pembimbing.id_dosenpembimbing = pengajuan_judul.dosenpembimbing1')
-                ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_pembimbing.id_dosenta')
-                ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
-
-                ->get()->getResultArray();
-        }
+    
         return $this->db->table('pengajuan_judul')
             ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
             ->join('dosen_pembimbing', 'dosen_pembimbing.id_dosenpembimbing = pengajuan_judul.dosenpembimbing1')
@@ -116,23 +95,12 @@ class dosenModel extends Model
             ->join('leveling_dosen', 'leveling_dosen.id_dosenta = dosen_tugasakhir.id_dosenta')
             ->join('user', 'user.id_user = leveling_dosen.id_user')
             ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
-
             ->where(['user.id_user' => $data])
             ->get()->getResultArray();
     }
     public function get_bimbingan_pembimbing2($data = false)
     {
-        if ($data == false) {
-            return $this->db->table('pengajuan_judul')
-
-                ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
-                ->join('dosen_pembimbing', 'dosen_pembimbing.id_dosenpembimbing = pengajuan_judul.dosenpembimbing1')
-                ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_pembimbing.id_dosenta')->join('leveling_dosen', 'leveling_dosen.id_dosenta = dosen_tugasakhir.id_dosenta')
-                ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
-                ->join('user', 'user.id_user = leveling_dosen.id_user')
-
-                ->get()->getResultArray();
-        }
+        
         return $this->db->table('pengajuan_judul')
             ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
             ->join('dosen_pembimbing', 'dosen_pembimbing.id_dosenpembimbing = pengajuan_judul.dosenpembimbing2')
@@ -140,8 +108,6 @@ class dosenModel extends Model
             ->join('leveling_dosen', 'leveling_dosen.id_dosenta = dosen_tugasakhir.id_dosenta')
             ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
             ->join('user', 'user.id_user = leveling_dosen.id_user')
-
-
             ->where(['user.id_user' => $data])
             ->get()->getResultArray();
     }

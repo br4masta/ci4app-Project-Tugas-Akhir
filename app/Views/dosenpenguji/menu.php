@@ -16,7 +16,7 @@
         </li>
         <!-- menu pengajuan -->
         <li class="nav-item">
-            <a href="/dosenpenguji/jadwaluji" class="nav-link">
+            <a href="/dosenpenguji/jadwaluji/jadwaluji" class="nav-link">
                 <i class=" fa fa-copy"></i>
                 <p>Berita Jadwal
                 </p>

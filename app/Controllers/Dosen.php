@@ -52,47 +52,14 @@ class Dosen extends BaseController
 		return view('dosen/pengajuanjudul/judul', $data);
 	}
 
-	public function pengajuanjudul()
-	{
-		$session = session();
-		$data = $session->get('user_id');
-
-
-
-		$data = [
-			'tampildatadsn' => $this->judul->get_bimbingan_pembimbing1($data),
-			'tampildatadsn2' => $this->judul->get_bimbingan_pembimbing2($data),
-		];
-
-
-		return view('dosen/pengajuanjudul/datapengajuan', $data);
-	}
-
 	public function ambildatajudul()
 	{
 		$session = session();
 		$data = $session->get('user_id');
 		if ($this->request->isAJAX()) {
 			$data = [
-				'tampildatadsn' => $this->judul->get_bimbingan_pembimbing1($data),
-				'tampildatadsn2' => $this->judul->get_bimbingan_pembimbing2($data),
-			];
-			$msg = [
-				'data' => view('dosen/pengajuanjudul/v_data/datapengajuanjudul', $data),
-			];
-
-			echo json_encode($msg);
-		} else {
-			exit('Maaf tidak dapat diproses');
-		}
-	}
-	public function ambildatajudul2()
-	{
-		$session = session();
-		$id = $session->get('user_id');
-		if ($this->request->isAJAX()) {
-			$data = [
-				'tampildatadsn2' => $this->judul->get_pengajuanjuduldsn($id)
+			'tampildatadsn' => $this->judul->get_bimbingan_pembimbing1($data),
+			'tampildatadsn2' => $this->judul->get_bimbingan_pembimbing2($data)
 			];
 			$msg = [
 				'data' => view('dosen/pengajuanjudul/v_data/datapengajuanjudul', $data),
