@@ -23,7 +23,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">DataTable Seminar Proposal</h3>
+                        <h3 class="card-title">DataTable Seminar</h3>
                     </div>
                     <div class="viewdata">
 
@@ -57,6 +57,25 @@
         });
     }
 
+    $(document).ready(function() {
+        datamahasiswa();
+
+        $('.tomboltambah').click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: "<?= site_url('mahasiswa/formtambahpengajuan') ?>",
+                dataType: "json",
+                success: function(response) {
+                    $('.viewmodal').html(response.data).show();
+
+                    $('#modaltambah').modal('show');
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                }
+            });
+        });
+    });
 </script>
 <?= $this->endSection(); ?>
 

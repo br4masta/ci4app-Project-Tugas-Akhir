@@ -43,7 +43,7 @@ class DosenPenguji extends BaseController
 //------------------ JADWAL UJI------------------------------------------
 	public function jadwaluji()
 	{
-		return view('dosenpenguji/jadwaluji/jadwaluji');
+		return view('dosenpenguji/jadwaluji/uji');
 	}
 	public function jadwalujidsn()
 	{
@@ -52,10 +52,10 @@ class DosenPenguji extends BaseController
 		if ($this->request->isAJAX()) {
 			$data = [
 			'tampildatauji1' => $this->data_jadwalsempro->get_jadwalseminar1($data),
-			'tampildataduji2' => $this->data_jadwalsempro->get_jadwalseminar2($data)
+			'tampildatauji2' => $this->data_jadwalsempro->get_jadwalseminar2($data)
 			];
 			$msg = [
-				'data' => view('dosenpenguji/jadwaluji/jadwalseminar', $data),
+				'data' => view('dosenpenguji/jadwaluji/v_data/jadwalseminar', $data),
 			];
 
 			echo json_encode($msg);

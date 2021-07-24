@@ -37,14 +37,16 @@ class DosenpengujiModel extends Model
     {
     
         return $this->db->table('penjadwalan_sidang')
-           // ->join('mahasiswa', 'mahasiswa.id_mhs = penjadwalan_sidang.id_mhs')
-            ->join('dosen_penguji', 'dosen_penguji.id_dosenpenguji = penjadwalan_sidang.penguji_1 ')
-            ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_penguji.id_dosenta')
-            ->join('leveling_dosen', 'leveling_dosen.id_dosenta = dosen_tugasakhir.id_dosenta')
-            ->join('user', 'user.id_user = leveling_dosen.id_user')
-            ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
-            ->where(['user.id_user' => $data])
-            ->get()->getResultArray();
+          ->join('bimbingan', 'bimbingan.id_bimbingan = penjadwalan_sidang.id_bimbingan')
+          ->join('pengajuan_judul', 'pengajuan_judul.id_pengajuan = bimbingan.id_pengajuan')
+          ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
+          ->join('dosen_penguji', 'dosen_penguji.id_dosenpenguji = penjadwalan_sidang.penguji_1')
+          ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_penguji.id_dosenta')
+          ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
+          ->join('leveling_dosen', 'leveling_dosen.id_dosenta = dosen_tugasakhir.id_dosenta')
+          ->join('user', 'user.id_user = leveling_dosen.id_user')
+          ->where(['user.id_user' => $data])
+          ->get()->getResultArray();
     }
 
 
@@ -52,14 +54,16 @@ class DosenpengujiModel extends Model
     {
     
         return $this->db->table('penjadwalan_sidang')
-            //->join('mahasiswa', 'mahasiswa.id_mhs = penjadwalan_sidang.id_mhs')
-            ->join('dosen_penguji', 'dosen_penguji.id_dosenpenguji = penjadwalan_sidang.penguji_2 ')
-            ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_penguji.id_dosenta')
-            ->join('leveling_dosen', 'leveling_dosen.id_dosenta = dosen_tugasakhir.id_dosenta')
-            ->join('user', 'user.id_user = leveling_dosen.id_user')
-            ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
-            ->where(['user.id_user' => $data])
-            ->get()->getResultArray();
+          ->join('bimbingan', 'bimbingan.id_bimbingan = penjadwalan_sidang.id_bimbingan')
+          ->join('pengajuan_judul', 'pengajuan_judul.id_pengajuan = bimbingan.id_pengajuan')
+          ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
+          ->join('dosen_penguji', 'dosen_penguji.id_dosenpenguji = penjadwalan_sidang.penguji_2')
+          ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_penguji.id_dosenta')
+          ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
+          ->join('leveling_dosen', 'leveling_dosen.id_dosenta = dosen_tugasakhir.id_dosenta')
+          ->join('user', 'user.id_user = leveling_dosen.id_user')
+          ->where(['user.id_user' => $data])
+          ->get()->getResultArray();
     }
 
  }

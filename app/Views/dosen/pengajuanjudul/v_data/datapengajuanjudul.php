@@ -75,6 +75,25 @@
   </div>
 
 
+  <!-- <script>
+      $(document).ready(function() {
+          $("#datapengajuan").DataTable({
+              "scrollY": "300px",
+              "scrollX": true,
+              "scrollCollapse": true,
+              "paging": false,
+              "paging": true,
+              "lengthChange": false,
+              "searching": true,
+              "info": true,
+              "autoWidth": false,
+              "responsive": false,
+              "fixedColumns": {
+                  leftColumns: 2
+              }
+          })
+      });
+  </script> -->
   <script>
       $(document).ready(function() {
           $("#datapengajuan").DataTable({
@@ -85,10 +104,8 @@
               "paging": true,
               "lengthChange": false,
               "searching": true,
-              "ordering": true,
               "info": true,
-              "autoWidth": false,
-              "responsive": true,
+              
               "fixedColumns": {
                   leftColumns: 2
               }
