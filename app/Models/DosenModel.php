@@ -87,7 +87,7 @@ class dosenModel extends Model
 
     public function get_bimbingan_pembimbing1($data = false)
     {
-    
+
         return $this->db->table('pengajuan_judul')
             ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
             ->join('dosen_pembimbing', 'dosen_pembimbing.id_dosenpembimbing = pengajuan_judul.dosenpembimbing1')
@@ -100,7 +100,7 @@ class dosenModel extends Model
     }
     public function get_bimbingan_pembimbing2($data = false)
     {
-        
+
         return $this->db->table('pengajuan_judul')
             ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
             ->join('dosen_pembimbing', 'dosen_pembimbing.id_dosenpembimbing = pengajuan_judul.dosenpembimbing2')

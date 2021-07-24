@@ -28,7 +28,15 @@
                         <h3 class="card-title">DataTable Bimbingan Judul</h3>
                     </div>
                     <div class="viewdata">
-
+                        <?php if (session()->getFlashdata('pesan')) : ?>
+                            <div class="alert alert-success" role="alert">
+                                <?= session()->getFlashdata('pesan'); ?>
+                            </div>
+                        <?php elseif (session()->getFlashdata('pesanubah')) : ?>
+                            <div class="alert alert-warning" role="alert">
+                                <?= session()->getFlashdata('pesanubah'); ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
 
                     <!-- /.card-body -->

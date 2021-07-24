@@ -57,7 +57,7 @@
         </a>
         <ul class="nav nav-treeview">
             <li class="nav-item">
-                <a href="<?= site_url('dosen/pengajuanjudul'); ?>" class="nav-link">
+                <a href="<?= site_url('dosen/judul'); ?>" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Judul</p>
                 </a>
