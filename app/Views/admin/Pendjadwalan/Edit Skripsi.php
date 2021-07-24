@@ -92,12 +92,12 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Dosen Penguji 1</label>
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Dosen Penguji 2</label>
                                 <div class="col-sm-10">
 
                                     <select class="form-control" id="penguji2" name="penguji2">
                                         <option value="" selected>--Pilih Disini--</option>
-                                        <?php foreach ($data4 as $b) :
+                                        <?php foreach ($data3 as $b) :
                                         ?>
                                             <option value='<?= $b['id_dosenpenguji']; ?>'><?= $b['nama_dosen']; ?></option><?php endforeach; ?>
 
