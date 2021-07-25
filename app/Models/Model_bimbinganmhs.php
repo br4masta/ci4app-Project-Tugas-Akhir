@@ -123,6 +123,15 @@ class Model_bimbinganmhs extends Model
             ->get()->getResultArray();
     }
 
+    public function get_idpengajuannmhs($id)
+    {
+        return $this->table_bimbingan1->select('*')->orderBy('pengajuan_judul.id_pengajuan', 'desc')
+            ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
+            ->join('user', 'user.id_user = mahasiswa.id_user')
+            ->where('user.id_user', $id)
+            ->get()->getResultArray();
+    }
+
     public function insert_bimbingan($data)
     {
         return $this->table_bimbingan4->insert($data);

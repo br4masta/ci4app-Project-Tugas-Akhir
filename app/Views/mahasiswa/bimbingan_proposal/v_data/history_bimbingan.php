@@ -30,9 +30,18 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="card-title  d-flex">
-                        <button type="button" class="btn btn-primary btn-sm tomboltambah">
-                                <i class=" fa fa-plus-circle"></i> Tambah Data
-                            </button>
+                        <?php
+                            $session = session();
+                            $id = $session->get('user_id');
+                            foreach ((new \App\Models\Model_bimbinganmhs)->get_idpengajuannmhs($id) as  $data) { ?>
+                                <?php if ($data['status_pengajuan'] == 'di setujui') {
+                                    echo '<button type="button" class="btn btn-primary btn-sm tomboltambah">
+                                     <i class=" fa fa-plus-circle"></i> Tambah Data
+                                     </button>';
+                                }
+                                ?>
+                            <?php break;
+                            } ?>
                         </div><br><br>
                         <table id="data_detailbimbingan" class="table table-bordered table-striped">
                             <thead>
