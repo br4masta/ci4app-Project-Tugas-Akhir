@@ -38,7 +38,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="datapengajuan" class="table table-bordered table-hover">
+                        <table id="example2" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -46,12 +46,13 @@
                                     <th>Nama</th>
                                     <th>Judul</th>
                                     <th>Status Penjadwalan</th>
+                                    <th>detail</th>
+                                    <th>aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $i = 1; ?>
-                                <?php foreach ($jadwal as $c);
-                                foreach ($jadwal2 as $d) : ?>
+                                <?php foreach ($jadwal as $d) : ?>
                                     <tr>
                                         <td><?= $i++; ?></td>
                                         <td><?= $d['nim_mhs']; ?>
@@ -107,6 +108,26 @@
                 leftColumns: 2
             }
         })
+    });
+</script>
+<script>
+    $(function() {
+        $("#example1").DataTable({
+            "responsive": true,
+            "searching": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
     });
 </script>
 <!-- /.content -->
