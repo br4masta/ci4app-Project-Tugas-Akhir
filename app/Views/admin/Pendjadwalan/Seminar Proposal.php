@@ -50,8 +50,7 @@
                             </thead>
                             <tbody>
                                 <?php $i = 1; ?>
-                                <?php foreach ($jadwal as $c);
-                                foreach ($jadwal2 as $d) : ?>
+                                <?php foreach ($jadwal as $d) : ?>
                                     <tr>
                                         <td><?= $i++; ?></td>
                                         <td><?= $d['nim_mhs']; ?>

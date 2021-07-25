@@ -74,7 +74,31 @@ class admin_penjadwalanmodel extends Model
                 ->join('dosen_penguji', 'dosen_penguji.id_dosenpenguji = penjadwalan_sidang.penguji_1')
                 ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_penguji.id_dosenta')
                 ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
+
+                // penguji2
+                ->join('dosen_penguji as dospeng2', 'dospeng2.id_dosenpenguji = penjadwalan_sidang.penguji_2')
+                ->join('dosen_tugasakhir as dosenpenguji2', 'dosenpenguji2.id_dosenta = dospeng2.id_dosenta')
+                ->join('dosen as penguji2', 'penguji2.id_dosen = dosenpenguji2.id_dosen')
+
                 ->where(['status_penjadwalan_kaprodi' => 'sudah terjadwal'])
+                ->select([
+                    'penguji2.nama_dosen as penguji2_nama',
+                    // 'pembimbing1.nama_dosen as pembimbing1_nama',
+                    // 'pembimbing2.nama_dosen as pembimbing2_nama',
+                    'dosen.nama_dosen',
+                    'mahasiswa.id_mhs',
+                    'mahasiswa.nama_mhs',
+                    'mahasiswa.nim_mhs',
+                    'pengajuan_judul.judul',
+                    // 'user.id_user',
+                    'penjadwalan_sidang.tanggal_sidang',
+                    'penjadwalan_sidang.tempat_sidang',
+                    'penjadwalan_sidang.jam_sidang',
+                    'penjadwalan_sidang.acara_sidang',
+                    'penjadwalan_sidang.status_penjadwalan_kaprodi',
+                    'penjadwalan_sidang.id_jadwal',
+
+                ])
                 ->get()->getResultArray();
         }
         return $this->db->table('penjadwalan_sidang')
