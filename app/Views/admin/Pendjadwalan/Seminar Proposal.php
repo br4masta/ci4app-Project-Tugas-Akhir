@@ -59,7 +59,13 @@
                                         </td>
                                         <td><?= $d['nama_mhs']; ?></td>
                                         <td> <?= $d['judul']; ?></td>
-                                        <td> <?= $d['status_penjadwalan_kaprodi']; ?></td>
+                                        <td style="text-align: center; ">
+                                            <?php if ($d['status_penjadwalan_kaprodi'] == "belum terjadwal") :
+                                                echo '<span class="badge badge-warning d-inline-flex p-2">belum terjadwal</span>';
+                                            elseif ($d['status_penjadwalan_kaprodi'] == "sudah terjadwal") :
+                                                echo '<span class="badge badge-success d-inline-flex p-2">Sudah Terjadwal</span>';
+                                            endif ?>
+                                        </td>
 
                                         <td>
                                             <a href='/admin/detailseminar/<?= $d['id_jadwal']; ?>'>

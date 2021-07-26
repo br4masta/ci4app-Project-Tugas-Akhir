@@ -28,6 +28,8 @@ class admin_pengajuanmodel extends Model
             ->select([
                 'pembimbing1.nama_dosen as nama_pembimbing1',
                 'pembimbing2.nama_dosen as nama_pembimbing2',
+                'dospem1.role_pembimbing as role_pembimbing1',
+                'dospem2.role_pembimbing as role_pembimbing2',
                 'mahasiswa.nama_mhs',
                 'mahasiswa.nim_mhs',
                 'pengajuan_judul.judul',
@@ -35,6 +37,10 @@ class admin_pengajuanmodel extends Model
                 'pengajuan_judul.id_pengajuan',
                 'pengajuan_judul.catatan',
                 'pengajuan_judul.deskripsi_judul',
+                'pengajuan_judul.deskripsi',
+                'pengajuan_judul.konfirmasi_pembimbing_1',
+                'pengajuan_judul.konfirmasi_pembimbing_2',
+
             ])
             ->get()->getResultArray();
     }

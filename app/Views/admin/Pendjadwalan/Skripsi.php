@@ -61,7 +61,13 @@
                                         <td><?= $d['nama_mhs']; ?></td>
                                         <td> <?= $d['judul']; ?></td>
 
-                                        <td><?= $d['status_penjadwalan_kaprodi_ta']; ?></td>
+                                        <td style="text-align: center; ">
+                                            <?php if ($d['status_penjadwalan_kaprodi_ta'] == "belum terjadwal") :
+                                                echo '<span class="badge badge-warning d-inline-flex p-2">belum terjadwal</span>';
+                                            elseif ($d['status_penjadwalan_kaprodi_ta'] == "sudah terjadwal") :
+                                                echo '<span class="badge badge-success d-inline-flex p-2">Sudah Terjadwal</span>';
+                                            endif ?>
+                                        </td>
                                         <td>
                                             <a href='/admin/detailskripsi/<?= $d['id_jadwal_ta']; ?>'>
                                                 <button class="btn btn-xs btn-flat btn-info">

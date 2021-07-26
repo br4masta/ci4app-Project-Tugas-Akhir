@@ -84,7 +84,9 @@
                         <div class="row mb-3">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Nilai Akhir</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputEmail3" value="<?= $d['nilai']; ?>" readonly>
+                                <input type="email" class="form-control" id="inputEmail3" value="<?php $tot = $d['nilai_penguji_1'] + $d['nilai_penguji_2'] + $d['nilai_pembimbing_1'] + $d['nilai_pembimbing_2'];
+                                                                                                    $rata = $tot / 4;
+                                                                                                    echo $rata; ?>" readonly>
                             </div>
                         </div>
 

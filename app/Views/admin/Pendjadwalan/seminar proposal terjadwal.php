@@ -78,7 +78,13 @@
                                         <td><?= $d['tempat_sidang']; ?></td>
                                         <td><?= $d['acara_sidang']; ?></td>
                                         <td><?= $d['jam_sidang']; ?></td>
-                                        <td><?= $d['status_penjadwalan_kaprodi']; ?></td>
+                                        <td style="text-align: center; ">
+                                            <?php if ($d['status_penjadwalan_kaprodi'] == "belum terjadwal") :
+                                                echo '<span class="badge badge-warning d-inline-flex p-2">belum terjadwal</span>';
+                                            elseif ($d['status_penjadwalan_kaprodi'] == "sudah terjadwal") :
+                                                echo '<span class="badge badge-success d-inline-flex p-2">Sudah Terjadwal</span>';
+                                            endif ?>
+                                        </td>
 
 
                                         <td>

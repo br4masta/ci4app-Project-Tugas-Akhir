@@ -193,10 +193,16 @@
                             <input type="text" class="form-control" id="nim" name="nim" value="<?= $d['nama_mhs']; ?>" readonly>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <!-- <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label">Calon dosen pembimbing I</label>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" id="nim" name="nim" value="<?= $d['nama_pembimbing1']; ?>" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Konfirmasi pembimbing I</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="nim" name="nim" value="<?= $d['konfirmasi_pembimbing_1']; ?>" readonly>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -206,30 +212,73 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Konfirmasi pembimbing II</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="nim" name="nim" value="<?= $d['konfirmasi_pembimbing_2']; ?>" readonly>
+                        </div>
+                    </div> -->
+                    <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label">judul</label>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" id="nim" name="nim" value="<?= $d['judul']; ?>" readonly>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="" class="col-sm-2 col-form-label">deskripsi rencana proposal</label>
-                        <div class="col-sm-6">
+                        <label for="" class="col-sm-2 col-form-label">deskripsi proposal</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" readonly><?= $d['deskripsi']; ?></textarea>
+                        <!-- <div class="col-sm-6">
                             <a href="<?= base_url() ?>/assets/img/file/<?= $d['deskripsi_judul']; ?>"> <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50"></a>
-                        </div>
+                        </div> -->
                     </div>
+                    <div class="card-body ">
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
+                                <tr class="table-secondary">
+                                    <th>No</th>
+                                    <th>Nama Dosen</th>
+                                    <th>Role Dosen</th>
+                                    <th>Status Konfirmasi</th>
 
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- belum di panggil di model soal role dan nama dosennya -->
+                                <tr class="table-warning">
+                                    <td>1</td>
+                                    <td><?= $d['nama_pembimbing1']; ?></td>
+                                    <td> <?= $d['role_pembimbing1']; ?></td>
+                                    <td><?= $d['konfirmasi_pembimbing_1']; ?></td>
+
+
+                                </tr>
+                                <tr class="table-warning">
+                                    <td>2</td>
+                                    <td><?= $d['nama_pembimbing2']; ?></td>
+                                    <td> <?= $d['role_pembimbing2']; ?></td>
+                                    <td><?= $d['konfirmasi_pembimbing_2']; ?></td>
+
+
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
                     <div class="form-group">
                         <label for="#" class="col-form-label">catatan</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" readonly><?= $d['catatan']; ?></textarea>
                     </div>
                     <div class="form-group row">
-                        <label for="" class="col-sm-2 col-form-label">Status</label>
+                        <label for="" class="col-sm-2 col-form-label">Status Pengajuan</label>
                         <div class="col-sm-6">
-                            <a><?= $d['status_pengajuan']; ?> </a>
+                            <input type="text" class="form-control" id="nim" name="nim" value="<?= $d['status_pengajuan']; ?>" readonly>
+
                         </div>
                     </div>
 
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
