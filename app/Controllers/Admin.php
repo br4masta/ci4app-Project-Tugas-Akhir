@@ -73,7 +73,8 @@ class Admin extends BaseController
 
 		$data = [
 			'heading'	=> 'profil',
-			'data_profil' => $profiladmin
+			'data_profil' => $profiladmin,
+
 
 
 
@@ -102,6 +103,16 @@ class Admin extends BaseController
 	{
 		$this->db->transStart();
 		// dd($this->request->getVar());
+
+		// if (!$this->validate([
+		// 
+
+
+		// ])) {
+		// 	$validation = \config\Services::validation();
+		// 	return redirect()->to('/admin/editprofil')->withInput();
+		// }
+
 		if (!$this->validate([
 			'foto' => [
 				'rules' => 'max_size[foto,1024]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png]',
@@ -113,7 +124,24 @@ class Admin extends BaseController
 
 				]
 				// 
-			]
+			],
+			// 'nama' => [
+			// 	'rules' => 'required',
+			// 	'errors' => [
+			// 		'required' => 'wajib di isi.',
+			// 	]
+
+
+			// ],
+
+			// 'jenis kelamin' => [
+			// 	'rules' => 'required',
+			// 	'errors' => [
+			// 		'required' => 'wajib di isi.',
+			// 	]
+
+
+			// ],
 
 
 		])) {
@@ -327,6 +355,7 @@ class Admin extends BaseController
 			// 'data4' => $this->dosenmodel->get_penguji2(),
 
 		];
+		// dd($data['data1']);
 
 		return view('admin/pendjadwalan/Edit Seminar Proposal', $data);
 	}
@@ -435,7 +464,7 @@ class Admin extends BaseController
 	}
 	//------------------BAGIAN PENjadwalan -----------------------
 
-	//------------------BAGIAN dosen tugas akhir -----------------------
+	//------------------BAGIAN Pembagian dosen tugas akhir -----------------------
 	public function datadosenta()
 	{
 
@@ -456,13 +485,14 @@ class Admin extends BaseController
 
 	public function datadosenpembimbing()
 	{
-
+		session();
 		$datapembimbing = $this->dosenmodel->get_pembimbing();
 
 		$data = [
 
 			'datapembimbing' => $datapembimbing,
-			'data_dosenta' => $this->dosen_tugasakhirmodel->get_dosentapembimbing()
+			'data_dosenta' => $this->dosen_tugasakhirmodel->get_dosentapembimbing(),
+			'validation' => \config\Services::validation(),
 
 		];
 		return view('admin/Data pembagian dosen/data pembimbing/Data Dosen Pembimbing', $data);
@@ -471,6 +501,23 @@ class Admin extends BaseController
 	public function tambahdatadosenpembimbing()
 	{
 		// dd($this->request->getVar());
+
+		if (!$this->validate([
+			'id_dosenta' => [
+				'rules' => 'required|is_unique[dosen_pembimbing.id_dosenta]',
+				'errors' => [
+					'required' => 'wajib di isi.',
+					'is_unique' => 'dosen sudah terdaftar'
+				]
+
+
+			],
+
+
+		])) {
+			$validation = \config\Services::validation();
+			return redirect()->to('/admin/datadosenpembimbing')->withInput();
+		}
 
 		$this->pembimbingmodel->save([
 			'id_dosenta' => $this->request->getVar('id_dosenta'),
@@ -554,8 +601,8 @@ class Admin extends BaseController
 			'id_dosenta' => [
 				'rules' => 'required|is_unique[dosen_penguji.id_dosenta]',
 				'errors' => [
-					'required' => '{field} wajib di isi.',
-					'is_unique' => '{field} sudah terdaftar'
+					'required' => 'wajib di isi.',
+					'is_unique' => 'dosen sudah terdaftar'
 				]
 
 

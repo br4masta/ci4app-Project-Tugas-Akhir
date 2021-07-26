@@ -51,7 +51,7 @@
                                         <th scope="row">Nama lengkap</th>
                                         <td>
                                             <div class="mb-3">
-                                                <input type="text" class="form-control" id="nama" name="nama" placeholder="" value="<?= $c['nama_dosen']; ?>">
+                                                <input type="text" class="form-control" id="nama" name="nama" placeholder="" value="<?= $c['nama_dosen']; ?>" required>
                                             </div>
                                         </td>
                                     </tr>
@@ -73,13 +73,16 @@
                                     <tr>
                                         <th scope="row">Jenis Kelamin</th>
                                         <td>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="jeniskelamin" id="inlineRadio1" value="Laki-laki">
-                                                <label class="form-check-label" for="inlineRadio1">Laki-Laki</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="jeniskelamin" id="inlineRadio2" value="Perempuan">
-                                                <label class="form-check-label" for="inlineRadio2">Perempuan</label>
+                                            <div class="form-group row">
+
+                                                <div class="col-sm-6">
+                                                    <select name="jeniskelamin" id="jeniskelamin" class="form-control" required>
+                                                        <option value="<?= $c['jkdosen']; ?>" selected><?= $c['jkdosen']; ?></option>
+                                                        <option value="Laki-laki">Laki-Laki</option>
+                                                        <option value="Perempuan">Perempuan</option>
+                                                    </select>
+
+                                                </div>
                                             </div>
                                         </td>
                                     </tr>

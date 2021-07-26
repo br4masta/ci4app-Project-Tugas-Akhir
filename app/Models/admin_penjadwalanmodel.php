@@ -30,9 +30,35 @@ class admin_penjadwalanmodel extends Model
             ->join('pengajuan_judul', 'pengajuan_judul.id_pengajuan = bimbingan.id_pengajuan')
 
             ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
-            // --------------tidak memerlukan dosen penguji-------
-            // --------------karena penguji =null(belum di inputkan oleh kaprodi)-------
+            // =======penguji1======
+            ->join('dosen_penguji', 'dosen_penguji.id_dosenpenguji = penjadwalan_sidang.penguji_1')
+            ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_penguji.id_dosenta')
+            ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
+
+            // =======penguji2======
+            // ->join('dosen_penguji as dospeng2', 'dospeng2.id_dosenpenguji = penjadwalan_sidang.penguji_2')
+            // ->join('dosen_tugasakhir as dosenpembimbing2', 'dosenpembimbing2.id_dosenta = dospeng2.id_dosenta')
+            // ->join('dosen as penguji2', 'penguji2.id_dosen = penguji2.id_dosen')
+
+
             ->where(['id_jadwal' => $data])
+            // ->select([
+            //     'penguji2.nama_dosen as penguji2_nama',
+            //     'dospeng2.id_dosenpenguji as id_dosenpenguji2',
+            //     'dosen.nama_dosen',
+            //     'dosen_penguji.id_dosenpenguji',
+            //     'mahasiswa.id_mhs',
+            //     'mahasiswa.nama_mhs',
+            //     'mahasiswa.nim_mhs',
+            //     'pengajuan_judul.judul',
+            //     'penjadwalan_sidang.tanggal_sidang',
+            //     'penjadwalan_sidang.tempat_sidang',
+            //     'penjadwalan_sidang.jam_sidang',
+            //     'penjadwalan_sidang.acara_sidang',
+            //     'penjadwalan_sidang.status_penjadwalan_kaprodi',
+            //     'penjadwalan_sidang.id_jadwal',
+
+            // ])
             // ->where($where)
             ->get()->getResultArray();
     }
@@ -55,8 +81,11 @@ class admin_penjadwalanmodel extends Model
             ->join('pengajuan_judul', 'pengajuan_judul.id_pengajuan = bimbingan.id_pengajuan')
 
             ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
-            // --------------tidak memerlukan dosen penguji-------
-            // --------------karena penguji =null(belum di inputkan oleh kaprodi)-------
+            //============ penguji2 ===========
+            ->join('dosen_penguji', 'dosen_penguji.id_dosenpenguji = penjadwalan_sidang.penguji_2')
+            ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_penguji.id_dosenta')
+            ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
+
             ->where(['id_jadwal' => $data])
             // ->where($where)
             ->get()->getResultArray();

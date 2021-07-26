@@ -26,9 +26,8 @@
         <div class="col">
             <div class="card">
                 <div class="form-group">
-                    <!-- Start: Bootstrap Form Basic --><?php foreach ($data1 as $c);
-                                                        foreach ($data2 as $d) : ?>
-                        <form class="bootstrap-form-with-validation mx-5" action="/admin/updatejadwalskripsi/<?= $c['id_jadwal_ta']; ?>" method="POST">
+                    <!-- Start: Bootstrap Form Basic --><?php foreach ($data1 as $d) : ?>
+                        <form class="bootstrap-form-with-validation mx-5" action="/admin/updatejadwalskripsi/<?= $d['id_jadwal_ta']; ?>" method="POST">
                             <div class="row mb-3 mt-3">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Nama</label>
                                 <div class="col-sm-10">
@@ -82,7 +81,7 @@
                                 <div class="col-sm-10">
 
                                     <select class="form-control" id="penguji1" name="penguji1">
-                                        <option value="" selected>--Pilih Disini--</option>
+                                        <option value="<?= $d['id_dosenpenguji']; ?>" selected><?= $d['nama_dosen']; ?></option>
                                         <?php foreach ($data3 as $a) : ?>
 
                                             <option value='<?= $a['id_dosenpenguji']; ?>'><?= $a['nama_dosen']; ?></option><?php endforeach; ?>
@@ -96,7 +95,9 @@
                                 <div class="col-sm-10">
 
                                     <select class="form-control" id="penguji2" name="penguji2">
-                                        <option value="" selected>--Pilih Disini--</option>
+
+                                        <?php foreach ($data2 as $c) :
+                                        ?><option value="<?= $c['id_dosenpenguji']; ?>" selected><?= $c['nama_dosen']; ?></option><?php endforeach; ?>
                                         <?php foreach ($data3 as $b) :
                                         ?>
                                             <option value='<?= $b['id_dosenpenguji']; ?>'><?= $b['nama_dosen']; ?></option><?php endforeach; ?>

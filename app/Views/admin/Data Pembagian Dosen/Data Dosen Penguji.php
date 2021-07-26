@@ -111,12 +111,13 @@
                                 ?>
                                     <!-- value = level dosen -->
                                     <option value="<?= $d['id_dosenta']; ?>"><?= $d['nidn_dosen']; ?>- <?= $d['nama_dosen']; ?> </option>
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('id_dosenta'); ?>
-                                    </div>
+
                                 <?php endforeach; ?>
 
                             </select>
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('id_dosenta'); ?>
+                            </div>
                         </div>
                     </div>
 
@@ -125,8 +126,8 @@
                         <div class="col-sm-6">
                             <select name="role_penguji" id="role_penguji" class="form-control">
                                 <option value="">-Pilih-</option>
-                                <option value="penguji">Dosen penguji 1</option>
-                                <option value="penguji">Dosen penguji 2</option>
+                                <option value="penguji">Dosen penguji</option>
+                                <!-- <option value="penguji">Dosen penguji 2</option> -->
                             </select>
                         </div>
                     </div>
