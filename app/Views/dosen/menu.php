@@ -18,7 +18,7 @@
         <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class=" fa fa-copy"></i>
-                <p>Bimbingan
+                <p>Pengajuan Judul
                     <i class="fas fa-angle-left right"></i>
                 </p>
             </a>
@@ -31,40 +31,16 @@
                 </li>
         </li>
     </ul>
-    <ul class="nav nav-treeview">
-        <li class="nav-item">
-            <a href="<?= site_url('dosen/proposal'); ?>" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Proposal</p>
-            </a>
-        </li>
-    </ul>
-    <ul class="nav nav-treeview">
-        <li class="nav-item">
-            <a href="<?= site_url('dosen/tugasakhir'); ?>" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Tugas Akhir</p>
-            </a>
-        </li>
-    </ul>
+   
     <!-- menu bimbingan -->
     <li class="nav-item">
         <a href="#" class="nav-link">
             <i class=" fa fa-copy"></i>
-            <p>Pengajuan
+            <p>Data Bimbingan
                 <i class="fas fa-angle-left right"></i>
             </p>
         </a>
-        <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="<?= site_url('dosen/judul'); ?>" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Judul</p>
-                </a>
-            </li>
-    </li>
-    </ul>
-    <ul class="nav nav-treeview">
+         <ul class="nav nav-treeview">
         <li class="nav-item">
             <a href="<?= site_url('dosen/proposal'); ?>" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
@@ -79,7 +55,7 @@
                 <p>Tugas Akhir</p>
             </a>
         </li>
-    </ul>
+    </ul>   
     <li class="nav-item">
         <a href="<?= site_url('Auth/logout'); ?>" class="nav-link">
             <i class="fas fa-sign-out-alt"></i>

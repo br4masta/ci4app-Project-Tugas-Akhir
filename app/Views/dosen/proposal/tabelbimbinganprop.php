@@ -56,6 +56,7 @@
 					<div class="card-body">
 						<div class="tab-content">
 							<div class="active tab-pane" id="settings">
+
 								<!-- Table 1 -->
 								<table class="table table-striped table-borderless">
 									<tbody>

@@ -17,7 +17,7 @@
                   <th>Dosen Pembimbing 2</th>
                   <th>Dosen Penguji</th>
                   <th>Dosen Penguji</th>
-                  <th>Aksi</th>
+                  <th>Penilaian</th>
 
               </tr>
           </thead>
@@ -49,8 +49,8 @@
               <?php foreach ($tampildatauji2 as $b) : ?>
                   <tr>
                       <td><?= $i++; ?></td>
-                      <td><?= $b['nama_mhs']; ?> </td>
                       <td><?= $b['nim_mhs']; ?></td>
+                      <td><?= $b['nama_mhs']; ?> </td>
                       <td><?= $b['judul'] ?></td>
                       <td><?= $b['acara_sidang'] ?></td>
                       <td><?= $b['jam_sidang'] ?></td>

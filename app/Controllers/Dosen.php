@@ -27,6 +27,8 @@ class Dosen extends BaseController
 		$this->judul = new dosenModel();
 		$this->pengajuanjudul = new dosen_pengajuanjudul();
 		$this->pembimbingmodel = new dosen_pembimbingmodel();
+		$this->proposal = new dosenModel();
+		$this->tugasakhir = new dosenModel();
 	}
 	// ----------------------BAGIAN PROFIL--------------------------
 	public function index()
@@ -66,8 +68,8 @@ class Dosen extends BaseController
 		$data = $session->get('user_id');
 		if ($this->request->isAJAX()) {
 			$data = [
-				'tampildatadsn' => $this->judul->get_bimbingan_pembimbing1($data),
-				'tampildatadsn2' => $this->judul->get_bimbingan_pembimbing2($data)
+				'tampildatadsn' => $this->judul->get_pengajuanjudul1($data),
+				'tampildatadsn2' => $this->judul->get_pengajuanjudul2($data)
 			];
 			$msg = [
 				'data' => view('dosen/pengajuanjudul/v_data/datapengajuanjudul', $data),
@@ -131,35 +133,95 @@ class Dosen extends BaseController
 
 
 	// -----------------------------------AKHIR JUDUL -----------------------------------------------
-	public function bimbingan()
-	{
-		$data = [
-			'title' => 'Dosen | Bimbingan'
-		];
-		return view('dosen/bimbingan', $data);
-	}
+
+	//==================================PROPOSAL====================================================
 	public function proposal()
 	{
 		$data = [
 			'title' => 'Dosen | Proposal'
 		];
-		return view('dosen/proposal', $data);
+		return view('dosen/proposal/proposal', $data);
 	}
+
+	public function get_proposal()
+	{
+		$session = session();
+		$data = $session->get('user_id');
+		if ($this->request->isAJAX()) {
+			$data = [
+				'tampildatadsn' => $this->proposal->get_proposal1($data),
+				'tampildatadsn2' => $this->proposal->get_proposal2($data)
+			];
+			$msg = [
+				'data' => view('dosen/proposal/v_data/datapengajuanprop', $data)
+			];
+
+			echo json_encode($msg);
+		} else {
+			exit('Maaf tidak dapat diproses');
+		}
+	}
+	 public function bimbinganproposal()
+	 {
+	 	return view('dosen/proposal/tabelbimbinganprop');
+	 }
+	 	
+	// public function bimbinganproposal()
+	// {
+	// 	$session = session();
+	// 	$data = $session->get('user_id');
+	// 	if ($this->request->isAJAX()) {
+	// 		$data = [
+	// 			'tampildatadsn' => $this->proposal->get_proposal1($data),
+	// 			'tampildatadsn2' => $this->proposal->get_proposal2($data)
+	// 		];
+	// 		$msg = [
+	// 			'data' => view('dosen/proposal/tabelbimbinganprop', $data)
+	// 		];
+
+	// 		echo json_encode($msg);
+	// 	} else {
+	// 		exit('Maaf tidak dapat diproses');
+	// 	}
+
+	//}
+
+	//================================== AKHIR PROPOSAL ====================================================
 	public function tugasakhir()
 	{
 		$data = [
 			'title' => 'Dosen | Tugas Akhir'
 		];
-		return view('dosen/tugasakhir', $data);
+		return view('dosen/tugasakhir/tugasakhir', $data);
 	}
 
-	public function tabelbimbingan($id)
+	public function get_tugasakhir()
+	{
+		$session = session();
+		$data = $session->get('user_id');
+		if ($this->request->isAJAX()) {
+			$data = [
+				'tampildatadsn' => $this->tugasakhir->datatugasakhir1($data),
+				'tampildatadsn2' => $this->tugasakhir->datatugasakhir2($data)
+			];
+			$msg = [
+				'data' => view('dosen/tugasakhir/v_data/datatugasakhir', $data)
+			];
+
+			echo json_encode($msg);
+		} else {
+			exit('Maaf tidak dapat diproses');
+		}
+	}
+	//=========================================================================================
+
+	public function tabelbimbingan()
 	{
 
 
 		$data = [
 			'title' => 'Dosen | Bimbingan',
-			'data' => $this->pengajuanjudul->get_pengajuanjudul($id)
+			
 		];
 
 		return view('dosen/tabelbimbingan', $data);
