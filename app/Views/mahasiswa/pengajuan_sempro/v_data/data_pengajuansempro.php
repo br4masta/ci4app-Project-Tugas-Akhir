@@ -4,6 +4,7 @@
             <th>No</th>
             <th>NIM</th>
             <th>Nama Mahasiswa</th>
+            <th>Judul</th>
             <th>Nama Dosen Pembimbing I</th>
             <th>Nama Dosen Pembimbing II</th>
             <th>keterangan Jadwal Sidang Proposal</th>
@@ -17,6 +18,7 @@
                 <td><?= $i; ?></td>
                 <td> <?= $row['nim_mhs']; ?></td>
                 <td> <?= $row['nama_mhs']; ?></td>
+                <td> <?= $row['judul']; ?></td>
                 <td> <?= $row['dos1_nama']; ?></td>
                 <td> <?= $row['dos2_nama']; ?></td>
                 <td style="text-align: center; vertical-align: middle;">

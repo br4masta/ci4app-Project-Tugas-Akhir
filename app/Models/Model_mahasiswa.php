@@ -15,7 +15,8 @@ class Model_mahasiswa extends Model
         $this->table_datadosenmhs = $this->db->table('user')
             ->join('mahasiswa', 'user.id_user = mahasiswa.id_user');
         $this->table_mhs = $this->db->table('mahasiswa')
-            ->join('user', 'mahasiswa.id_user = user.id_user');;
+            ->join('user', 'mahasiswa.id_user = user.id_user');
+        $this->table_mhs2 = $this->db->table('mahasiswa');
     }
     public function get_profil_datadosenMhs($id)
     {
@@ -49,6 +50,7 @@ class Model_mahasiswa extends Model
                 'mahasiswa.tgllhr_mhs',
                 'mahasiswa.handphone',
                 'mahasiswa.email_mhs',
+                'mahasiswa.id_mhs',
             ])
             ->get()->getResultArray();
     }

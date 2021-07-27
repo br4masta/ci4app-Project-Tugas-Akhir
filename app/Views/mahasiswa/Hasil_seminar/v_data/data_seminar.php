@@ -56,7 +56,7 @@
                 </div>
                 <div class="modal-body modal-lg">
                     <div class="row">
-                        <div class="col-lg-6"> 
+                        <div class="col-lg-6">
                             <table class="table table-borderless">
                                 <tr>
                                     <th>Nilai Penguji I</th>
@@ -87,7 +87,7 @@
                         <div class="col-lg-6" style="width:1250px;">
                             <table class="table table-borderless">
                                 <tr>
-                                    <th>Catatan Nilai Penguji I</th>
+                                    <th>Catatan Penguji I</th>
                                     <td> <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="width:580px;"><?= $row['catatan_pembimbing_1']; ?></textarea></td>
                                 </tr>
                                 <tr>

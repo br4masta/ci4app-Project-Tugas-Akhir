@@ -82,7 +82,6 @@ foreach ($tampildatamhs as $row2) : ?>
                                         </div>
                                     </td>
                                 </tr>
-
                                 <tr>
                                     <th scope="row">No. Telp</th>
                                     <td>
@@ -101,10 +100,12 @@ foreach ($tampildatamhs as $row2) : ?>
                                 </tr>
                             </tbody>
                         </table>
+                       
                     </div>
                     <!-- /.tab-content -->
                 </div><!-- /.card-body -->
             </div>
+            <button type="button" class="btn btn-info btn-sm" onclick="edit('<?= $row2['id_mhs']; ?>')"> Simpan </button>
             <!-- /.card -->
         </div>
         <!-- /.col -->
@@ -112,3 +113,34 @@ foreach ($tampildatamhs as $row2) : ?>
     <!-- /.row -->
 <?php break;
 endforeach ?>
+
+
+<script>
+    $(document).ready(function() {
+        $("#datamahasiswa").DataTable({
+            "autoWidth": false,
+            "lengthChange": true,
+            "responsive": true,
+        })
+    });
+
+    function edit(id_mhs) {
+        $.ajax({
+            type: "post",
+            url: "<?= site_url('mahasiswa/formedit'); ?>",
+            data: {
+                id_mhs: id_mhs
+            },
+            dataType: "json",
+            success: function(response) {
+                if (response.sukses) {
+                    $('.viewmodal').html(response.sukses).show();
+                    $('#modaledit').modal('show');
+                }
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+            }
+        });
+    };
+</script>

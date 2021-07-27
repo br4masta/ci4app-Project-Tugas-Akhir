@@ -28,7 +28,7 @@
 
 </section>
 <!-- viewModal - Section -->
-
+<div class="viewmodal" style="display: none;"></div>
 <!-- Page specific script -->
 <script>
     function datamahasiswa_profil() {

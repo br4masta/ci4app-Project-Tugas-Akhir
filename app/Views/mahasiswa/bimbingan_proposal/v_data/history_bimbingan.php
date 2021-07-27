@@ -30,7 +30,7 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="card-title  d-flex">
-                        <?php
+                            <?php
                             $session = session();
                             $id = $session->get('user_id');
                             foreach ((new \App\Models\Model_bimbinganmhs)->get_idpengajuannmhs($id) as  $data) { ?>
@@ -51,9 +51,10 @@
                                     <th>Judul Bimbingan</th>
                                     <th>Deskripsi judul Proposal</th>
                                     <th>berkas bimbingan</th>
-                                    <th>catatan Bimbingan</th>
                                     <th>tanggal Bimbingan</th>
-                                    <th>status Bimbingan</th>
+                                    <th>status Pembimbing I</th>
+                                    <th>status Pembimbing II</th>
+                                    <th>Detail catatan Dosen Pembimbing</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -65,17 +66,30 @@
                                         <td> <?= $row['nim_mhs']; ?></td>
                                         <td> <?= $row['judul_mhs']; ?></td>
                                         <td> <?= $row['deskripsi']; ?></td>
-                                        <td> <?= $row['berkas_mhs']; ?></td>
-                                        <td> <?= $row['catatan_mhs']; ?></td>
                                         <td> <?= $row['tanggal_mhs']; ?></td>
+                                        <td> <?= $row['berkas_mhs']; ?></td>
                                         <td style="text-align: center; vertical-align: middle;">
-                                            <?php if ($row['status_mhs'] == "belum di setujui") :
-                                                echo '<span class="badge badge-warning d-inline-flex p-2">Belum Disetujui</span>';
-                                            elseif ($row['status_mhs'] == "di setujui") :
-                                                echo '<span class="badge badge-success d-inline-flex p-2">Disetujui</span>';
+                                            <?php if ($row['status_mhs_1'] == "proses") :
+                                                echo '<span class="badge badge-warning d-inline-flex p-2">Proses</span>';
+                                            elseif ($row['status_mhs_1'] == "lanjut bimbingan") :
+                                                echo '<span class="badge badge-warning d-inline-flex p-2">Lanjut Bimbingan</span>';
+                                            elseif ($row['status_mhs_1'] == "lanjut pengajuan seminar") :
+                                                echo '<span class="badge badge-success d-inline-flex p-2">lanjut pengajuan seminar</span>';
                                             else :
-                                                echo '<span class="badge badge-danger d-inline-flex p-2">DiTolak</span>';
-                                            endif ?>
+                                                echo '<span class="badge badge-danger d-inline-flex p-2">Revisi</span>';
+                                            endif ?></td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <?php if ($row['status_mhs_1'] == "proses") :
+                                                echo '<span class="badge badge-warning d-inline-flex p-2">Proses</span>';
+                                            elseif ($row['status_mhs_1'] == "lanjut bimbingan") :
+                                                echo '<span class="badge badge-warning d-inline-flex p-2">Lanjut Bimbingan</span>';
+                                            elseif ($row['status_mhs_1'] == "lanjut pengajuan seminar") :
+                                                echo '<span class="badge badge-success d-inline-flex p-2">lanjut pengajuan seminar</span>';
+                                            else :
+                                                echo '<span class="badge badge-danger d-inline-flex p-2">Revisi</span>';
+                                            endif ?></td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <button class="badge badge-primary d-inline-flex p-2" data-toggle="modal" data-target="#produknew<?php echo $row['id_bimbingan']; ?>"><span>Detail</span></button>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>
@@ -93,6 +107,41 @@
     <!-- /.container-fluid -->
 </section>
 <!-- /.content -->
+
+<!-- Modal Detail -->
+<?php foreach ($tampildatabimbingan as $row) : ?>
+    <div class="modal fade" id="produknew<?php echo $row['id_bimbingan']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detail Catatan Dosen Pembimbing</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body modal-md">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <table class="table table-borderless">
+                                <tr>
+                                    <th>Catatan Pembimbing I</th>
+                                    <td> <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" style="width:320px;"><?= $row['catatan_mhs_1']; ?></textarea></td>
+                                </tr>
+                                <tr>
+                                    <th>Catatan Pembimbing II</th>
+                                    <td> <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" style="width:320px;"><?= $row['catatan_mhs_2']; ?></textarea></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endforeach ?>
 
 <div class="viewmodal" style="display: none;"></div>
 <!-- Page specific script -->

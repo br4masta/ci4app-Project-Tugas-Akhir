@@ -6,6 +6,7 @@ use App\Models\Model_bimbinganmhs;
 use App\Models\Model_mahasiswa;
 use App\Models\Model_pengajuanjudulmhs;
 use App\Models\Model_pengajuansempro;
+use App\Models\Model_profilmhs;
 use App\Models\Model_sempro;
 use App\Models\Model_sidang_TA;
 
@@ -564,6 +565,61 @@ class Mahasiswa extends BaseController
 				'data' => view('mahasiswa/profil/v_data/data_profil', $data)
 			];
 
+			echo json_encode($msg);
+		} else {
+			exit('Maaf tidak dapat diproses');
+		}
+	}
+
+	public function formedit()
+	{
+		if ($this->request->isAJAX()) {
+			$id_mhs = $this->request->getVar('id_mhs');
+
+			$mhs_data = new Model_profilmhs;
+			$row = $mhs_data->find($id_mhs);
+
+			$data = [
+				'id_mhs'  => $row['id_mhs'],
+				'nim'  => $row['nim_mhs'],
+				'nama' => $row['nama_mhs'],
+				'email' => $row['email_mhs'],
+				'hp' => $row['handphone'],
+				'tempat' => $row['tplhr_mhs'],
+				'tgl' => $row['tgllhr_mhs'],
+				'jenkel' => $row['jk_mhs'],
+			];
+
+
+			$msg = [
+				'sukses' => view('mahasiswa/profil/v_data/modaledit', $data)
+			];
+			echo json_encode($msg);
+		}
+	}
+
+
+	public function updatedata()
+	{
+		if ($this->request->isAJAX()) {
+
+			$updatedata = [
+				'nim_mhs' => $this->request->getVar('nim'),
+				'nama_mhs' => $this->request->getVar('nama'),
+				'email_mhs' => $this->request->getVar('email'),
+				'handphone' => $this->request->getVar('hp'),
+				'tplhr_mhs' => $this->request->getVar('tempat'),
+				'tgllhr_mhs' => $this->request->getVar('tgl'),
+				'jk_mhs' => $this->request->getVar('jenkel'),
+			];
+
+			$mhs_data_profil = new Model_profilmhs;
+			$id_mhs = $this->request->getVar('id_mhs');
+			$mhs_data_profil->update($id_mhs, $updatedata);
+
+			$msg = [
+				'sukses' => 'Data mahasiswa berhasil disimpan'
+			];
 			echo json_encode($msg);
 		} else {
 			exit('Maaf tidak dapat diproses');
