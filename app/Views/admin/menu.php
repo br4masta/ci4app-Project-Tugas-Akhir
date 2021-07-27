@@ -20,7 +20,7 @@
         </li>
         <li class="nav-item">
             <a href="<?php echo site_url('admin/Dataakademik'); ?>" class="nav-link">
-                <i class=" fa fa-copy"></i>
+                <i class="far fa-calendar-alt"></i>
                 <p>
                     Data Akademik
 
@@ -29,7 +29,7 @@
         </li>
         <li class="nav-item">
             <a href=" <?php echo site_url('admin/Datadosen'); ?>" class="nav-link">
-                <i class=" fa fa-copy"></i>
+                <i class="fas fa-users"></i>
                 <p>
                     Data Dosen
                 </p>
@@ -37,7 +37,7 @@
         </li>
         <li class="nav-item">
             <a href="#" class="nav-link">
-                <i class=" fa fa-copy"></i>
+                <i class="far fa-id-card"></i>
                 <p>
                     Data Pembagian Dosen
                     <i class="fas fa-angle-left right"></i>
@@ -79,7 +79,7 @@
         </li>
         <li class="nav-item">
             <a href="#" class="nav-link">
-                <i class=" fas fa-graduation-cap "></i>
+                <i class="far fa-clock"></i>
                 <p>
                     Penjadwalan
                     <i class="fas fa-angle-left right"></i>
@@ -123,7 +123,7 @@
 
         <li class="nav-item">
             <a href="#" class="nav-link">
-                <i class=" fa fa-copy"></i>
+                <i class="far fa-newspaper"></i>
                 <p>
                     Data Berita
                     <i class="fas fa-angle-left right"></i>

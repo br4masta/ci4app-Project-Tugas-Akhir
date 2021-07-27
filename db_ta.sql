@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Jul 2021 pada 17.34
--- Versi server: 10.4.18-MariaDB
--- Versi PHP: 7.4.16
+-- Generation Time: Jul 27, 2021 at 06:05 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bimbingan`
+-- Table structure for table `bimbingan`
 --
 
 CREATE TABLE `bimbingan` (
@@ -34,39 +34,41 @@ CREATE TABLE `bimbingan` (
   `judul_bimbingan` varchar(50) NOT NULL,
   `deskripsi_bimbingan` varchar(100) DEFAULT NULL,
   `berkas_bimbingan` varchar(100) NOT NULL,
-  `catatan_bimbingan` text NOT NULL,
-  `status_bimbingan` enum('disetujui','belum di setujui','ditolak') NOT NULL DEFAULT 'belum di setujui'
+  `catatan_bimbingan_pembimbing1` text NOT NULL,
+  `status_bimbingan_pembimbing1` enum('lanjut bimbingan','proses','revisi','lanjut pengajuan seminar') NOT NULL DEFAULT 'proses',
+  `catatan_bimbingan_pembimbing2` text NOT NULL,
+  `status_bimbingan_pembimbing2` enum('lanjut bimbingan','proses','revisi','lanjut pengajuan seminar') NOT NULL DEFAULT 'proses'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `bimbingan`
+-- Dumping data for table `bimbingan`
 --
 
-INSERT INTO `bimbingan` (`id_bimbingan`, `id_pengajuan`, `tanggal_bimbingan`, `judul_bimbingan`, `deskripsi_bimbingan`, `berkas_bimbingan`, `catatan_bimbingan`, `status_bimbingan`) VALUES
-(1, 5, '2021-06-01', 'bab 1', 'Deskripsi Bimbingan', 'bab1.pdf', 'perbaikan untuk latarblekang masalah', 'belum di setujui'),
-(2, 5, '2021-06-30', 'bab 2', 'Deskripsi Bimbingan', 'update bab2.pdf', '-', 'belum di setujui'),
-(3, 6, '2021-06-30', 'bab 1-3', 'Deskripsi Bimbingan', 'sistem infomasi rumah sakit.pdf', 'sudah sempurna', 'disetujui'),
-(6, 5, '0000-00-00', '132', '123213', '1625401945_6cc179d3df4fe5676ce1.pdf', '', 'belum di setujui'),
-(7, 5, '0000-00-00', 'wqeqw', 'qweqwe', '1625401972_885d2dda302740e9474e.pdf', '', 'belum di setujui'),
-(8, 5, '0000-00-00', 'asd', 'asd', '1625463574_a6a163628ae6aaa6e73b.pdf', '', 'belum di setujui'),
-(9, 5, '0000-00-00', '213', '123', '1625463588_5d96f80f62c5db231de9.pdf', '', 'belum di setujui'),
-(10, 5, '2021-07-13', 'asd', 'asd', 'asd', 'asd', 'belum di setujui'),
-(11, 5, '2021-07-21', 'asd', 'asd', 'sad', 'asd', 'belum di setujui'),
-(12, 7, '0000-00-00', '12', '12', '1625463735_7eebe223a1783046f048.pdf', '', 'belum di setujui'),
-(13, 7, '0000-00-00', 'asd222', 'asd22', '1625465137_7b3e6dbc6040512df2ba.pdf', '', 'belum di setujui'),
-(14, 7, '0000-00-00', '222', '3131313', '1625465194_2cd4f88317d1f6e1afff.pdf', '', 'belum di setujui'),
-(15, 7, '0000-00-00', 'qweqrq', 'qwrqr', '1625466763_0b73cb88d6413f1a2e49.pdf', '', 'belum di setujui'),
-(16, 7, '0000-00-00', '23www', '123www', '1625467327_d6fffe11465a8778f0fe.pdf', '', 'belum di setujui'),
-(17, 7, '0000-00-00', '22', '222', '1625467394_fa6db7308ede1e9aa456.pdf', '', 'belum di setujui'),
-(18, 7, '0000-00-00', 'ww', 'www', '1625468665_1d5ecfcd11b705a8c7fa.pdf', '', 'belum di setujui'),
-(19, 6, '2021-07-06', 'asd', 'asd', 'asd', 'asd', 'belum di setujui'),
-(20, 7, '0000-00-00', '45', '45', '1625567063_4c5d2a01de478addcf04.pdf', '', 'belum di setujui'),
-(21, 5, '0000-00-00', '2135654656', 'qeqweq', '1626009131_58516efbde1cd20a076f.pdf', '', 'belum di setujui');
+INSERT INTO `bimbingan` (`id_bimbingan`, `id_pengajuan`, `tanggal_bimbingan`, `judul_bimbingan`, `deskripsi_bimbingan`, `berkas_bimbingan`, `catatan_bimbingan_pembimbing1`, `status_bimbingan_pembimbing1`, `catatan_bimbingan_pembimbing2`, `status_bimbingan_pembimbing2`) VALUES
+(1, 5, '2021-06-01', 'bab 1', 'Deskripsi Bimbingan', 'bab1.pdf', 'perbaikan untuk latarblekang masalah', 'revisi', 'sudah cukup bagus', 'lanjut bimbingan'),
+(2, 5, '2021-06-30', 'bab 2', 'Deskripsi Bimbingan', 'update bab2.pdf', '-', 'proses', '', 'proses'),
+(3, 6, '2021-06-30', 'bab 1-3', 'Deskripsi Bimbingan', 'sistem infomasi rumah sakit.pdf', 'sudah sempurna', 'lanjut pengajuan seminar', 'silahkan mengajukan pengajuan seminar mas!', 'lanjut pengajuan seminar'),
+(6, 5, '0000-00-00', '132', '123213', '1625401945_6cc179d3df4fe5676ce1.pdf', '', 'proses', '', 'proses'),
+(7, 5, '0000-00-00', 'wqeqw', 'qweqwe', '1625401972_885d2dda302740e9474e.pdf', '', 'proses', '', 'proses'),
+(8, 5, '0000-00-00', 'asd', 'asd', '1625463574_a6a163628ae6aaa6e73b.pdf', '', 'proses', '', 'proses'),
+(9, 5, '0000-00-00', '213', '123', '1625463588_5d96f80f62c5db231de9.pdf', '', 'proses', '', 'proses'),
+(10, 5, '2021-07-13', 'asd', 'asd', 'asd', 'asd', 'proses', '', 'proses'),
+(11, 5, '2021-07-21', 'asd', 'asd', 'sad', 'asd', 'proses', '', 'proses'),
+(12, 7, '0000-00-00', '12', '12', '1625463735_7eebe223a1783046f048.pdf', '', 'proses', '', 'proses'),
+(13, 7, '0000-00-00', 'asd222', 'asd22', '1625465137_7b3e6dbc6040512df2ba.pdf', '', 'proses', '', 'proses'),
+(14, 7, '0000-00-00', '222', '3131313', '1625465194_2cd4f88317d1f6e1afff.pdf', '', 'proses', '', 'proses'),
+(15, 7, '0000-00-00', 'qweqrq', 'qwrqr', '1625466763_0b73cb88d6413f1a2e49.pdf', '', 'proses', '', 'proses'),
+(16, 7, '0000-00-00', '23www', '123www', '1625467327_d6fffe11465a8778f0fe.pdf', '', 'proses', '', 'proses'),
+(17, 7, '0000-00-00', '22', '222', '1625467394_fa6db7308ede1e9aa456.pdf', '', 'proses', '', 'proses'),
+(18, 7, '0000-00-00', 'ww', 'www', '1625468665_1d5ecfcd11b705a8c7fa.pdf', '', 'proses', '', 'proses'),
+(19, 6, '2021-07-06', 'asd', 'asd', 'asd', 'asd', 'proses', '', 'proses'),
+(20, 7, '0000-00-00', '45', '45', '1625567063_4c5d2a01de478addcf04.pdf', '', 'proses', '', 'proses'),
+(21, 5, '0000-00-00', '2135654656', 'qeqweq', '1626009131_58516efbde1cd20a076f.pdf', '', 'proses', '', 'proses');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bimbingan_ta`
+-- Table structure for table `bimbingan_ta`
 --
 
 CREATE TABLE `bimbingan_ta` (
@@ -75,25 +77,27 @@ CREATE TABLE `bimbingan_ta` (
   `tanggal_bimbingan_ta` date NOT NULL,
   `judul_final_ta` varchar(50) NOT NULL,
   `berkas_bimbingan_ta` varchar(100) NOT NULL,
-  `catatan_bimbingan_ta` text NOT NULL,
-  `status_bimbingan_ta` enum('disetujui','belum di setujui','ditolak') NOT NULL DEFAULT 'belum di setujui'
+  `catatan_bimbingan_pembimbing1_ta` text NOT NULL,
+  `status_bimbingan_pembimbing1_ta` enum('lanjut bimbingan','proses','revisi','lanjut pengajuan sidang ta') NOT NULL DEFAULT 'proses',
+  `catatan_bimbingan_pembimbing2_ta` text NOT NULL,
+  `status_bimbingan_pembimbing2_ta` enum('lanjut bimbingan','proses','revisi','lanjut pengajuan sidang ta') NOT NULL DEFAULT 'proses'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `bimbingan_ta`
+-- Dumping data for table `bimbingan_ta`
 --
 
-INSERT INTO `bimbingan_ta` (`id_bimbingan_ta`, `id_seminar`, `tanggal_bimbingan_ta`, `judul_final_ta`, `berkas_bimbingan_ta`, `catatan_bimbingan_ta`, `status_bimbingan_ta`) VALUES
-(1, 2, '2021-09-01', 'bab 5', 'bab.pdf', '-', 'belum di setujui'),
-(2, 2, '2021-09-07', 'bab 7', 'bab 7.pdf', 'lanjut sidang', 'disetujui'),
-(3, 5, '2021-07-15', 'asd', 'asd', 'asd', 'belum di setujui'),
-(4, 5, '2021-07-20', 'asdasd', '1625579766_4422f922d4e0bca713dd.pdf', '', 'belum di setujui'),
-(5, 5, '0000-00-00', '14141414', '1626007868_83a699f66f765862c85b.pdf', '', 'belum di setujui');
+INSERT INTO `bimbingan_ta` (`id_bimbingan_ta`, `id_seminar`, `tanggal_bimbingan_ta`, `judul_final_ta`, `berkas_bimbingan_ta`, `catatan_bimbingan_pembimbing1_ta`, `status_bimbingan_pembimbing1_ta`, `catatan_bimbingan_pembimbing2_ta`, `status_bimbingan_pembimbing2_ta`) VALUES
+(1, 2, '2021-09-01', 'bab 5', 'bab.pdf', '-', 'proses', '', 'proses'),
+(2, 2, '2021-09-07', 'bab 7', 'bab 7.pdf', 'lanjut sidang', 'lanjut pengajuan sidang ta', 'silahkan lanjut', 'lanjut pengajuan sidang ta'),
+(3, 5, '2021-07-15', 'asd', 'asd', 'asd', 'proses', '', 'proses'),
+(4, 5, '2021-07-20', 'asdasd', '1625579766_4422f922d4e0bca713dd.pdf', '', 'proses', '', 'proses'),
+(5, 5, '0000-00-00', '14141414', '1626007868_83a699f66f765862c85b.pdf', '', 'proses', '', 'proses');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `data_akademik`
+-- Table structure for table `data_akademik`
 --
 
 CREATE TABLE `data_akademik` (
@@ -106,7 +110,7 @@ CREATE TABLE `data_akademik` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `data_akademik`
+-- Dumping data for table `data_akademik`
 --
 
 INSERT INTO `data_akademik` (`id_dataakademik`, `tahun_akademik`, `tanggal_mulai`, `tanggal_akhir`, `semester`, `status`) VALUES
@@ -116,7 +120,7 @@ INSERT INTO `data_akademik` (`id_dataakademik`, `tahun_akademik`, `tanggal_mulai
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dosen`
+-- Table structure for table `dosen`
 --
 
 CREATE TABLE `dosen` (
@@ -126,26 +130,26 @@ CREATE TABLE `dosen` (
   `notelp` varchar(225) DEFAULT NULL,
   `jkdosen` varchar(225) DEFAULT NULL,
   `email` varchar(225) DEFAULT NULL,
-  `foto_dosen` text NOT NULL
+  `foto_dosen` text NOT NULL DEFAULT 'default.png'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `dosen`
+-- Dumping data for table `dosen`
 --
 
 INSERT INTO `dosen` (`id_dosen`, `nidn_dosen`, `nama_dosen`, `notelp`, `jkdosen`, `email`, `foto_dosen`) VALUES
-(1, 'dosen', 'dosen', NULL, NULL, NULL, 'dosen.jpg'),
-(2, '520007689', 'ir.sucipto s.it', '0895397711677', NULL, 'akiaauakuau@gmail.com', '92 Pictures of Rain That Will Make You Want to Sing_1.jpg'),
+(1, 'dosen', 'dosen', NULL, NULL, NULL, 'default.png'),
+(2, '520007689', 'ir.sucipto s.it', '0895397711677', NULL, 'akiaauakuau@gmail.com', 'default.png'),
 (3, '212', 'Da vinci', '0895397711646', 'Laki-laki', 'robert@gmail.com', 'lukisan-leonardo-da-vinci_1.jpg'),
-(4, 'wahyu', ' wahyu', NULL, NULL, NULL, ''),
-(5, 'wahyudi', ' wahyudi', NULL, NULL, NULL, ''),
-(7, 'sasassa', ' saaassas', NULL, NULL, NULL, ''),
-(8, 'hariono', ' hariono', NULL, NULL, NULL, ''),
+(4, 'wahyu', ' wahyu', NULL, NULL, NULL, 'default.png'),
+(5, 'wahyudi', ' wahyudi', NULL, NULL, NULL, 'default.png'),
+(7, 'sasassa', ' saaassas', NULL, NULL, NULL, 'default.png'),
+(8, 'hariono', ' hariono', NULL, NULL, NULL, 'default.png'),
 (9, '200000001', ' dosen azza satu', '089897896895', 'Laki laki', 'azzasatu@gmail.com', 'azzz.png'),
-(10, '2000001', ' dosen azza dua', '089688799566', 'Laki', 'azzakun@gmail.com', ''),
-(11, '20000003', ' dosen azza tiga', '089688799569', 'Laki', 'azzz@rocketmail.com', ''),
-(12, '2000004', ' dosen azza empat', '089688799564', 'L', 'azzasa@gamil.com', ''),
-(13, '2000005', ' dosen azza lima', NULL, NULL, NULL, ''),
+(10, '2000001', ' dosen azza dua', '089688799566', 'Laki', 'azzakun@gmail.com', 'default.png'),
+(11, '20000003', ' dosen azza tiga', '089688799569', 'Laki', 'azzz@rocketmail.com', 'default.png'),
+(12, '2000004', ' dosen azza empat', '089688799564', 'L', 'azzasa@gamil.com', 'default.png'),
+(13, '2000005', ' dosen azza lima', NULL, NULL, NULL, 'default.png'),
 (15, '1234123', ' adit', NULL, NULL, NULL, 'default.png'),
 (16, '1234532', ' Rusdi Tabuti', NULL, NULL, NULL, 'default.png'),
 (17, '122417', 'vino', NULL, NULL, NULL, 'default.png');
@@ -153,7 +157,7 @@ INSERT INTO `dosen` (`id_dosen`, `nidn_dosen`, `nama_dosen`, `notelp`, `jkdosen`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dosen_pembimbing`
+-- Table structure for table `dosen_pembimbing`
 --
 
 CREATE TABLE `dosen_pembimbing` (
@@ -163,7 +167,7 @@ CREATE TABLE `dosen_pembimbing` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `dosen_pembimbing`
+-- Dumping data for table `dosen_pembimbing`
 --
 
 INSERT INTO `dosen_pembimbing` (`id_dosenpembimbing`, `id_dosenta`, `role_pembimbing`) VALUES
@@ -177,7 +181,7 @@ INSERT INTO `dosen_pembimbing` (`id_dosenpembimbing`, `id_dosenta`, `role_pembim
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dosen_penguji`
+-- Table structure for table `dosen_penguji`
 --
 
 CREATE TABLE `dosen_penguji` (
@@ -187,7 +191,7 @@ CREATE TABLE `dosen_penguji` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `dosen_penguji`
+-- Dumping data for table `dosen_penguji`
 --
 
 INSERT INTO `dosen_penguji` (`id_dosenpenguji`, `id_dosenta`, `role_penguji`) VALUES
@@ -201,7 +205,7 @@ INSERT INTO `dosen_penguji` (`id_dosenpenguji`, `id_dosenta`, `role_penguji`) VA
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dosen_tugasakhir`
+-- Table structure for table `dosen_tugasakhir`
 --
 
 CREATE TABLE `dosen_tugasakhir` (
@@ -211,7 +215,7 @@ CREATE TABLE `dosen_tugasakhir` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `dosen_tugasakhir`
+-- Dumping data for table `dosen_tugasakhir`
 --
 
 INSERT INTO `dosen_tugasakhir` (`id_dosenta`, `id_dosen`, `id_dataakademik`) VALUES
@@ -237,7 +241,7 @@ INSERT INTO `dosen_tugasakhir` (`id_dosenta`, `id_dosen`, `id_dataakademik`) VAL
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `leveling_dosen`
+-- Table structure for table `leveling_dosen`
 --
 
 CREATE TABLE `leveling_dosen` (
@@ -247,7 +251,7 @@ CREATE TABLE `leveling_dosen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `leveling_dosen`
+-- Dumping data for table `leveling_dosen`
 --
 
 INSERT INTO `leveling_dosen` (`id_level`, `id_dosenta`, `id_user`) VALUES
@@ -272,7 +276,7 @@ INSERT INTO `leveling_dosen` (`id_level`, `id_dosenta`, `id_user`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mahasiswa`
+-- Table structure for table `mahasiswa`
 --
 
 CREATE TABLE `mahasiswa` (
@@ -289,7 +293,7 @@ CREATE TABLE `mahasiswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `mahasiswa`
+-- Dumping data for table `mahasiswa`
 --
 
 INSERT INTO `mahasiswa` (`id_mhs`, `id_user`, `nim_mhs`, `nama_mhs`, `tgllhr_mhs`, `tplhr_mhs`, `jk_mhs`, `email_mhs`, `handphone`, `id_dataakademik`) VALUES
@@ -303,7 +307,7 @@ INSERT INTO `mahasiswa` (`id_mhs`, `id_user`, `nim_mhs`, `nama_mhs`, `tgllhr_mhs
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengajuan_judul`
+-- Table structure for table `pengajuan_judul`
 --
 
 CREATE TABLE `pengajuan_judul` (
@@ -317,23 +321,25 @@ CREATE TABLE `pengajuan_judul` (
   `konfirmasi_pembimbing_2` enum('di setujui','belum di setujui','di tolak') NOT NULL DEFAULT 'belum di setujui',
   `status_pengajuan` enum('belum di setujui','di setujui','di tolak') NOT NULL DEFAULT 'belum di setujui',
   `deskripsi_judul` varchar(100) DEFAULT NULL,
-  `catatan` text NOT NULL
+  `catatan_kaprodi` text NOT NULL,
+  `catatan_pembimbing_1` text NOT NULL,
+  `catatan_pembimbing_2` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `pengajuan_judul`
+-- Dumping data for table `pengajuan_judul`
 --
 
-INSERT INTO `pengajuan_judul` (`id_pengajuan`, `id_mhs`, `judul`, `deskripsi`, `dosenpembimbing1`, `dosenpembimbing2`, `konfirmasi_pembimbing_1`, `konfirmasi_pembimbing_2`, `status_pengajuan`, `deskripsi_judul`, `catatan`) VALUES
-(5, 1, 'sistem kelayakan terbang', 'pembuatan sistem informasi perihal pengelolaan data secara di gitalisasi untuk proses pemeriksaan rutin pesawat sebelum lepas landas.', 6, 11, 'belum di setujui', 'belum di setujui', 'belum di setujui', NULL, 'kurang rapi'),
-(6, 2, 'sitem infomasi rumah sakit', 'pengembangan sistem secara digitalisasi terhadap rumah sakit di sebuah desa', 5, 11, 'belum di setujui', 'belum di setujui', 'di setujui', NULL, 'sudah bagus'),
-(7, 1, 'judul', 'pengembangan sistem secara digitalisasi terhadap rumah sakit di sebuah desa', 6, 11, 'belum di setujui', 'belum di setujui', 'belum di setujui', '1625457466_bdb67a3301621438a87d.pdf', ''),
-(8, 2, 'sistem pakar pendeteksi gangguan pencernaan', 'sistem pakar yang membantu mendeteksi gangguan pencernaan', 6, 11, 'belum di setujui', 'belum di setujui', 'belum di setujui', '1625713485_0c1889c9b090474a52f5.pdf', '');
+INSERT INTO `pengajuan_judul` (`id_pengajuan`, `id_mhs`, `judul`, `deskripsi`, `dosenpembimbing1`, `dosenpembimbing2`, `konfirmasi_pembimbing_1`, `konfirmasi_pembimbing_2`, `status_pengajuan`, `deskripsi_judul`, `catatan_kaprodi`, `catatan_pembimbing_1`, `catatan_pembimbing_2`) VALUES
+(5, 1, 'sistem kelayakan terbang', 'pembuatan sistem informasi perihal pengelolaan data secara di gitalisasi untuk proses pemeriksaan rutin pesawat sebelum lepas landas.', 6, 11, 'di setujui', 'di setujui', 'di setujui', NULL, '', '', ''),
+(6, 2, 'sitem infomasi rumah sakit', 'pengembangan sistem secara digitalisasi terhadap rumah sakit di sebuah desa', 5, 11, 'di setujui', 'di setujui', 'belum di setujui', NULL, 'sudah bagus', '', ''),
+(7, 1, 'judul', 'pengembangan sistem secara digitalisasi terhadap rumah sakit di sebuah desa', 6, 11, 'belum di setujui', 'belum di setujui', 'belum di setujui', '1625457466_bdb67a3301621438a87d.pdf', '', '', ''),
+(8, 2, 'sistem pakar pendeteksi gangguan pencernaan', 'sistem pakar yang membantu mendeteksi gangguan pencernaan', 6, 11, 'belum di setujui', 'belum di setujui', 'belum di setujui', '1625713485_0c1889c9b090474a52f5.pdf', '', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `penjadwalan_sidang`
+-- Table structure for table `penjadwalan_sidang`
 --
 
 CREATE TABLE `penjadwalan_sidang` (
@@ -350,7 +356,7 @@ CREATE TABLE `penjadwalan_sidang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `penjadwalan_sidang`
+-- Dumping data for table `penjadwalan_sidang`
 --
 
 INSERT INTO `penjadwalan_sidang` (`id_jadwal`, `id_bimbingan`, `penguji_1`, `penguji_2`, `berkas_proposal`, `acara_sidang`, `tanggal_sidang`, `jam_sidang`, `tempat_sidang`, `status_penjadwalan_kaprodi`) VALUES
@@ -363,7 +369,7 @@ INSERT INTO `penjadwalan_sidang` (`id_jadwal`, `id_bimbingan`, `penguji_1`, `pen
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `penjadwalan_sidang_ta`
+-- Table structure for table `penjadwalan_sidang_ta`
 --
 
 CREATE TABLE `penjadwalan_sidang_ta` (
@@ -380,7 +386,7 @@ CREATE TABLE `penjadwalan_sidang_ta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `penjadwalan_sidang_ta`
+-- Dumping data for table `penjadwalan_sidang_ta`
 --
 
 INSERT INTO `penjadwalan_sidang_ta` (`id_jadwal_ta`, `id_bimbingan_ta`, `penguji_1`, `penguji_2`, `acara_sidang_ta`, `berkas_proposal_ta`, `tanggal_sidang_ta`, `jam_sidang_ta`, `tempat_sidang_ta`, `status_penjadwalan_kaprodi_ta`) VALUES
@@ -390,7 +396,7 @@ INSERT INTO `penjadwalan_sidang_ta` (`id_jadwal_ta`, `id_bimbingan_ta`, `penguji
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `seminar_proposal`
+-- Table structure for table `seminar_proposal`
 --
 
 CREATE TABLE `seminar_proposal` (
@@ -410,7 +416,7 @@ CREATE TABLE `seminar_proposal` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `seminar_proposal`
+-- Dumping data for table `seminar_proposal`
 --
 
 INSERT INTO `seminar_proposal` (`id_seminar`, `id_jadwal`, `nilai`, `catatan`, `status`, `nilai_penguji_1`, `nilai_penguji_2`, `nilai_pembimbing_1`, `nilai_pembimbing_2`, `catatan_penguji_1`, `catatan_penguji_2`, `catatan_pembimbing_1`, `catatan_pembimbing_2`) VALUES
@@ -421,7 +427,7 @@ INSERT INTO `seminar_proposal` (`id_seminar`, `id_jadwal`, `nilai`, `catatan`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sidang_tugasakhir`
+-- Table structure for table `sidang_tugasakhir`
 --
 
 CREATE TABLE `sidang_tugasakhir` (
@@ -441,7 +447,7 @@ CREATE TABLE `sidang_tugasakhir` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `sidang_tugasakhir`
+-- Dumping data for table `sidang_tugasakhir`
 --
 
 INSERT INTO `sidang_tugasakhir` (`id_sidangta`, `id_jadwal_ta`, `nilai_ta`, `catatan_ta`, `status_ta`, `nilai_penguji_1_ta`, `nilai_penguji_2_ta`, `nilai_pembimbing_1_ta`, `nilai_pembimbing_2_ta`, `catatan_penguji_1_ta`, `catatan_penguji_2_ta`, `catatan_pembimbing_1_ta`, `catatan_pembimbing_2_ta`) VALUES
@@ -451,7 +457,7 @@ INSERT INTO `sidang_tugasakhir` (`id_sidangta`, `id_jadwal_ta`, `nilai_ta`, `cat
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -462,7 +468,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `level`) VALUES
@@ -496,47 +502,47 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `level`) VALUES
 --
 
 --
--- Indeks untuk tabel `bimbingan`
+-- Indexes for table `bimbingan`
 --
 ALTER TABLE `bimbingan`
   ADD PRIMARY KEY (`id_bimbingan`),
   ADD KEY `id_pengajuan` (`id_pengajuan`);
 
 --
--- Indeks untuk tabel `bimbingan_ta`
+-- Indexes for table `bimbingan_ta`
 --
 ALTER TABLE `bimbingan_ta`
   ADD PRIMARY KEY (`id_bimbingan_ta`),
   ADD KEY `id_seminar` (`id_seminar`);
 
 --
--- Indeks untuk tabel `data_akademik`
+-- Indexes for table `data_akademik`
 --
 ALTER TABLE `data_akademik`
   ADD PRIMARY KEY (`id_dataakademik`);
 
 --
--- Indeks untuk tabel `dosen`
+-- Indexes for table `dosen`
 --
 ALTER TABLE `dosen`
   ADD PRIMARY KEY (`id_dosen`);
 
 --
--- Indeks untuk tabel `dosen_pembimbing`
+-- Indexes for table `dosen_pembimbing`
 --
 ALTER TABLE `dosen_pembimbing`
   ADD PRIMARY KEY (`id_dosenpembimbing`),
   ADD KEY `id_dosenta` (`id_dosenta`);
 
 --
--- Indeks untuk tabel `dosen_penguji`
+-- Indexes for table `dosen_penguji`
 --
 ALTER TABLE `dosen_penguji`
   ADD PRIMARY KEY (`id_dosenpenguji`),
   ADD KEY `id_dosenta` (`id_dosenta`);
 
 --
--- Indeks untuk tabel `dosen_tugasakhir`
+-- Indexes for table `dosen_tugasakhir`
 --
 ALTER TABLE `dosen_tugasakhir`
   ADD PRIMARY KEY (`id_dosenta`),
@@ -544,7 +550,7 @@ ALTER TABLE `dosen_tugasakhir`
   ADD KEY `id_dataakademik` (`id_dataakademik`);
 
 --
--- Indeks untuk tabel `leveling_dosen`
+-- Indexes for table `leveling_dosen`
 --
 ALTER TABLE `leveling_dosen`
   ADD PRIMARY KEY (`id_level`),
@@ -553,7 +559,7 @@ ALTER TABLE `leveling_dosen`
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `mahasiswa`
+-- Indexes for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
   ADD PRIMARY KEY (`id_mhs`),
@@ -561,7 +567,7 @@ ALTER TABLE `mahasiswa`
   ADD KEY `id_dataakademik` (`id_dataakademik`);
 
 --
--- Indeks untuk tabel `pengajuan_judul`
+-- Indexes for table `pengajuan_judul`
 --
 ALTER TABLE `pengajuan_judul`
   ADD PRIMARY KEY (`id_pengajuan`),
@@ -571,7 +577,7 @@ ALTER TABLE `pengajuan_judul`
   ADD KEY `dosenpembimbing1_2` (`dosenpembimbing1`);
 
 --
--- Indeks untuk tabel `penjadwalan_sidang`
+-- Indexes for table `penjadwalan_sidang`
 --
 ALTER TABLE `penjadwalan_sidang`
   ADD PRIMARY KEY (`id_jadwal`),
@@ -580,7 +586,7 @@ ALTER TABLE `penjadwalan_sidang`
   ADD KEY `penguji_2` (`penguji_2`);
 
 --
--- Indeks untuk tabel `penjadwalan_sidang_ta`
+-- Indexes for table `penjadwalan_sidang_ta`
 --
 ALTER TABLE `penjadwalan_sidang_ta`
   ADD PRIMARY KEY (`id_jadwal_ta`),
@@ -591,14 +597,14 @@ ALTER TABLE `penjadwalan_sidang_ta`
   ADD KEY `penguji_1_2` (`penguji_1`);
 
 --
--- Indeks untuk tabel `seminar_proposal`
+-- Indexes for table `seminar_proposal`
 --
 ALTER TABLE `seminar_proposal`
   ADD PRIMARY KEY (`id_seminar`),
   ADD KEY `id_jadwal` (`id_jadwal`);
 
 --
--- Indeks untuk tabel `sidang_tugasakhir`
+-- Indexes for table `sidang_tugasakhir`
 --
 ALTER TABLE `sidang_tugasakhir`
   ADD PRIMARY KEY (`id_sidangta`),
@@ -606,156 +612,156 @@ ALTER TABLE `sidang_tugasakhir`
   ADD KEY `id_jadwal_ta` (`id_jadwal_ta`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `bimbingan`
+-- AUTO_INCREMENT for table `bimbingan`
 --
 ALTER TABLE `bimbingan`
   MODIFY `id_bimbingan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT untuk tabel `bimbingan_ta`
+-- AUTO_INCREMENT for table `bimbingan_ta`
 --
 ALTER TABLE `bimbingan_ta`
   MODIFY `id_bimbingan_ta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `data_akademik`
+-- AUTO_INCREMENT for table `data_akademik`
 --
 ALTER TABLE `data_akademik`
   MODIFY `id_dataakademik` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `dosen`
+-- AUTO_INCREMENT for table `dosen`
 --
 ALTER TABLE `dosen`
   MODIFY `id_dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT untuk tabel `dosen_pembimbing`
+-- AUTO_INCREMENT for table `dosen_pembimbing`
 --
 ALTER TABLE `dosen_pembimbing`
   MODIFY `id_dosenpembimbing` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT untuk tabel `dosen_penguji`
+-- AUTO_INCREMENT for table `dosen_penguji`
 --
 ALTER TABLE `dosen_penguji`
   MODIFY `id_dosenpenguji` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `dosen_tugasakhir`
+-- AUTO_INCREMENT for table `dosen_tugasakhir`
 --
 ALTER TABLE `dosen_tugasakhir`
   MODIFY `id_dosenta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT untuk tabel `leveling_dosen`
+-- AUTO_INCREMENT for table `leveling_dosen`
 --
 ALTER TABLE `leveling_dosen`
   MODIFY `id_level` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT untuk tabel `mahasiswa`
+-- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
   MODIFY `id_mhs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT untuk tabel `pengajuan_judul`
+-- AUTO_INCREMENT for table `pengajuan_judul`
 --
 ALTER TABLE `pengajuan_judul`
   MODIFY `id_pengajuan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT untuk tabel `penjadwalan_sidang`
+-- AUTO_INCREMENT for table `penjadwalan_sidang`
 --
 ALTER TABLE `penjadwalan_sidang`
   MODIFY `id_jadwal` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT untuk tabel `penjadwalan_sidang_ta`
+-- AUTO_INCREMENT for table `penjadwalan_sidang_ta`
 --
 ALTER TABLE `penjadwalan_sidang_ta`
   MODIFY `id_jadwal_ta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `seminar_proposal`
+-- AUTO_INCREMENT for table `seminar_proposal`
 --
 ALTER TABLE `seminar_proposal`
   MODIFY `id_seminar` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `sidang_tugasakhir`
+-- AUTO_INCREMENT for table `sidang_tugasakhir`
 --
 ALTER TABLE `sidang_tugasakhir`
   MODIFY `id_sidangta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `bimbingan`
+-- Constraints for table `bimbingan`
 --
 ALTER TABLE `bimbingan`
   ADD CONSTRAINT `bimbingan_ibfk_1` FOREIGN KEY (`id_pengajuan`) REFERENCES `pengajuan_judul` (`id_pengajuan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `bimbingan_ta`
+-- Constraints for table `bimbingan_ta`
 --
 ALTER TABLE `bimbingan_ta`
   ADD CONSTRAINT `bimbingan_ta_ibfk_1` FOREIGN KEY (`id_seminar`) REFERENCES `seminar_proposal` (`id_seminar`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `dosen_pembimbing`
+-- Constraints for table `dosen_pembimbing`
 --
 ALTER TABLE `dosen_pembimbing`
   ADD CONSTRAINT `dosen_pembimbing_ibfk_1` FOREIGN KEY (`id_dosenta`) REFERENCES `dosen_tugasakhir` (`id_dosenta`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `dosen_penguji`
+-- Constraints for table `dosen_penguji`
 --
 ALTER TABLE `dosen_penguji`
   ADD CONSTRAINT `dosen_penguji_ibfk_1` FOREIGN KEY (`id_dosenta`) REFERENCES `dosen_tugasakhir` (`id_dosenta`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `dosen_tugasakhir`
+-- Constraints for table `dosen_tugasakhir`
 --
 ALTER TABLE `dosen_tugasakhir`
   ADD CONSTRAINT `dosen_tugasakhir_ibfk_1` FOREIGN KEY (`id_dosen`) REFERENCES `dosen` (`id_dosen`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `dosen_tugasakhir_ibfk_2` FOREIGN KEY (`id_dataakademik`) REFERENCES `data_akademik` (`id_dataakademik`);
 
 --
--- Ketidakleluasaan untuk tabel `leveling_dosen`
+-- Constraints for table `leveling_dosen`
 --
 ALTER TABLE `leveling_dosen`
   ADD CONSTRAINT `leveling_dosen_ibfk_1` FOREIGN KEY (`id_dosenta`) REFERENCES `dosen_tugasakhir` (`id_dosenta`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `leveling_dosen_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `mahasiswa`
+-- Constraints for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
   ADD CONSTRAINT `mahasiswa_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`),
   ADD CONSTRAINT `mahasiswa_ibfk_2` FOREIGN KEY (`id_dataakademik`) REFERENCES `data_akademik` (`id_dataakademik`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `pengajuan_judul`
+-- Constraints for table `pengajuan_judul`
 --
 ALTER TABLE `pengajuan_judul`
   ADD CONSTRAINT `pengajuan_judul_ibfk_1` FOREIGN KEY (`id_mhs`) REFERENCES `mahasiswa` (`id_mhs`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -763,7 +769,7 @@ ALTER TABLE `pengajuan_judul`
   ADD CONSTRAINT `pengajuan_judul_ibfk_3` FOREIGN KEY (`dosenpembimbing2`) REFERENCES `dosen_pembimbing` (`id_dosenpembimbing`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `penjadwalan_sidang`
+-- Constraints for table `penjadwalan_sidang`
 --
 ALTER TABLE `penjadwalan_sidang`
   ADD CONSTRAINT `penjadwalan_sidang_ibfk_1` FOREIGN KEY (`id_bimbingan`) REFERENCES `bimbingan` (`id_bimbingan`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -771,7 +777,7 @@ ALTER TABLE `penjadwalan_sidang`
   ADD CONSTRAINT `penjadwalan_sidang_ibfk_3` FOREIGN KEY (`penguji_2`) REFERENCES `dosen_penguji` (`id_dosenpenguji`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `penjadwalan_sidang_ta`
+-- Constraints for table `penjadwalan_sidang_ta`
 --
 ALTER TABLE `penjadwalan_sidang_ta`
   ADD CONSTRAINT `penjadwalan_sidang_ta_ibfk_1` FOREIGN KEY (`id_bimbingan_ta`) REFERENCES `bimbingan_ta` (`id_bimbingan_ta`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -779,13 +785,13 @@ ALTER TABLE `penjadwalan_sidang_ta`
   ADD CONSTRAINT `penjadwalan_sidang_ta_ibfk_3` FOREIGN KEY (`penguji_2`) REFERENCES `dosen_penguji` (`id_dosenpenguji`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `seminar_proposal`
+-- Constraints for table `seminar_proposal`
 --
 ALTER TABLE `seminar_proposal`
   ADD CONSTRAINT `seminar_proposal_ibfk_1` FOREIGN KEY (`id_jadwal`) REFERENCES `penjadwalan_sidang` (`id_jadwal`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `sidang_tugasakhir`
+-- Constraints for table `sidang_tugasakhir`
 --
 ALTER TABLE `sidang_tugasakhir`
   ADD CONSTRAINT `sidang_tugasakhir_ibfk_1` FOREIGN KEY (`id_jadwal_ta`) REFERENCES `penjadwalan_sidang_ta` (`id_jadwal_ta`) ON DELETE CASCADE ON UPDATE CASCADE;

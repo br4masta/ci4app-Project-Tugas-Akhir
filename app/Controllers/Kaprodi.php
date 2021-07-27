@@ -144,7 +144,7 @@ class Kaprodi extends BaseController
 
         return redirect()->to('/kaprodi/profil');
     }
-
+    // ===============PENGAJUAN==========================
     public function pengajuan()
     {
         $pengajuanModel = new \App\Models\pengajuanModel();
@@ -164,7 +164,7 @@ class Kaprodi extends BaseController
     {
         $this->pengajuanmodel->save([
             'id_pengajuan' => $id,
-            'catatan' => $this->request->getVar('catatan'),
+            'catatan_kaprodi' => $this->request->getVar('catatan'),
             'status_pengajuan' => $this->request->getVar('status'),
 
 

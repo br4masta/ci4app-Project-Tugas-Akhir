@@ -123,10 +123,10 @@
 <script>
     $(function() {
         $("#datapengajuan").DataTable({
-            "scrollY": "300px",
+            // "scrollY": "300px",
             "scrollX": true,
             "scrollCollapse": true,
-            "paging": false,
+            "paging": true,
 
             "fixedColumns": {
                 leftColumns: 2

@@ -8,7 +8,7 @@ class admin_pengajuanmodel extends Model
 {
     protected $table = 'pengajuan_judul';
     protected $primaryKey = 'id_pengajuan';
-    protected $allowedFields = ['status_pengajuan', 'catatan'];
+    protected $allowedFields = ['status_pengajuan', 'catatan_kaprodi'];
 
     public function get_pengajuan()
     {
@@ -35,11 +35,13 @@ class admin_pengajuanmodel extends Model
                 'pengajuan_judul.judul',
                 'pengajuan_judul.status_pengajuan',
                 'pengajuan_judul.id_pengajuan',
-                'pengajuan_judul.catatan',
+                'pengajuan_judul.catatan_kaprodi',
                 'pengajuan_judul.deskripsi_judul',
                 'pengajuan_judul.deskripsi',
                 'pengajuan_judul.konfirmasi_pembimbing_1',
                 'pengajuan_judul.konfirmasi_pembimbing_2',
+                'pengajuan_judul.catatan_pembimbing_1',
+                'pengajuan_judul.catatan_pembimbing_2',
 
             ])
             ->get()->getResultArray();

@@ -205,7 +205,7 @@ class Admin extends BaseController
 	{
 		$this->pengajuanmodel->save([
 			'id_pengajuan' => $id,
-			'catatan' => $this->request->getVar('catatan'),
+			'catatan_kaprodi' => $this->request->getVar('catatan'),
 			'status_pengajuan' => $this->request->getVar('status'),
 
 

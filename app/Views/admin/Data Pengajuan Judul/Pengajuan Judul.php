@@ -144,7 +144,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="#" class="col-form-label">catatan</label>
-                                <textarea class="form-control" id="catatan" name="catatan" rows="7" value=""><?= $d['catatan']; ?></textarea>
+                                <textarea class="form-control" id="catatan" name="catatan" rows="7" value=""><?= $d['catatan_kaprodi']; ?></textarea>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 control-label">Status</label>
@@ -267,7 +267,7 @@
                     </div>
                     <div class="form-group">
                         <label for="#" class="col-form-label">catatan</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" readonly><?= $d['catatan']; ?></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" readonly><?= $d['catatan_kaprodi']; ?></textarea>
                     </div>
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label">Status Pengajuan</label>
@@ -290,10 +290,10 @@
 <script>
     $(function() {
         $("#datapengajuan").DataTable({
-            "scrollY": "300px",
+            // "scrollY": "300px",
             "scrollX": true,
             "scrollCollapse": true,
-            "paging": false,
+            "paging": true,
             "fixedColumns": {
                 leftColumns: 2
             }
