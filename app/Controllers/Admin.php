@@ -15,6 +15,7 @@ use App\Models\UserModel;
 use App\Models\admin_penjadwalansidang_ta_model;
 use App\Models\admin_dosenpembimbingmodel;
 use App\Models\admin_dosenpengujimodel;
+use App\Models\admin_mahasiswamodel;
 
 
 
@@ -36,6 +37,7 @@ class Admin extends BaseController
 	protected $penjadwalansidangtamodel;
 	protected $pembimbingmodel;
 	protected $pengujimodel;
+	protected $mahasiswamodel;
 
 	public function __construct()
 	{
@@ -56,6 +58,7 @@ class Admin extends BaseController
 		$this->penjadwalansidangtamodel = new admin_penjadwalansidang_ta_model();
 		$this->pembimbingmodel = new admin_dosenpembimbingmodel();
 		$this->pengujimodel = new admin_dosenpengujimodel();
+		$this->mahasiswamodel = new admin_mahasiswamodel();
 	}
 
 
@@ -82,6 +85,10 @@ class Admin extends BaseController
 
 		return view('admin/profil/profil', $data);
 	}
+
+
+
+
 	public function editprofil()
 	{
 
@@ -183,6 +190,26 @@ class Admin extends BaseController
 
 		return redirect()->to('/admin/profil');
 	}
+
+
+	// =========Data Mahasiswa=========
+	public function mahasiswa()
+	{
+
+
+
+
+		$data = [
+			'datamhs' => $this->mahasiswamodel->get_mahasiswa(),
+
+
+		];
+
+		return view('admin/Data Mahasiswa/mahasiswa.php', $data);
+	}
+
+	// ===================MAHASISWA AKHIR===========================
+
 	//------------------BAGIAN PENGAJUAN JUDUL -----------------------
 	public function pengajuan()
 	{

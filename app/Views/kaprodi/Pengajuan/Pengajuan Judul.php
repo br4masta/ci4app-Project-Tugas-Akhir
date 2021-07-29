@@ -238,6 +238,7 @@
                                     <th>Nama Dosen</th>
                                     <th>Role Dosen</th>
                                     <th>Status Konfirmasi</th>
+                                    <th>Catatan Pembimbing</th>
 
 
 
@@ -250,6 +251,7 @@
                                     <td><?= $d['nama_pembimbing1']; ?></td>
                                     <td> <?= $d['role_pembimbing1']; ?></td>
                                     <td><?= $d['konfirmasi_pembimbing_1']; ?></td>
+                                    <td><?= $d['catatan_pembimbing_1']; ?></td>
 
 
                                 </tr>
@@ -258,6 +260,7 @@
                                     <td><?= $d['nama_pembimbing2']; ?></td>
                                     <td> <?= $d['role_pembimbing2']; ?></td>
                                     <td><?= $d['konfirmasi_pembimbing_2']; ?></td>
+                                    <td><?= $d['catatan_pembimbing_2']; ?></td>
 
 
                                 </tr>

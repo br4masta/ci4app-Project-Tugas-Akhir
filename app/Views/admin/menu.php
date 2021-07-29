@@ -28,6 +28,14 @@
             </a>
         </li>
         <li class="nav-item">
+            <a href=" <?php echo site_url('admin/mahasiswa'); ?>" class="nav-link">
+                <i class=" fas fa-user"></i>
+                <p>
+                    Data Mahasiswa
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
             <a href=" <?php echo site_url('admin/Datadosen'); ?>" class="nav-link">
                 <i class="fas fa-users"></i>
                 <p>
