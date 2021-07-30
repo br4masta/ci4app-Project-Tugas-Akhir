@@ -162,16 +162,29 @@ class Dosen extends BaseController
 			exit('Maaf tidak dapat diproses');
 		}
 	}
-	 public function bimbinganproposal($id)
-	 {
-		 
+	public function bimbinganproposal($id)
+	{
+		$session = session();
+		$dat = $session->get('user_id');
+
+		$dospem = $this->pembimbingmodel->get_status_pembimbing($dat);
+		$status_dospem = $dospem['0']['role_pembimbing'];
+		// dd($status_dospem);
+		if ($status_dospem == 'dosen pembimbing I') {
 			$data = [
-				'tampildatadsn' => $this->bimbinganprop->get_proposal1($data),
-				'tampildatadsn2' => $this->bimbinganprop->get_proposal2($data)
+				'tampildatadsn' => $this->bimbinganprop->get_detailproposal($id),
+				'status_dospem' => $status_dospem
 			];
-			return view('dosen/proposal/tabelbimbinganprop', $data);
+		} elseif ($status_dospem == 'dosen pembimbing II') {
+			$data = [
+				'tampildatadsn' => $this->bimbinganprop->get_detailproposal2($id),
+				'status_dospem' => $status_dospem
+			];
+		}
+
+		return view('dosen/proposal/tabelbimbinganprop', $data);
 	}
-	 	
+
 	// public function bimbinganproposal()
 	// {
 	// 	$session = session();
@@ -221,7 +234,7 @@ class Dosen extends BaseController
 	}
 	//=========================================================================================
 	//========================== TABEL BIMBINGAN =============================================
-	
+
 
 
 	//--------------------------------------------------------------------
