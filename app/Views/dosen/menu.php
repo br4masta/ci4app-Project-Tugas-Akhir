@@ -14,23 +14,12 @@
                 <p>Profil</p>
             </a>
         </li>
-        <!-- menu pengajuan -->
         <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class=" fa fa-copy"></i>
-                <p>Pengajuan Judul
-                    <i class="fas fa-angle-left right"></i>
-                </p>
+            <a href="<?= site_url('dosen/judul'); ?>" class="nav-link">
+                <i class="fa fa-home"></i>
+                <p>Pengajuan Judul</p>
             </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="<?= site_url('dosen/judul'); ?>" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Judul</p>
-                    </a>
-                </li>
         </li>
-    </ul>
    
     <!-- menu bimbingan -->
     <li class="nav-item">
@@ -53,6 +42,29 @@
             <a href="<?= site_url('dosen/tugasakhir'); ?>" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Tugas Akhir</p>
+            </a>
+        </li>
+    </ul>   
+     <li class="nav-item">
+        <a href="#" class="nav-link">
+            <i class=" fa fa-copy"></i>
+            <p>Data Jadwal
+                <i class="fas fa-angle-left right"></i>
+            </p>
+        </a>
+         <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="<?= site_url('dosen/proposal'); ?>" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Seminar Proposal</p>
+            </a>
+        </li>
+    </ul>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="<?= site_url('dosen/tugasakhir'); ?>" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p style="size: small;"> Sidang Tugas Akhir</p>
             </a>
         </li>
     </ul>   

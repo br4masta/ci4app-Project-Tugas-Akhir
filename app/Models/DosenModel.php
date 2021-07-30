@@ -137,7 +137,17 @@ class dosenModel extends Model
             'mahasiswa.id_mhs',
             'mahasiswa.nama_mhs',
             'mahasiswa.nim_mhs',
+            'pengajuan_judul.id_pengajuan',
             'pengajuan_judul.judul',
+            'bimbingan.id_bimbingan',
+            'bimbingan.judul_bimbingan',
+            'bimbingan.berkas_bimbingan',
+            'bimbingan.deskripsi_bimbingan',
+            'bimbingan.tanggal_bimbingan',
+            'bimbingan.status_bimbingan_pembimbing1',
+            'bimbingan.status_bimbingan_pembimbing2',
+            'bimbingan.catatan_bimbingan_pembimbing1',
+            'bimbingan.catatan_bimbingan_pembimbing2',
             'user.id_user'
         ])
         ->get()->getResultArray();
@@ -169,7 +179,17 @@ class dosenModel extends Model
             'mahasiswa.id_mhs',
             'mahasiswa.nama_mhs',
             'mahasiswa.nim_mhs',
+            'pengajuan_judul.id_pengajuan',
             'pengajuan_judul.judul',
+            'bimbingan.id_bimbingan',
+            'bimbingan.judul_bimbingan',
+            'bimbingan.berkas_bimbingan',
+            'bimbingan.deskripsi_bimbingan',
+            'bimbingan.tanggal_bimbingan',
+            'bimbingan.status_bimbingan_pembimbing1',
+            'bimbingan.status_bimbingan_pembimbing2',
+            'bimbingan.catatan_bimbingan_pembimbing1',
+            'bimbingan.catatan_bimbingan_pembimbing2',
             'user.id_user'
         ])
         ->get()->getResultArray();

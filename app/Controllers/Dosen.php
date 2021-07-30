@@ -29,6 +29,7 @@ class Dosen extends BaseController
 		$this->pembimbingmodel = new dosen_pembimbingmodel();
 		$this->proposal = new dosenModel();
 		$this->tugasakhir = new dosenModel();
+		$this->bimbinganprop = new dosenModel();
 	}
 	// ----------------------BAGIAN PROFIL--------------------------
 	public function index()
@@ -161,10 +162,15 @@ class Dosen extends BaseController
 			exit('Maaf tidak dapat diproses');
 		}
 	}
-	 public function bimbinganproposal()
+	 public function bimbinganproposal($id)
 	 {
-	 	return view('dosen/proposal/tabelbimbinganprop');
-	 }
+		 
+			$data = [
+				'tampildatadsn' => $this->bimbinganprop->get_proposal1($data),
+				'tampildatadsn2' => $this->bimbinganprop->get_proposal2($data)
+			];
+			return view('dosen/proposal/tabelbimbinganprop', $data);
+	}
 	 	
 	// public function bimbinganproposal()
 	// {
@@ -214,19 +220,8 @@ class Dosen extends BaseController
 		}
 	}
 	//=========================================================================================
-
-	public function tabelbimbingan()
-	{
-
-
-		$data = [
-			'title' => 'Dosen | Bimbingan',
-			
-		];
-
-		return view('dosen/tabelbimbingan', $data);
-	}
-
+	//========================== TABEL BIMBINGAN =============================================
+	
 
 
 	//--------------------------------------------------------------------

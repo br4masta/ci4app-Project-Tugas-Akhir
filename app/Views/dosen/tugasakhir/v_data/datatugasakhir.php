@@ -50,7 +50,6 @@
                    <td><?= $d['pembimbing1_nama']; ?></td>
                   <td><?= $d['pembimbing2_nama']; ?></td>
                   <td>
-                  <td>
                       <a href="/dosen/tabelbimbingan"><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target=""><i class='fas fa-pencil-alt'></i>
                           </button></a>
                   </td>

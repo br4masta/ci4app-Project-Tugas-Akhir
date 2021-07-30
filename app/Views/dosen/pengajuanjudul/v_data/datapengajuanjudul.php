@@ -54,7 +54,7 @@
                     <td>
                       <?php if ($c['status_pengajuan'] == "belum di setujui") :
                             echo '<span class="badge badge-warning d-inline-flex p-2">Belum Disetujui</span>';
-                        elseif ($c['konfirmasi_pembimbing_1'] == "di setujui") :
+                        elseif ($c['status_pengajuan'] == "di setujui") :
                             echo '<span class="badge badge-success d-inline-flex p-2">Disetujui</span>';
                         else :
                             echo '<span class="badge badge-danger d-inline-flex p-2">DiTolak</span>';
@@ -79,8 +79,6 @@
                   </td>
                    <td><?= $d['pembimbing1_nama']; ?></td>
                   <td><?= $d['pembimbing2_nama']; ?></td>
-                  <td>
-                  <td>
                      <td>
                       <?php if ($d['konfirmasi_pembimbing_1'] == "belum di setujui") :
                             echo '<span class="badge badge-warning d-inline-flex p-2">Belum Disetujui</span>';
@@ -93,7 +91,7 @@
                     <td>
                       <?php if ($d['konfirmasi_pembimbing_2'] == "belum di setujui") :
                             echo '<span class="badge badge-warning d-inline-flex p-2">Belum Disetujui</span>';
-                        elseif ($d['konfirmasi_pembimbing_1'] == "di setujui") :
+                        elseif ($d['konfirmasi_pembimbing_2'] == "di setujui") :
                             echo '<span class="badge badge-success d-inline-flex p-2">Disetujui</span>';
                         else :
                             echo '<span class="badge badge-danger d-inline-flex p-2">DiTolak</span>';
@@ -102,7 +100,7 @@
                     <td>
                       <?php if ($d['status_pengajuan'] == "belum di setujui") :
                             echo '<span class="badge badge-warning d-inline-flex p-2">Belum Disetujui</span>';
-                        elseif ($d['konfirmasi_pembimbing_1'] == "di setujui") :
+                        elseif ($d['status_pengajuan'] == "di setujui") :
                             echo '<span class="badge badge-success d-inline-flex p-2">Disetujui</span>';
                         else :
                             echo '<span class="badge badge-danger d-inline-flex p-2">DiTolak</span>';
@@ -111,8 +109,6 @@
                       <a href="/dosen/editpengajuan/<?= $d['id_pengajuan']; ?>"><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target=""><i class='fas fa-pencil-alt'></i>
                           </button></a>
                   </td>
-
-
               </tr>
           <?php endforeach; ?>
           </tbody>
@@ -142,7 +138,6 @@
   <script>
       $(document).ready(function() {
           $("#datapengajuan").DataTable({
-              "scrollY": "300px",
               "scrollX": true,
               "scrollCollapse": true,
               "paging": false,

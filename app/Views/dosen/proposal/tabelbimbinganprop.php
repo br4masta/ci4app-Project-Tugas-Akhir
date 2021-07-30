@@ -25,120 +25,84 @@
 
 
 
-<!-- Main content -->
-<section class="content">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-3">
+  <!-- /.card-header -->
+  <div class="card-body">
+      <div class="card-title  d-flex">
+      </div>
+      <table id="datapengajuan" class="table table-bordered table-striped" style="text-align: center; vertical-align: middle; ">
 
-				<!-- Profile Image -->
-				<div class="card card-primary card-outline">
-					<div class="card-body box-profile">
-						<div class="text-center">
-							<img class="profile-user-img img-fluid" src="<?= base_url(); ?>/assets/style/img/pdf.png" alt="User profile picture">
-						</div>
-						<div class="mt-5" style=" text-align : center; vertical-align: middle;">
-							<button type="button" class="btn btn-outline-primary btn-sm">View File</button>
-						</div>
+          <thead>
+              <tr>
+                  <th>No</th>
+                  <th>NIM</th>
+                  <th>Nama Mahasiswa</th>
+                  <th>Judul Bimbingan</th>
+                  <th>Deskripsi</th>
+                  <th>Berkas</th>
+                  <th>Tanggal</th>
+                  <th>Catatan</th>
+                  <th>Status</th>
+              </tr>
+          </thead>
 
-					</div>
-					<!-- /.card-body -->
-				</div>
-				<!-- /.card -->
+          <?php $i = 1; ?>
+          <?php foreach ($tampildatadsn as $c) : ?>
+              <tr>
+                  <td><?= $i++; ?></td>
+                  <td><?= $c['nim_mhs']; ?>
+                  </td>
+                  <td><?= $c['nama_mhs']; ?></td>
+                  <td> <?= $c['judul_bimbingan']; ?> </td>
+                  <td> <?= $c['deskripsi_bimbingan'] ?></td>
+                  <td>
+                      <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
+                  </td>
+                 <!--  <td><?= $c['tanggal_bimbingan']; ?></td>
+                   <td><?= $c['catatan_pembimbing_1']; ?></td>
+                   <td> <?= $c['status_bimbingan_pembimbing1'] ?></td> -->
+                  
 
-			</div>
-			<!-- /.col -->
-			<div class="col-md-9">
-				<div class="card">
-					<div class="card-header p-2">
-					</div>
-					<!-- /.card-header -->
-					<div class="card-body">
-						<div class="tab-content">
-							<div class="active tab-pane" id="settings">
+              </tr>
+          <?php endforeach; ?>
+          <?php foreach ($tampildatadsn2 as $d) :  ?>
+              <tr>
+                  <td><?= $i++; ?></td>
+                  <td><?= $d['nim_mhs']; ?>
+                  </td>
+                  <td><?= $d['nama_mhs']; ?></td>
+                  <td> <?= $d['judul_bimbingan']; ?> </td>
+                  <td> <?= $d['deskripsi_bimbingan'] ?></td>
+                  <td>
+                      <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
+                  </td>
+                <!--   <td><?= $d['tanggal_bimbingan']; ?></td>
+                   <td><?= $d['catatan_pembimbing_2']; ?></td>
+                   <td> <?= $d['status_bimbingan_pembimbing2'] ?></td> -->
+                 
+              </tr>
+          <?php endforeach; ?>
+          </tbody>
+      </table>
+  </div>
 
-								<!-- Table 1 -->
-								<table class="table table-striped table-borderless">
-									<tbody>
-										<tr>
-											<form class="row g-3">
-												<div class="col-md-10">
-													<label class="form-label col-form-label-sm mb-0">Nama Mahasiswa</label>
-													<input type="text" class="form-control" id="inputNamaMahasiswa" placeholder="Aditya Hernanda" readonly>
 
-												</div>
-											</form>
-										</tr>
-										<tr>
-											<form class="row g-3">
-												<div class="col-md-10">
-													<label class="form-label col-form-label-sm mb-0">Judul</label>
-													<input type="text" class="form-control" id="inputJudul" placeholder="judul apik banget bismillah gak revisi" readonly="">
-												</div>
-											</form>
-										</tr>
-										<tr>
-											<form class="row g-3">
-												<div class="col-md-10">
-													<label class="form-label col-form-label-sm mb-0">Dosen Pembimbing 1</label>
-													<input type="text" class="form-control" id="inputDospem1" placeholder="Karim" readonly="">
-												</div>
-											</form>
-										</tr>
-										<tr>
-											<form class="row g-3">
-												<div class="col-md-10">
-													<label class="form-label col-form-label-sm mb-0">Dosen Pembimbing 2</label>
-													<input type="text" class="form-control" id="inputDospem2" placeholder="Sujatmiko" readonly="">
-												</div>
-											</form>
-										</tr>
-										<tr>
-											<form class="row g-3">
-												<div class="col-md-10">
-													<label class="form-label col-form-label-sm mb-0">Tanggal Bimbingan</label>
-													<input class="form-control" type="date" value="2011-08-19" id="example-date-input">
-													<i class="bi bi-calendar-date"></i>
-												</div>
-											</form>
-										</tr>
-										<tr>
-											<form class="row g-3">
-												<div class="col-md-10">
-													<label class="form-label col-form-label-sm mb-0">Status</label>
-													<select class="form-control">
-														<option value="1">BARU</option>
-														<option value="1">SETUJU</option>
-														<option value="2">REVISI</option>
-														<option value="3">TOLAK</option>
-													</select>
-											</form>
-										</tr>
-										<tr>
-											<form class="row g-3">
-												<div class="col-md-10">
-													<label class="form-label col-form-label-sm mb-0">Saran</label>
-													<div class="mb-3">
-														<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-														</td>
-										</tr>
-									</tbody>
-								</table>
-								<!-- Akhir Table 2 -->
-							</div>
-							<!-- /.tab-content -->
-						</div><!-- /.card-body -->
-					</div>
-					<!-- /.card -->
-				</div>
-				<!-- /.col -->
-			</div>
-			<!-- /.row -->
-		</div><!-- /.container-fluid -->
-</section>
-
-<!-- /.content -->
-
+  <script>
+      $(document).ready(function() {
+          $("#datapengajuan").DataTable({
+              "paging": false,
+              "paging": true,
+              "lengthChange": false,
+              "searching": true,
+              "info": true,
+              "autoWidth": true,
+              
+              
+              "fixedColumns": {
+                  leftColumns: 2
+              }
+          })
+      });
+  </script>
 
 <?= $this->endSection(); ?>
 

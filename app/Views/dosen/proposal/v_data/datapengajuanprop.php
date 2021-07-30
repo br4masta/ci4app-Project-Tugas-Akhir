@@ -31,7 +31,7 @@
                   <td><?= $c['pembimbing1_nama']; ?></td>
                   <td><?= $c['pembimbing2_nama']; ?></td>
                     <td>
-                      <a href="/dosen/tabelbimbingan"><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target=""><i class='fas fa-pencil-alt'></i>
+                      <a href="/dosen/bimbinganproposal/<?= $c['id_pengajuan']; ?>"><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target=""><i class='fas fa-pencil-alt'></i>
                           </button></a>
                   </td>
 
@@ -50,8 +50,7 @@
                    <td><?= $d['pembimbing1_nama']; ?></td>
                   <td><?= $d['pembimbing2_nama']; ?></td>
                   <td>
-                  <td>
-                      <a href="/dosen/tabelbimbingan"><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target=""><i class='fas fa-pencil-alt'></i>
+                      <a href="/dosen/bimbinganproposal/<?= $d['id_pengajuan']; ?>"><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target=""><i class='fas fa-pencil-alt'></i>
                           </button></a>
                   </td>
 
@@ -70,8 +69,8 @@
               "lengthChange": false,
               "searching": true,
               "info": true,
-              "autoWidth": true;
-              "responsive": true;
+              "autoWidth": true,
+              
               
               "fixedColumns": {
                   leftColumns: 2

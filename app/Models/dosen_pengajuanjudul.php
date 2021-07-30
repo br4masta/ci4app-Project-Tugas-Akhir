@@ -20,6 +20,7 @@ class dosen_pengajuanjudul extends Model
         $this->table_dosen = $this->db->table('dosen_pembimbing');
         $this->table_mhs = $this->db->table('user')
             ->join('mahasiswa', 'user.id_user = mahasiswa.id_user');
+        
     }
     public function get_pengajuanjudul($id)
     {
