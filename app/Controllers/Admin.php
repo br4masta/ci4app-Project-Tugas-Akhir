@@ -109,16 +109,7 @@ class Admin extends BaseController
 	public function updatedataprofil($id)
 	{
 		$this->db->transStart();
-		// dd($this->request->getVar());
 
-		// if (!$this->validate([
-		// 
-
-
-		// ])) {
-		// 	$validation = \config\Services::validation();
-		// 	return redirect()->to('/admin/editprofil')->withInput();
-		// }
 
 		if (!$this->validate([
 			'foto' => [
@@ -130,27 +121,8 @@ class Admin extends BaseController
 					'mime_in' => 'Yang Anda pilih bukan gambar',
 
 				]
-				// 
+
 			],
-			// 'nama' => [
-			// 	'rules' => 'required',
-			// 	'errors' => [
-			// 		'required' => 'wajib di isi.',
-			// 	]
-
-
-			// ],
-
-			// 'jenis kelamin' => [
-			// 	'rules' => 'required',
-			// 	'errors' => [
-			// 		'required' => 'wajib di isi.',
-			// 	]
-
-
-			// ],
-
-
 		])) {
 
 			return redirect()->to('/admin/editprofil')->withInput();
@@ -195,12 +167,13 @@ class Admin extends BaseController
 	// =========Data Mahasiswa=========
 	public function mahasiswa()
 	{
-
-
-
+		session();
 
 		$data = [
 			'datamhs' => $this->mahasiswamodel->get_mahasiswa(),
+			'akademik' => $this->dataakademikmodel->get_dataakademik(),
+			'detailmhs' => $this->mahasiswamodel->get_detailmhs(),
+			'validation' => \config\Services::validation(),
 
 
 		];
@@ -208,6 +181,111 @@ class Admin extends BaseController
 		return view('admin/Data Mahasiswa/mahasiswa.php', $data);
 	}
 
+	public function tambahmahasiswa()
+	{
+
+		// dd($this->request->getVar());
+
+		$this->db->transStart();
+		if (!$this->validate([
+			'nim' => [
+				'rules' => 'is_unique[mahasiswa.nim_mhs]',
+				'errors' => [
+					'is_unique' => '{field} sudah terdaftar'
+				]
+
+
+			],
+
+
+		])) {
+			$validation = \config\Services::validation();
+			return redirect()->to('/admin/mahasiswa')->withInput();
+		}
+
+
+		$this->user->save([
+
+			'username' => $this->request->getVar('nim'),
+			'password' => $this->request->getVar('password'),
+			'level' => '3'
+
+		]);
+		$iduser = $this->user->getInsertID();
+
+		$this->mahasiswamodel->save([
+
+			'nama_mhs' => $this->request->getVar('nama_mhs'),
+			'nim_mhs' => $this->request->getVar('nim'),
+			'jk_mhs' => $this->request->getVar('jeniskelamin'),
+			'id_user' => $iduser,
+			'id_dataakademik' => $this->request->getVar('dataakademik'),
+
+
+		]);
+		$this->db->transComplete();
+		session()->setFlashdata('pesan', 'data berhasil di Tambah');
+
+		// dd($this->request->getVar());
+		return redirect()->to('/admin/mahasiswa');
+	}
+
+	public function updatemahasiswa($id)
+	{
+
+		// dd($this->request->getVar());
+
+		$this->db->transStart();
+
+		$this->user->save([
+			'id_user' => $this->request->getVar('id_user'),
+			'username' => $this->request->getVar('username'),
+			'password' => $this->request->getVar('password'),
+			'level' => '3'
+
+		]);
+		// $iduser = $this->user->getInsertID();
+
+		$this->mahasiswamodel->save([
+			'id_mhs' => $id,
+			'nama_mhs' => $this->request->getVar('nama_mhs'),
+			'nim_mhs' => $this->request->getVar('nim'),
+			'jk_mhs' => $this->request->getVar('jeniskelamin'),
+			'id_user' => $this->request->getVar('id_user'),
+			'id_dataakademik' => $this->request->getVar('dataakademik'),
+
+
+		]);
+		$this->db->transComplete();
+		session()->setFlashdata('pesan', 'data mahasiswa berhasil di Ubah');
+
+		// dd($this->request->getVar());
+		return redirect()->to('/admin/mahasiswa');
+	}
+
+	public function deletemahasiswa($id)
+	{
+
+
+		$data = $this->mahasiswamodel->get_detailmhs($id);
+
+		$this->db->transStart();
+		$this->mahasiswamodel->delete([
+			'id_mhs' => $id,
+
+		]);
+		$this->user->delete([
+			'id_user' => $data['0']['id_user']
+		]);
+		// $iduser = $this->user->getInsertID();
+
+
+		$this->db->transComplete();
+		session()->setFlashdata('pesan', 'data mahasiswa berhasil di hapus');
+
+		// dd($this->request->getVar());
+		return redirect()->to('/admin/mahasiswa');
+	}
 	// ===================MAHASISWA AKHIR===========================
 
 	//------------------BAGIAN PENGAJUAN JUDUL -----------------------
