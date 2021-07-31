@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\dosenModel;
 use App\Models\dosen_pengajuanjudul;
 use App\Models\dosen_pembimbingmodel;
+use App\Models\dosen_bimbinganmodel;
 use phpDocumentor\Reflection\Types\This;
 
 class Dosen extends BaseController
@@ -13,6 +14,7 @@ class Dosen extends BaseController
 	protected $judul;
 	protected $pengajuanjudul;
 	protected $pembimbingmodel;
+	protected $bimbinganmodel;
 
 	// jika model ingin dipakai banyak method, buat construct
 
@@ -30,6 +32,7 @@ class Dosen extends BaseController
 		$this->proposal = new dosenModel();
 		$this->tugasakhir = new dosenModel();
 		$this->bimbinganprop = new dosenModel();
+		$this->bimbinganmodel = new dosen_bimbinganmodel();
 	}
 	// ----------------------BAGIAN PROFIL--------------------------
 	public function index()
@@ -85,16 +88,17 @@ class Dosen extends BaseController
 
 	public function editpengajuan($id)
 	{
-		// $session = session();
-		// $dat = $session->get('user_id');
+		$session = session();
+		$dat = $session->get('user_id');
 
-		// $dospem = $this->pembimbingmodel->get_status_pembimbing($dat);
-		// $status_dospem = $dospem['0']['role_pembimbing'];
+		$dospem = $this->pembimbingmodel->get_status_pembimbing($dat);
+		$status_dospem = $dospem['0']['role_pembimbing'];
 		// dd($dospem['0']['role_pembimbing']);
 
 		$data = [
 			'title' => 'Detail | Pengajuan',
-			'data' => $this->pengajuanjudul->get_pengajuanjudul($id)
+			'data' => $this->pengajuanjudul->get_pengajuanjudul($id),
+			'status_dospem' => $status_dospem,
 		];
 
 		return view('dosen/pengajuanjudul/editpengajuan', $data);
@@ -116,6 +120,7 @@ class Dosen extends BaseController
 			$this->pengajuanjudul->save([
 				'id_pengajuan'	=> $id,
 				'konfirmasi_pembimbing_1' => $this->request->getVar('konfirmasi'),
+				'catatan_pembimbing_1' => $this->request->getVar('catatan'),
 
 			]);
 		} elseif ($status_dospem == 'dosen pembimbing II') {
@@ -123,6 +128,7 @@ class Dosen extends BaseController
 			$this->pengajuanjudul->save([
 				'id_pengajuan'	=> $id,
 				'konfirmasi_pembimbing_2' => $this->request->getVar('konfirmasi'),
+				'catatan_pembimbing_2' => $this->request->getVar('catatan'),
 
 			]);
 		}
@@ -172,17 +178,53 @@ class Dosen extends BaseController
 		// dd($status_dospem);
 		if ($status_dospem == 'dosen pembimbing I') {
 			$data = [
-				'tampildatadsn' => $this->bimbinganprop->get_detailproposal($id),
+				'tampildata_bimbingan' => $this->bimbinganprop->get_detailproposal($id),
 				'status_dospem' => $status_dospem
 			];
 		} elseif ($status_dospem == 'dosen pembimbing II') {
 			$data = [
-				'tampildatadsn' => $this->bimbinganprop->get_detailproposal2($id),
+				'tampildata_bimbingan' => $this->bimbinganprop->get_detailproposal2($id),
 				'status_dospem' => $status_dospem
 			];
 		}
-
+		// dd($data['tampildata_bimbingan']);
 		return view('dosen/proposal/tabelbimbinganprop', $data);
+	}
+	public function updateproposal($id)
+	{
+
+		// ambil id pengajuan untuk kembali ke bimbinnganproposal($id)
+		$id_pengajuan = $this->request->getVar('id_pengajuan');
+		// -------
+		$session = session();
+		$dat = $session->get('user_id');
+
+		$dospem = $this->pembimbingmodel->get_status_pembimbing($dat);
+		$status_dospem = $dospem['0']['role_pembimbing'];
+
+
+		$this->db->transStart();
+		if ($status_dospem == 'dosen pembimbing I') {
+
+			$this->bimbinganmodel->save([
+				'id_bimbingan'	=> $id,
+				'status_bimbingan_pembimbing1' => $this->request->getVar('statuspembimbing'),
+				'catatan_bimbingan_pembimbing1' => $this->request->getVar('catatan'),
+
+			]);
+		} elseif ($status_dospem == 'dosen pembimbing II') {
+
+			$this->bimbinganmodel->save([
+				'id_bimbingan'	=> $id,
+				'status_bimbingan_pembimbing2' => $this->request->getVar('statuspembimbing'),
+				'catatan_bimbingan_pembimbing2' => $this->request->getVar('catatan'),
+
+			]);
+		}
+		$this->db->transComplete();
+		session()->setFlashdata('pesan', 'data berhasil di ubah');
+
+		return redirect()->to("/dosen/bimbinganproposal/$id_pengajuan");
 	}
 
 	// public function bimbinganproposal()

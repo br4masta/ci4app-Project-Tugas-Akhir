@@ -84,7 +84,7 @@
 													<form class="row g-3">
 														<div class="col-md-10">
 															<label class="form-label col-form-label-sm mb-0">deskripsi</label>
-															<textarea class="form-control" id="catatan" name="catatan" rows="7" readonly> <?= $c['deskripsi']; ?> </textarea>
+															<textarea class="form-control" id="deskripsi" name="deskripsi" rows="7" readonly> <?= $c['deskripsi']; ?> </textarea>
 
 														</div>
 													</form>
@@ -110,12 +110,31 @@
 														<div class="col-md-10">
 															<label class="form-label col-form-label-sm mb-0">Status Konfirmasi</label>
 															<select class="form-control" id="konfirmasi" name="konfirmasi">
+																<option value="<?php if ($status_dospem == 'dosen pembimbing I') : ?><?= $c['konfirmasi_pembimbing_1']; ?><?php elseif ($status_dospem == 'dosen pembimbing II') : ?><?= $c['konfirmasi_pembimbing_2']; ?> <?php endif; ?>"><?php if ($status_dospem == 'dosen pembimbing I') : ?><?= $c['konfirmasi_pembimbing_1']; ?><?php elseif ($status_dospem == 'dosen pembimbing II') : ?><?= $c['konfirmasi_pembimbing_2']; ?><?php endif; ?></option>
 																<option value="belum di setujui">Belum di setujui</option>
 																<option value="di setujui">Di Setujui</option>
 																<option value="di tolak">Di tolak</option>
 															</select>
 														</div>
 													</div>
+												</tr>
+												<tr><?php if ($status_dospem == 'dosen pembimbing I') : ?>
+														<div class=" form-group">
+															<div class="col-md-10">
+																<label class="form-label col-form-label-sm mb-0">Catatan</label>
+																<textarea class="form-control" id="catatan" name="catatan" rows="7"><?= $c['catatan_pembimbing_1']; ?></textarea>
+
+															</div>
+														</div>
+													<?php elseif ($status_dospem == 'dosen pembimbing II') : ?>
+														<div class=" form-group">
+															<div class="col-md-10">
+																<label class="form-label col-form-label-sm mb-0">Catatan</label>
+																<textarea class="form-control" id="catatan" name="catatan" rows="7"><?= $c['catatan_pembimbing_2']; ?></textarea>
+
+															</div>
+														</div>
+													<?php endif; ?>
 												</tr>
 												<div class="form-group mt-5">
 													<div class="col-sm-offset-2 col-sm-8">

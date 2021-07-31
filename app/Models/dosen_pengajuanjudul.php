@@ -9,7 +9,7 @@ class dosen_pengajuanjudul extends Model
 
     protected $table = 'pengajuan_judul';
     protected $primaryKey = 'id_pengajuan';
-    protected $allowedFields = ['konfirmasi_pembimbing_1', 'konfirmasi_pembimbing_2'];
+    protected $allowedFields = ['konfirmasi_pembimbing_1', 'konfirmasi_pembimbing_2', 'catatan_pembimbing_1', 'catatan_pembimbing_2'];
 
 
     public function __construct()
@@ -20,7 +20,6 @@ class dosen_pengajuanjudul extends Model
         $this->table_dosen = $this->db->table('dosen_pembimbing');
         $this->table_mhs = $this->db->table('user')
             ->join('mahasiswa', 'user.id_user = mahasiswa.id_user');
-        
     }
     public function get_pengajuanjudul($id)
     {
@@ -47,7 +46,12 @@ class dosen_pengajuanjudul extends Model
                 'mahasiswa.email_mhs',
                 'pengajuan_judul.deskripsi',
                 'pengajuan_judul.judul',
-                'pengajuan_judul.id_pengajuan'
+                'pengajuan_judul.id_pengajuan',
+                'pengajuan_judul.catatan_pembimbing_1',
+                'pengajuan_judul.catatan_pembimbing_2',
+                'pengajuan_judul.konfirmasi_pembimbing_1',
+                'pengajuan_judul.konfirmasi_pembimbing_2',
+
 
             ])
 
