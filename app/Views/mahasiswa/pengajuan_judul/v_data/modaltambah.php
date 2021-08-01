@@ -11,13 +11,13 @@
             <?= csrf_field(); ?>
             <div class="modal-body">
                 <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">ID mhs</label>
+                    <label for="" class="col-sm-2 col-form-label" hidden>ID mhs</label>
                     <div class="col-sm-4">
                         <?php
                         $session = session();
                         $id = $session->get('user_id');
                         foreach ((new \App\Models\Model_pengajuanjudulmhs)->pilih_datamhs($id) as  $data) { ?>
-                            <input type="text" class="form-control" name="id_mhs" id="id_mhs" value="<?php echo $data['id_mhs'] ?>" readonly>
+                            <input type="text" class="form-control" name="id_mhs" id="id_mhs" value="<?php echo $data['id_mhs'] ?>" readonly hidden>
                         <?php break;
                         } ?>
                         <div>
