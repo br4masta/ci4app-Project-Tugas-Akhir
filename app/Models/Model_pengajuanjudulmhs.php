@@ -82,6 +82,25 @@ class Model_pengajuanjudulmhs extends Model
             ->get()->getResultArray();
     }
 
+    public function pilih_datamhs2($id)
+    {
+        return $this->table_mhs
+            ->where('user.id_user', $id)
+            ->select([
+                'mahasiswa.id_mhs',
+                'mahasiswa.nama_mhs',
+                'mahasiswa.nim_mhs',
+                'mahasiswa.jk_mhs',
+                'mahasiswa.tplhr_mhs',
+                'mahasiswa.tgllhr_mhs',
+                'mahasiswa.handphone',
+                'mahasiswa.email_mhs',
+                'user.id_user'
+            ])
+            ->get()->getResultArray();
+    }
+
+
     public function insert_pengajuan($data)
     {
         return $this->table_pengajuan->insert($data);

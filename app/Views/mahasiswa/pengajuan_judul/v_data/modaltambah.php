@@ -16,7 +16,7 @@
                         <?php
                         $session = session();
                         $id = $session->get('user_id');
-                        foreach ((new \App\Models\Model_pengajuanjudulmhs)->pilih_datamhs($id) as  $data) { ?>
+                        foreach ((new \App\Models\Model_pengajuanjudulmhs)->pilih_datamhs2($id) as  $data) { ?>
                             <input type="text" class="form-control" name="id_mhs" id="id_mhs" value="<?php echo $data['id_mhs'] ?>" readonly hidden>
                         <?php break;
                         } ?>
@@ -75,7 +75,7 @@
                             <?php foreach ((new \App\Models\Model_pengajuanjudulmhs)->pilih_dosen() as  $data) {
                                 if ($data['role_pembimbing'] == 'dosen pembimbing I') { ?>
                                     <option value="<?php echo $data['id_dosenpembimbing'] ?>" <?php
-                                     ?>><?php echo $data['nama_dosen'] ?></option>
+                                                                                                ?>><?php echo $data['nama_dosen'] ?></option>
                             <?php }
                             }
                             ?>
@@ -89,7 +89,7 @@
                             <?php foreach ((new \App\Models\Model_pengajuanjudulmhs)->pilih_dosen() as  $data) {
                                 if ($data['role_pembimbing'] == 'dosen pembimbing II') { ?>?>
                             <option value="<?php echo $data['id_dosenpembimbing'] ?>" <?php
-                                ?>><?php echo $data['nama_dosen'] ?></option>
+                                                                                        ?>><?php echo $data['nama_dosen'] ?></option>
                     <?php }
                             } ?>
                         </select>
