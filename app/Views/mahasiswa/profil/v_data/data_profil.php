@@ -1,47 +1,19 @@
-<div class="col-md-3">
-    <!-- Profile Image -->
-    <div class="card card-primary card-outline">
-        <div class="card-body box-profile">
-            <div class="text-center">
-               
-                    <img class="profile-user-img img-fluid img-circle" src="<?= base_url(); ?>/assets/style/img/user4-128x128.jpg" alt="User profile picture">
-            </div>
-            <?php
-                foreach ($tampildatadosenmhs as $row1) : ?>
-            <h3 class="profile-username text-center"><?= $row1['nama_mhs']; ?></h3>
 
-            <p class="text-muted text-center"><?= $row1['nim_mhs']; ?></p>
 
-            <ul class="list-group list-group-unbordered mb-3">
-                <li class="list-group-item">
-                    <b>Dosen Pembimbing I</b> <a class="float-right"><?= $row1['dos1_nama']; ?></a>
-                </li>
-                <li class="list-group-item">
-                    <b>Dosen Pembimbing II</b> <a class="float-right"><?= $row1['dos2_nama']; ?></a>
-                </li>
+<div class="col-md-9">
+    <div class="card">
+        <div class="card-header p-2">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a class="nav-link active" href="#settings" data-toggle="tab">Settings</a></li>
             </ul>
-        </div>
-    <?php break;
-                endforeach ?>
-    <!-- /.card-body -->
-    </div>
-    <!-- /.card -->
-</div>
-<!-- /.col -->
-<?php
-foreach ($tampildatamhs as $row2) : ?>
-    <div class="col-md-9">
-        <div class="card">
-            <div class="card-header p-2">
-                <ul class="nav nav-pills">
-                    <li class="nav-item"><a class="nav-link active" href="#settings" data-toggle="tab">Settings</a></li>
-                </ul>
-            </div><!-- /.card-header -->
-            <div class="card-body">
-                <div class="tab-content">
-                    <div class="active tab-pane" id="settings">
-                        <!-- Table 2 -->
-                        <table class="table table-striped table-borderless">
+        </div><!-- /.card-header -->
+        <div class="card-body">
+            <div class="tab-content">
+                <div class="active tab-pane" id="settings">
+                    <!-- Table 2 -->
+                    <table class="table table-striped table-borderless">
+                        <?php
+                        foreach ($tampildatamhs as $row2) : ?>
                             <tbody>
                                 <tr>
                                     <th scope="row">Nama Lengkap</th>
@@ -99,20 +71,62 @@ foreach ($tampildatamhs as $row2) : ?>
                                     </td>
                                 </tr>
                             </tbody>
-                        </table>
-                       
-                    </div>
-                    <!-- /.tab-content -->
-                </div><!-- /.card-body -->
-            </div>
-            <button type="button" class="btn btn-info btn-sm" onclick="edit('<?= $row2['id_mhs']; ?>')"> Simpan </button>
-            <!-- /.card -->
+                            <?php break;
+                        endforeach ?>
+                    </table>
+
+                </div>
+                <!-- /.tab-content -->
+            </div><!-- /.card-body -->
         </div>
-        <!-- /.col -->
+        <button type="button" class="btn btn-info btn-sm" onclick="edit('<?= $row2['id_mhs']; ?>')"> Simpan </button>
+        <!-- /.card -->
     </div>
-    <!-- /.row -->
-<?php break;
-endforeach ?>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+<div class="col-md-3">
+    <!-- Profile Image -->
+    <div class="card card-primary card-outline">
+        <div class="card-body box-profile">
+            <div class="text-center">
+
+                <img class="profile-user-img img-fluid img-circle" src="<?= base_url(); ?>/assets/style/img/user4-128x128.jpg" alt="User profile picture">
+            </div>
+            <?php
+            foreach ($tampildatadosenmhs as $row1) : ?>
+                <h3 class="profile-username text-center"><?= $row1['nama_mhs']; ?></h3>
+
+                <p class="text-muted text-center"><?= $row1['nim_mhs']; ?></p>
+
+                <ul class="list-group list-group-unbordered mb-3">
+                    <?php if ($row1['dos1_nama'] == null) {
+                        echo ' <li class="list-group-item">
+                    <b>Dosen Pembimbing I</b> <a class="float-right"></a>
+                </li>';
+                    } else {
+                        echo "<li class='list-group-item'>
+                    <b>Dosen Pembimbing I</b> <a class='float-right'>" . $row1['dos1_nama'] . "</a></li>";
+                    }
+                    ?>
+                    <?php if ($row1['dos2_nama'] == null) {
+                        echo ' <li class="list-group-item">
+                    <b>Dosen Pembimbing I</b> <a class="float-right"></a>
+                </li>';
+                    } else {
+                        echo "<li class='list-group-item'>
+                    <b>Dosen Pembimbing I</b> <a class='float-right'>" . $row1['dos2_nama'] . "</a></li>";
+                    }
+                    ?>
+                </ul>
+        </div>
+    <?php break;
+            endforeach ?>
+    <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+</div>
+<!-- /.col -->
 
 
 <script>
