@@ -11,9 +11,9 @@
             <?= csrf_field(); ?>
             <div class="modal-body">
                 <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">ID Pengajuan</label>
+                    <label for="" class="col-sm-2 col-form-label" hidden>ID Pengajuan</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" name="id_pengajuan" id="id_pengajuan" value="<?php echo $id ?>" readonly>
+                        <input type="text" class="form-control" name="id_pengajuan" id="id_pengajuan" hidden value="<?php echo $id ?>" readonly>
                         <div>
                         </div>
                     </div>

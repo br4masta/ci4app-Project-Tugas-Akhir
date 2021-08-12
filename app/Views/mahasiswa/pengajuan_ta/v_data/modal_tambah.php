@@ -11,13 +11,13 @@
             <?= csrf_field(); ?>
             <div class="modal-body">
                 <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">ID Bimbingan TA</label>
+                    <label for="" class="col-sm-2 col-form-label" hidden>ID Bimbingan TA</label>
                     <div class="col-sm-4">
                         <?php
                         $session = session();
                         $id = $session->get('user_id');
                         foreach ((new \App\Models\Model_sidang_TA)->get_id_bimbingan_ta($id) as  $data) { ?>
-                            <input type="text" class="form-control" name="id_bimbingan_ta" id="id_bimbingan_ta" value="<?php echo $data['id_bimbingan_ta'] ?>" readonly>
+                            <input type="text" class="form-control" name="id_bimbingan_ta" id="id_bimbingan_ta" hidden value="<?php echo $data['id_bimbingan_ta'] ?>" readonly>
                         <?php break;
                         } ?>
                         <div>

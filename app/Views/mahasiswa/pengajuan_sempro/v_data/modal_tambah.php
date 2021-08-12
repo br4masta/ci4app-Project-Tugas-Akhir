@@ -11,13 +11,13 @@
             <?= csrf_field(); ?>
             <div class="modal-body">
                 <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">ID Bimbingan</label>
+                    <label for="" class="col-sm-2 col-form-label" hidden>ID Bimbingan</label>
                     <div class="col-sm-4">
                         <?php
                         $session = session();
                         $id = $session->get('user_id');
                         foreach ((new \App\Models\Model_pengajuansempro)->get_pengajuan_sempro2($id) as  $data) { ?>
-                            <input type="text" class="form-control" name="id_bimbingan" id="id_bimbingan" value="<?php echo $data['id_bimbingan'] ?>" readonly>
+                            <input type="text" class="form-control" name="id_bimbingan" id="id_bimbingan" hidden value="<?php echo $data['id_bimbingan'] ?>" readonly>
                         <?php break;
                         } ?>
                         <div>
@@ -53,7 +53,7 @@
                 <div class="form-group row">
                     <label for="" class="col-sm-2 col-form-label">Judul</label>
                     <div class="col-sm-4">
-                    <?php
+                        <?php
                         $session = session();
                         $id = $session->get('user_id');
                         foreach ((new \App\Models\Model_pengajuansempro)->get_pengajuan_sempro2($id) as  $data) { ?>
@@ -65,11 +65,11 @@
                 <div class="form-group row">
                     <label for="" class="col-sm-2 col-form-label">Deskripsi</label>
                     <div class="col-sm-6">
-                    <?php
+                        <?php
                         $session = session();
                         $id = $session->get('user_id');
                         foreach ((new \App\Models\Model_pengajuansempro)->get_pengajuan_sempro2($id) as  $data) { ?>
-                          <textarea class="form-control" id="exampleFormControlTextarea1" readonly rows="7"><?= $data['deskripsi']; ?></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" readonly rows="7"><?= $data['deskripsi']; ?></textarea>
                         <?php break;
                         } ?>
                     </div>
