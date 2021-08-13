@@ -54,7 +54,7 @@
         </a>
          <ul class="nav nav-treeview">
         <li class="nav-item">
-            <a href="<?= site_url('dosen/proposal'); ?>" class="nav-link">
+            <a href="<?= site_url('dosen/jadwalsempro'); ?>" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Seminar Proposal</p>
             </a>
@@ -62,7 +62,7 @@
     </ul>
     <ul class="nav nav-treeview">
         <li class="nav-item">
-            <a href="<?= site_url('dosen/tugasakhir'); ?>" class="nav-link">
+            <a href="<?= site_url('dosen/jadwalta'); ?>" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p style="size: small;"> Sidang Tugas Akhir</p>
             </a>

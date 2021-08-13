@@ -6,12 +6,10 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Data Tugas Akhir</h1>
+                <h1>Halaman Jadwal Seminar Proposal</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">DataTables Dosen</li>
                 </ol>
             </div>
         </div>
@@ -25,18 +23,10 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Tugas Akhir</h3>
+                        <h3 class="card-title">DataTable Seminar</h3>
                     </div>
                     <div class="viewdata">
-                        <?php if (session()->getFlashdata('pesan')) : ?>
-                            <div class="alert alert-success" role="alert">
-                                <?= session()->getFlashdata('pesan'); ?>
-                            </div>
-                        <?php elseif (session()->getFlashdata('pesanubah')) : ?>
-                            <div class="alert alert-warning" role="alert">
-                                <?= session()->getFlashdata('pesanubah'); ?>
-                            </div>
-                        <?php endif; ?>
+
                     </div>
 
                     <!-- /.card-body -->
@@ -55,7 +45,7 @@
 <script>
     function datamahasiswa() {
         $.ajax({
-            url: "<?= site_url('dosen/get_judultugasakhir/id') ?>",
+            url: "<?= site_url('dosen/jadwalujisempro/id') ?>",
 
             dataType: "json",
             success: function(response) {

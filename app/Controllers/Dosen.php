@@ -6,6 +6,7 @@ use App\Models\dosenModel;
 use App\Models\dosen_pengajuanjudul;
 use App\Models\dosen_pembimbingmodel;
 use App\Models\dosen_bimbinganmodel;
+use App\Models\DospemJadwalModel;
 use phpDocumentor\Reflection\Types\This;
 
 class Dosen extends BaseController
@@ -33,6 +34,10 @@ class Dosen extends BaseController
 		$this->tugasakhir = new dosenModel();
 		$this->bimbinganprop = new dosenModel();
 		$this->bimbinganmodel = new dosen_bimbinganmodel();
+		$this->bimbinganta = new dosenModel();
+		$this->data_jadwalsempro = new DospemJadwalModel();
+		$this->data_jadwalta = new DospemJadwalModel();
+
 	}
 	// ----------------------BAGIAN PROFIL--------------------------
 	public function index()
@@ -255,15 +260,14 @@ class Dosen extends BaseController
 		];
 		return view('dosen/tugasakhir/tugasakhir', $data);
 	}
-
-	public function get_tugasakhir()
+		public function get_judultugasakhir()
 	{
 		$session = session();
 		$data = $session->get('user_id');
 		if ($this->request->isAJAX()) {
 			$data = [
-				'tampildatadsn' => $this->tugasakhir->datatugasakhir1($data),
-				'tampildatadsn2' => $this->tugasakhir->datatugasakhir2($data)
+				'tampildatajudul' => $this->proposal->get_proposal1($data),
+				'tampildatajudul2' => $this->proposal->get_proposal2($data)
 			];
 			$msg = [
 				'data' => view('dosen/tugasakhir/v_data/datatugasakhir', $data)
@@ -274,11 +278,86 @@ class Dosen extends BaseController
 			exit('Maaf tidak dapat diproses');
 		}
 	}
+
+	public function get_tugasakhir($id)
+	{
+		$session = session();
+		$dat = $session->get('user_id');
+
+		$dospem = $this->pembimbingmodel->get_status_pembimbing($dat);
+		$status_dospem = $dospem['0']['role_pembimbing'];
+		// dd($status_dospem);
+		if ($status_dospem == 'dosen pembimbing I') {
+			$data = [
+				'tampildata_bimbingan' => $this->bimbinganta->datatugasakhir1($id),
+				'status_dospem' => $status_dospem
+			];
+		} elseif ($status_dospem == 'dosen pembimbing II') {
+			$data = [
+				'tampildata_bimbingan' => $this->bimbinganta->datatugasakhir2($id),
+				'status_dospem' => $status_dospem
+			];
+		}
+		// dd($data['tampildata_bimbingan']);
+		return view('dosen/tugasakhir/tabelbimbinganta', $data);
+	}
 	//=========================================================================================
-	//========================== TABEL BIMBINGAN =============================================
+	//========================== TABEL JADWAL SEMPRO =============================================
 
+	public function jadwalsempro()
+		{
+		$data = [
+			'title' => 'Dosen | Jadwal Seminar Proposal'
+		];
+		return view('dosen/jadwalsempro/jadwalsempro', $data);
+	}
 
+	public function jadwalujisempro()
+	{
+		$session = session();
+		$data = $session->get('user_id');
+		if ($this->request->isAJAX()) {
+			$data = [
+			'tampildatauji1' => $this->data_jadwalsempro->get_jadwalseminar1pem($data),
+			'tampildatauji2' => $this->data_jadwalsempro->get_jadwalseminar2pem($data)
+			];
+			$msg = [
+				'data' => view('dosen/jadwalsempro/v_data/datajadwal', $data),
+			];
+
+			echo json_encode($msg);
+		} else {
+			exit('Maaf tidak dapat diproses');
+		}
+	}
 
 	//--------------------------------------------------------------------
+	//======================== TABEL JADWAL SIDANG TA ===============================
+	public function jadwalta()
+		{
+		$data = [
+			'title' => 'Dosen | Jadwal Seminar Proposal'
+		];
+		return view('dosen/jadwalsidangta/jadwalsidangta', $data);
+	}
+
+	public function jadwalsidangta()
+	{
+		$session = session();
+		$data = $session->get('user_id');
+		if ($this->request->isAJAX()) {
+			$data = [
+			'tampildatauji1' => $this->data_jadwalta->get_jadwalsidangta1pem($data),
+			'tampildatauji2' => $this->data_jadwalta->get_jadwalsidangta2pem($data)
+			];
+			$msg = [
+				'data' => view('dosen/jadwalsidangta/v_data/datajadwal', $data),
+			];
+
+			echo json_encode($msg);
+		} else {
+			exit('Maaf tidak dapat diproses');
+		}
+	}
 
 }

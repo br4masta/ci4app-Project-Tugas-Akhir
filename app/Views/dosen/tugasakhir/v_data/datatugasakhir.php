@@ -18,7 +18,7 @@
           </thead>
 
           <?php $i = 1; ?>
-          <?php foreach ($tampildatadsn as $c) : ?>
+          <?php foreach ($tampildatajudul as $c) : ?>
               <tr>
                   <td><?= $i++; ?></td>
                   <td><?= $c['nim_mhs']; ?>
@@ -31,13 +31,13 @@
                   <td><?= $c['pembimbing1_nama']; ?></td>
                   <td><?= $c['pembimbing2_nama']; ?></td>
                     <td>
-                      <a href="/dosen/tabelbimbingan"><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target=""><i class='fas fa-pencil-alt'></i>
+                      <a href="/dosen/get_tugasakhir/<?= $c['id_pengajuan']; ?>"><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target=""><i class='fas fa-pencil-alt'></i>
                           </button></a>
                   </td>
 
               </tr>
           <?php endforeach; ?>
-          <?php foreach ($tampildatadsn2 as $d) :  ?>
+          <?php foreach ($tampildatajudul2 as $d) :  ?>
               <tr>
                   <td><?= $i++; ?></td>
                   <td><?= $d['nim_mhs']; ?>
@@ -50,7 +50,7 @@
                    <td><?= $d['pembimbing1_nama']; ?></td>
                   <td><?= $d['pembimbing2_nama']; ?></td>
                   <td>
-                      <a href="/dosen/tabelbimbingan"><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target=""><i class='fas fa-pencil-alt'></i>
+                      <a href="/dosen/get_tugasakhir/<?= $d['id_pengajuan']; ?>"><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target=""><i class='fas fa-pencil-alt'></i>
                           </button></a>
                   </td>
 
@@ -61,6 +61,7 @@
   </div>
 
 
+
   <script>
       $(document).ready(function() {
           $("#datapengajuan").DataTable({
@@ -69,9 +70,9 @@
               "lengthChange": false,
               "searching": true,
               "info": true,
-              "autoWidth": true;
-              "responsive": true;
-              
+              "autoWidth": true,
+
+
               "fixedColumns": {
                   leftColumns: 2
               }
