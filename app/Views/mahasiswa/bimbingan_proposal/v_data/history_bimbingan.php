@@ -50,8 +50,8 @@
                                     <th>NIM</th>
                                     <th>Judul Bimbingan</th>
                                     <th>Deskripsi judul Proposal</th>
-                                    <th>berkas bimbingan</th>
                                     <th>tanggal Bimbingan</th>
+                                    <th>berkas bimbingan</th>
                                     <th>status Pembimbing I</th>
                                     <th>status Pembimbing II</th>
                                     <th>Detail catatan Dosen Pembimbing</th>
