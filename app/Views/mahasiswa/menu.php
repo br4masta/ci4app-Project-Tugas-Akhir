@@ -68,7 +68,7 @@
                 <li class="nav-item">
                     <a href="<?= site_url('mahasiswa/pengajuan_ta'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Pengajuan Tugas Akhir</p>
+                        <p>Pengajuan Sidang Tugas Akhir</p>
                     </a>
                 </li>
                 <li class="nav-item">

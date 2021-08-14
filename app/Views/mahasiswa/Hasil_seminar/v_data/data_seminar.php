@@ -32,7 +32,7 @@
                     elseif ($row['status'] == "disetujui dengan revisi") :
                         echo '<span class="badge badge-success d-inline-flex p-2">Disetujui dengan revisi</span>';
                     else :
-                        echo '<span class="badge badge-success d-inline-flex p-2">Lanjut Sidang TA/span>';
+                        echo '<span class="badge badge-success d-inline-flex p-2">Lanjut Bimbingan Sidang Tugas Akhir</span>';
                     endif ?>
                 </td>
                 <td style="text-align: center; vertical-align: middle;">

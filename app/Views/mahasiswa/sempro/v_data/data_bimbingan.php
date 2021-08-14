@@ -64,7 +64,7 @@
                                             elseif ($row['status_bimbingan_pembimbing1_ta'] == "lanjut bimbingan") :
                                                 echo '<span class="badge badge-success d-inline-flex p-2">lanjut bimbingan</span>';
                                             elseif ($row['status_bimbingan_pembimbing1_ta'] == "lanjut pengajuan sidang ta") :
-                                                echo '<span class="badge badge-success d-inline-flex p-2">lanjut bimbingan</span>';
+                                                echo '<span class="badge badge-success d-inline-flex p-2">lanjut pengajuan sidang ta</span>';
                                             else :
                                                 echo '<span class="badge badge-danger d-inline-flex p-2">Revisi</span>';
                                             endif ?>
@@ -75,7 +75,7 @@
                                             elseif ($row['status_bimbingan_pembimbing2_ta'] == "lanjut bimbingan") :
                                                 echo '<span class="badge badge-success d-inline-flex p-2">lanjut bimbingan</span>';
                                             elseif ($row['status_bimbingan_pembimbing2_ta'] == "lanjut pengajuan sidang ta") :
-                                                echo '<span class="badge badge-success d-inline-flex p-2">lanjut bimbingan</span>';
+                                                echo '<span class="badge badge-success d-inline-flex p-2">lanjut pengajuan sidang ta</span>';
                                             else :
                                                 echo '<span class="badge badge-danger d-inline-flex p-2">Revisi</span>';
                                             endif ?>
