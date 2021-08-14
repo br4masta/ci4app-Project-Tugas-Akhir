@@ -30,7 +30,7 @@
                         <?php
                         $session = session();
                         $id = $session->get('user_id');
-                        foreach ((new \App\Models\Model_pengajuanjudulmhs)->pilih_datamhs($id) as  $data) { ?>
+                        foreach ((new \App\Models\Model_pengajuanjudulmhs)->pilih_datamhs2($id) as  $data) { ?>
                             <input type="text" class="form-control" value="<?php echo $data['nim_mhs'] ?>" readonly>
                         <?php break;
                         } ?>
