@@ -45,7 +45,7 @@
 <script>
     function datamahasiswa() {
         $.ajax({
-            url: "<?= site_url('dosenpenguji/jadwalujidsn/id') ?>",
+            url: "<?= site_url('dosenpenguji/jadwalsemprodsn/id') ?>",
 
             dataType: "json",
             success: function(response) {

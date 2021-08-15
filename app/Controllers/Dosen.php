@@ -331,6 +331,11 @@ class Dosen extends BaseController
 		}
 	}
 
+	public function penilaiansempro()
+	{
+		return view('dosen/jadwalsempro/tabelpenilaian');
+	}
+
 	//--------------------------------------------------------------------
 	//======================== TABEL JADWAL SIDANG TA ===============================
 	public function jadwalta()

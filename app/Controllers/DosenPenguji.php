@@ -16,6 +16,7 @@ class DosenPenguji extends BaseController
 		$this->validasi = \Config\Services::validation();
 		$this->data_dsnpenguji = new DosenpengujiModel();
 		$this->data_jadwalsempro = new DosenpengujiModel();
+		$this->data_jadwalsidangta = new DosenpengujiModel();
 	}
 //-------------------- BAGIAN PROFIL--------------------------
 	public function index()
@@ -41,11 +42,11 @@ class DosenPenguji extends BaseController
 
 	}
 //------------------ JADWAL UJI------------------------------------------
-	public function jadwaluji()
+	public function jadwalsempro()
 	{
-		return view('dosenpenguji/jadwaluji/uji');
+		return view('dosenpenguji/jadwalsempro/uji');
 	}
-	public function jadwalujidsn()
+	public function jadwalsemprodsn()
 	{
 		$session = session();
 		$data = $session->get('user_id');
@@ -55,7 +56,7 @@ class DosenPenguji extends BaseController
 			'tampildatauji2' => $this->data_jadwalsempro->get_jadwalseminar2($data)
 			];
 			$msg = [
-				'data' => view('dosenpenguji/jadwaluji/v_data/jadwalseminar', $data),
+				'data' => view('dosenpenguji/jadwalsempro/v_data/jadwalseminar', $data),
 			];
 
 			echo json_encode($msg);
@@ -65,9 +66,26 @@ class DosenPenguji extends BaseController
 	}
 
 //=======================================================================
-
-	public function detailberita()
+	public function jadwalsidangta()
 	{
-		return view('dosenpenguji/detailberita');
+		return view('dosenpenguji/jadwalsidangta/datajadwalsidang');
+	}
+	public function jadwalsidangdsn()
+	{
+		$session = session();
+		$data = $session->get('user_id');
+		if ($this->request->isAJAX()) {
+			$data = [
+			'tampildatauji1' => $this->data_jadwalsidangta->get_jadwalsidangta1($data),
+			'tampildatauji2' => $this->data_jadwalsidangta->get_jadwalsidangta2($data)
+			];
+			$msg = [
+				'data' => view('dosenpenguji/jadwalsidangta/v_data/datasidangta', $data),
+			];
+
+			echo json_encode($msg);
+		} else {
+			exit('Maaf tidak dapat diproses');
+		}
 	}
 }

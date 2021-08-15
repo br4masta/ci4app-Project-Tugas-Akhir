@@ -29,16 +29,16 @@
                       <td><?= $a['nim_mhs']; ?> </td>
                       <td><?= $a['nama_mhs']; ?></td>
                       <td><?= $a['judul'] ?></td>
-                      <td><?= $a['acara_sidang'] ?></td>
-                      <td><?= $a['jam_sidang'] ?></td>
-                      <td><?= $a['tanggal_sidang'] ?></td>
-                      <td><?= $a['tempat_sidang'] ?></td>
+                      <td><?= $a['acara_sidang_ta'] ?></td>
+                      <td><?= $a['jam_sidang_ta'] ?></td>
+                      <td><?= $a['tanggal_sidang_ta'] ?></td>
+                      <td><?= $a['tempat_sidang_ta'] ?></td>
                       <td><?= $a['pembimbing1_nama']; ?></td>
                       <td><?= $a['pembimbing2_nama']; ?></td>
                       <td><?= $a['penguji1_nama']; ?></td>
                       <td><?= $a['penguji2_nama']; ?></td>
                       <td>
-                          <a href='<?php echo site_url('dosen/penilaiansempro'); ?>'>
+                          <a href='<?php echo site_url('dosenpenguji/detailberita'); ?>'>
                               <button class="btn btn-xs btn-flat btn-info">
                                   Detail
                               </button>
@@ -52,16 +52,16 @@
                       <td><?= $b['nim_mhs']; ?></td>
                       <td><?= $b['nama_mhs']; ?> </td>
                       <td><?= $b['judul'] ?></td>
-                      <td><?= $b['acara_sidang'] ?></td>
-                      <td><?= $b['jam_sidang'] ?></td>
-                      <td><?= $b['tanggal_sidang'] ?></td>
-                      <td><?= $b['tempat_sidang'] ?></td>
+                      <td><?= $b['acara_sidang_ta'] ?></td>
+                      <td><?= $b['jam_sidang_ta'] ?></td>
+                      <td><?= $b['tanggal_sidang_ta'] ?></td>
+                      <td><?= $b['tempat_sidang_ta'] ?></td>
                       <td><?= $b['pembimbing1_nama']; ?></td>
                       <td><?= $b['pembimbing2_nama']; ?></td>
                       <td><?= $b['penguji1_nama']; ?></td>
-                      <td><?= $b['penguji1_nama']; ?></td>
+                      <td><?= $b['penguji2_nama']; ?></td>
                       <td>
-                          <a href='<?php echo site_url('dosen/penilaiansempro'); ?>'>
+                          <a href='<?php echo site_url('dosenpenguji/detailberita'); ?>'>
                               <button class="btn btn-xs btn-flat btn-info">
                                   Detail
                               </button>
@@ -76,6 +76,25 @@
 
 
 
+  <!-- <script>
+      $(document).ready(function() {
+          $("#datapengajuan").DataTable({
+              "scrollY": "300px",
+              "scrollX": true,
+              "scrollCollapse": true,
+              "paging": false,
+              "paging": true,
+              "lengthChange": false,
+              "searching": true,
+              "info": true,
+              "autoWidth": false,
+              "responsive": false,
+              "fixedColumns": {
+                  leftColumns: 2
+              }
+          })
+      });
+  </script> -->
   <script>
       $(document).ready(function() {
           $("#datapengajuan").DataTable({
