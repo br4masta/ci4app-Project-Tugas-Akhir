@@ -44,6 +44,7 @@ class admin_beritamodel extends Model
                 ->join('pengajuan_judul', 'pengajuan_judul.id_pengajuan = bimbingan.id_pengajuan')
 
                 ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
+                ->join('data_akademik', 'data_akademik.id_dataakademik = mahasiswa.id_dataakademik')
                 // dosen penguji 1
                 ->join('dosen_penguji as dospenguji1', 'dospenguji1.id_dosenpenguji = penjadwalan_sidang.penguji_1')
                 ->join('dosen_tugasakhir as pengujita1', 'pengujita1.id_dosenta = dospenguji1.id_dosenta')
@@ -63,6 +64,7 @@ class admin_beritamodel extends Model
                 // ->join('dosen_pembimbing as dospem2', 'dospem2.id_dosenpembimbing = pengajuan_judul.dosenpembimbing2')
                 // ->join('dosen_tugasakhir as dospembimbing2', 'dospem2.id_dosenpembimbing = dospem2.id_dosenpembimbing')
                 // ->join('dosen as dosen_pembimbing2', 'dosen_pembimbing2.id_dosen = dospembimbing2.id_dosen')
+                ->where(['data_akademik.status' => 'aktif'])
                 ->select([
 
                     'dosen_penguji1.nama_dosen as dospenguji1_nama',
@@ -87,6 +89,7 @@ class admin_beritamodel extends Model
             ->join('pengajuan_judul', 'pengajuan_judul.id_pengajuan = bimbingan.id_pengajuan')
 
             ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
+            ->join('data_akademik', 'data_akademik.id_dataakademik = mahasiswa.id_dataakademik')
             // dosen penguji 1
             ->join('dosen_penguji as dospenguji1', 'dospenguji1.id_dosenpenguji = penjadwalan_sidang.penguji_1')
             ->join('dosen_tugasakhir as pengujita1', 'pengujita1.id_dosenta = dospenguji1.id_dosenta')
@@ -170,10 +173,12 @@ class admin_beritamodel extends Model
                 ->join('bimbingan', 'bimbingan.id_bimbingan = penjadwalan_sidang.id_bimbingan')
                 ->join('pengajuan_judul', 'pengajuan_judul.id_pengajuan = bimbingan.id_pengajuan')
                 ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
+                ->join('data_akademik', 'data_akademik.id_dataakademik = mahasiswa.id_dataakademik')
                 ->join('dosen_penguji', 'dosen_penguji.id_dosenpenguji = penjadwalan_sidang_ta.penguji_1')
                 ->join('dosen_pembimbing', 'dosen_pembimbing.id_dosenpembimbing = pengajuan_judul.dosenpembimbing1')
                 ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_penguji.id_dosenta')
                 ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
+                ->where(['data_akademik.status' => 'aktif'])
                 ->get()->getResultArray();
         }
         return $this->db->table('sidang_tugasakhir')
@@ -184,6 +189,7 @@ class admin_beritamodel extends Model
             ->join('bimbingan', 'bimbingan.id_bimbingan = penjadwalan_sidang.id_bimbingan')
             ->join('pengajuan_judul', 'pengajuan_judul.id_pengajuan = bimbingan.id_pengajuan')
             ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
+            ->join('data_akademik', 'data_akademik.id_dataakademik = mahasiswa.id_dataakademik')
 
             // dosen penguji 1
             ->join('dosen_penguji as dospenguji1', 'dospenguji1.id_dosenpenguji = penjadwalan_sidang.penguji_1')
@@ -202,6 +208,7 @@ class admin_beritamodel extends Model
             ->join('dosen_pembimbing as dospem2', 'dospem2.id_dosenpembimbing = pengajuan_judul.dosenpembimbing2')
             ->join('dosen_tugasakhir as dospembimbing2', 'dospembimbing2.id_dosenta = dospem2.id_dosenta')
             ->join('dosen as dosen_pembimbing2', 'dosen_pembimbing2.id_dosen = dospembimbing2.id_dosen')
+
             ->select([
                 'dosen_penguji1.nama_dosen as dospenguji1_nama',
                 'dosen_penguji2.nama_dosen as dospenguji2_nama',

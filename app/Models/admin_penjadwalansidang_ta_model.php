@@ -25,9 +25,11 @@ class admin_penjadwalansidang_ta_model extends Model
                 ->join('bimbingan', 'bimbingan.id_bimbingan = penjadwalan_sidang.id_bimbingan')
                 ->join('pengajuan_judul', 'pengajuan_judul.id_pengajuan = bimbingan.id_pengajuan')
                 ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
+                ->join('data_akademik', 'data_akademik.id_dataakademik = mahasiswa.id_dataakademik')
                 // --------------tidak memerlukan dosen penguji-------
                 // --------------karena penguji =null(belum di inputkan oleh kaprodi)-------
                 ->where(['status_penjadwalan_kaprodi_ta' => 'belum terjadwal'])
+                ->where(['data_akademik.status' => 'aktif'])
                 ->get()->getResultArray();
         }
         return $this->db->table('penjadwalan_sidang_ta')
@@ -57,9 +59,11 @@ class admin_penjadwalansidang_ta_model extends Model
                 ->join('bimbingan', 'bimbingan.id_bimbingan = penjadwalan_sidang.id_bimbingan')
                 ->join('pengajuan_judul', 'pengajuan_judul.id_pengajuan = bimbingan.id_pengajuan')
                 ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
+                ->join('data_akademik', 'data_akademik.id_dataakademik = mahasiswa.id_dataakademik')
                 // --------------tidak memerlukan dosen penguji-------
                 // --------------karena penguji =null(belum di inputkan oleh kaprodi)-------
                 ->where(['status_penjadwalan_kaprodi_ta' => 'belum terjadwal'])
+                ->where(['data_akademik.status' => 'aktif'])
                 ->get()->getResultArray();
         }
         return $this->db->table('penjadwalan_sidang_ta')
@@ -89,6 +93,7 @@ class admin_penjadwalansidang_ta_model extends Model
                 ->join('bimbingan', 'bimbingan.id_bimbingan = penjadwalan_sidang.id_bimbingan')
                 ->join('pengajuan_judul', 'pengajuan_judul.id_pengajuan = bimbingan.id_pengajuan')
                 ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
+                ->join('data_akademik', 'data_akademik.id_dataakademik = mahasiswa.id_dataakademik')
                 ->join('dosen_penguji', 'dosen_penguji.id_dosenpenguji = penjadwalan_sidang_ta.penguji_1')
                 ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_penguji.id_dosenta')
                 ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
@@ -98,6 +103,7 @@ class admin_penjadwalansidang_ta_model extends Model
                 ->join('dosen as penguji2', 'penguji2.id_dosen = dosenpenguji2.id_dosen')
 
                 ->where(['status_penjadwalan_kaprodi_ta' => 'sudah terjadwal'])
+                ->where(['data_akademik.status' => 'aktif'])
                 ->select([
                     'penguji2.nama_dosen as penguji2_nama',
                     // 'pembimbing1.nama_dosen as pembimbing1_nama',
@@ -143,10 +149,12 @@ class admin_penjadwalansidang_ta_model extends Model
                 ->join('bimbingan', 'bimbingan.id_bimbingan = penjadwalan_sidang.id_bimbingan')
                 ->join('pengajuan_judul', 'pengajuan_judul.id_pengajuan = bimbingan.id_pengajuan')
                 ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
+                ->join('data_akademik', 'data_akademik.id_dataakademik = mahasiswa.id_dataakademik')
                 ->join('dosen_penguji', 'dosen_penguji.id_dosenpenguji = penjadwalan_sidang_ta.penguji_2')
                 ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_penguji.id_dosenta')
                 ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
                 ->where(['status_penjadwalan_kaprodi_ta' => 'sudah terjadwal'])
+                ->where(['data_akademik.status' => 'aktif'])
                 ->get()->getResultArray();
         }
         return $this->db->table('penjadwalan_sidang_ta')

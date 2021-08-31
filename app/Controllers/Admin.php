@@ -763,11 +763,11 @@ class Admin extends BaseController
 		$dataakademikModel = new \App\Models\dataakademikModel();
 		$dataakademik = $dataakademikModel->findAll();
 
-		session();
+
 		$data = [
 
 			'dataakademik' => $dataakademik,
-			'validation' => \config\Services::validation(),
+
 		];
 		return view('admin/Data Akademik/Data Akademik', $data);
 	}
@@ -789,50 +789,8 @@ class Admin extends BaseController
 	}
 	public function tambahdataakademik()
 	{
+		// dd($this->request->getVar());
 
-		// validasi input
-		if (!$this->validate([
-			'tahun_akademik' => [
-				'rules' => 'required',
-				'errors' => [
-					'required' => '{field} wajib di isi.',
-
-				]
-
-
-			],
-			'semester' => [
-				'rules' => 'required',
-				'errors' => [
-					'required' => '{field} wajib di isi.',
-
-				]
-
-
-			],
-			'mulai' => [
-				'rules' => 'required',
-				'errors' => [
-					'required' => '{field} wajib di isi.',
-
-				]
-
-
-			],
-			'akhir' => [
-				'rules' => 'required',
-				'errors' => [
-					'required' => '{field} wajib di isi.',
-
-				]
-
-
-			]
-
-		])) {
-			$validation = \config\Services::validation();
-			return redirect()->to('/admin/dataakademik')->withInput()->with('validation', $validation);
-		}
 
 		$id = 'aa';
 		$data1 = $this->request->getVar('tahun_akademik');

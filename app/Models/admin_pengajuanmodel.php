@@ -14,6 +14,7 @@ class admin_pengajuanmodel extends Model
     {
         return $this->db->table('pengajuan_judul')
             ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
+            ->join('data_akademik', 'data_akademik.id_dataakademik = mahasiswa.id_dataakademik')
             // ============PEMBIMBING 1=========
             ->join('dosen_pembimbing as dospem1', 'dospem1.id_dosenpembimbing = pengajuan_judul.dosenpembimbing1')
             ->join('dosen_tugasakhir as dosta1', 'dosta1.id_dosenta = dospem1.id_dosenta')
@@ -25,6 +26,7 @@ class admin_pengajuanmodel extends Model
             ->join('dosen as pembimbing2', 'pembimbing2.id_dosen = dosta2.id_dosen')
             // ->where('konfirmasi_pembimbing_1', 'di setujui')
             // ->where('konfirmasi_pembimbing_2', 'di setujui')
+            ->where(['data_akademik.status' => 'aktif'])
             ->select([
                 'pembimbing1.nama_dosen as nama_pembimbing1',
                 'pembimbing2.nama_dosen as nama_pembimbing2',
