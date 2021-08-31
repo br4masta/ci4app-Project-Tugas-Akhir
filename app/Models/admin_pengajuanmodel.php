@@ -23,8 +23,8 @@ class admin_pengajuanmodel extends Model
             ->join('dosen_pembimbing as dospem2', 'dospem2.id_dosenpembimbing = pengajuan_judul.dosenpembimbing2')
             ->join('dosen_tugasakhir as dosta2', 'dosta2.id_dosenta = dospem2.id_dosenta')
             ->join('dosen as pembimbing2', 'pembimbing2.id_dosen = dosta2.id_dosen')
-            ->where('konfirmasi_pembimbing_1', 'di setujui')
-            ->where('konfirmasi_pembimbing_2', 'di setujui')
+            // ->where('konfirmasi_pembimbing_1', 'di setujui')
+            // ->where('konfirmasi_pembimbing_2', 'di setujui')
             ->select([
                 'pembimbing1.nama_dosen as nama_pembimbing1',
                 'pembimbing2.nama_dosen as nama_pembimbing2',
