@@ -7,6 +7,7 @@ use App\Models\dosen_pengajuanjudul;
 use App\Models\dosen_pembimbingmodel;
 use App\Models\dosen_bimbinganmodel;
 use App\Models\DospemJadwalModel;
+use App\Models\dosen_sempromodel;
 use phpDocumentor\Reflection\Types\This;
 
 class Dosen extends BaseController
@@ -16,6 +17,7 @@ class Dosen extends BaseController
 	protected $pengajuanjudul;
 	protected $pembimbingmodel;
 	protected $bimbinganmodel;
+	protected $sempromodel;
 
 	// jika model ingin dipakai banyak method, buat construct
 
@@ -37,7 +39,7 @@ class Dosen extends BaseController
 		$this->bimbinganta = new dosenModel();
 		$this->data_jadwalsempro = new DospemJadwalModel();
 		$this->data_jadwalta = new DospemJadwalModel();
-
+		$this->sempromodel = new dosen_sempromodel();
 	}
 	// ----------------------BAGIAN PROFIL--------------------------
 	public function index()
@@ -260,7 +262,7 @@ class Dosen extends BaseController
 		];
 		return view('dosen/tugasakhir/tugasakhir', $data);
 	}
-		public function get_judultugasakhir()
+	public function get_judultugasakhir()
 	{
 		$session = session();
 		$data = $session->get('user_id');
@@ -305,7 +307,7 @@ class Dosen extends BaseController
 	//========================== TABEL JADWAL SEMPRO =============================================
 
 	public function jadwalsempro()
-		{
+	{
 		$data = [
 			'title' => 'Dosen | Jadwal Seminar Proposal'
 		];
@@ -318,8 +320,8 @@ class Dosen extends BaseController
 		$data = $session->get('user_id');
 		if ($this->request->isAJAX()) {
 			$data = [
-			'tampildatauji1' => $this->data_jadwalsempro->get_jadwalseminar1pem($data),
-			'tampildatauji2' => $this->data_jadwalsempro->get_jadwalseminar2pem($data)
+				'tampildatauji1' => $this->data_jadwalsempro->get_jadwalseminar1pem($data),
+				'tampildatauji2' => $this->data_jadwalsempro->get_jadwalseminar2pem($data)
 			];
 			$msg = [
 				'data' => view('dosen/jadwalsempro/v_data/datajadwal', $data),
@@ -331,15 +333,19 @@ class Dosen extends BaseController
 		}
 	}
 
-	public function penilaiansempro()
+	public function penilaiansempro($data)
 	{
-		return view('dosen/jadwalsempro/tabelpenilaian');
+
+		$data = [
+			'sempro' => $this->sempromodel->get_seminarproposal($data),
+		];
+		return view('dosen/jadwalsempro/tabelpenilaian', $data);
 	}
 
 	//--------------------------------------------------------------------
 	//======================== TABEL JADWAL SIDANG TA ===============================
 	public function jadwalta()
-		{
+	{
 		$data = [
 			'title' => 'Dosen | Jadwal Seminar Proposal'
 		];
@@ -352,8 +358,8 @@ class Dosen extends BaseController
 		$data = $session->get('user_id');
 		if ($this->request->isAJAX()) {
 			$data = [
-			'tampildatauji1' => $this->data_jadwalta->get_jadwalsidangta1pem($data),
-			'tampildatauji2' => $this->data_jadwalta->get_jadwalsidangta2pem($data)
+				'tampildatauji1' => $this->data_jadwalta->get_jadwalsidangta1pem($data),
+				'tampildatauji2' => $this->data_jadwalta->get_jadwalsidangta2pem($data)
 			];
 			$msg = [
 				'data' => view('dosen/jadwalsidangta/v_data/datajadwal', $data),
@@ -364,5 +370,4 @@ class Dosen extends BaseController
 			exit('Maaf tidak dapat diproses');
 		}
 	}
-
 }

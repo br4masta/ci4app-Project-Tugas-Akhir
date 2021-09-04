@@ -38,7 +38,7 @@
                       <td><?= $a['penguji1_nama']; ?></td>
                       <td><?= $a['penguji2_nama']; ?></td>
                       <td>
-                          <a href='<?php echo site_url('dosen/penilaiansempro'); ?>'>
+                          <a href="/dosen/penilaiansempro/<?= $a['id_jadwal']; ?>">
                               <button class="btn btn-xs btn-flat btn-info">
                                   Detail
                               </button>
@@ -61,7 +61,7 @@
                       <td><?= $b['penguji1_nama']; ?></td>
                       <td><?= $b['penguji1_nama']; ?></td>
                       <td>
-                          <a href='<?php echo site_url('dosen/penilaiansempro'); ?>'>
+                          <a href="/dosen/penilaiansempro/<?= $a['id_jadwal']; ?>">
                               <button class="btn btn-xs btn-flat btn-info">
                                   Detail
                               </button>

@@ -16,7 +16,7 @@ use App\Models\admin_penjadwalansidang_ta_model;
 use App\Models\admin_dosenpembimbingmodel;
 use App\Models\admin_dosenpengujimodel;
 use App\Models\admin_mahasiswamodel;
-
+use App\Models\admin_seminarmodel;
 
 
 
@@ -38,6 +38,7 @@ class Admin extends BaseController
 	protected $pembimbingmodel;
 	protected $pengujimodel;
 	protected $mahasiswamodel;
+	protected $seminarmodel;
 
 	public function __construct()
 	{
@@ -59,6 +60,7 @@ class Admin extends BaseController
 		$this->pembimbingmodel = new admin_dosenpembimbingmodel();
 		$this->pengujimodel = new admin_dosenpengujimodel();
 		$this->mahasiswamodel = new admin_mahasiswamodel();
+		$this->seminarmodel = new admin_seminarmodel();
 	}
 
 
@@ -421,6 +423,19 @@ class Admin extends BaseController
 	public function updatejadwalseminar($id)
 	{
 		// dd($this->request->getVar());
+		// $status = $this->seminarmodel->get_statuspenjadwalan($id);
+		// $status_jadwal = $status['0']['status_penjadwalan_kaprodi'];
+		// dd($status_jadwal);
+
+		$status = $this->seminarmodel->get_statuspenjadwalan($id);
+		$status_jadwal = $status['0']['status_penjadwalan_kaprodi'];
+
+		if ($status_jadwal == 'sudah terjadwal') {
+		} elseif ($status_jadwal == 'belum terjadwal') {
+			$this->seminarmodel->save([
+				'id_jadwal' => $id,
+			]);
+		}
 
 		$this->penjadwalanmodel->save([
 			'id_jadwal' => $id,
@@ -433,6 +448,12 @@ class Admin extends BaseController
 
 
 		]);
+
+
+
+
+
+
 		session()->setFlashdata('pesan', 'jadwal berhasil di tambahkan');
 
 		return redirect()->to('/admin/seminarterjadwal');
