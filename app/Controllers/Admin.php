@@ -17,7 +17,7 @@ use App\Models\admin_dosenpembimbingmodel;
 use App\Models\admin_dosenpengujimodel;
 use App\Models\admin_mahasiswamodel;
 use App\Models\admin_seminarmodel;
-
+use App\Models\admin_sidangtamodel;
 
 
 
@@ -39,6 +39,7 @@ class Admin extends BaseController
 	protected $pengujimodel;
 	protected $mahasiswamodel;
 	protected $seminarmodel;
+	protected $sidangtamodel;
 
 	public function __construct()
 	{
@@ -61,6 +62,7 @@ class Admin extends BaseController
 		$this->pengujimodel = new admin_dosenpengujimodel();
 		$this->mahasiswamodel = new admin_mahasiswamodel();
 		$this->seminarmodel = new admin_seminarmodel();
+		$this->sidangtamodel = new admin_sidangtamodel();
 	}
 
 
@@ -404,6 +406,17 @@ class Admin extends BaseController
 	public function updatejadwalskripsi($id)
 	{
 		// dd($this->request->getVar());
+
+		$status = $this->sidangtamodel->get_statuspenjadwalanta($id);
+		$status_jadwal = $status['0']['status_penjadwalan_kaprodi_ta'];
+		// dd($status_jadwal);
+
+		if ($status_jadwal == 'sudah terjadwal') {
+		} elseif ($status_jadwal == 'belum terjadwal') {
+			$this->sidangtamodel->save([
+				'id_jadwal_ta' => $id,
+			]);
+		}
 
 		$this->penjadwalansidangtamodel->save([
 			'id_jadwal_ta' => $id,

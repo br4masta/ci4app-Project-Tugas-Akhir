@@ -13,6 +13,8 @@ use App\Models\admin_dosentamodel;
 use App\Models\admin_levelingmodel;
 use App\Models\UserModel;
 use App\Models\admin_penjadwalansidang_ta_model;
+use App\Models\admin_seminarmodel;
+use App\Models\admin_sidangtamodel;
 
 class Kaprodi extends BaseController
 {
@@ -29,6 +31,8 @@ class Kaprodi extends BaseController
     protected $user;
     protected $db;
     protected $penjadwalansidangtamodel;
+    protected $seminarmodel;
+    protected $sidangtamodel;
 
     public function __construct()
     {
@@ -46,6 +50,8 @@ class Kaprodi extends BaseController
         $this->levelingmodel = new admin_levelingmodel();
         $this->user = new UserModel();
         $this->penjadwalansidangtamodel = new admin_penjadwalansidang_ta_model();
+        $this->seminarmodel = new admin_seminarmodel();
+        $this->sidangtamodel = new admin_sidangtamodel();
     }
 
     public function index()
@@ -257,7 +263,19 @@ class Kaprodi extends BaseController
     public function updatejadwalskripsi($id)
     {
         // dd($this->request->getVar());
+
         $this->db->transStart();
+        $status = $this->sidangtamodel->get_statuspenjadwalanta($id);
+        $status_jadwal = $status['0']['status_penjadwalan_kaprodi_ta'];
+        // dd($status_jadwal);
+
+        if ($status_jadwal == 'sudah terjadwal') {
+        } elseif ($status_jadwal == 'belum terjadwal') {
+            $this->sidangtamodel->save([
+                'id_jadwal_ta' => $id,
+            ]);
+        }
+
         $this->penjadwalansidangtamodel->save([
             'id_jadwal_ta' => $id,
             'tanggal_sidang_ta' => $this->request->getVar('tanggal_ujian'),
@@ -278,6 +296,17 @@ class Kaprodi extends BaseController
     {
         // dd($this->request->getVar());
         $this->db->transStart();
+
+        $status = $this->seminarmodel->get_statuspenjadwalan($id);
+        $status_jadwal = $status['0']['status_penjadwalan_kaprodi'];
+
+        if ($status_jadwal == 'sudah terjadwal') {
+        } elseif ($status_jadwal == 'belum terjadwal') {
+            $this->seminarmodel->save([
+                'id_jadwal' => $id,
+            ]);
+        }
+
         $this->penjadwalanmodel->save([
             'id_jadwal' => $id,
             'tanggal_sidang' => $this->request->getVar('tanggal_ujian'),
