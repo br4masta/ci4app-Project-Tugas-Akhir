@@ -61,55 +61,105 @@
 
 								<!-- Table 1 -->
 								<?php foreach ($sempro as $a) : ?>
-									<table class="table table-striped table-borderless">
-										<tbody>
-											<tr>
-												<th scope="row">Nama</th>
-												<td><?= $a['nama_mhs']; ?></td>
-											</tr>
-											<tr>
-												<th scope="row">NIM</th>
-												<td><?= $a['nim_mhs']; ?></td>
-											</tr>
-											<tr>
-												<th scope="row">Judul</th>
-												<td>
-													<?= $a['judul']; ?>
-												</td>
-											</tr>
-											<tr>
-												<th scope="row">Nilai</th>
-												<td>
-													<div class="mb-3">
-														<input type="text" class="form-control" id="exampleFormControlInput1">
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<th scope="row">Konfirmasi</th>
-												<td>
-													<select class="form-select" aria-label="Default select example">
-														<option value="1">Setuju</option>
-														<option value="2">Setuju dengan Revisi</option>
-														<option value="3">Tidak Setuju</option>
-														<option value="3">Revisi</option>
-													</select>
-												</td>
-											</tr>
-											<tr>
-												<th scope="row">Catatan</th>
-												<td>
-													<div class="mb-3">
-														<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-													</div>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-									<div class="proses">
-										<button class="btn btn-primary tombol">Proses</button>
-									</div>
-									<!-- Akhir Table 2 -->
+									<form action="/dosen/updatesempro/<?= $a['id_seminar']; ?>" method="POST">
+										<?= csrf_field(); ?>
+										<table class="table table-striped table-borderless">
+											<div class="form-group row">
+												<input type="hidden" name="id_seminar" id="id_seminar" value="<?= $a['id_seminar']; ?>">
+											</div>
+											<tbody>
+												<tr>
+													<th scope="row">Nama</th>
+													<td><?= $a['nama_mhs']; ?></td>
+												</tr>
+												<tr>
+													<th scope="row">NIM</th>
+													<td><?= $a['nim_mhs']; ?></td>
+												</tr>
+												<tr>
+													<th scope="row">Judul</th>
+													<td>
+														<?= $a['judul']; ?>
+													</td>
+												</tr>
+												<?php if ($status_dospem == 'dosen pembimbing I') : ?>
+													<tr>
+														<th scope="row">Nilai Pembimbing I</th>
+														<td>
+															<div class="form-group mb-3">
+																<input type="text" class="form-control" name="nilai" id="nilai" value="<?= $a['nilai_pembimbing_1']; ?>">
+															</div>
+
+														</td>
+													</tr>
+													<tr>
+														<th scope="row">Konfirmasi</th>
+														<td>
+
+															<div class="form-group row">
+																<div class="col-sm-6">
+																	<select name="status" id="status" class="form-control" required>
+																		<option value="<?= $a['status']; ?>" selected><?= $a['status']; ?></option>
+																		<option value="lanjut">Lanjut</option>
+																		<option value="disetujui dengan revisi">Disetujui dengan revisi</option>
+																		<option value="mengulang">Mengulang</option>
+																	</select>
+																</div>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row">Catatan Pembimbing I</th>
+														<td>
+															<div class="form-group mb-3">
+																<textarea class="form-control" id="catatan" name="catatan" rows="3"><?= $a['catatan_pembimbing_1']; ?></textarea>
+															</div>
+														</td>
+													</tr>
+													<!-- jika dosen login sebagai pembimbing II-->
+												<?php elseif ($status_dospem == 'dosen pembimbing II') : ?>
+
+													<tr>
+														<th scope="row">Nilai Pembimbing II</th>
+														<td>
+															<div class="form-group mb-3">
+																<input type="text" class="form-control" name="nilai" id="nilai" value="<?= $a['nilai_pembimbing_2']; ?>">
+															</div>
+
+														</td>
+													</tr>
+													<tr>
+														<th scope="row">Konfirmasi</th>
+														<td>
+
+															<div class="form-group row">
+																<div class="col-sm-6">
+																	<select name="status" id="status" class="form-control" required>
+																		<option value="<?= $a['status']; ?>" selected><?= $a['status']; ?></option>
+																		<option value="lanjut">Lanjut</option>
+																		<option value="disetujui dengan revisi">Disetujui dengan revisi</option>
+																		<option value="mengulang">Mengulang</option>
+																	</select>
+																</div>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row">Catatan Pembimbing II</th>
+														<td>
+															<div class="form-group mb-3">
+																<textarea class="form-control" id="catatan" name="catatan" rows="3"><?= $a['catatan_pembimbing_2']; ?></textarea>
+															</div>
+														</td>
+													</tr>
+												<?php endif; ?>
+											</tbody>
+										</table>
+										<div class="proses">
+											<button class="btn btn-primary tombol">Proses</button>
+										</div>
+										<!-- Akhir Table 2 -->
+									</form>
 							</div>
 						<?php endforeach; ?>
 						<!-- /.tab-content -->

@@ -61,7 +61,7 @@
                       <td><?= $b['penguji1_nama']; ?></td>
                       <td><?= $b['penguji1_nama']; ?></td>
                       <td>
-                          <a href="/dosen/penilaiansempro/<?= $a['id_jadwal']; ?>">
+                          <a href="/dosen/penilaiansempro/<?= $b['id_jadwal']; ?>">
                               <button class="btn btn-xs btn-flat btn-info">
                                   Detail
                               </button>

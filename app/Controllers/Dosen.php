@@ -335,11 +335,57 @@ class Dosen extends BaseController
 
 	public function penilaiansempro($data)
 	{
+		$session = session();
+		$dat = $session->get('user_id');
+
+		$dospem = $this->pembimbingmodel->get_status_pembimbing($dat);
+		$status_dospem = $dospem['0']['role_pembimbing'];
 
 		$data = [
 			'sempro' => $this->sempromodel->get_seminarproposal($data),
+			'status_dospem' => $status_dospem,
 		];
 		return view('dosen/jadwalsempro/tabelpenilaian', $data);
+	}
+
+	public function updatesempro($id)
+	{
+		// dd($this->request->getVar());
+
+		$session = session();
+		$dat = $session->get('user_id');
+
+		$dospem = $this->pembimbingmodel->get_status_pembimbing($dat);
+		$status_dospem = $dospem['0']['role_pembimbing'];
+
+
+		$this->db->transStart();
+		if ($status_dospem == 'dosen pembimbing I') {
+
+			$this->sempromodel->save([
+				'id_seminar' => $id,
+				'nilai_pembimbing_1' => $this->request->getVar('nilai'),
+				'catatan_pembimbing_1' => $this->request->getVar('catatan'),
+				'status' => $this->request->getVar('status'),
+
+
+			]);
+		} elseif ($status_dospem == 'dosen pembimbing II') {
+
+			$this->sempromodel->save([
+				'id_seminar' => $id,
+				'nilai_pembimbing_2' => $this->request->getVar('nilai'),
+				'catatan_pembimbing_2' => $this->request->getVar('catatan'),
+				'status' => $this->request->getVar('status'),
+
+
+			]);
+		}
+		$this->db->transComplete();
+		session()->setFlashdata('pesan', 'data berhasil di tambah');
+
+
+		return redirect()->to('/dosen/jadwalsempro');
 	}
 
 	//--------------------------------------------------------------------
