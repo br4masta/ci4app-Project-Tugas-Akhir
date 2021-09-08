@@ -9,7 +9,7 @@ class dosen_sempromodel extends Model
 
     protected $table = 'seminar_proposal';
     protected $primaryKey = 'id_seminar';
-    protected $allowedFields = ['id_seminar', 'nilai_pembimbing_1', 'catatan_pembimbing_1', 'nilai_pembimbing_2', 'catatan_pembimbing_2', 'status'];
+    protected $allowedFields = ['id_seminar', 'nilai_pembimbing_1', 'catatan_pembimbing_1', 'nilai_pembimbing_2', 'catatan_pembimbing_2', 'nilai_penguji_1', 'catatan_penguji_1', 'nilai_penguji_2', 'catatan_penguji_2', 'status'];
 
 
 
@@ -31,10 +31,16 @@ class dosen_sempromodel extends Model
                 'seminar_proposal.catatan_pembimbing_1',
                 'seminar_proposal.nilai_pembimbing_2',
                 'seminar_proposal.catatan_pembimbing_2',
+                'seminar_proposal.nilai_penguji_1',
+                'seminar_proposal.catatan_penguji_1',
+                'seminar_proposal.nilai_penguji_2',
+                'seminar_proposal.catatan_penguji_2',
                 'seminar_proposal.id_seminar',
                 'mahasiswa.nama_mhs',
                 'mahasiswa.nim_mhs',
                 'pengajuan_judul.judul',
+                'penjadwalan_sidang.penguji_1',
+                'penjadwalan_sidang.penguji_2',
 
             ])
             ->get()->getResultArray();

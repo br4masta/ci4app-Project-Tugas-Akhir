@@ -15,8 +15,8 @@
                   <th>Tempat</th>
                   <th>Dosen Pembimbing 1</th>
                   <th>Dosen Pembimbing 2</th>
-                  <th>Dosen Penguji</th>
-                  <th>Dosen Penguji</th>
+                  <th>Dosen Penguji I</th>
+                  <th>Dosen Penguji II</th>
                   <th>Penilaian</th>
 
               </tr>
@@ -38,7 +38,7 @@
                       <td><?= $a['nama_dosen']; ?></td>
                       <td><?= $a['penguji2_nama']; ?></td>
                       <td>
-                          <a href='<?php echo site_url('dosenpenguji/detailberita'); ?>'>
+                          <a href='/dosenpenguji/penilaiansempro/<?= $a['id_jadwal']; ?>'>
                               <button class="btn btn-xs btn-flat btn-info">
                                   Detail
                               </button>
@@ -58,10 +58,11 @@
                       <td><?= $b['tempat_sidang'] ?></td>
                       <td><?= $b['pembimbing1_nama']; ?></td>
                       <td><?= $b['pembimbing2_nama']; ?></td>
-                      <td><?= $b['nama_dosen']; ?></td>
                       <td><?= $b['penguji1_nama']; ?></td>
+                      <td><?= $b['nama_dosen']; ?></td>
+
                       <td>
-                          <a href='<?php echo site_url('dosenpenguji/detailberita'); ?>'>
+                          <a href='/dosenpenguji/penilaiansempro/<?= $b['id_jadwal']; ?>'>
                               <button class="btn btn-xs btn-flat btn-info">
                                   Detail
                               </button>
