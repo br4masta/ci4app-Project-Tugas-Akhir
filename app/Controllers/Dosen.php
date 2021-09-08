@@ -8,6 +8,7 @@ use App\Models\dosen_pembimbingmodel;
 use App\Models\dosen_bimbinganmodel;
 use App\Models\DospemJadwalModel;
 use App\Models\dosen_sempromodel;
+use App\Models\dosen_sidangtamodel;
 use phpDocumentor\Reflection\Types\This;
 
 class Dosen extends BaseController
@@ -18,6 +19,7 @@ class Dosen extends BaseController
 	protected $pembimbingmodel;
 	protected $bimbinganmodel;
 	protected $sempromodel;
+	protected $sidangtamodel;
 
 	// jika model ingin dipakai banyak method, buat construct
 
@@ -40,6 +42,7 @@ class Dosen extends BaseController
 		$this->data_jadwalsempro = new DospemJadwalModel();
 		$this->data_jadwalta = new DospemJadwalModel();
 		$this->sempromodel = new dosen_sempromodel();
+		$this->sidangtamodel = new dosen_sidangtamodel();
 	}
 	// ----------------------BAGIAN PROFIL--------------------------
 	public function index()
@@ -415,5 +418,60 @@ class Dosen extends BaseController
 		} else {
 			exit('Maaf tidak dapat diproses');
 		}
+	}
+
+	public function penilaiansidangta($data)
+	{
+		$session = session();
+		$dat = $session->get('user_id');
+
+		$dospem = $this->pembimbingmodel->get_status_pembimbing($dat);
+		$status_dospem = $dospem['0']['role_pembimbing'];
+
+		$data = [
+			'sidangta' => $this->sidangtamodel->get_sidangta($data),
+			'status_dospem' => $status_dospem,
+		];
+		return view('dosen/jadwalsidangta/tabelpenilaiansidang', $data);
+	}
+
+	public function updatesidangta($id)
+	{
+		// dd($this->request->getVar());
+
+		$session = session();
+		$dat = $session->get('user_id');
+
+		$dospem = $this->pembimbingmodel->get_status_pembimbing($dat);
+		$status_dospem = $dospem['0']['role_pembimbing'];
+
+
+		$this->db->transStart();
+		if ($status_dospem == 'dosen pembimbing I') {
+
+			$this->sidangtamodel->save([
+				'id_sidangta' => $id,
+				'nilai_pembimbing_1_ta' => $this->request->getVar('nilai'),
+				'catatan_pembimbing_1_ta' => $this->request->getVar('catatan'),
+				'status_ta' => $this->request->getVar('status'),
+
+
+			]);
+		} elseif ($status_dospem == 'dosen pembimbing II') {
+
+			$this->sidangtamodel->save([
+				'id_sidangta' => $id,
+				'nilai_pembimbing_2_ta' => $this->request->getVar('nilai'),
+				'catatan_pembimbing_2_ta' => $this->request->getVar('catatan'),
+				'status_ta' => $this->request->getVar('status'),
+
+
+			]);
+		}
+		$this->db->transComplete();
+		session()->setFlashdata('pesan', 'data berhasil di tambah');
+
+
+		return redirect()->to('/dosen/jadwalta');
 	}
 }
