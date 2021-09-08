@@ -9,7 +9,7 @@ class dosen_sidangtamodel extends Model
 
     protected $table = 'sidang_tugasakhir';
     protected $primaryKey = 'id_sidangta';
-    protected $allowedFields = ['id_sidangta', 'nilai_pembimbing_1_ta', 'catatan_pembimbing_1_ta', 'nilai_pembimbing_2_ta', 'catatan_pembimbing_2_ta', 'status_ta'];
+    protected $allowedFields = ['id_sidangta', 'nilai_pembimbing_1_ta', 'catatan_pembimbing_1_ta', 'nilai_pembimbing_2_ta', 'catatan_pembimbing_2_ta', 'nilai_penguji_1_ta', 'catatan_penguji_1_ta', 'nilai_penguji_2_ta', 'catatan_penguji_2_ta', 'status_ta'];
 
 
 
@@ -26,20 +26,24 @@ class dosen_sidangtamodel extends Model
             ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
             ->join('data_akademik', 'data_akademik.id_dataakademik = mahasiswa.id_dataakademik')
             ->where(['penjadwalan_sidang_ta.id_jadwal_ta' => $data])
-            // ->select([
-            //     'seminar_proposal.status as status',
-            //     'seminar_proposal.nilai',
-            //     'seminar_proposal.catatan',
-            //     'seminar_proposal.nilai_pembimbing_1',
-            //     'seminar_proposal.catatan_pembimbing_1',
-            //     'seminar_proposal.nilai_pembimbing_2',
-            //     'seminar_proposal.catatan_pembimbing_2',
-            //     'seminar_proposal.id_seminar',
-            //     'mahasiswa.nama_mhs',
-            //     'mahasiswa.nim_mhs',
-            //     'pengajuan_judul.judul',
+            ->select([
+                'mahasiswa.nama_mhs',
+                'mahasiswa.nim_mhs',
+                'pengajuan_judul.judul',
+                'sidang_tugasakhir.status_ta',
+                'sidang_tugasakhir.nilai_pembimbing_1_ta',
+                'sidang_tugasakhir.catatan_pembimbing_1_ta',
+                'sidang_tugasakhir.nilai_pembimbing_2_ta',
+                'sidang_tugasakhir.catatan_pembimbing_2_ta',
+                'sidang_tugasakhir.nilai_penguji_1_ta',
+                'sidang_tugasakhir.catatan_penguji_1_ta',
+                'sidang_tugasakhir.nilai_penguji_2_ta',
+                'sidang_tugasakhir.catatan_penguji_2_ta',
+                'sidang_tugasakhir.id_sidangta',
+                'penjadwalan_sidang_ta.penguji_1',
+                'penjadwalan_sidang_ta.penguji_2',
 
-            // ])
+            ])
             ->get()->getResultArray();
     }
 }

@@ -172,4 +172,73 @@ class DosenPenguji extends BaseController
 			exit('Maaf tidak dapat diproses');
 		}
 	}
+
+
+
+	public function penilaiansidangta($data)
+	{
+		$session = session();
+		$dat = $session->get('user_id');
+
+		// ini untuk tabel dosen_penguji dengan id_dosen penguji ke ..
+		$dospeng = $this->penguji->get_status_penguji($dat);
+		$status_dospeng = $dospeng['0']['id_dosenpenguji'];
+
+
+		$data = [
+			'sidangta' => $this->sidangtamodel->get_sidangta($data),
+			'status_dospeng' => $status_dospeng,
+
+		];
+
+
+		return view('dosenpenguji/jadwalsidangta/formpenilaian', $data);
+	}
+
+	public function updatesidangta($id)
+	{
+		// dd($this->request->getVar());
+
+		$session = session();
+		$dat = $session->get('user_id');
+
+		$dospeng = $this->penguji->get_status_penguji($dat);
+		$status_dospeng = $dospeng['0']['id_dosenpenguji'];
+
+
+
+		$this->db->transStart();
+		// ini untuk tabel Penjadwalan_sidang dengan id penguji_1 ke ..
+		$dospeng1 = $this->penguji->get_data_penguji_1($dat);
+		// dd($status_dospeng);
+		// ini untuk tabel Penjadwalan_sidang dengan id penguji_2 ke ..
+		$dospeng2 = $this->penguji->get_data_penguji_2($dat);
+
+
+		if ($this->request->getVar('rolepenguji') == 'penguji 1') {
+			$this->sidangtamodel->save([
+				'id_sidangta' => $id,
+				'nilai_penguji_1_ta' => $this->request->getVar('nilai'),
+				'catatan_penguji_1_ta' => $this->request->getVar('catatan'),
+				'status_ta' => $this->request->getVar('status'),
+
+
+			]);
+		} elseif ($this->request->getVar('rolepenguji') == 'penguji 2') {
+			$this->sidangtamodel->save([
+				'id_sidangta' => $id,
+				'nilai_penguji_2_ta' => $this->request->getVar('nilai'),
+				'catatan_penguji_2_ta' => $this->request->getVar('catatan'),
+				'status_ta' => $this->request->getVar('status'),
+
+
+			]);
+		}
+
+		$this->db->transComplete();
+		session()->setFlashdata('pesan', 'data berhasil di tambah');
+
+
+		return redirect()->to('/dosenpenguji/jadwalsidangta');
+	}
 }
