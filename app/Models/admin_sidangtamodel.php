@@ -21,9 +21,9 @@ class admin_sidangtamodel extends Model
             ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
 
             // =======penguji1======
-            ->join('dosen_penguji', 'dosen_penguji.id_dosenpenguji = penjadwalan_sidang_ta.penguji_1')
-            ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_penguji.id_dosenta')
-            ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
+            // ->join('dosen_penguji', 'dosen_penguji.id_dosenpenguji = penjadwalan_sidang_ta.penguji_1')
+            // ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_penguji.id_dosenta')
+            // ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
             ->where(['id_jadwal_ta' => $id])
 
             ->get()->getResultArray();

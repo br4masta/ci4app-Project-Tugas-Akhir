@@ -29,8 +29,7 @@
                     <h3 class="card-title"> Proposal</h3>
                 </div>
                 <div class="card-body">
-                    <div class="card-title  d-flex">
-                    </div>
+
                     <table id="datapengajuan" class="table table-bordered table-striped" style="text-align: center; vertical-align: middle; ">
                         <?php if (session()->getFlashdata('pesan')) : ?>
                             <div class="alert alert-success" role="alert">

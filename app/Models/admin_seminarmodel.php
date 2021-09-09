@@ -17,9 +17,9 @@ class admin_seminarmodel extends Model
             ->join('pengajuan_judul', 'pengajuan_judul.id_pengajuan = bimbingan.id_pengajuan')
 
             ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
-            ->join('dosen_penguji', 'dosen_penguji.id_dosenpenguji = penjadwalan_sidang.penguji_2')
-            ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_penguji.id_dosenta')
-            ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
+            // ->join('dosen_penguji', 'dosen_penguji.id_dosenpenguji = penjadwalan_sidang.penguji_2')
+            // ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_penguji.id_dosenta')
+            // ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
             ->where(['id_jadwal' => $id])
 
             // ->where($where)

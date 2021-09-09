@@ -33,9 +33,9 @@ class admin_penjadwalanmodel extends Model
 
             ->join('mahasiswa', 'mahasiswa.id_mhs = pengajuan_judul.id_mhs')
             // =======penguji1======
-            ->join('dosen_penguji', 'dosen_penguji.id_dosenpenguji = penjadwalan_sidang.penguji_1')
-            ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_penguji.id_dosenta')
-            ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
+            // ->join('dosen_penguji', 'dosen_penguji.id_dosenpenguji = penjadwalan_sidang.penguji_1')
+            // ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_penguji.id_dosenta')
+            // ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
 
             // =======penguji2======
             // ->join('dosen_penguji as dospeng2', 'dospeng2.id_dosenpenguji = penjadwalan_sidang.penguji_2')
@@ -90,8 +90,21 @@ class admin_penjadwalanmodel extends Model
             ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_penguji.id_dosenta')
             ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
 
+            // =======penguji1======
+            ->join('dosen_penguji as dosen_penguji1', 'dosen_penguji1.id_dosenpenguji = penjadwalan_sidang.penguji_1')
+            ->join('dosen_tugasakhir as dosen_tugasakhir1', 'dosen_tugasakhir1.id_dosenta = dosen_penguji1.id_dosenta')
+            ->join('dosen as dosen1', 'dosen1.id_dosen = dosen_tugasakhir1.id_dosen')
+
+
             ->where(['id_jadwal' => $data])
             // ->where($where)
+            ->select([
+                'dosen1.nama_dosen as penguji1_nama',
+                'dosen.nama_dosen',
+                'dosen_penguji1.id_dosenpenguji as id_dosenpenguji1',
+                'dosen_penguji.id_dosenpenguji',
+
+            ])
             ->get()->getResultArray();
     }
 

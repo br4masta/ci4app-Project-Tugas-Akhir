@@ -6,6 +6,7 @@ use App\Models\dosenModel;
 use App\Models\dosen_pengajuanjudul;
 use App\Models\dosen_pembimbingmodel;
 use App\Models\dosen_bimbinganmodel;
+use App\Models\dosen_bimbingantamodel;
 use App\Models\DospemJadwalModel;
 use App\Models\dosen_sempromodel;
 use App\Models\dosen_sidangtamodel;
@@ -18,6 +19,7 @@ class Dosen extends BaseController
 	protected $pengajuanjudul;
 	protected $pembimbingmodel;
 	protected $bimbinganmodel;
+	protected $bimbingantamodel;
 	protected $sempromodel;
 	protected $sidangtamodel;
 
@@ -43,6 +45,7 @@ class Dosen extends BaseController
 		$this->data_jadwalta = new DospemJadwalModel();
 		$this->sempromodel = new dosen_sempromodel();
 		$this->sidangtamodel = new dosen_sidangtamodel();
+		$this->bimbingantamodel = new dosen_bimbingantamodel();
 	}
 	// ----------------------BAGIAN PROFIL--------------------------
 	public function index()
@@ -185,18 +188,19 @@ class Dosen extends BaseController
 
 		$dospem = $this->pembimbingmodel->get_status_pembimbing($dat);
 		$status_dospem = $dospem['0']['role_pembimbing'];
-		// dd($status_dospem);
+		// dd($dospem);
 		if ($status_dospem == 'dosen pembimbing I') {
 			$data = [
-				'tampildata_bimbingan' => $this->bimbinganprop->get_detailproposal($id),
+				'tampildata_bimbingan' => $this->bimbinganprop->get_detailproposal($id, $dat),
 				'status_dospem' => $status_dospem
 			];
 		} elseif ($status_dospem == 'dosen pembimbing II') {
 			$data = [
-				'tampildata_bimbingan' => $this->bimbinganprop->get_detailproposal2($id),
+				'tampildata_bimbingan' => $this->bimbinganprop->get_detailproposal2($id, $dat),
 				'status_dospem' => $status_dospem
 			];
 		}
+		// dd($data);
 		// dd($data['tampildata_bimbingan']);
 		return view('dosen/proposal/tabelbimbinganprop', $data);
 	}
@@ -294,18 +298,56 @@ class Dosen extends BaseController
 		// dd($status_dospem);
 		if ($status_dospem == 'dosen pembimbing I') {
 			$data = [
-				'tampildata_bimbingan' => $this->bimbinganta->datatugasakhir1($id),
+				'tampildata_bimbingan' => $this->bimbinganta->datatugasakhir1($id, $dat),
 				'status_dospem' => $status_dospem
 			];
 		} elseif ($status_dospem == 'dosen pembimbing II') {
 			$data = [
-				'tampildata_bimbingan' => $this->bimbinganta->datatugasakhir2($id),
+				'tampildata_bimbingan' => $this->bimbinganta->datatugasakhir2($id, $dat),
 				'status_dospem' => $status_dospem
 			];
 		}
 		// dd($data['tampildata_bimbingan']);
 		return view('dosen/tugasakhir/tabelbimbinganta', $data);
 	}
+
+	public function updatebimbinganta($id)
+	{
+
+		// ambil id pengajuan untuk kembali ke bimbinnganproposal($id)
+		$id_pengajuan = $this->request->getVar('id_pengajuan');
+		// -------
+		$session = session();
+		$dat = $session->get('user_id');
+
+		$dospem = $this->pembimbingmodel->get_status_pembimbing($dat);
+		$status_dospem = $dospem['0']['role_pembimbing'];
+
+
+		$this->db->transStart();
+		if ($status_dospem == 'dosen pembimbing I') {
+
+			$this->bimbingantamodel->save([
+				'id_bimbingan_ta'	=> $id,
+				'status_bimbingan_pembimbing1_ta' => $this->request->getVar('statuspembimbing'),
+				'catatan_bimbingan_pembimbing1_ta' => $this->request->getVar('catatan'),
+
+			]);
+		} elseif ($status_dospem == 'dosen pembimbing II') {
+
+			$this->bimbingantamodel->save([
+				'id_bimbingan_ta'	=> $id,
+				'status_bimbingan_pembimbing2_ta' => $this->request->getVar('statuspembimbing'),
+				'catatan_bimbingan_pembimbing2_ta' => $this->request->getVar('catatan'),
+
+			]);
+		}
+		$this->db->transComplete();
+		session()->setFlashdata('pesan', 'data berhasil di ubah');
+
+		return redirect()->to("/dosen/get_tugasakhir/$id_pengajuan");
+	}
+
 	//=========================================================================================
 	//========================== TABEL JADWAL SEMPRO =============================================
 

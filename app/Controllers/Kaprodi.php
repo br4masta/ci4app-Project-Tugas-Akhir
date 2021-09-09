@@ -298,7 +298,9 @@ class Kaprodi extends BaseController
         $this->db->transStart();
 
         $status = $this->seminarmodel->get_statuspenjadwalan($id);
+        // dd($status);
         $status_jadwal = $status['0']['status_penjadwalan_kaprodi'];
+
 
         if ($status_jadwal == 'sudah terjadwal') {
         } elseif ($status_jadwal == 'belum terjadwal') {

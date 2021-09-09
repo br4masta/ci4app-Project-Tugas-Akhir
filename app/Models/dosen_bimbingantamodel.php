@@ -4,12 +4,12 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class dosen_pembimbingmodel extends Model
+class dosen_bimbingantamodel extends Model
 {
 
-    protected $table = 'dosen_pembimbing';
-    protected $primaryKey = 'id_dosenpembimbing';
-
+    protected $table = 'bimbingan_ta';
+    protected $primaryKey = 'id_bimbingan_ta';
+    protected $allowedFields = ['status_bimbingan_pembimbing1_ta', 'status_bimbingan_pembimbing2_ta', 'catatan_bimbingan_pembimbing1_ta', 'catatan_bimbingan_pembimbing2_ta'];
 
     public function get_status_pembimbing($data)
     {
@@ -21,7 +21,6 @@ class dosen_pembimbingmodel extends Model
             ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen')
 
             ->where(['user.id_user' => $data])
-            ->where(['user.level' => '2'])
             ->get()->getResultArray();
     }
 }

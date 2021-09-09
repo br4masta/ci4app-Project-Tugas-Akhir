@@ -81,7 +81,8 @@
                                 <div class="col-sm-10">
 
                                     <select class="form-control" id="penguji1" name="penguji1">
-                                        <option value="<?= $d['id_dosenpenguji']; ?>" selected><?= $d['nama_dosen']; ?></option>
+                                        <?php foreach ($data2 as $c) :
+                                        ?><option value="<?= $c['id_dosenpenguji1']; ?>" selected><?= $c['penguji1_nama']; ?></option><?php endforeach; ?>
                                         <?php foreach ($data3 as $a) : ?>
 
                                             <option value='<?= $a['id_dosenpenguji']; ?>'><?= $a['nama_dosen']; ?></option><?php endforeach; ?>

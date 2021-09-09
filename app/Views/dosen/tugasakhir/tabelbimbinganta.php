@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Data Proposal</h1>
+                <h1>Data Bimbingan Tugas Akhir</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -26,7 +26,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"> Proposal</h3>
+                    <h3 class="card-title"> Bimbingan Tugas Akhir</h3>
                 </div>
                 <div class="card-body">
                     <div class="card-title  d-flex">
@@ -61,11 +61,11 @@
                                         <td><?= $c['nim_mhs']; ?></td>
                                         <td><?= $c['nama_mhs']; ?></td>
                                         <td> <?= $c['judul_final_ta']; ?> </td>
-                                        <td> <?= $c['deskripsi_bimbingan'] ?></td>
+                                        <td> <?= $c['berkas_bimbingan_ta'] ?></td>
                                         <td>
                                             <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
                                         </td>
-                                        <td><?= $c['tanggal_bimbingan']; ?></td>
+                                        <td><?= $c['tanggal_bimbingan_ta']; ?></td>
 
                                         <td><?= $c['catatan_bimbingan_pembimbing1_ta']; ?> </td>
                                         <td style="text-align: center;">
@@ -73,14 +73,14 @@
                                                 echo '<span class="badge badge-warning d-inline-flex p-2">Proses</span>';
                                             elseif ($c['status_bimbingan_pembimbing1_ta'] == "lanjut bimbingan") :
                                                 echo '<span class="badge badge-success d-inline-flex p-2">lanjut bimbingan</span>';
-                                            elseif ($c['status_bimbingan_pembimbing1_ta'] == "lanjut pengajuan seminar") :
+                                            elseif ($c['status_bimbingan_pembimbing1_ta'] == "lanjut pengajuan sidang ta") :
                                                 echo '<span class="badge badge-success d-inline-flex p-2">lanjut pengajuan seminar</span>';
                                             else :
                                                 echo '<span class="badge badge-danger d-inline-flex p-2">Revisi</span>';
                                             endif ?>
                                         </td>
 
-                                        <td><a><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modaledit<?= $c['id_bimbingan']; ?>"><i class='fas fa-pencil-alt'></i>
+                                        <td><a><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modaledit<?= $c['id_bimbingan_ta']; ?>"><i class='fas fa-pencil-alt'></i>
                                                 </button> </a>
                                         </td>
 
@@ -88,11 +88,11 @@
                                         <td><?= $c['nim_mhs']; ?></td>
                                         <td><?= $c['nama_mhs']; ?></td>
                                         <td> <?= $c['judul_final_ta']; ?> </td>
-                                        <td> <?= $c['deskripsi_bimbingan'] ?></td>
+                                        <td> <?= $c['berkas_bimbingan_ta'] ?></td>
                                         <td>
                                             <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
                                         </td>
-                                        <td><?= $c['tanggal_bimbingan']; ?></td>
+                                        <td><?= $c['tanggal_bimbingan_ta']; ?></td>
 
                                         <td><?= $c['catatan_bimbingan_pembimbing2_ta']; ?> </td>
                                         <td style="text-align: center;">
@@ -100,13 +100,13 @@
                                                 echo '<span class="badge badge-warning d-inline-flex p-2">Proses</span>';
                                             elseif ($c['status_bimbingan_pembimbing2_ta'] == "lanjut bimbingan") :
                                                 echo '<span class="badge badge-success d-inline-flex p-2">lanjut bimbingan</span>';
-                                            elseif ($c['status_bimbingan_pembimbing2_ta'] == "lanjut pengajuan seminar") :
+                                            elseif ($c['status_bimbingan_pembimbing2_ta'] == "lanjut pengajuan sidang ta") :
                                                 echo '<span class="badge badge-success d-inline-flex p-2">lanjut pengajuan seminar</span>';
                                             else :
                                                 echo '<span class="badge badge-danger d-inline-flex p-2">Revisi</span>';
                                             endif ?>
                                         </td>
-                                        <td><a><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modaledit<?= $c['id_bimbingan']; ?>"><i class='fas fa-pencil-alt'></i>
+                                        <td><a><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modaledit<?= $c['id_bimbingan_ta']; ?>"><i class='fas fa-pencil-alt'></i>
                                                 </button> </a>
                                         </td>
 
@@ -133,7 +133,7 @@
 
 
 <!-- Modal edit--><?php foreach ($tampildata_bimbingan as $c) : ?>
-    <div class="modal fade" id="modaledit<?= $c['id_bimbingan']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modaledit<?= $c['id_bimbingan_ta']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -142,7 +142,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="/dosen/updateproposal/<?= $c['id_bimbingan']; ?>" method="POST">
+                <form action="/dosen/updatebimbinganta/<?= $c['id_bimbingan_ta']; ?>" method="POST">
                     <?= csrf_field(); ?>
                     <div class="modal-body">
                         <!-- jika login pembimbing 1 -->
@@ -153,14 +153,14 @@
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">Status pembimbing 2</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="status pembimbing2" name="status pembimbing2" value="<?= $c['status_bimbingan_pembimbing2']; ?>" readonly>
+                                    <input type="text" class="form-control" id="status pembimbing2" name="status pembimbing2" value="<?= $c['status_bimbingan_pembimbing2_ta']; ?>" readonly>
 
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">catatan pembimbing 2</label>
                                 <div class="col-sm-6">
-                                    <textarea class="form-control" name="catatan2" id="catatan2" cols="30" rows="10" readonly><?= $c['catatan_bimbingan_pembimbing2']; ?></textarea>
+                                    <textarea class="form-control" name="catatan2" id="catatan2" cols="30" rows="10" readonly><?= $c['catatan_bimbingan_pembimbing2_ta']; ?></textarea>
                                 </div>
                             </div>
 
@@ -168,11 +168,11 @@
                                 <label for="" class="col-sm-2 col-form-label"> Status pembimbing 1</label>
                                 <div class="col-sm-6">
                                     <select name="statuspembimbing" id="statuspembimbing" class="form-control" required>
-                                        <option value="<?= $c['status_bimbingan_pembimbing1']; ?>" selected><?= $c['status_bimbingan_pembimbing1']; ?></option>
+                                        <option value="<?= $c['status_bimbingan_pembimbing1_ta']; ?>" selected><?= $c['status_bimbingan_pembimbing1_ta']; ?></option>
                                         <option value="lanjut bimbingan">lanjut bimbingan</option>
                                         <option value="proses">proses</option>
                                         <option value="revisi">revisi</option>
-                                        <option value="lanjut pengajuan seminar">lanjut pengajuan seminar</option>
+                                        <option value="lanjut pengajuan sidang ta">lanjut pengajuan sidang ta</option>
                                     </select>
                                 </div>
                             </div>
@@ -187,14 +187,14 @@
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">Status pembimbing 1</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="status pembimbing1" name="status pembimbing1" value="<?= $c['status_bimbingan_pembimbing1']; ?>" readonly>
+                                    <input type="text" class="form-control" id="status pembimbing1" name="status pembimbing1" value="<?= $c['status_bimbingan_pembimbing1_ta']; ?>" readonly>
 
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">catatan pembimbing 1</label>
                                 <div class="col-sm-6">
-                                    <textarea class="form-control" name="catatan1" id="catatan1" cols="30" rows="10" readonly><?= $c['catatan_bimbingan_pembimbing1']; ?></textarea>
+                                    <textarea class="form-control" name="catatan1" id="catatan1" cols="30" rows="10" readonly><?= $c['catatan_bimbingan_pembimbing1_ta']; ?></textarea>
                                 </div>
                             </div>
 
@@ -202,18 +202,18 @@
                                 <label for="" class="col-sm-2 col-form-label"> Status pembimbing 2</label>
                                 <div class="col-sm-6">
                                     <select name="statuspembimbing" id="statuspembimbing" class="form-control" required>
-                                        <option value="<?= $c['status_bimbingan_pembimbing2']; ?>" selected><?= $c['status_bimbingan_pembimbing2']; ?></option>
+                                        <option value="<?= $c['status_bimbingan_pembimbing2_ta']; ?>" selected><?= $c['status_bimbingan_pembimbing2_ta']; ?></option>
                                         <option value="lanjut bimbingan">lanjut bimbingan</option>
                                         <option value="proses">proses</option>
                                         <option value="revisi">revisi</option>
-                                        <option value="lanjut pengajuan seminar">lanjut pengajuan seminar</option>
+                                        <option value="lanjut pengajuan sidang ta">lanjut pengajuan sidang ta</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">catatan pembimbing 2</label>
                                 <div class="col-sm-6">
-                                    <textarea class="form-control" name="catatan" id="catatan" cols="30" rows="10"><?= $c['catatan_bimbingan_pembimbing2']; ?></textarea>
+                                    <textarea class="form-control" name="catatan" id="catatan" cols="30" rows="10"><?= $c['catatan_bimbingan_pembimbing2_ta']; ?></textarea>
                                 </div>
                             </div>
                         <?php endif; ?>

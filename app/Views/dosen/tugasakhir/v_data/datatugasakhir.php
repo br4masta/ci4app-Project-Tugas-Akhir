@@ -30,7 +30,7 @@
                   </td>
                   <td><?= $c['pembimbing1_nama']; ?></td>
                   <td><?= $c['pembimbing2_nama']; ?></td>
-                    <td>
+                  <td>
                       <a href="/dosen/get_tugasakhir/<?= $c['id_pengajuan']; ?>"><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target=""><i class='fas fa-pencil-alt'></i>
                           </button></a>
                   </td>
@@ -47,7 +47,7 @@
                   <td>
                       <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
                   </td>
-                   <td><?= $d['pembimbing1_nama']; ?></td>
+                  <td><?= $d['pembimbing1_nama']; ?></td>
                   <td><?= $d['pembimbing2_nama']; ?></td>
                   <td>
                       <a href="/dosen/get_tugasakhir/<?= $d['id_pengajuan']; ?>"><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target=""><i class='fas fa-pencil-alt'></i>
