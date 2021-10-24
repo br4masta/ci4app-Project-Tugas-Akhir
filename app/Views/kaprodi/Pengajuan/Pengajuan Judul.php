@@ -281,6 +281,10 @@
                     </div>
 
                 </div>
+                <div class=""><label for="textarea-input" class=""></label><label for=" search-input"><strong>Berkas:</strong></label></div>
+                <div id="pdfDownloadLinkContainer" class="mb-5">
+                    <a class="action pdf" id="pdfDownloadLink" target="_parent" href="<?= base_url() ?>/assets/img/file/<?= $d['deskripsi_judul']; ?>">Download this PDF file</a>
+                </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

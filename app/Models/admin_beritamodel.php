@@ -231,6 +231,7 @@ class admin_beritamodel extends Model
                 'penjadwalan_sidang_ta.tempat_sidang_ta',
                 'sidang_tugasakhir.nilai_ta',
                 'penjadwalan_sidang.berkas_proposal',
+                'penjadwalan_sidang_ta.berkas_proposal_ta',
                 'sidang_tugasakhir.nilai_penguji_1_ta',
                 'sidang_tugasakhir.nilai_penguji_2_ta',
                 'sidang_tugasakhir.nilai_pembimbing_1_ta',
