@@ -120,7 +120,7 @@
 
                         <div class=""><label for="textarea-input" class=""></label><label for=" search-input"><strong>Berkas:</strong></label></div>
                         <div id="pdfDownloadLinkContainer" class="mb-5">
-                            <a class="action pdf" id="pdfDownloadLink" target="_parent" href="<?= base_url() ?>/assets/admin/berkas/doc 1.pdf">Download this PDF file</a>
+                            <a class="action pdf" id="pdfDownloadLink" target="_parent" href="<?= base_url() ?>/assets/img/file/<?= $d['berkas_proposal']; ?>">Download this PDF file</a>
                         </div>
 
                     </form>

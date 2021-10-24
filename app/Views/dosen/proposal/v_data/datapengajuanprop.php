@@ -26,7 +26,7 @@
                   <td><?= $c['nama_mhs']; ?></td>
                   <td> <?= $c['judul']; ?> </td>
                   <td>
-                      <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
+                      <a href="<?= base_url(); ?>/assets/img/file/<?= $c['deskripsi_judul']; ?>"><img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50"></a>
                   </td>
                   <td><?= $c['pembimbing1_nama']; ?></td>
                   <td><?= $c['pembimbing2_nama']; ?></td>
@@ -45,7 +45,7 @@
                   <td><?= $d['nama_mhs']; ?></td>
                   <td> <?= $d['judul']; ?> </td>
                   <td>
-                      <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
+                      <a href="<?= base_url(); ?>/assets/img/file/<?= $d['deskripsi_judul']; ?>"><img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50"></a>
                   </td>
                   <td><?= $d['pembimbing1_nama']; ?></td>
                   <td><?= $d['pembimbing2_nama']; ?></td>

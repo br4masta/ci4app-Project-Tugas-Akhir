@@ -51,6 +51,7 @@ class dosen_pengajuanjudul extends Model
                 'pengajuan_judul.catatan_pembimbing_2',
                 'pengajuan_judul.konfirmasi_pembimbing_1',
                 'pengajuan_judul.konfirmasi_pembimbing_2',
+                'pengajuan_judul.deskripsi_judul',
 
 
             ])

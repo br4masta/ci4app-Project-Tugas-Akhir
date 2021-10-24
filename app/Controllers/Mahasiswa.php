@@ -123,7 +123,7 @@ class Mahasiswa extends BaseController
 					'deskripsi_judul' => $fileName,
 				];
 
-				$dataBerkas->move('assets/img/File', $nama_judul . '.' . $dataBerkas->getExtension());
+				$dataBerkas->move('assets/img/File', $fileName);
 				$this->pengajuan_mhs->insert_pengajuan($data);
 
 				$msg = [
@@ -225,7 +225,7 @@ class Mahasiswa extends BaseController
 					'berkas_bimbingan' => $fileName,
 				];
 
-				$dataBerkas->move('assets/img/File', $nama_bimbingan . '.' . $dataBerkas->getExtension());
+				$dataBerkas->move('assets/img/File', $fileName);
 				$this->bimbingan_mhs->insert_bimbingan($data);
 
 				$msg = [
@@ -305,7 +305,7 @@ class Mahasiswa extends BaseController
 					'berkas_proposal' => $fileName,
 				];
 
-				$dataBerkas->move('assets/img/File', $nama_judul . '.' . $dataBerkas->getExtension());
+				$dataBerkas->move('assets/img/File', $fileName);
 				$this->sempro->insert_pengajuan_sempro($data);
 
 				$msg = [
@@ -395,7 +395,7 @@ class Mahasiswa extends BaseController
 					'berkas_proposal_ta' => $fileName,
 				];
 
-				$dataBerkas->move('assets/img/File', $nama_judul . '.' . $dataBerkas->getExtension());
+				$dataBerkas->move('assets/img/File', $fileName);
 				$this->sidang_tugasakhir1->insert_pengajuan_ta($data);
 
 				$msg = [
@@ -496,7 +496,7 @@ class Mahasiswa extends BaseController
 					'berkas_bimbingan_ta' => $fileName,
 				];
 
-				$dataBerkas->move('assets/img/File', $nama_bimbingan . '.' . $dataBerkas->getExtension());
+				$dataBerkas->move('assets/img/File', $fileName);
 				$this->sempro2->insert_bimbingan_ta($data);
 
 				$msg = [

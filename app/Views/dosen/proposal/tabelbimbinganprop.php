@@ -62,7 +62,7 @@
                                         <td> <?= $c['judul_bimbingan']; ?> </td>
                                         <td> <?= $c['deskripsi_bimbingan'] ?></td>
                                         <td>
-                                            <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
+                                            <a href="<?= base_url(); ?>/assets/img/file/<?= $c['berkas_bimbingan']; ?>"><img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50"></a>
                                         </td>
                                         <td><?= $c['tanggal_bimbingan']; ?></td>
 
@@ -89,7 +89,7 @@
                                         <td> <?= $c['judul_bimbingan']; ?> </td>
                                         <td> <?= $c['deskripsi_bimbingan'] ?></td>
                                         <td>
-                                            <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
+                                            <a href="<?= base_url(); ?>/assets/img/file/<?= $c['berkas_bimbingan']; ?>"><img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50"></a>
                                         </td>
                                         <td><?= $c['tanggal_bimbingan']; ?></td>
 

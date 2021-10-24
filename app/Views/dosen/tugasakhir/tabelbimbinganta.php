@@ -63,7 +63,7 @@
                                         <td> <?= $c['judul_final_ta']; ?> </td>
                                         <td> <?= $c['berkas_bimbingan_ta'] ?></td>
                                         <td>
-                                            <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
+                                            <a href="<?= base_url(); ?>/assets/img/file/<?= $c['berkas_bimbingan_ta']; ?>"><img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50"></a>
                                         </td>
                                         <td><?= $c['tanggal_bimbingan_ta']; ?></td>
 
@@ -90,7 +90,7 @@
                                         <td> <?= $c['judul_final_ta']; ?> </td>
                                         <td> <?= $c['berkas_bimbingan_ta'] ?></td>
                                         <td>
-                                            <img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50">
+                                            <a href="<?= base_url(); ?>/assets/img/file/<?= $c['berkas_bimbingan_ta']; ?>"><img src="<?= base_url() ?>/assets/style/img/pdf.png" width="50" height="50"></a>
                                         </td>
                                         <td><?= $c['tanggal_bimbingan_ta']; ?></td>
 

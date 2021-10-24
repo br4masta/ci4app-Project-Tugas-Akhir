@@ -123,6 +123,7 @@ class admin_beritamodel extends Model
                 'mahasiswa.nim_mhs',
                 'mahasiswa.nama_mhs',
                 'penjadwalan_sidang.acara_sidang',
+                'penjadwalan_sidang.berkas_proposal',
                 'pengajuan_judul.judul',
                 'penjadwalan_sidang.tanggal_sidang',
                 'penjadwalan_sidang.tempat_sidang',
