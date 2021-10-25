@@ -42,6 +42,7 @@ class dosen_sidangtamodel extends Model
                 'sidang_tugasakhir.id_sidangta',
                 'penjadwalan_sidang_ta.penguji_1',
                 'penjadwalan_sidang_ta.penguji_2',
+                'penjadwalan_sidang_ta.berkas_proposal_ta',
 
             ])
             ->get()->getResultArray();

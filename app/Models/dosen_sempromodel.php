@@ -41,6 +41,7 @@ class dosen_sempromodel extends Model
                 'pengajuan_judul.judul',
                 'penjadwalan_sidang.penguji_1',
                 'penjadwalan_sidang.penguji_2',
+                'penjadwalan_sidang.berkas_proposal',
 
             ])
             ->get()->getResultArray();

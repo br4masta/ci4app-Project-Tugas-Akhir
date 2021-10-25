@@ -193,11 +193,11 @@ class admin_beritamodel extends Model
             ->join('data_akademik', 'data_akademik.id_dataakademik = mahasiswa.id_dataakademik')
 
             // dosen penguji 1
-            ->join('dosen_penguji as dospenguji1', 'dospenguji1.id_dosenpenguji = penjadwalan_sidang.penguji_1')
+            ->join('dosen_penguji as dospenguji1', 'dospenguji1.id_dosenpenguji = penjadwalan_sidang_ta.penguji_1')
             ->join('dosen_tugasakhir as pengujita1', 'pengujita1.id_dosenta = dospenguji1.id_dosenta')
             ->join('dosen as dosen_penguji1', 'dosen_penguji1.id_dosen = pengujita1.id_dosen')
             // dosen penguji 2
-            ->join('dosen_penguji as dospenguji2', 'dospenguji2.id_dosenpenguji = penjadwalan_sidang.penguji_2')
+            ->join('dosen_penguji as dospenguji2', 'dospenguji2.id_dosenpenguji = penjadwalan_sidang_ta.penguji_2')
             ->join('dosen_tugasakhir as pengujita2', 'pengujita2.id_dosenta = dospenguji2.id_dosenta')
             ->join('dosen as dosen_penguji2', 'dosen_penguji2.id_dosen = pengujita2.id_dosen')
             // dosen pembimbing 1

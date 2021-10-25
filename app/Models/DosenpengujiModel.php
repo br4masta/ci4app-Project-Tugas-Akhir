@@ -149,7 +149,7 @@ class DosenpengujiModel extends Model
             // ->join('dosen as penguji1', 'penguji1.id_dosen = dosenpenguji1.id_dosen')
 
             // penguji2
-            ->join('dosen_penguji as dospeng2', 'dospeng2.id_dosenpenguji = penjadwalan_sidang.penguji_2')
+            ->join('dosen_penguji as dospeng2', 'dospeng2.id_dosenpenguji = penjadwalan_sidang_ta.penguji_2')
             ->join('dosen_tugasakhir as dosenpenguji2', 'dosenpenguji2.id_dosenta = dospeng2.id_dosenta')
             ->join('dosen as penguji2', 'penguji2.id_dosen = dosenpenguji2.id_dosen')
 
@@ -203,7 +203,7 @@ class DosenpengujiModel extends Model
             ->join('leveling_dosen', 'leveling_dosen.id_dosenta = dosen_tugasakhir.id_dosenta')
             ->join('user', 'user.id_user = leveling_dosen.id_user')
             //penguji1
-            ->join('dosen_penguji as dospeng1', 'dospeng1.id_dosenpenguji = penjadwalan_sidang.penguji_1')
+            ->join('dosen_penguji as dospeng1', 'dospeng1.id_dosenpenguji = penjadwalan_sidang_ta.penguji_1')
             ->join('dosen_tugasakhir as dosenpenguji1', 'dosenpenguji1.id_dosenta = dospeng1.id_dosenta')
             ->join('dosen as penguji1', 'penguji1.id_dosen = dosenpenguji1.id_dosen')
 
