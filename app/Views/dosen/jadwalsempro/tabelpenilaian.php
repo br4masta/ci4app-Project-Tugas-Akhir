@@ -35,16 +35,17 @@
 
 				<!-- Profile Image -->
 				<div class="card card-primary card-outline">
-					<div class="card-body box-profile">
-						<div class="text-center">
-							<img class="profile-user-img img-fluid" src="<?= base_url(); ?>/assets/style/img/pdf.png" alt="User profile picture">
+					<?php foreach ($sempro as $d) : ?>
+						<div class="card-body box-profile">
+							<div class="text-center">
+								<img class="profile-user-img img-fluid" src="<?= base_url(); ?>/assets/style/img/pdf.png" alt="User profile picture">
+							</div>
+							<div class="mt-5" style=" text-align : center; vertical-align: middle;">
+								<a href="<?= base_url(); ?>/assets/img/file/<?= $d['berkas_proposal']; ?>"> <button type="button" class="btn btn-outline-primary btn-sm">View File</button></a>
+							</div>
+						<?php endforeach; ?>
 						</div>
-						<div class="mt-5" style=" text-align : center; vertical-align: middle;">
-							<button type="button" class="btn btn-outline-primary btn-sm">View File</button>
-						</div>
-
-					</div>
-					<!-- /.card-body -->
+						<!-- /.card-body -->
 				</div>
 				<!-- /.card -->
 
