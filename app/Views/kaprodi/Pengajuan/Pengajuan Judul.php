@@ -33,6 +33,10 @@
                             <div class="alert alert-success" role="alert">
                                 <?= session()->getFlashdata('pesan'); ?>
                             </div>
+                        <?php elseif (session()->getFlashdata('hapuspesan')) : ?>
+                            <div class="alert alert-danger" role="alert">
+                                <?= session()->getFlashdata('hapuspesan'); ?>
+                            </div>
                         <?php endif; ?>
 
 
@@ -90,10 +94,10 @@
                                                     <i class="fa fa-edit"></i>
                                                 </button>
                                             </a>
-                                            <a href="" onClick="return confirm('Anda yakin akan menghapus data ini ?')" />
-                                            <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
-                                                <i class="fa fa-times"></i>
-                                            </button>
+                                            <a href="/kaprodi/deletepengajuan/<?= $d['id_pengajuan']; ?>" onClick="return confirm('Anda yakin akan menghapus data ini ?')">
+                                                <button class="btn btn-xs btn-flat btn-danger btnbrg-del">
+                                                    <i class="fa fa-times"></i>
+                                                </button>
                                             </a>
                                         </td>
 

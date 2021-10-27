@@ -165,6 +165,22 @@ class Kaprodi extends BaseController
         ];
         return view('kaprodi/Pengajuan/Pengajuan judul', $data);
     }
+    public function deletepengajuan($id)
+    {
+        // dd($this->request->getVar());
+
+        $this->pengajuanmodel->delete([
+
+            'id_pengajuan' => $id
+
+
+
+
+        ]);
+        session()->setFlashdata('hapuspesan', 'data berhasil di hapus');
+
+        return redirect()->to('/kaprodi/pengajuan');
+    }
 
     public function updatepengajuan($id)
     {
