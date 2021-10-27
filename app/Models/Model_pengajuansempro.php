@@ -28,6 +28,15 @@ class Model_pengajuansempro extends Model
             ->join('dosen_pembimbing as dospem2', 'dospem2.id_dosenpembimbing = pengajuan_judul.dosenpembimbing2')
             ->join('dosen_tugasakhir as doshir2', 'doshir2.id_dosenta = dospem2.id_dosenta')
             ->join('dosen as dos2', 'dos2.id_dosen = doshir2.id_dosen')
+            
+            ->join('dosen_penguji as dosuji1', 'dosuji1.id_dosenpenguji = penjadwalan_sidang.penguji_1')
+            ->join('dosen_tugasakhir as doshir3', 'doshir3.id_dosenta = dosuji1.id_dosenta')
+            ->join('dosen as dos3', 'dos3.id_dosen = doshir3.id_dosen')
+            //----------------------------------------------------------------------------
+            ->join('dosen_penguji as dosuji2', 'dosuji2.id_dosenpenguji = penjadwalan_sidang.penguji_2')
+            ->join('dosen_tugasakhir as doshir4', 'doshir4.id_dosenta = dosuji2.id_dosenta')
+            ->join('dosen as dos4', 'dos4.id_dosen = doshir4.id_dosen')
+
             ->where('user.id_user', $id)
             ->select([
                 'mahasiswa.id_mhs',
@@ -44,7 +53,8 @@ class Model_pengajuansempro extends Model
                 'pengajuan_judul.deskripsi',
                 'dos1.nama_dosen as dos1_nama',
                 'dos2.nama_dosen as dos2_nama',
-
+                'dos3.nama_dosen as dos3_nama',
+                'dos4.nama_dosen as dos4_nama',
             ])
             ->get()->getResultArray();
     }

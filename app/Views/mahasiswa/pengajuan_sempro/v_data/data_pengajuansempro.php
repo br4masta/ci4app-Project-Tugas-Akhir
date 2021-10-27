@@ -60,6 +60,18 @@
                                 <input type="text" class="form-control" id="waktu" name="waktu" value="<?= $row['tempat_sidang']; ?>" readonly>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-6 col-form-label">penguji 1</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="penguji" name="penguji" value="<?= $row['dos3_nama']; ?>" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-6 col-form-label">penguji 2</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="penguji" name="penguji" value="<?= $row['dos4_nama']; ?>" readonly>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
