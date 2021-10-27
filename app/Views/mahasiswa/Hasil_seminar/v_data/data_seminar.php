@@ -87,19 +87,19 @@
                         <div class="col-lg-6" style="width:1250px;">
                             <table class="table table-borderless">
                                 <tr>
-                                    <th>Catatan Penguji I</th>
+                                    <th>Catatan Pembimbing I</th>
                                     <td> <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="width:580px;"><?= $row['catatan_pembimbing_1']; ?></textarea></td>
                                 </tr>
                                 <tr>
-                                    <th>Catatan Penguji II</th>
+                                    <th>Catatan Pembimbing II</th>
                                     <td> <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="width:580px;"><?= $row['catatan_pembimbing_2']; ?></textarea></td>
                                 </tr>
                                 <tr>
-                                    <th>Catatan Pembimbing I</th>
+                                    <th>Catatan Penguji I</th>
                                     <td> <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="width:580px;"><?= $row['catatan_penguji_1']; ?></textarea></td>
                                 </tr>
                                 <tr>
-                                    <th>Catatan Pembimbing II</th>
+                                    <th>Catatan Penguji II</th>
                                     <td> <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="width:580px;"><?= $row['catatan_penguji_2']; ?></textarea></td>
                                 </tr>
                             </table>
