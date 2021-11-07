@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Data Jadwal Mahasiswa Skripsi</h1>
+                <h1 class="m-0">Data Jadwal Mahasiswa Sidang Tugas Akhir</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -34,7 +34,7 @@
                                 <?= session()->getFlashdata('pesan'); ?>
                             </div>
                         <?php endif; ?>
-                        <h3 class="card-title">Data Sidang Tugas Akhir</h3>
+                        <h3 class="card-title">Data jadwal Sidang Tugas Akhir</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
