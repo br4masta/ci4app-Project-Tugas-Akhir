@@ -813,6 +813,9 @@ class Admin extends BaseController
 		$this->dataakademikmodel->save([
 			'id_dataakademik' => $id,
 			'status' => $this->request->getVar('status'),
+			'semester' => $this->request->getVar('semester'),
+			'tanggal_mulai' => $this->request->getVar('tanggal_mulai'),
+			'tanggal_akhir' => $this->request->getVar('tanggal_akhir'),
 
 
 

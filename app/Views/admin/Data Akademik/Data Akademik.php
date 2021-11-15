@@ -118,8 +118,8 @@
                         <div class="col-sm-6">
                             <select name="semester" id="semester" class="form-control" required>
                                 <option value="">-Pilih-</option>
-                                <option value="ganjil">Genap</option>
-                                <option value="genap">Ganjil</option>
+                                <option value="ganjil">Ganjil</option>
+                                <option value="genap">Genap</option>
                             </select>
 
 
@@ -184,20 +184,27 @@
 
                         <div class="form-group row">
                             <label for="" class="col-sm-2 col-form-label"> Semester</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" id="semester" name="semester" value="<?= $a['semester']; ?>" readonly>
+                            <div class="col-sm-6">
+                                <select name="semester" id="semester" class="form-control" required>
+                                    <option value="<?= $a['semester']; ?>"><?= $a['semester']; ?></option>
+                                    <option value="ganjil">Ganjil</option>
+                                    <option value="genap">Genap</option>
+                                </select>
+
+
                             </div>
                         </div>
+
                         <div class="form-group row">
                             <label for="" class="col-sm-2 col-form-label"> Mulai</label>
                             <div class="col-sm-6">
-                                <input class="form-control" type="tanggal_mulai" name="tanggal_mulai" value="<?= $a['tanggal_mulai']; ?>" readonly>
+                                <input class="form-control" type="date" name="tanggal_mulai" value="<?= $a['tanggal_mulai']; ?>">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="" class="col-sm-2 col-form-label"> Akhir</label>
                             <div class="col-sm-6">
-                                <input class="form-control" type="tanggal_akhir" name="tanggal_akhir" value="<?= $a['tanggal_akhir']; ?>" readonly>
+                                <input class="form-control" type="date" name="tanggal_akhir" value="<?= $a['tanggal_akhir']; ?>">
                             </div>
                         </div>
                         <div class="form-group row">
