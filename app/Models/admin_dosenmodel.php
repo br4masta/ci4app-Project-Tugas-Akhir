@@ -8,7 +8,7 @@ class admin_dosenmodel extends Model
 {
     protected $table = 'dosen';
     protected $primaryKey = 'id_dosen';
-    protected $allowedFields = ['nidn_dosen', 'nama_dosen', 'foto_dosen'];
+    protected $allowedFields = ['nidn_dosen', 'nama_dosen', 'foto_dosen', 'program_studi_dosen', 'fakultas_dosen'];
 
     public function __construct()
     {

@@ -8,7 +8,7 @@ class admin_profilmodel extends Model
 {
     protected $table = 'dosen';
     protected $primaryKey = 'id_dosen';
-    protected $allowedFields = ['id_dosen', 'nama_dosen', 'jkdosen', 'notelp', 'foto_dosen', 'email'];
+    protected $allowedFields = ['id_dosen', 'nama_dosen', 'jkdosen', 'notelp', 'foto_dosen', 'email', 'program_studi_dosen', 'fakultas_dosen'];
 
     public function get_dosen($id)
     {
@@ -39,6 +39,7 @@ class admin_profilmodel extends Model
             ->where('user.id_user', $id)
             ->get()->getResultArray();
     }
+
     public function get_jadwalseminar1($data = false)
     {
         if ($data == false) {

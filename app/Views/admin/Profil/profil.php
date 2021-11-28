@@ -93,9 +93,9 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Jurusan/Fakultas</th>
+                                    <th scope="row">Prodi/Fakultas</th>
                                     <td>
-                                        Teknik Informatika/Teknik
+                                        <?= $c['program_studi_dosen']; ?>/<?= $c['fakultas_dosen']; ?>
                                     </td>
                                 </tr>
                                 <tr>

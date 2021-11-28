@@ -157,6 +157,8 @@ class Admin extends BaseController
 			'email' => $this->request->getVar('email'),
 			'jkdosen' => $this->request->getVar('jeniskelamin'),
 			'foto_dosen' => $foto,
+			'program_studi_dosen' => $this->request->getVar('program_studi_dosen'),
+			'fakultas_dosen' => $this->request->getVar('fakultas_dosen'),
 
 
 
@@ -224,6 +226,8 @@ class Admin extends BaseController
 			'jk_mhs' => $this->request->getVar('jeniskelamin'),
 			'id_user' => $iduser,
 			'id_dataakademik' => $this->request->getVar('dataakademik'),
+			'program_studi_mhs' => $this->request->getVar('program_studi_mhs'),
+			'fakultas_mhs' => $this->request->getVar('fakultas_mhs'),
 
 
 		]);
@@ -257,6 +261,8 @@ class Admin extends BaseController
 			'jk_mhs' => $this->request->getVar('jeniskelamin'),
 			'id_user' => $this->request->getVar('id_user'),
 			'id_dataakademik' => $this->request->getVar('dataakademik'),
+			'program_studi_mhs' => $this->request->getVar('program_studi_mhs'),
+			'fakultas_mhs' => $this->request->getVar('fakultas_mhs'),
 
 
 		]);
@@ -982,6 +988,8 @@ class Admin extends BaseController
 			'nidn_dosen' => $this->request->getVar('nidn'),
 			'nama_dosen' => $this->request->getVar('nama'),
 			'foto_dosen' => $foto,
+			'program_studi_dosen' => $this->request->getVar('program_studi_dosen'),
+			'fakultas_dosen' => $this->request->getVar('fakultas_dosen'),
 
 
 

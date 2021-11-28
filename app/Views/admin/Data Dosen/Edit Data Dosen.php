@@ -47,6 +47,38 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Program Studi</label>
+
+                        <div class="col-sm-8">
+                            <select name="program_studi_dosen" id="program_studi_dosen" class="form-control" required>
+                                <option value="<?= $d['program_studi_dosen']; ?>" selected><?= $d['program_studi_dosen']; ?></option>
+                                <option value="Teknik Informatika">Teknik Informatika</option>
+                                <option value="Teknik Sipil">Teknik Sipil</option>
+                                <option value="Teknik Geomatika">Teknik Geomatika</option>
+                            </select>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Fakultas</label>
+
+                        <div class="col-sm-8">
+
+                            <select name="fakultas_dosen" id="fakultas_dosen" class="form-control" required>
+                                <option value="<?= $d['fakultas_dosen']; ?>" selected><?= $d['fakultas_dosen']; ?></option>
+                                <option value="Teknik">Teknik</option>
+
+                            </select>
+
+                        </div>
+                    </div>
+
+
 
                     <div class=" form-group">
                         <label class="col-sm-2 control-label">Foto</label>

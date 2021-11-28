@@ -145,6 +145,36 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label class="col-sm-2 control-label">Program Studi</label>
+
+                        <div class="col-sm-6">
+                            <select name="program_studi_mhs" id="program_studi_mhs" class="form-control" required>
+
+                                <option value="Teknik Informatika">Teknik Informatika</option>
+                                <option value="Teknik Sipil">Teknik Sipil</option>
+                                <option value="Teknik Geomatika">Teknik Geomatika</option>
+                            </select>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 control-label">Fakultas</label>
+
+                        <div class="col-sm-6">
+
+                            <select name="fakultas_mhs" id="fakultas_mhs" class="form-control" required>
+
+                                <option value="Teknik">Teknik</option>
+
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label">Kata Sandi</label>
                         <div class="col-sm-6">
                             <input type="password" class="form-control" id="password" name="password" value="" placeholder="masukan Kata Sandi" required>
@@ -213,6 +243,36 @@
                                 <input type="text" class="form-control" id="password" name="password" value="<?= $c['password']; ?>">
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 control-label">Program Studi</label>
+
+                            <div class="col-sm-6">
+                                <select name="program_studi_mhs" id="program_studi_mhs" class="form-control" required>
+                                    <option value="<?= $c['program_studi_mhs']; ?>" selected><?= $c['program_studi_mhs']; ?></option>
+                                    <option value="Teknik Informatika">Teknik Informatika</option>
+                                    <option value="Teknik Sipil">Teknik Sipil</option>
+                                    <option value="Teknik Geomatika">Teknik Geomatika</option>
+                                </select>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 control-label">Fakultas</label>
+
+                            <div class="col-sm-6">
+
+                                <select name="fakultas_mhs" id="fakultas_mhs" class="form-control" required>
+                                    <option value="<?= $c['fakultas_mhs']; ?>" selected><?= $c['fakultas_mhs']; ?></option>
+                                    <option value="Teknik">Teknik</option>
+
+                                </select>
+
+                            </div>
+                        </div>
 
 
                     </div>
@@ -255,6 +315,18 @@
                             <label for="" class="col-sm-2 col-form-label">Tahun Akademik</label>
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" id="nama_mhs" name="nama_mhs" value="<?= $c['tahun_akademik']; ?>" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">Fakultas</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="nama_mhs" name="nama_mhs" value="<?= $c['fakultas_mhs']; ?>" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">Program Studi</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="nama_mhs" name="nama_mhs" value="<?= $c['program_studi_mhs']; ?>" readonly>
                             </div>
                         </div>
 

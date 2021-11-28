@@ -8,7 +8,7 @@ class admin_mahasiswamodel extends Model
 {
     protected $table = 'mahasiswa';
     protected $primaryKey = 'id_mhs';
-    protected $allowedFields = ['nama_mhs', 'nim_mhs', 'jk_mhs', 'id_user', 'id_dataakademik'];
+    protected $allowedFields = ['nama_mhs', 'nim_mhs', 'jk_mhs', 'id_user', 'id_dataakademik', 'program_studi_mhs', 'fakultas_mhs'];
 
 
     public function get_mahasiswa()

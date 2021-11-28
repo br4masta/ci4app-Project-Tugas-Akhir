@@ -65,9 +65,37 @@
                                     </tr>
 
                                     <tr>
-                                        <th scope="row">Jurusan/Fakultas</th>
+                                        <th scope="row">Program Studi</th>
                                         <td>
-                                            Teknik Informatika/Teknik
+                                            <div class="form-group row">
+
+                                                <div class="col-sm-6">
+                                                    <select name="program_studi_dosen" id="program_studi_dosen" class="form-control" required>
+                                                        <option value="<?= $c['program_studi_dosen']; ?>" selected><?= $c['program_studi_dosen']; ?></option>
+                                                        <option value="Teknik Informatika">Teknik Informatika</option>
+                                                        <option value="Teknik Sipil">Teknik Sipil</option>
+                                                        <option value="Teknik Geomatika">Teknik Geomatika</option>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">Fakultas</th>
+                                        <td>
+                                            <div class="form-group row">
+
+                                                <div class="col-sm-6">
+                                                    <select name="fakultas_dosen" id="fakultas_dosen" class="form-control" required>
+                                                        <option value="<?= $c['fakultas_dosen']; ?>" selected><?= $c['fakultas_dosen']; ?></option>
+                                                        <option value="Teknik">Teknik</option>
+
+                                                    </select>
+
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
 

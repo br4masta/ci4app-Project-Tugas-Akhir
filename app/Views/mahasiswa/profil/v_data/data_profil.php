@@ -1,5 +1,3 @@
-
-
 <div class="col-md-9">
     <div class="card">
         <div class="card-header p-2">
@@ -24,9 +22,9 @@
                                     <td><?= $row2['nim_mhs']; ?></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Jurusan/Fakultas</th>
+                                    <th scope="row">Program Studi/Fakultas</th>
                                     <td>
-                                        Teknik Informatika/Teknik
+                                        <?= $row2['program_studi_mhs']; ?>/<?= $row2['fakultas_mhs']; ?>
                                     </td>
                                 </tr>
                                 <tr>
@@ -71,7 +69,7 @@
                                     </td>
                                 </tr>
                             </tbody>
-                            <?php break;
+                        <?php break;
                         endforeach ?>
                     </table>
 

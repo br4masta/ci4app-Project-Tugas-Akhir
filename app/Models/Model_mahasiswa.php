@@ -51,6 +51,8 @@ class Model_mahasiswa extends Model
                 'mahasiswa.handphone',
                 'mahasiswa.email_mhs',
                 'mahasiswa.id_mhs',
+                'mahasiswa.program_studi_mhs',
+                'mahasiswa.fakultas_mhs'
             ])
             ->get()->getResultArray();
     }

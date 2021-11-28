@@ -55,28 +55,28 @@ foreach ($tampildatadosen as $row2) : ?>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Jurusan/Fakultas</th>
+                                    <th scope="row">Program Studi/Fakultas</th>
                                     <td>
-                                        Teknik Informatika/Teknik
+                                        <?= $row2['program_studi_dosen']; ?>/<?= $row2['fakultas_dosen']; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Jenis Kelamin</th>
                                     <td>
-                                       
-                                      <?= $row2['jkdosen']; ?>
+
+                                        <?= $row2['jkdosen']; ?>
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <th scope="row">No. Telp</th>
-                                    <td>  <?= $row2['notelp']; ?>
+                                    <td> <?= $row2['notelp']; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Email</th>
                                     <td>
-                                         <?= $row2['email']; ?>
+                                        <?= $row2['email']; ?>
                                     </td>
                                 </tr>
                             </tbody>
