@@ -6,6 +6,7 @@ use App\Models\DosenpengujiModel;
 use App\Models\dosen_pengujimodel;
 use App\Models\dosen_sempromodel;
 use App\Models\dosen_sidangtamodel;
+use App\Models\admin_dosenmodel;
 
 class DosenPenguji extends BaseController
 {
@@ -14,6 +15,8 @@ class DosenPenguji extends BaseController
 	protected $penguji;
 	protected $sempromodel;
 	protected $sidangtamodel;
+	protected $dosenmodel;
+
 
 	public function __construct()
 	{
@@ -27,6 +30,7 @@ class DosenPenguji extends BaseController
 		$this->penguji = new dosen_pengujimodel();
 		$this->sempromodel = new dosen_sempromodel();
 		$this->sidangtamodel = new dosen_sidangtamodel();
+		$this->dosenmodel = new admin_dosenmodel();
 	}
 	//-------------------- BAGIAN PROFIL--------------------------
 	public function index()
@@ -49,6 +53,95 @@ class DosenPenguji extends BaseController
 		} else {
 			exit('Maaf tidak dapat diproses');
 		}
+	}
+
+	public function ubahdataprofil()
+	{
+
+		session();
+		$data = [
+
+			'datadosen' => $this->data_dsnpenguji->get_profil_datadosenpenguji($this->id),
+			'validation' => \config\Services::validation(),
+		];
+
+		return view('DosenPenguji/profil/ubahdata', $data);
+	}
+
+	public function updatedatadosen($id)
+	{
+
+		if (!$this->validate([
+			'nidn' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => '{field} wajib di isi.',
+
+				]
+
+
+			],
+			'nama' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => '{field} wajib di isi.',
+
+				]
+
+
+			],
+
+
+			'foto' => [
+				'rules' => 'max_size[foto,1024]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png]',
+				'errors' => [
+					// 'uploaded' => 'Pilih Gambar Terlebih Dahulu',
+					'max_size' => 'Ukuran Gambar Terlalu besar',
+					'is_image' => 'Yang Anda pilih bukan gambar',
+					'mime_in' => 'Yang Anda pilih bukan gambar',
+
+				]
+				// 
+			]
+
+		])) {
+			// $validation = \config\Services::validation();
+			// return redirect()->to('/admin/tambahdatadosen')->withInput()->with('validation', $validation);
+			return redirect()->to("/DosenPenguji/showprofil/")->withInput();
+		}
+
+		$fileFoto = $this->request->getFile('foto');
+
+		if ($fileFoto->getError() == 4) {
+			$foto = $this->request->getVar('fotolama');
+		} else {
+
+			// // pindah ke public/img
+			$fileFoto->move('img');
+			// // 
+			$foto = $fileFoto->getName();
+			// hapus file yang lama
+			unlink('img/' . $this->request->getVar('fotolama'));
+		}
+
+		// dd($this->request->getVar());
+		$this->db->transStart();
+
+		$this->dosenmodel->save([
+			'id_dosen' => $id,
+			'nidn_dosen' => $this->request->getVar('nidn'),
+			'nama_dosen' => $this->request->getVar('nama'),
+			'foto_dosen' => $foto,
+			'program_studi_dosen' => $this->request->getVar('program_studi_dosen'),
+			'fakultas_dosen' => $this->request->getVar('fakultas_dosen'),
+
+
+
+		]);
+		$this->db->transComplete();
+		session()->setFlashdata('pesanubah', 'data berhasil di ubah');
+
+		return redirect()->to('/DosenPenguji/index');
 	}
 	//------------------ JADWAL UJI------------------------------------------
 	public function jadwalsempro()

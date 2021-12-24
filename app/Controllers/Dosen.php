@@ -10,6 +10,7 @@ use App\Models\dosen_bimbingantamodel;
 use App\Models\DospemJadwalModel;
 use App\Models\dosen_sempromodel;
 use App\Models\dosen_sidangtamodel;
+use App\Models\admin_dosenmodel;
 use phpDocumentor\Reflection\Types\This;
 
 class Dosen extends BaseController
@@ -22,6 +23,7 @@ class Dosen extends BaseController
 	protected $bimbingantamodel;
 	protected $sempromodel;
 	protected $sidangtamodel;
+	protected $dosenmodel;
 
 	// jika model ingin dipakai banyak method, buat construct
 
@@ -46,6 +48,7 @@ class Dosen extends BaseController
 		$this->sempromodel = new dosen_sempromodel();
 		$this->sidangtamodel = new dosen_sidangtamodel();
 		$this->bimbingantamodel = new dosen_bimbingantamodel();
+		$this->dosenmodel = new admin_dosenmodel();
 	}
 	// ----------------------BAGIAN PROFIL--------------------------
 	public function index()
@@ -69,6 +72,95 @@ class Dosen extends BaseController
 		} else {
 			exit('Maaf tidak dapat diproses');
 		}
+	}
+
+	public function ubahdataprofil()
+	{
+
+		session();
+		$data = [
+
+			'datadosen' => $this->data_dsn->get_profil_datadosenta($this->id),
+			'validation' => \config\Services::validation(),
+		];
+
+		return view('dosen/profil/ubahdata', $data);
+	}
+
+	public function updatedatadosen($id)
+	{
+
+		if (!$this->validate([
+			'nidn' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => '{field} wajib di isi.',
+
+				]
+
+
+			],
+			'nama' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => '{field} wajib di isi.',
+
+				]
+
+
+			],
+
+
+			'foto' => [
+				'rules' => 'max_size[foto,1024]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png]',
+				'errors' => [
+					// 'uploaded' => 'Pilih Gambar Terlebih Dahulu',
+					'max_size' => 'Ukuran Gambar Terlalu besar',
+					'is_image' => 'Yang Anda pilih bukan gambar',
+					'mime_in' => 'Yang Anda pilih bukan gambar',
+
+				]
+				// 
+			]
+
+		])) {
+			// $validation = \config\Services::validation();
+			// return redirect()->to('/admin/tambahdatadosen')->withInput()->with('validation', $validation);
+			return redirect()->to("/dosen/showprofil/")->withInput();
+		}
+
+		$fileFoto = $this->request->getFile('foto');
+
+		if ($fileFoto->getError() == 4) {
+			$foto = $this->request->getVar('fotolama');
+		} else {
+
+			// // pindah ke public/img
+			$fileFoto->move('img');
+			// // 
+			$foto = $fileFoto->getName();
+			// hapus file yang lama
+			unlink('img/' . $this->request->getVar('fotolama'));
+		}
+
+		// dd($this->request->getVar());
+		$this->db->transStart();
+
+		$this->dosenmodel->save([
+			'id_dosen' => $id,
+			'nidn_dosen' => $this->request->getVar('nidn'),
+			'nama_dosen' => $this->request->getVar('nama'),
+			'foto_dosen' => $foto,
+			'program_studi_dosen' => $this->request->getVar('program_studi_dosen'),
+			'fakultas_dosen' => $this->request->getVar('fakultas_dosen'),
+
+
+
+		]);
+		$this->db->transComplete();
+		session()->setFlashdata('pesanubah', 'data berhasil di ubah');
+
+		return redirect()->to('/dosen/index');
 	}
 	//------------------BAGIAN PENGAJUAN JUDUL ----------------------- 
 	public function judul()

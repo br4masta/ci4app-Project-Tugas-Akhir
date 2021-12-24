@@ -7,7 +7,7 @@
         <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
 
-        <li class="nav-header">EXAMPLES</li>
+        <li class="nav-header">Menu Dosen Penguji</li>
         <li class="nav-item">
             <a href="/dosenpenguji/index" class="nav-link">
                 <i class="fa fa-home"></i>
