@@ -28,7 +28,7 @@ class Model_pengajuansempro extends Model
             ->join('dosen_pembimbing as dospem2', 'dospem2.id_dosenpembimbing = pengajuan_judul.dosenpembimbing2')
             ->join('dosen_tugasakhir as doshir2', 'doshir2.id_dosenta = dospem2.id_dosenta')
             ->join('dosen as dos2', 'dos2.id_dosen = doshir2.id_dosen')
-            
+
             ->join('dosen_penguji as dosuji1', 'dosuji1.id_dosenpenguji = penjadwalan_sidang.penguji_1')
             ->join('dosen_tugasakhir as doshir3', 'doshir3.id_dosenta = dosuji1.id_dosenta')
             ->join('dosen as dos3', 'dos3.id_dosen = doshir3.id_dosen')
