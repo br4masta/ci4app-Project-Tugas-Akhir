@@ -106,9 +106,9 @@
                                                                 <div class="col-sm-6">
                                                                     <select name="status" id="status" class="form-control" required>
                                                                         <option value="<?= $a['status_ta']; ?>" selected><?= $a['status_ta']; ?></option>
-                                                                        <option value="lanjut">Lanjut</option>
-                                                                        <option value="disetujui dengan revisi">Disetujui dengan revisi</option>
-                                                                        <option value="mengulang">Mengulang</option>
+                                                                        <option value="lulus">Lulus</option>
+                                                                        <option value="lulus dengan revisi">Lulus Dengan Revisi</option>
+                                                                        <option value="tidak lulus">Tidak Lulus</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -144,9 +144,9 @@
                                                                 <div class="col-sm-6">
                                                                     <select name="status" id="status" class="form-control" required>
                                                                         <option value="<?= $a['status_ta']; ?>" selected><?= $a['status_ta']; ?></option>
-                                                                        <option value="lanjut">Lanjut</option>
-                                                                        <option value="disetujui dengan revisi">Disetujui dengan revisi</option>
-                                                                        <option value="mengulang">Mengulang</option>
+                                                                        <option value="lulus">Lulus</option>
+                                                                        <option value="lulus dengan revisi">Lulus Dengan Revisi</option>
+                                                                        <option value="tidak lulus">Tidak Lulus</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
