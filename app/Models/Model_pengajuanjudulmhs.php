@@ -52,6 +52,9 @@ class Model_pengajuanjudulmhs extends Model
         return $this->table_dosen
             ->join('dosen_tugasakhir', 'dosen_tugasakhir.id_dosenta = dosen_pembimbing.id_dosenta')
             ->join('dosen', 'dosen.id_dosen = dosen_tugasakhir.id_dosen ')
+            ->join('data_akademik', 'data_akademik.id_dataakademik = dosen_tugasakhir.id_dataakademik ')
+
+            ->where(['status' => 'aktif'])
             ->get()->getResultArray();
     }
     public function pilih_datamhs($id)
