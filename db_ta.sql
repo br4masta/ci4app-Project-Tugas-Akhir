@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2021 at 06:18 PM
+-- Generation Time: Jan 02, 2022 at 06:41 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -68,7 +68,8 @@ INSERT INTO `bimbingan` (`id_bimbingan`, `id_pengajuan`, `tanggal_bimbingan`, `j
 (25, 14, '0000-00-00', 'bimbingan 1: pembuatan konsep sistem', 'membuat konsep game simulasi pesawat sederhana', '1635118992_81f692d9c907c6fedfa7.pdf', '', 'lanjut pengajuan seminar', '', 'lanjut pengajuan seminar'),
 (26, 15, '0000-00-00', 'bimbingan 1: pembuatan konsep sistem skripsi.', 'bimbingan 1: pembuatan konsep sistem.', '1635133606_d15f147b5b7eac74e20b.pdf', 'bla bla bbla', 'lanjut bimbingan', '', 'lanjut bimbingan'),
 (27, 15, '0000-00-00', 'bimbingan II : pengajuan sidang ta.', 'bimbingan II : pengajuan sidang ta.', '1635133676_c9235a2262ef24e39aab.pdf', 'lanjut mas.\r\n', 'lanjut pengajuan seminar', '', 'lanjut pengajuan seminar'),
-(28, 19, '0000-00-00', 'bimbingan 1: pembuatan konsep sistem data mining.', 'bimbingan 1 pembuatan konsep sistem', '1635307553_d6349b24067a952b5654.pdf', '', 'lanjut pengajuan seminar', '', 'lanjut pengajuan seminar');
+(28, 19, '0000-00-00', 'bimbingan 1: pembuatan konsep sistem data mining.', 'bimbingan 1 pembuatan konsep sistem', '1635307553_d6349b24067a952b5654.pdf', '', 'lanjut pengajuan seminar', '', 'lanjut pengajuan seminar'),
+(29, 20, '0000-00-00', 'bimbingan bab 1', 'pembuatan latar belakang', '1641125467_f39ce96aa641f822e29f.pdf', '', 'lanjut pengajuan seminar', '', 'lanjut pengajuan seminar');
 
 -- --------------------------------------------------------
 
@@ -96,7 +97,8 @@ INSERT INTO `bimbingan_ta` (`id_bimbingan_ta`, `id_seminar`, `tanggal_bimbingan_
 (6, 7, '2021-09-09', '', '', '', 'lanjut pengajuan sidang ta', '', 'lanjut pengajuan sidang ta'),
 (7, 9, '0000-00-00', 'bimbingan 1', '1631213281_23694a4bac72551b36a4.pdf', 'baik\r\n', 'lanjut pengajuan sidang ta', '', 'lanjut pengajuan sidang ta'),
 (8, 13, '0000-00-00', 'bimbingan 1: penerapan konsep game simulasi pesawa', '1635128954_1fb2a75bb6681f5519f9.pdf', '', 'lanjut pengajuan sidang ta', '', 'lanjut pengajuan sidang ta'),
-(9, 14, '0000-00-00', 'bimbingan ta 1: pembuatan model', '1635215392_63ab67b275b00c8cc15f.pdf', 'lanjut mas.\r\n', 'lanjut pengajuan sidang ta', '', 'lanjut pengajuan sidang ta');
+(9, 14, '0000-00-00', 'bimbingan ta 1: pembuatan model', '1635215392_63ab67b275b00c8cc15f.pdf', 'lanjut mas.\r\n', 'lanjut pengajuan sidang ta', '', 'lanjut pengajuan sidang ta'),
+(10, 16, '0000-00-00', 'bimbingan bab 4-5', '1641144513_1510939506116b6919b0.pdf', '', 'lanjut pengajuan sidang ta', '', 'lanjut pengajuan sidang ta');
 
 -- --------------------------------------------------------
 
@@ -120,7 +122,8 @@ CREATE TABLE `data_akademik` (
 INSERT INTO `data_akademik` (`id_dataakademik`, `tahun_akademik`, `tanggal_mulai`, `tanggal_akhir`, `semester`, `status`) VALUES
 (1, '2020/2021', '2021-01-01', '2021-08-31', 'ganjil', 'nonaktif'),
 (2, '2019/2020', '2020-08-01', '2020-12-31', 'genap', 'nonaktif'),
-(5, '2021/2022', '2021-09-01', '2021-10-01', 'ganjil', 'aktif');
+(5, '2021/2022', '2021-09-01', '2021-10-01', 'ganjil', 'nonaktif'),
+(7, '2022/2023', '2022-08-01', '2023-01-17', 'genap', 'aktif');
 
 -- --------------------------------------------------------
 
@@ -160,10 +163,12 @@ INSERT INTO `dosen` (`id_dosen`, `nidn_dosen`, `nama_dosen`, `notelp`, `jkdosen`
 (15, '1234123', ' adit', NULL, NULL, NULL, 'default.png', '', ''),
 (16, '1234532', ' Rusdi Tabuti', NULL, NULL, NULL, 'default.png', '', ''),
 (17, '122417', 'vino', NULL, NULL, NULL, 'default.png', '', ''),
-(18, '243112', ' bu ratna', NULL, NULL, NULL, 'default.png', 'Teknik Sipil', 'Teknik'),
-(19, '213446', ' bu cempaka', NULL, NULL, NULL, 'default.png', '', ''),
+(18, '243112', ' bu ratna', NULL, NULL, NULL, 'default.png', 'Teknik Informatika', 'Teknik'),
+(19, '213446', ' bu cempaka', NULL, NULL, NULL, 'default.png', 'Teknik Sipil', 'Teknik'),
 (20, '2114', ' pak alda', NULL, NULL, NULL, 'default.png', '', ''),
-(21, '070707', ' dwi cahyono', NULL, NULL, NULL, 'default.png', '', '');
+(21, '070707', ' dwi cahyono', NULL, NULL, NULL, 'default.png', '', ''),
+(22, '1111', ' bu vega', NULL, NULL, NULL, 'default.png', '', ''),
+(23, '1112', ' syaiful', NULL, NULL, NULL, 'default.png', '', '');
 
 -- --------------------------------------------------------
 
@@ -191,7 +196,9 @@ INSERT INTO `dosen_pembimbing` (`id_dosenpembimbing`, `id_dosenta`, `role_pembim
 (12, 23, 'dosen pembimbing I'),
 (13, 24, 'dosen pembimbing II'),
 (14, 25, 'dosen pembimbing II'),
-(15, 26, 'dosen pembimbing I');
+(15, 26, 'dosen pembimbing I'),
+(16, 27, 'dosen pembimbing I'),
+(17, 28, 'dosen pembimbing II');
 
 -- --------------------------------------------------------
 
@@ -219,7 +226,9 @@ INSERT INTO `dosen_penguji` (`id_dosenpenguji`, `id_dosenta`, `role_penguji`) VA
 (8, 23, 'penguji'),
 (9, 24, 'penguji'),
 (10, 25, 'penguji'),
-(11, 26, 'penguji');
+(11, 26, 'penguji'),
+(12, 27, 'penguji'),
+(13, 28, 'penguji');
 
 -- --------------------------------------------------------
 
@@ -259,7 +268,9 @@ INSERT INTO `dosen_tugasakhir` (`id_dosenta`, `id_dosen`, `id_dataakademik`) VAL
 (23, 18, 5),
 (24, 19, 5),
 (25, 20, 5),
-(26, 21, 5);
+(26, 21, 5),
+(27, 22, 7),
+(28, 23, 7);
 
 -- --------------------------------------------------------
 
@@ -302,7 +313,11 @@ INSERT INTO `leveling_dosen` (`id_level`, `id_dosenta`, `id_user`) VALUES
 (24, 25, 34),
 (25, 25, 35),
 (26, 26, 40),
-(27, 26, 41);
+(27, 26, 41),
+(28, 27, 45),
+(29, 27, 46),
+(30, 28, 47),
+(31, 28, 48);
 
 -- --------------------------------------------------------
 
@@ -341,7 +356,8 @@ INSERT INTO `mahasiswa` (`id_mhs`, `id_user`, `nim_mhs`, `nama_mhs`, `tgllhr_mhs
 (11, 37, 2018420007, 'faisal roshadi', NULL, NULL, 'Laki-laki', NULL, NULL, 5, '', ''),
 (12, 38, 2018420006, 'andy', NULL, NULL, 'Laki-laki', NULL, NULL, 5, '', ''),
 (13, 39, 2019420077, 'carla', NULL, NULL, 'Perempuan', NULL, NULL, 5, '', ''),
-(14, 42, 2018420000, 'timmy', NULL, NULL, 'Laki-laki', NULL, NULL, 5, '', '');
+(14, 42, 2018420000, 'timmy', NULL, NULL, 'Laki-laki', NULL, NULL, 5, '', ''),
+(16, 44, 2019420076, 'brian aldy bramasta', NULL, NULL, 'Laki-laki', NULL, NULL, 7, 'Teknik Informatika', 'Teknik');
 
 -- --------------------------------------------------------
 
@@ -377,7 +393,8 @@ INSERT INTO `pengajuan_judul` (`id_pengajuan`, `id_mhs`, `judul`, `deskripsi`, `
 (9, 10, 'Penerapan metode certainty factor pada kesehatan mental mahasiswa', 'kesehatan mental sama pentingnya dengan kesehatan fisik.', 12, 13, 'di setujui', 'di setujui', 'di setujui', '1630400222_6115090799e8229f7e0d.pdf', '', 'untuk judulnya bisa menggunakan Penerapan metode certainty factor pada sistem Analisa tingkat kesehatan mental mahasiswa', 'silahkan dilanjut'),
 (14, 11, 'membuat game simulasi pesawat sederhana ', 'pembuatan game simulasi pesawat sederhana berbasis anroid.', 12, 13, 'di setujui', 'di setujui', 'di setujui', '1635118645_f590f39eb391bff3bcb8.pdf', '', '', ''),
 (15, 12, 'sistem skripsi', 'sistem skripsi', 12, 13, 'di setujui', 'di setujui', 'di setujui', '1635133270_7d0c9e1818ff2455629f.pdf', '', '', ''),
-(19, 14, 'data mining', 'pembuatan sistem data mining', 12, 13, 'di setujui', 'di setujui', 'di setujui', '1635307316_5d0ebccfe7d895a000d1.pdf', '', '', '');
+(19, 14, 'data mining', 'pembuatan sistem data mining', 12, 13, 'di setujui', 'di setujui', 'di setujui', '1635307316_5d0ebccfe7d895a000d1.pdf', '', '', ''),
+(20, 16, 'penerapan augmented pada bidang sains', 'penggunaan dan penerapan augmented pada bidang sains', 16, 17, 'di setujui', 'di setujui', 'di setujui', '1641125223_c0a8ce95a3dea6b9539f.pdf', 'lanjut', 'baik mas lanjut', 'lanjut');
 
 -- --------------------------------------------------------
 
@@ -411,7 +428,8 @@ INSERT INTO `penjadwalan_sidang` (`id_jadwal`, `id_bimbingan`, `penguji_1`, `pen
 (21, 22, 8, 9, '1631211240_8ab9f5ae9e50b74dcab3.pdf', 'seminar proposal', '2021-09-10', '09:00:00', ' 501', 'sudah terjadwal'),
 (25, 25, 9, 8, '1635119088_59d28958bb4c79becc74.pdf', 'seminar proposal', '2021-11-02', '00:00:00', '508', 'sudah terjadwal'),
 (26, 27, 8, 10, '1635133802_e24219aee647038268de.pdf', 'seminar proposal', '2021-11-06', '10:00:00', ' 505', 'sudah terjadwal'),
-(27, 28, 11, 10, '1635308058_a8e96e987d074d2f3083.pdf', 'seminar proposal', '2021-10-28', '00:00:00', 'ruang map', 'sudah terjadwal');
+(27, 28, 11, 10, '1635308058_a8e96e987d074d2f3083.pdf', 'seminar proposal', '2021-10-28', '00:00:00', 'ruang map', 'sudah terjadwal'),
+(38, 29, 12, 13, '1641130834_e8a4292f41e91b897075.pdf', 'seminar proposal', '2022-11-02', '00:00:00', '  509', 'sudah terjadwal');
 
 -- --------------------------------------------------------
 
@@ -440,7 +458,8 @@ INSERT INTO `penjadwalan_sidang_ta` (`id_jadwal_ta`, `id_bimbingan_ta`, `penguji
 (3, 6, 5, 7, 'sidang tugas akhir', NULL, '2021-09-16', '00:00:00', 'ruang 301', 'sudah terjadwal'),
 (4, 7, 8, 9, 'sidang tugas akhir', '1631215936_ed00795ac6f96b3d0aba.pdf', '2021-09-30', '10:00:00', ' 203', 'sudah terjadwal'),
 (5, 8, 10, 8, 'sidang tugas akhir', '1635129056_ed1124afc6fde43beb25.pdf', '2021-11-06', '10:00:00', '    506', 'sudah terjadwal'),
-(6, 9, 10, 9, 'sidang tugas akhir', '1635215509_1a61f6db89198104b9eb.pdf', '2021-11-04', '10:00:00', '    506', 'sudah terjadwal');
+(6, 9, 10, 9, 'sidang tugas akhir', '1635215509_1a61f6db89198104b9eb.pdf', '2021-11-04', '10:00:00', '    506', 'sudah terjadwal'),
+(7, 10, 12, 13, 'sidang tugas akhir', '1641144625_ee096847f132d25d34b2.pdf', '2022-11-24', '00:00:00', '    506', 'sudah terjadwal');
 
 -- --------------------------------------------------------
 
@@ -474,7 +493,8 @@ INSERT INTO `seminar_proposal` (`id_seminar`, `id_jadwal`, `nilai`, `catatan`, `
 (9, 21, '', '', 'lanjut', 90, 82, 90, 90, '', 'lanjut\r\n', 'lanjut mas', 'lanjut'),
 (13, 25, '', '', 'disetujui dengan revisi', 90, 90, 82, 90, 'silahkan di lanjut', 'lanjut.', 'lanjut', ''),
 (14, 26, '', '', 'lanjut', 82, 80, 90, 80, '', '', '', ''),
-(15, 27, '', '', 'disetujui dengan revisi', 80, NULL, NULL, NULL, 'revisi 1', NULL, NULL, NULL);
+(15, 27, '', '', 'disetujui dengan revisi', 80, NULL, NULL, NULL, 'revisi 1', NULL, NULL, NULL),
+(16, 38, '', '', 'lanjut', 80, 90, 70, 80, 'sudah bagus', 'bagus\r\n', 'lanjut\r\n', 'sudah bagus\r\n');
 
 -- --------------------------------------------------------
 
@@ -506,7 +526,8 @@ INSERT INTO `sidang_tugasakhir` (`id_sidangta`, `id_jadwal_ta`, `nilai_ta`, `cat
 (6, 3, '', '', 'lulus', 90, 80, 80, 90, 'bagus', 'baik', 'baik', 'bagus'),
 (7, 4, '', '', 'lulus', 82, 90, 90, 80, 'lulus', 'lulus', 'lulus', 'lulus'),
 (8, 5, '', '', 'lulus', 90, 90, NULL, NULL, '', '', NULL, NULL),
-(9, 6, '', '', 'lulus', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(9, 6, '', '', 'lulus', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, 7, '', '', 'lulus dengan revisi', 80, 80, 90, 90, 'lulus', 'baguss\r\n', 'lulus', 'lulus dengan revisi\r\n');
 
 -- --------------------------------------------------------
 
@@ -563,7 +584,12 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `level`) VALUES
 (39, '2019420077', 'carla', '3'),
 (40, ' dwicahyono', 'dwicahyono', '2'),
 (41, 'dwicahyonouji', 'dwicahyonouji', '4'),
-(42, '2018420000', 'timmy', '3');
+(42, '2018420000', 'timmy', '3'),
+(44, '2019420076', 'brian', '3'),
+(45, 'vega', 'vega', '2'),
+(46, 'vegapenguji', 'vegapenguji', '4'),
+(47, 'syaiful', 'syaiful', '2'),
+(48, 'syaifuluji', 'syaifuluji', '4');
 
 --
 -- Indexes for dumped tables
@@ -693,91 +719,91 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `bimbingan`
 --
 ALTER TABLE `bimbingan`
-  MODIFY `id_bimbingan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_bimbingan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `bimbingan_ta`
 --
 ALTER TABLE `bimbingan_ta`
-  MODIFY `id_bimbingan_ta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_bimbingan_ta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `data_akademik`
 --
 ALTER TABLE `data_akademik`
-  MODIFY `id_dataakademik` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_dataakademik` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `dosen`
 --
 ALTER TABLE `dosen`
-  MODIFY `id_dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `dosen_pembimbing`
 --
 ALTER TABLE `dosen_pembimbing`
-  MODIFY `id_dosenpembimbing` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_dosenpembimbing` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `dosen_penguji`
 --
 ALTER TABLE `dosen_penguji`
-  MODIFY `id_dosenpenguji` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_dosenpenguji` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `dosen_tugasakhir`
 --
 ALTER TABLE `dosen_tugasakhir`
-  MODIFY `id_dosenta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_dosenta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `leveling_dosen`
 --
 ALTER TABLE `leveling_dosen`
-  MODIFY `id_level` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_level` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `id_mhs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_mhs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `pengajuan_judul`
 --
 ALTER TABLE `pengajuan_judul`
-  MODIFY `id_pengajuan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_pengajuan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `penjadwalan_sidang`
 --
 ALTER TABLE `penjadwalan_sidang`
-  MODIFY `id_jadwal` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_jadwal` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `penjadwalan_sidang_ta`
 --
 ALTER TABLE `penjadwalan_sidang_ta`
-  MODIFY `id_jadwal_ta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_jadwal_ta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `seminar_proposal`
 --
 ALTER TABLE `seminar_proposal`
-  MODIFY `id_seminar` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_seminar` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `sidang_tugasakhir`
 --
 ALTER TABLE `sidang_tugasakhir`
-  MODIFY `id_sidangta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_sidangta` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- Constraints for dumped tables

@@ -60,7 +60,7 @@
                                         <td><?= $d['nama_dosen']; ?></td>
                                         <td><?= $d['role_penguji']; ?></td>
                                         <td><?= $d['tahun_akademik']; ?></td>
-                                        <td><img src='http://localhost/CodeIgniter_SiMonTA-master/assets/mahasiswa/anonim.png' width='20%'></td>
+                                        <td><img src='/img/<?= $d['foto_dosen']; ?>' width='20%'></td>
 
                                         <td class="center">
 
