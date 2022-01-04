@@ -36,6 +36,12 @@
                         <p>Bimbingan Proposal</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="<?= site_url('mahasiswa/seminar'); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Bimbingan Tugas Akhir</p>
+                    </a>
+                </li>
             </ul>
         </li>
         <li class="nav-item">
@@ -59,12 +65,7 @@
                         <p>Hasil Seminar Proposal</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="<?= site_url('mahasiswa/seminar'); ?>" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Bimbingan Tugas Akhir</p>
-                    </a>
-                </li>
+
                 <li class="nav-item">
                     <a href="<?= site_url('mahasiswa/pengajuan_ta'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>

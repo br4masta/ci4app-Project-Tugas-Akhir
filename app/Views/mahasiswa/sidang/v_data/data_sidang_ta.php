@@ -25,7 +25,7 @@
                 <td> <?= $row['dos2_nama']; ?></td>
                 <td> <?= $row['dos3_nama']; ?></td>
                 <td> <?= $row['dos4_nama']; ?></td>
-                <td> <?= $row['judul_final_ta']; ?> </td>
+                <td> <?= $row['judul']; ?> </td>
                 <td style="text-align: center; vertical-align: middle;">
                     <?php if ($row['status_ta'] == "lulus") :
                         echo '<span class="badge badge-success d-inline-flex p-2">lulus</span>';

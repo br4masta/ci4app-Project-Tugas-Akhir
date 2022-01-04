@@ -89,7 +89,8 @@
         <div class="card-body box-profile">
             <div class="text-center">
 
-                <img class="profile-user-img img-fluid img-circle" src="<?= base_url(); ?>/assets/style/img/user4-128x128.jpg" alt="User profile picture">
+
+                <img class="profile-user-img img-fluid img-circle" src="/img/default.png" alt="User profile picture">
             </div>
             <?php
             foreach ($tampildatadosenmhs as $row1) : ?>

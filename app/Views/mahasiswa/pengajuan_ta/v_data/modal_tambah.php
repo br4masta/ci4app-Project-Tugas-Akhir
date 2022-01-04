@@ -60,7 +60,7 @@
                         $session = session();
                         $id3 = $session->get('user_id');
                         foreach ((new \App\Models\Model_sidang_TA)->get_id_bimbingan_ta($id3) as  $data) { ?>
-                            <input type="text" class="form-control" value="<?php echo $data['judul_final_ta'] ?>" readonly>
+                            <input type="text" class="form-control" value="" name="judul_ta" id="judul_ta">
                         <?php break;
                         } ?>
                         <div class="invalid-feedback errorJudul">

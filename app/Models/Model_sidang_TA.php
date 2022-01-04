@@ -120,8 +120,10 @@ class Model_sidang_TA extends Model
                 'penjadwalan_sidang_ta.tanggal_sidang_ta',
                 'penjadwalan_sidang_ta.tempat_sidang_ta',
                 'penjadwalan_sidang_ta.acara_sidang_ta',
+                'penjadwalan_sidang_ta.judul_ta',
                 'penjadwalan_sidang.acara_sidang',
                 'penjadwalan_sidang.tempat_sidang',
+
                 'bimbingan.berkas_bimbingan',
                 'pengajuan_judul.judul',
                 'pengajuan_judul.deskripsi',

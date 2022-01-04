@@ -37,7 +37,7 @@
                 <li class="nav-item">
                     <a href="<?php echo site_url('kaprodi/jadwalseminar'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Pendjadwalan Sempro</p>
+                        <p>Pengajuan Sempro</p>
                     </a>
                 </li>
             </ul>
@@ -53,7 +53,7 @@
                 <li class="nav-item">
                     <a href="<?php echo site_url('kaprodi/jadwalskripsi'); ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>pendjadwalan Skripsi</p>
+                        <p>Pengajuan Sidang TA</p>
                     </a>
                 </li>
             </ul>

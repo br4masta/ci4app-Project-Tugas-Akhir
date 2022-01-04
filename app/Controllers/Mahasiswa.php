@@ -393,6 +393,7 @@ class Mahasiswa extends BaseController
 				$data = [
 					'id_bimbingan_ta' => $this->request->getVar('id_bimbingan_ta'),
 					'berkas_proposal_ta' => $fileName,
+					'judul_ta' => $this->request->getVar('judul_ta'),
 				];
 
 				$dataBerkas->move('assets/img/File', $fileName);
